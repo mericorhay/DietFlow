@@ -127,10 +127,18 @@ public struct TodayScreen: View {
 struct DayPager<Page: View>: View {
     let days: [CalendarDay]
     @Binding var selection: CalendarDay
-    @ViewBuilder let page: (CalendarDay) -> Page
+    let page: (CalendarDay) -> Page
 
+    /// Starts at the selected day, so the pager never shows another day first.
     @State private var position: CalendarDay?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    init(days: [CalendarDay], selection: Binding<CalendarDay>, @ViewBuilder page: @escaping (CalendarDay) -> Page) {
+        self.days = days
+        self._selection = selection
+        self.page = page
+        self._position = State(initialValue: selection.wrappedValue)
+    }
 
     var body: some View {
         ScrollView(.horizontal) {
@@ -145,9 +153,6 @@ struct DayPager<Page: View>: View {
         .scrollTargetBehavior(.paging)
         .scrollIndicators(.hidden)
         .scrollPosition(id: $position)
-        .onAppear {
-            position = selection
-        }
         .onChange(of: position) { _, newValue in
             if let newValue, newValue != selection {
                 selection = newValue
