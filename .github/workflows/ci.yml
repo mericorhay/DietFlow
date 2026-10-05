@@ -7,9 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       screenshots:
-        description: "Also print screenshots of every main screen into the log (scripts/ci-screenshots.sh)"
-        type: boolean
-        default: false
+        description: "Screenshots in the log: none (about 3 minutes in all), core (7 screens, +3 min) or all (19 screens, +9 min)"
+        type: choice
+        options:
+          - none
+          - core
+          - all
+        default: none
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -31,7 +35,9 @@ jobs:
   build:
     name: Build and test
     runs-on: macos-26
-    timeout-minutes: 40
+    # Build and tests take about three minutes; the full screenshot set adds nine. A run that
+    # reaches this limit is stuck, not slow.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v5
 
@@ -55,7 +61,7 @@ jobs:
       # compile gate for the whole codebase.
       - name: Build the app
         id: build
-        timeout-minutes: 25
+        timeout-minutes: 10
         run: |
           set -euo pipefail
           xcodebuild build \
@@ -84,7 +90,7 @@ jobs:
       # test target for xcodebuild). Code coverage is off: instrumenting every module made the
       # rebuild slow enough to hang the job once.
       - name: Run the tests
-        timeout-minutes: 20
+        timeout-minutes: 10
         working-directory: Packages/DietFlowKit
         run: |
           set -euo pipefail
@@ -103,8 +109,9 @@ jobs:
       # On request: the app's main screens in several languages, dark mode, large text and Xcode's
       # long and right-to-left pseudolanguages, as small images inside the log.
       - name: Screenshots
-        if: ${{ !cancelled() && inputs.screenshots && steps.build.outcome == 'success' }}
-        timeout-minutes: 10
+        if: ${{ !cancelled() && inputs.screenshots != 'none' && steps.build.outcome == 'success' }}
+        timeout-minutes: 12
         run: |
           bash scripts/ci-screenshots.sh "${{ steps.sim.outputs.udid }}" \
-            "$RUNNER_TEMP/DietFlowDerived/Build/Products/Debug-iphonesimulator/DietFlow.app"
+            "$RUNNER_TEMP/DietFlowDerived/Build/Products/Debug-iphonesimulator/DietFlow.app" \
+            "${{ inputs.screenshots }}"

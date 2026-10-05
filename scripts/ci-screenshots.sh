@@ -4,11 +4,16 @@
 # be looked at without downloading artifacts. The app opens each state from launch arguments
 # (DietFlow/DebugLaunch.swift) on in-memory sample data.
 #
-#   scripts/ci-screenshots.sh <simulator udid> <path to DietFlow.app>
+#   scripts/ci-screenshots.sh <simulator udid> <path to DietFlow.app> [core|all]
+#
+# Each shot is a cold launch on a CI simulator, about half a minute. "core" (the default) is the
+# seven screens that show whether a change broke something; "all" adds the languages, dark mode,
+# large text and the pseudolanguages, and takes around nine minutes.
 set -euo pipefail
 
 UDID="$1"
 APP="$2"
+SET="${3:-core}"
 BUNDLE="com.orhay.dietflow"
 OUT="${RUNNER_TEMP:-/tmp}/screenshots"
 mkdir -p "$OUT"
@@ -24,8 +29,7 @@ textSize() { xcrun simctl ui "$UDID" content_size "$1" >/dev/null 2>&1 || true; 
 capture() {
   local name="$1"
   xcrun simctl io "$UDID" screenshot --type=png "$OUT/$name.png" >/dev/null 2>&1
-  sips -Z 560 "$OUT/$name.png" --out "$OUT/$name-small.png" >/dev/null
-  sips -s format jpeg -s formatOptions 50 "$OUT/$name-small.png" --out "$OUT/$name.jpg" >/dev/null
+  sips -Z 560 -s format jpeg -s formatOptions 50 "$OUT/$name.png" --out "$OUT/$name.jpg" >/dev/null
 }
 
 # shot <name> <launch arguments…>
@@ -36,7 +40,7 @@ shot() {
   shift
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1 || true
   xcrun simctl launch "$UDID" "$BUNDLE" "$@" >/dev/null
-  sleep 5
+  sleep 3
   capture "$name"
   local tries=0
   while [ "$(stat -f%z "$OUT/$name.jpg")" -lt 7000 ] && [ "$tries" -lt 5 ]; do
@@ -62,17 +66,22 @@ NOW=(-DebugSeed now)
 appearance light
 textSize large
 shot today-now-en "${EN[@]}" "${NOW[@]}"
-shot widgets-now-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets
-shot meal-now-tr "${TR[@]}" "${NOW[@]}" -DebugMeal next
-shot today-en "${EN[@]}" "${SAMPLE[@]}"
 shot plan-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
-shot meal-en "${EN[@]}" "${SAMPLE[@]}" -DebugMeal next
+shot meal-now-tr "${TR[@]}" "${NOW[@]}" -DebugMeal next
 shot widgets-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab widgets
 shot settings-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet settings
-shot newmeal-es "${ES[@]}" "${SAMPLE[@]}" -DebugSheet newMeal
 shot import-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet import
-shot empty-en "${EN[@]}" -DebugSeed empty
 shot onboarding-last-tr "${TR[@]}" -DebugSeed onboarding -DebugOnboardingPage 2
+
+if [ "$SET" != "all" ]; then
+  exit 0
+fi
+
+shot widgets-now-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets
+shot today-en "${EN[@]}" "${SAMPLE[@]}"
+shot meal-en "${EN[@]}" "${SAMPLE[@]}" -DebugMeal next
+shot newmeal-es "${ES[@]}" "${SAMPLE[@]}" -DebugSheet newMeal
+shot empty-en "${EN[@]}" -DebugSeed empty
 # Room for longer languages and right-to-left scripts: Xcode's pseudolanguages.
 shot today-long "${EN[@]}" "${SAMPLE[@]}" -NSDoubleLocalizedStrings YES
 shot today-rtl "${EN[@]}" "${SAMPLE[@]}" -AppleTextDirection YES -NSForceRightToLeftWritingDirection YES
