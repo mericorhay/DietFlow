@@ -1,0 +1,25 @@
+// Settings the app and its widget extension must agree on.
+//
+// An extension whose version or build number differs from its host app is
+// rejected by App Store Connect, so both live here and nowhere else. CI honours
+// the build number and only raises it when Apple already has a newer build.
+
+DEVELOPMENT_TEAM = XYB3NLV654
+CODE_SIGN_STYLE = Automatic
+
+MARKETING_VERSION = 1.0.0
+CURRENT_PROJECT_VERSION = 1
+
+// iPhone only. iOS 18 is the floor: interactive and Lock Screen widgets are all there, and it
+// keeps older phones in reach. Must match `platforms` in Packages/DietFlowKit/Package.swift.
+IPHONEOS_DEPLOYMENT_TARGET = 18.0
+TARGETED_DEVICE_FAMILY = 1
+SUPPORTED_PLATFORMS = iphoneos iphonesimulator
+SUPPORTS_MACCATALYST = NO
+SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO
+
+SWIFT_EMIT_LOC_STRINGS = YES
+LOCALIZATION_PREFERS_STRING_CATALOGS = YES
+
+ENABLE_USER_SCRIPT_SANDBOXING = YES
+GENERATE_INFOPLIST_FILE = YES

@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.xcresult
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/DietFlowKit/Package.resolved
+
+# Secrets
+*.p12
+*.p8
+*.mobileprovision
+Secrets.xcconfig
+.dev.vars
+
+# fastlane / release output
+*.ipa
+*.dSYM.zip
+Gemfile.lock
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/test_output/
+
+# Assistant endpoint, written by CI from repository secrets
+DietFlow/Resources/AssistantEndpoint.json
+
+# Wrangler local cache
+.wrangler/
+node_modules/

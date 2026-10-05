@@ -1,0 +1,75 @@
+name: CI
+
+# Manual only, like the other apps:
+#   gh workflow run ci.yml -R mericorhay/DietFlow
+# or Actions ▸ CI ▸ Run workflow.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  localization:
+    name: Localization integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+      - run: node --test tools/localization/catalogs.test.mjs
+      - run: node tools/localization/l10n.mjs validate
+
+  build:
+    name: Build and test
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      # One simulator for both steps. Picking by device name pins us to whatever
+      # list the image happens to ship; taking the first available iPhone does not.
+      - name: Pick a simulator
+        id: sim
+        run: |
+          set -euo pipefail
+          UDID=$(xcrun simctl list devices available -j \
+            | python3 -c "import json,sys;d=json.load(sys.stdin)['devices'];print(next(x['udid'] for k,v in d.items() if 'iOS' in k for x in v if x['name'].startswith('iPhone')))")
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          echo "Using simulator $UDID"
+
+      # The app scheme pulls in every module and embeds the widget extension, so this is the
+      # compile gate for the whole codebase.
+      - name: Build the app
+        run: |
+          set -euo pipefail
+          xcodebuild build \
+            -project DietFlow.xcodeproj \
+            -scheme DietFlow \
+            -derivedDataPath "$RUNNER_TEMP/DietFlowDerived" \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM=""
+
+      - name: Run the package tests
+        working-directory: Packages/DietFlowKit
+        run: |
+          set -euo pipefail
+          SCHEME=$(xcodebuild -list -json \
+            | python3 -c "import json,sys;s=json.load(sys.stdin)['workspace']['schemes'];print('DietFlowKit-Package' if 'DietFlowKit-Package' in s else s[0])")
+          echo "Testing scheme $SCHEME"
+          xcodebuild test \
+            -scheme "$SCHEME" \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO

@@ -1,0 +1,10 @@
+# Must match PRODUCT_BUNDLE_IDENTIFIER in Config/DietFlow.xcconfig.
+app_identifier("com.orhay.dietflow")
+
+# Same Apple team as CueTake, MicFox and Galapagos, so the distribution certificate and the
+# App Store Connect API key are the same ones — only the provisioning profiles are per bundle id.
+team_id(ENV["APPLE_TEAM_ID"] || "XYB3NLV654")
+
+# Deliberately no apple_id: auth goes through the App Store Connect API key
+# (see the Fastfile). An Apple ID invites interactive login, which stalls on
+# 2FA on a headless runner.

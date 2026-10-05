@@ -1,0 +1,363 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10000000000000000000B301 /* DietFlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10000000000000000000B201 /* DietFlowKit */; };
+		10000000000000000000B302 /* DietFlowWidgetKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10000000000000000000B202 /* DietFlowWidgetKit */; };
+		10000000000000000000B303 /* DietFlowWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 10000000000000000000F301 /* DietFlowWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10000000000000000000AD01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10000000000000000000A101 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10000000000000000000F201;
+			remoteInfo = DietFlowWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		10000000000000000000AB01 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				10000000000000000000B303 /* DietFlowWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		10000000000000000000A301 /* DietFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DietFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10000000000000000000F301 /* DietFlowWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DietFlowWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		10000000000000000000E101 /* DietFlow.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DietFlow.xcconfig; sourceTree = "<group>"; };
+		10000000000000000000E102 /* DietFlowWidget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DietFlowWidget.xcconfig; sourceTree = "<group>"; };
+		10000000000000000000E103 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		10000000000000000000A601 /* DietFlow */ = {isa = PBXFileSystemSynchronizedRootGroup; path = DietFlow; sourceTree = "<group>"; };
+		10000000000000000000F601 /* DietFlowWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; path = DietFlowWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10000000000000000000A801 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10000000000000000000B301 /* DietFlowKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10000000000000000000F801 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10000000000000000000B302 /* DietFlowWidgetKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10000000000000000000A401 = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000E201 /* Config */,
+				10000000000000000000A601 /* DietFlow */,
+				10000000000000000000F601 /* DietFlowWidget */,
+				10000000000000000000A501 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10000000000000000000A501 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000A301 /* DietFlow.app */,
+				10000000000000000000F301 /* DietFlowWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10000000000000000000E201 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000E103 /* Shared.xcconfig */,
+				10000000000000000000E101 /* DietFlow.xcconfig */,
+				10000000000000000000E102 /* DietFlowWidget.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10000000000000000000A201 /* DietFlow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10000000000000000000D201 /* Build configuration list for PBXNativeTarget "DietFlow" */;
+			buildPhases = (
+				10000000000000000000A701 /* Sources */,
+				10000000000000000000A801 /* Frameworks */,
+				10000000000000000000A901 /* Resources */,
+				10000000000000000000AB01 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10000000000000000000AC01 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				10000000000000000000A601 /* DietFlow */,
+			);
+			name = DietFlow;
+			packageProductDependencies = (
+				10000000000000000000B201 /* DietFlowKit */,
+			);
+			productName = DietFlow;
+			productReference = 10000000000000000000A301 /* DietFlow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		10000000000000000000F201 /* DietFlowWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10000000000000000000D301 /* Build configuration list for PBXNativeTarget "DietFlowWidget" */;
+			buildPhases = (
+				10000000000000000000F701 /* Sources */,
+				10000000000000000000F801 /* Frameworks */,
+				10000000000000000000F901 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				10000000000000000000F601 /* DietFlowWidget */,
+			);
+			name = DietFlowWidget;
+			packageProductDependencies = (
+				10000000000000000000B202 /* DietFlowWidgetKit */,
+			);
+			productName = DietFlowWidget;
+			productReference = 10000000000000000000F301 /* DietFlowWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10000000000000000000A101 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					10000000000000000000A201 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					10000000000000000000F201 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
+			};
+			buildConfigurationList = 10000000000000000000D101 /* Build configuration list for PBXProject "DietFlow" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				es,
+				tr,
+				Base,
+			);
+			mainGroup = 10000000000000000000A401;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				10000000000000000000B101 /* XCLocalSwiftPackageReference "Packages/DietFlowKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 10000000000000000000A501 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10000000000000000000A201 /* DietFlow */,
+				10000000000000000000F201 /* DietFlowWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10000000000000000000A901 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10000000000000000000F901 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10000000000000000000A701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10000000000000000000F701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		10000000000000000000AC01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10000000000000000000F201 /* DietFlowWidget */;
+			targetProxy = 10000000000000000000AD01 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		10000000000000000000C101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10000000000000000000C201 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10000000000000000000C301 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10000000000000000000E101 /* DietFlow.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		10000000000000000000C401 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10000000000000000000E101 /* DietFlow.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		10000000000000000000C501 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10000000000000000000E102 /* DietFlowWidget.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		10000000000000000000C601 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10000000000000000000E102 /* DietFlowWidget.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10000000000000000000D101 /* Build configuration list for PBXProject "DietFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10000000000000000000C101 /* Debug */,
+				10000000000000000000C201 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10000000000000000000D201 /* Build configuration list for PBXNativeTarget "DietFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10000000000000000000C301 /* Debug */,
+				10000000000000000000C401 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10000000000000000000D301 /* Build configuration list for PBXNativeTarget "DietFlowWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10000000000000000000C501 /* Debug */,
+				10000000000000000000C601 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		10000000000000000000B101 /* XCLocalSwiftPackageReference "Packages/DietFlowKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/DietFlowKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		10000000000000000000B201 /* DietFlowKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DietFlowKit;
+		};
+		10000000000000000000B202 /* DietFlowWidgetKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DietFlowWidgetKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 10000000000000000000A101 /* Project object */;
+}

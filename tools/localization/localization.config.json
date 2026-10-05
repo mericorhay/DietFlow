@@ -1,0 +1,20 @@
+{
+  "sourceLocale": "en",
+  "locales": [
+    "en",
+    "tr",
+    "es"
+  ],
+  "localeNames": {
+    "en": "English",
+    "tr": "Turkish",
+    "es": "Spanish"
+  },
+  "protectedTerms": [
+    "DietFlow",
+    "Apple",
+    "Claude",
+    "MCP",
+    "PDF"
+  ]
+}

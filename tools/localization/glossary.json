@@ -1,0 +1,35 @@
+{
+  "about": "One name per thing, in every language. Add a term here the first time a second screen needs it.",
+  "terms": {
+    "meal": {
+      "note": "One sitting: breakfast, lunch, a snack. Not a dish and not a recipe.",
+      "tr": "öğün",
+      "es": "comida"
+    },
+    "plan": {
+      "note": "The person's repeating list of meals. In Turkish the everyday word for a dietitian's plan is 'diyet listesi'; use 'plan' inside the app and 'diyet listesi' where we describe importing one.",
+      "tr": "plan",
+      "es": "plan"
+    },
+    "next meal": {
+      "note": "The meal coming up, shown on the widget.",
+      "tr": "sıradaki öğün",
+      "es": "próxima comida"
+    },
+    "assistant": {
+      "note": "The built-in AI the person chats with.",
+      "tr": "asistan",
+      "es": "asistente"
+    },
+    "widget": {
+      "note": "Home Screen or Lock Screen widget. Apple leaves this word untranslated in Turkish and Spanish.",
+      "tr": "widget",
+      "es": "widget"
+    },
+    "import": {
+      "note": "Bringing an existing plan in from text, a photo or a PDF.",
+      "tr": "içe aktar",
+      "es": "importar"
+    }
+  }
+}

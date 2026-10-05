@@ -1,0 +1,30 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "paywall.screen.title" : {
+      "comment" : "Name of the paid tier, shown as the title of the upgrade screen. 'Plus' is part of the product name and stays as is.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

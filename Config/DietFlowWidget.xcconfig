@@ -1,0 +1,22 @@
+// Build settings for the widget extension.
+
+#include "Shared.xcconfig"
+
+PRODUCT_NAME = DietFlowWidget
+// Must stay prefixed by the app's bundle id, or the extension will not embed.
+PRODUCT_BUNDLE_IDENTIFIER = com.orhay.dietflow.widget
+CODE_SIGN_ENTITLEMENTS = DietFlowWidget/DietFlowWidget.entitlements
+
+// The extension is a thin shell over the WidgetUI module. Swift 5 mode here keeps
+// WidgetKit's callback-based provider protocol from turning SDK annotation drift into errors;
+// everything with logic in it lives in the package and is compiled in Swift 6 mode.
+SWIFT_VERSION = 5.0
+
+// The NSExtension dictionary cannot be expressed as INFOPLIST_KEY_ settings. Kept outside the
+// DietFlowWidget folder, which Xcode syncs: inside it the file would also be copied as a resource.
+INFOPLIST_FILE = Config/DietFlowWidget-Info.plist
+INFOPLIST_KEY_CFBundleDisplayName = DietFlow
+
+APPLICATION_EXTENSION_API_ONLY = YES
+SKIP_INSTALL = YES
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @executable_path/../../Frameworks

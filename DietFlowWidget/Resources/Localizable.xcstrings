@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "widget.nextMeal.name" : {
+      "comment" : "Name of the widget in the system's widget gallery. Two or three words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next meal"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıradaki öğün"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próxima comida"
+          }
+        }
+      }
+    },
+    "widget.nextMeal.description" : {
+      "comment" : "One sentence under the widget's name in the widget gallery, saying what it shows.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows what to eat next and when."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sırada ne yiyeceğini ve saatini gösterir."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra qué comer a continuación y a qué hora."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
