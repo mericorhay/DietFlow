@@ -38,6 +38,10 @@ Recurring words are fixed in [`tools/localization/glossary.json`](../tools/local
 so a "meal" is not an "öğün" on one screen and a "yemek" on the next. Product names that must
 survive untouched are `protectedTerms` in `localization.config.json`.
 
+Siri phrases live in `DietFlow/Resources/AppShortcuts.xcstrings`, where Apple makes the phrase
+itself the key. The validator does not ask those keys to follow the naming, but checks that every
+translation keeps `${applicationName}`.
+
 ## Checking
 
 ```bash
@@ -86,6 +90,7 @@ One per module, next to the code that uses it:
 ```
 DietFlow/Resources/Localizable.xcstrings          tab bar and anything else the app target draws
 DietFlow/Resources/InfoPlist.xcstrings            app name and permission prompts
+DietFlow/Resources/AppShortcuts.xcstrings         Siri phrases for the App Shortcuts
 DietFlowWidget/Resources/Localizable.xcstrings    widget gallery name and description
 Packages/DietFlowKit/Sources/<Module>/Resources/Localizable.xcstrings
 ```

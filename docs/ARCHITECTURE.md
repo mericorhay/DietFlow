@@ -2,13 +2,31 @@
 
 ## The one idea
 
-A **plan** is a cycle of days that repeats from a start date. Everything the person sees — the
-widget, the Today screen, the reminders — is that plan asked one question: *what comes next?*
-`Domain.MealSchedule` answers it, and nothing else is allowed to.
+A **plan** is a run of days — Day 1, Day 2, … from a start date, repeating or not, or a set of fixed
+dates — each with its meals. Everything the person sees — the widget, the Today screen, the
+reminders, Siri — is that plan asked one question: *what comes next?* `Domain.MealSchedule`
+answers it, and nothing else is allowed to.
 
-A plan becomes the active plan in exactly one place, `AppDependencies.activate(_:)`, which saves
-it, reloads the widget and reschedules the reminders. It does not matter whether the plan was
-typed, imported, proposed by the assistant or pulled from the MCP server.
+Days are wall-calendar days (`CalendarDay`, "2026-10-05") and meal times are wall-clock times
+(`TimeOfDay`, "14:00"). Only the current time zone turns them into instants, so a plan follows
+the person across time zones and through daylight-saving jumps without shifting a day.
+
+What happened to a meal on a given day (`OccurrenceState`: done, skipped) is stored apart from the
+plan's template, keyed by meal and day (`OccurrenceKey`). Marking Tuesday's lunch done never edits
+the plan, so a repeating plan stays as it was written.
+
+## Where a change goes
+
+Every change — from a screen, a Shortcut, the widget's Done button, an import, later an MCP bridge —
+goes through one type, `AppCore.MealPlanStore`, and its operations named for the plan:
+`createPlan`, `replacePlan`, `addMeal`, `updateMeal`, `deleteMeal`, `markMealCompleted`,
+`getActivePlan`, `getPlanForDate`. After storing a change it, in this order:
+
+1. writes the widget snapshot to the App Group (`Persistence.WidgetSnapshotWriter`),
+2. asks WidgetKit to reload,
+3. reschedules the meal reminders (`MealReminders`, planned by `Domain.ReminderPlanner`).
+
+So nothing that shows the plan can fall behind it.
 
 ## Layers
 
@@ -16,63 +34,84 @@ Dependencies point one way: down this list.
 
 | Layer | Modules | May import |
 |---|---|---|
-| App | `DietFlow/`, `DietFlowWidget/` | anything |
-| Features | `OnboardingFeature`, `TodayFeature`, `PlanFeature`, `ImportFeature`, `AssistantFeature`, `SettingsFeature`, `PaywallFeature` | `Domain`, `DesignSystem`, the engines they need |
+| App | `DietFlow/`, `DietFlowWidget/`, `Shared/` | anything |
+| Features | `TodayFeature`, `PlanFeature`, `MealFeature`, `ImportFeature`, `WidgetsFeature`, `SettingsFeature`, `OnboardingFeature` (and the unused `AssistantFeature`, `PaywallFeature`) | `Domain`, `DesignSystem`, `AppCore`, the engines they need |
 | Shared UI | `DesignSystem`, `WidgetUI` | `Domain` |
-| Engines | `Persistence`, `AIServices`, `PlanImport`, `PlanSync`, `MealReminders`, `Purchases`, `Analytics` | `Domain` (and what `Package.swift` lists) |
+| App core | `AppCore` | `Domain`, `Persistence`, `MealReminders` |
+| Engines | `Persistence`, `MealReminders`, `PlanImport`, `PlanSync`, `AIServices`, `Purchases`, `Analytics` | `Domain` (and what `Package.swift` lists) |
 | Domain | `Domain` | Foundation only |
 
 Rules that keep it that way:
 
-- **Features never import each other.** The app target routes between them.
+- **Features never import each other.** The app target routes between them (`RootView`), passing
+  each screen closures for "open settings", "add a meal", and so on.
 - **Engines have no SwiftUI.** They are nonisolated and testable without a simulator screen.
-- **`Domain` has no dependencies at all**, so its tests are plain logic tests.
-- **UI modules default to the main actor**; engines and `WidgetUI` do not (see `Package.swift`).
+- **`Domain` has no dependencies**, so its tests are plain logic tests: the schedule, daylight
+  saving and time zones, the widget timeline, the import format and the pasted-plan reader.
+- **UI modules default to the main actor**; engines, `DesignSystem` and `WidgetUI` do not (see
+  `Package.swift`), so the widget can use them off the main actor.
+- Values the screens read (`AppSettings`, `PlanSummary`) live in `Domain`, so a feature never needs
+  to import `Persistence`.
 
-## Adding a module
+## Storage
 
-1. Create `Packages/DietFlowKit/Sources/<Name>/` with at least one Swift file.
-2. Add it to `appModules` in `Package.swift`, and declare it with `engine(...)` or `feature(...)`.
-3. A feature also needs `Resources/Localizable.xcstrings` (see [LOCALIZATION.md](LOCALIZATION.md)).
-
-Nothing in `project.pbxproj` changes.
+- **SwiftData** (`Persistence.PlanStore`) is the canonical store: plans, meals, and recorded
+  states. It lives in the App Group container `group.com.orhay.dietflow`, because the widget's
+  Done button runs in the widget's process and writes to the same store. Each operation works in a
+  fresh `ModelContext`, so a change written by the other process is never hidden behind a cache.
+- **The widget snapshot** (`widget-snapshot.json`, `Domain.WidgetSnapshot`) is what the widget
+  reads. It holds the active plan trimmed to what is drawn, the recorded states for a couple of
+  weeks around today, and the widget preferences. Because it holds the plan rather than a list of
+  upcoming meals, the widget keeps going for as long as the plan runs, even if the app is not
+  opened for weeks.
+- **Settings** (`Domain.AppSettings`) are JSON in the App Group's defaults.
 
 ## The widget
 
-The extension (`DietFlowWidget/`) only connects WidgetKit to the `WidgetUI` module. It links the
-`DietFlowWidgetKit` product — `Domain`, `Persistence`, `WidgetUI` — and nothing else, because an
-extension has a small memory budget and may only use extension-safe API.
+The extension (`DietFlowWidget/`) connects WidgetKit to `WidgetUI`. Its provider reads the
+snapshot and hands WidgetKit every moment the widget's face changes, worked out up front by
+`Domain.WidgetTimelineBuilder`: each meal's time (it becomes "Now"), the end of its "now" window
+(90 minutes, or the next meal, whichever is sooner), a countdown in five-minute steps during the
+hour before a meal ("in 15 min"), and midnight. Moments that would look the same are merged.
+WidgetKit plays them back on its own, the way the Calendar widget moves from event to event; the
+timeline asks to be rebuilt every twelve hours, and the app reloads it after every change.
 
-App and widget are separate processes. The only thing they share is one file, `plan.json`, in the
-App Group container `group.com.orhay.dietflow` (`Persistence.PlanStore`). The widget builds a full
-timeline from it up front, so it moves from meal to meal on its own.
+A corrupt or newer snapshot shows "open the app to update"; a missing one shows "no plan".
 
-## The assistant
+The families are small, medium, large, Lock Screen rectangular and inline. The medium and large
+widgets have a Done button: `MarkMealDoneIntent`, which runs in the widget's process.
 
-The in-app assistant talks to our Worker (`backend/assistant`), never to a model provider
-directly. The provider key and the system prompt live server-side: a key compiled into an app can
-be extracted, and a server-side prompt changes without an app release. The app only knows the
-Worker's URL and an app token, which CI writes into the bundle from repository secrets.
+## App Intents
 
-The assistant can *propose* a plan (`AssistantReply.proposedPlan`). The person accepts it; the
-assistant never replaces a plan on its own.
+`Shared/Intents` is a folder synchronised into both the app and the widget target, so the widget
+can run `MarkMealDoneIntent` and Shortcuts can run all of them: mark a meal done, say the next meal,
+add a meal. `DietFlow/Intents` holds what only the app runs: the Import Plan intent (which hands
+the text to the app for review) and the App Shortcuts. Every intent goes through `MealPlanStore`.
 
-## MCP
+## Importing
 
-A phone cannot be an MCP server: nothing outside can reach it. So the MCP server is ours
-(`backend/mcp`), and the phone is one of its clients:
+Every source — a `.json`/`.mealplan` file, pasted text, a photo or a PDF — becomes a
+`Domain.MealPlanPayload`, the interchange format, and then a draft (`PlanImportNormalizer`) with
+a list of anything that was filled in or left out. The draft is always shown for review before it
+is saved. Pasted text is read by `PastedPlanParser` (any JSON in it first, then lines in English,
+Turkish or Spanish), and by Apple's on-device model where the device has it. Photos and PDFs are
+read with Vision on the device. Nothing is sent anywhere.
 
-```
-Claude ──MCP tools──▶ backend/mcp ◀──pair once, then pull── DietFlow on the phone
-        (get_plan, set_plan, …)        (PlanSync)
-```
+"Copy AI Instructions" puts the format on the clipboard so ChatGPT or Claude can write a payload.
+An MCP server would produce the same payload and call the same `MealPlanStore` operations.
 
-The person adds the server to Claude as a connector, pairs their phone with a short code, and
-from then on a plan Claude writes shows up on the widget. `PlanSync.PlanSyncClient` is the phone's
-side of that; a pulled plan goes through the same `activate(_:)` as any other.
+## The assistant and the backend
+
+`AIServices`, `AssistantFeature`, `PlanSync` and `backend/` are kept from the first skeleton but no
+screen uses them: the app works entirely on the device and sends no plan anywhere. Whether to bring
+an assistant or a server back is a product decision for later.
 
 ## Versions
 
 `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` live in `Config/Shared.xcconfig`, shared by the
 app and the widget, because App Store Connect rejects an extension whose numbers differ from its
-app's. The iOS floor is set in two places that must agree: that file and `Package.swift`.
+app's. The iOS floor (26) is set in two places that must agree: that file and `Package.swift`.
+
+The name under the icon is `APP_DISPLAY_NAME` in `Config/Shared.xcconfig` (and its translations in
+`DietFlow/Resources/InfoPlist.xcstrings`). Code reads it from the bundle (`Domain.AppBrand`); no
+string in the code names the app.

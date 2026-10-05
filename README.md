@@ -1,18 +1,21 @@
 # DietFlow
 
-**Meal Planner Widget: DietFlow** — set a diet plan once, and a widget tells you what to eat next and when.
+**Meal Widget** — set a meal plan once, and a Home Screen widget tells you what to eat now and
+next, moving with the time of day on its own.
 
-The plan can come from anywhere: typed in, imported from a dietitian's list (text, photo or PDF),
-written by the built-in assistant, or pushed from Claude through MCP. After that the widget, the
-Today screen and the meal-time reminders all run off the same plan without the app being opened.
+The plan can be typed in, or imported from a dietitian's list (pasted text, a file, a photo or a
+PDF) or from ChatGPT or Claude using the copyable AI format. After that the widget, the Today
+screen and the optional meal reminders all run off the same plan without the app being opened.
+Everything stays on the device.
 
-iPhone only, iOS 18 and up. Swift 6, SwiftUI, WidgetKit.
+iPhone only, iOS 26 and up. Swift 6, SwiftUI, SwiftData, WidgetKit, App Intents.
 
 ## Layout
 
 ```
-DietFlow/                 app target: entry point, composition root, routing between features
+DietFlow/                 app target: entry point, composition root, routing, App Shortcuts
 DietFlowWidget/           widget extension: a thin shell over the WidgetUI module
+Shared/                   App Intents compiled into both the app and the widget
 Packages/DietFlowKit/     everything else, as one Swift package of small modules
 Config/                   build settings (xcconfig) and the widget's Info.plist
 backend/                  Cloudflare Workers: the assistant proxy and the MCP server
@@ -22,7 +25,10 @@ docs/                     architecture and localization guides
 ```
 
 Both Xcode targets use file-system-synchronised folders: a file added to `DietFlow/` or
-`DietFlowWidget/` is part of its target without touching `project.pbxproj`.
+`DietFlowWidget/` is part of its target, and one added to `Shared/` is part of both, without
+touching `project.pbxproj`.
+
+The display name is set once, as `APP_DISPLAY_NAME` in `Config/Shared.xcconfig`.
 
 Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) before adding a module and
 [docs/LOCALIZATION.md](docs/LOCALIZATION.md) before adding a string.
