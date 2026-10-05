@@ -40,6 +40,9 @@ public final class MealPlanStore {
     public private(set) var failure: StoreFailure?
 
     @ObservationIgnored private let persistence: PlanStore
+    /// Off for previews and seeded test states, which must neither read nor change the person's
+    /// real settings.
+    @ObservationIgnored private let persistsSettings: Bool
     @ObservationIgnored private let snapshotWriter: WidgetSnapshotWriter?
     @ObservationIgnored private let reminders: MealReminderScheduler
     @ObservationIgnored private let reloadWidgets: @MainActor () -> Void
@@ -51,9 +54,11 @@ public final class MealPlanStore {
         snapshotWriter: WidgetSnapshotWriter?,
         reminders: MealReminderScheduler = MealReminderScheduler(),
         settings: AppSettings,
+        persistsSettings: Bool = true,
         reloadWidgets: @escaping @MainActor () -> Void
     ) {
         self.persistence = persistence
+        self.persistsSettings = persistsSettings
         self.snapshotWriter = snapshotWriter
         self.reminders = reminders
         self.settings = settings
@@ -72,12 +77,14 @@ public final class MealPlanStore {
         )
     }
 
-    /// An in-memory store for previews, optionally holding the sample plan.
+    /// An in-memory store for previews and seeded test states, optionally holding the sample plan.
+    /// It never touches the shared database, the widget or the person's settings.
     public static func preview(withSample: Bool = true, settings: AppSettings = AppSettings(hasCompletedOnboarding: true)) -> MealPlanStore {
         let store = MealPlanStore(
             persistence: PlanStore(container: PlanStore.makeContainer(inMemory: true)),
             snapshotWriter: nil,
             settings: settings,
+            persistsSettings: false,
             reloadWidgets: {}
         )
         if withSample {
@@ -213,7 +220,7 @@ public final class MealPlanStore {
         change(&updated)
         guard updated != settings else { return }
         settings = updated
-        AppSettingsStore.save(updated)
+        if persistsSettings { AppSettingsStore.save(updated) }
         publish()
     }
 
@@ -288,7 +295,7 @@ public final class MealPlanStore {
         } catch {
             logger.error("Could not read plans: \(String(describing: error), privacy: .public)")
         }
-        settings = AppSettingsStore.load()
+        if persistsSettings { settings = AppSettingsStore.load() }
     }
 
     private func didChange(_ operation: String) {

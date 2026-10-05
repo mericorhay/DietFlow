@@ -5,6 +5,11 @@ name: CI
 # or Actions ▸ CI ▸ Run workflow.
 on:
   workflow_dispatch:
+    inputs:
+      screenshots:
+        description: "Also print screenshots of every main screen into the log (scripts/ci-screenshots.sh)"
+        type: boolean
+        default: false
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -69,24 +74,37 @@ jobs:
       - name: Build diagnostics
         if: always() && steps.build.outcome != 'skipped'
         run: |
-          grep -E ': (warning|error): ' "$RUNNER_TEMP/build.log" \
-            | sed -E "s#^$GITHUB_WORKSPACE/##" | sort -u || echo "No warnings."
+          if grep -qE ': (warning|error): ' "$RUNNER_TEMP/build.log"; then
+            grep -E ': (warning|error): ' "$RUNNER_TEMP/build.log" | sed -E "s#^$GITHUB_WORKSPACE/##" | sort -u
+          else
+            echo "No warnings or errors."
+          fi
 
-      # The app scheme's Test action runs DomainTests. Same derived data and the same settings as
-      # the build above, so every module is already built and only the test bundle compiles.
-      # (Testing the package scheme instead rebuilds all of it with coverage, which took longer
-      # than the whole job allows.)
+      # The package's own scheme runs DomainTests (a project scheme cannot list a local package's
+      # test target for xcodebuild). Code coverage is off: instrumenting every module made the
+      # rebuild slow enough to hang the job once.
       - name: Run the tests
-        timeout-minutes: 15
+        timeout-minutes: 20
+        working-directory: Packages/DietFlowKit
         run: |
           set -euo pipefail
+          SCHEME=$(xcodebuild -list -json \
+            | python3 -c "import json,sys;s=json.load(sys.stdin)['workspace']['schemes'];print('DietFlowKit-Package' if 'DietFlowKit-Package' in s else s[0])")
+          echo "Testing scheme $SCHEME"
           xcodebuild test \
-            -project DietFlow.xcodeproj \
-            -scheme DietFlow \
-            -derivedDataPath "$RUNNER_TEMP/DietFlowDerived" \
+            -scheme "$SCHEME" \
             -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath "$RUNNER_TEMP/PackageDerived" \
+            -only-testing:DomainTests \
             -enableCodeCoverage NO \
             -skipMacroValidation \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGN_IDENTITY="" \
-            DEVELOPMENT_TEAM=""
+            CODE_SIGNING_ALLOWED=NO
+
+      # On request: the app's main screens in several languages, dark mode, large text and Xcode's
+      # long and right-to-left pseudolanguages, as small images inside the log.
+      - name: Screenshots
+        if: ${{ !cancelled() && inputs.screenshots && steps.build.outcome == 'success' }}
+        timeout-minutes: 10
+        run: |
+          bash scripts/ci-screenshots.sh "${{ steps.sim.outputs.udid }}" \
+            "$RUNNER_TEMP/DietFlowDerived/Build/Products/Debug-iphonesimulator/DietFlow.app"

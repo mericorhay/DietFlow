@@ -41,6 +41,7 @@ enum AppSheet: Identifiable {
 /// that open the app — the widget, a shared plan file, the Import Plan shortcut.
 /// Features never import each other; whatever leads from one to another is decided here.
 struct RootView: View {
+    @Environment(AppDependencies.self) private var dependencies
     @Environment(MealPlanStore.self) private var store
     @Environment(\.scenePhase) private var scenePhase
     @State private var tab: AppTab = .today
@@ -77,7 +78,8 @@ struct RootView: View {
             OnboardingScreen(
                 onCreatePlan: { finishOnboarding(then: .newPlan) },
                 onImportPlan: { finishOnboarding(then: .importPlan(nil)) },
-                onTrySample: trySamplePlan
+                onTrySample: trySamplePlan,
+                initialPage: onboardingStartPage
             )
         }
         .sensoryFeedback(.success, trigger: plansSaved)
@@ -92,8 +94,16 @@ struct RootView: View {
         .onAppear {
             showsOnboarding = !store.hasPlans && !store.settings.hasCompletedOnboarding
             takePendingImport()
+            #if DEBUG
+            applyDebugLaunch()
+            #endif
         }
         .onOpenURL(perform: openLink)
+        .onChange(of: dependencies.pendingLink, initial: true) { _, link in
+            guard let link else { return }
+            dependencies.pendingLink = nil
+            route(link)
+        }
         .onChange(of: scenePhase) { _, phase in
             guard phase == .active else { return }
             // The widget's Done button may have written while the app was away, and the day may
@@ -211,7 +221,12 @@ struct RootView: View {
             openFile(url)
             return
         }
-        guard let link = AppLink(url: url) else { return }
+        if let link = AppLink(url: url) {
+            route(link)
+        }
+    }
+
+    private func route(_ link: AppLink) {
         switch link {
         case .today:
             dismissSheet()
@@ -250,6 +265,37 @@ struct RootView: View {
         sheet = nil
         showsOnboarding = false
     }
+
+    private var onboardingStartPage: Int {
+        #if DEBUG
+        return DebugLaunch.value("DebugOnboardingPage").flatMap(Int.init) ?? 0
+        #else
+        return 0
+        #endif
+    }
+
+    #if DEBUG
+    /// Opens the tab, sheet or meal the launch arguments name (see DebugLaunch).
+    private func applyDebugLaunch() {
+        switch DebugLaunch.value("DebugTab") {
+        case "plan": tab = .plan
+        case "widgets": tab = .widgets
+        case "today": tab = .today
+        default: break
+        }
+        switch DebugLaunch.value("DebugSheet") {
+        case "settings": sheet = .settings
+        case "import": sheet = .importPlan(nil)
+        case "newMeal": sheet = .newMeal(dayIndex: store.schedule?.dayIndex(on: .today()) ?? 0)
+        case "newPlan": sheet = .newPlan
+        default: break
+        }
+        if DebugLaunch.value("DebugMeal") == "next", let focus = store.focus() {
+            tab = .today
+            todayPath = [.occurrence(focus.occurrence.key)]
+        }
+    }
+    #endif
 }
 
 private extension View {

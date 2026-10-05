@@ -1,6 +1,54 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "notification.action.done" : {
+      "comment" : "Button on a meal reminder notification. Marks the meal as eaten without opening the app. One word, as on the Today screen's swipe action.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamamlandı"
+          }
+        }
+      }
+    },
+    "notification.action.skip" : {
+      "comment" : "Button on a meal reminder notification. Records that the meal was not eaten, without opening the app. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omitir"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atla"
+          }
+        }
+      }
+    },
     "notification.title.now" : {
       "comment" : "Title of a meal reminder notification sent at the meal's time. %@ is the meal type, such as 'Lunch'. Example: 'Lunch now'. The meal's name is the body.",
       "extractionState" : "manual",

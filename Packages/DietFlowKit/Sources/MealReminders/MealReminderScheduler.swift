@@ -9,13 +9,45 @@ public enum ReminderAuthorization: Sendable {
     case allowed
 }
 
+/// The buttons a meal reminder carries. Both work from the notification itself.
+public enum MealReminderAction: String, Sendable {
+    case done = "meal.done"
+    case skip = "meal.skip"
+}
+
 /// Local notifications at meal times. Secondary to the widget, off until the person turns them on,
 /// and nothing here needs a server or the app to be running once scheduled.
 public struct MealReminderScheduler: Sendable {
     private static let logger = Logger(subsystem: "com.orhay.dietflow", category: "Reminders")
     private static let identifierPrefix = "meal."
+    public static let categoryIdentifier = "meal.reminder"
+    private static let occurrenceInfoKey = "occurrence"
 
     public init() {}
+
+    /// Registers the Done and Skip buttons every meal reminder carries. Called at launch, so the
+    /// titles are in the language the app is using.
+    public func registerActions() {
+        let done = UNNotificationAction(
+            identifier: MealReminderAction.done.rawValue,
+            title: String(localized: "notification.action.done", bundle: .module),
+            options: [],
+            icon: UNNotificationActionIcon(systemImageName: "checkmark")
+        )
+        let skip = UNNotificationAction(
+            identifier: MealReminderAction.skip.rawValue,
+            title: String(localized: "notification.action.skip", bundle: .module),
+            options: [],
+            icon: UNNotificationActionIcon(systemImageName: "forward.end")
+        )
+        let category = UNNotificationCategory(identifier: Self.categoryIdentifier, actions: [done, skip], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+    }
+
+    /// The meal a delivered reminder is about.
+    public static func occurrenceKey(userInfo: [AnyHashable: Any]) -> OccurrenceKey? {
+        (userInfo[occurrenceInfoKey] as? String).flatMap(OccurrenceKey.init)
+    }
 
     public func authorization() async -> ReminderAuthorization {
         let settings = await UNUserNotificationCenter.current().notificationSettings()
@@ -53,6 +85,8 @@ public struct MealReminderScheduler: Sendable {
             content.body = request.occurrence.meal.title
             content.sound = .default
             content.threadIdentifier = "meals"
+            content.categoryIdentifier = Self.categoryIdentifier
+            content.userInfo = [Self.occurrenceInfoKey: request.occurrence.key.description]
 
             // Wall-clock components: if the person changes time zone, the reminder follows the
             // local clock, just like the plan.

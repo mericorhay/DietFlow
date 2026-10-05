@@ -18,11 +18,14 @@ public struct OnboardingScreen: View {
 
     private static let pageCount = 3
 
-    /// - Parameter onTrySample: starts with the sample plan, for a look around first.
-    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void, onTrySample: @escaping () -> Void) {
+    /// - Parameters:
+    ///   - onTrySample: starts with the sample plan, for a look around first.
+    ///   - initialPage: the page shown first; 0 except when checking a later page.
+    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void, onTrySample: @escaping () -> Void, initialPage: Int = 0) {
         self.onCreatePlan = onCreatePlan
         self.onImportPlan = onImportPlan
         self.onTrySample = onTrySample
+        _page = State(initialValue: min(max(initialPage, 0), Self.pageCount - 1))
     }
 
     public var body: some View {
