@@ -14,6 +14,8 @@ struct DayPage: View {
     let today: CalendarDay
     let now: Date
     let actions: TodayActions
+    /// Shown under today's meals while the widget is not on screen yet.
+    var widgetTip: WidgetTipModel?
 
     var body: some View {
         let agenda = store.agenda(on: day, now: now)
@@ -46,6 +48,11 @@ struct DayPage: View {
                     action: { actions.addMeal(day) }
                 )
                 .listRowSeparator(.hidden)
+            }
+
+            if let widgetTip {
+                WidgetTip(model: widgetTip)
+                    .transition(.opacity)
             }
         }
         .listStyle(.plain)
@@ -149,7 +156,7 @@ struct DayPage: View {
 
     private func set(_ state: OccurrenceState, for key: OccurrenceKey) {
         withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
-            _ = try? store.setState(state, for: key)
+            store.attempt { try store.setState(state, for: key) }
         }
     }
 
@@ -157,7 +164,7 @@ struct DayPage: View {
         guard var plan = store.activePlan else { return }
         plan.schedule.startDay = today
         withAppAnimation(AppMotion.settle, reduceMotion: reduceMotion) {
-            _ = try? store.replacePlan(plan)
+            store.attempt { try store.replacePlan(plan) }
         }
     }
 }

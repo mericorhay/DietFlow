@@ -77,7 +77,7 @@ public struct WidgetsScreen: View {
         .listStyle(.insetGrouped)
         .navigationTitle(Text("widgets.title", bundle: .module))
         .task {
-            isInstalled = await Self.hasWidgetOnScreen()
+            isInstalled = await store.isWidgetOnScreen()
         }
     }
 
@@ -112,17 +112,6 @@ public struct WidgetsScreen: View {
         }
         .padding(.vertical, AppSpacing.xxSmall)
         .accessibilityElement(children: .combine)
-    }
-
-    /// Whether any of this app's widgets is on a Home Screen or Lock Screen, so the guide is shown
-    /// only to people who still need it.
-    private static func hasWidgetOnScreen() async -> Bool {
-        await withCheckedContinuation { continuation in
-            WidgetCenter.shared.getCurrentConfigurations { result in
-                let count = (try? result.get())?.count ?? 0
-                continuation.resume(returning: count > 0)
-            }
-        }
     }
 }
 

@@ -76,6 +76,17 @@ public enum MealType: String, Codable, CaseIterable, Sendable {
         }
     }
 
+    /// The sitting a clock time most likely is, when nothing names it: before 10:30 breakfast,
+    /// midday lunch, evening dinner, and a snack in between.
+    public static func suggested(for time: TimeOfDay) -> MealType {
+        switch time.minutesSinceMidnight {
+        case ..<(10 * 60 + 30): .breakfast
+        case (11 * 60 + 30)..<(15 * 60): .lunch
+        case (17 * 60 + 30)..<(22 * 60): .dinner
+        default: .snack
+        }
+    }
+
     /// Tie-breaker for meals at the same minute.
     var sortRank: Int {
         switch self {

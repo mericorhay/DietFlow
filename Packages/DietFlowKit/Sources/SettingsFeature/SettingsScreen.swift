@@ -25,7 +25,7 @@ public struct SettingsScreen: View {
             Form {
                 planSection
                 remindersSection
-                unitsSection
+                languageSection
                 dataSection
                 aboutSection
             }
@@ -42,7 +42,7 @@ public struct SettingsScreen: View {
             }
             .confirmationDialog(Text("settings.reset.title", bundle: .module), isPresented: $confirmsReset, titleVisibility: .visible) {
                 Button(role: .destructive) {
-                    _ = try? store.resetSampleData()
+                    store.attempt { try store.resetSampleData() }
                 } label: {
                     Text("settings.reset.confirm", bundle: .module)
                 }
@@ -65,7 +65,7 @@ public struct SettingsScreen: View {
             if store.plans.count > 1 {
                 Picker(selection: Binding(
                     get: { store.activePlan?.id },
-                    set: { id in if let id { _ = try? store.activatePlan(id: id) } }
+                    set: { id in if let id { store.attempt { try store.activatePlan(id: id) } } }
                 )) {
                     ForEach(store.plans) { plan in
                         Text(verbatim: plan.name).tag(Optional(plan.id))
@@ -120,9 +120,7 @@ public struct SettingsScreen: View {
             }
             .disabled(!store.settings.remindersEnabled)
             if notificationsDenied {
-                Button {
-                    if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
-                } label: {
+                Button(action: openSystemSettings) {
                     Text("settings.reminders.openSettings", bundle: .module)
                 }
             }
@@ -137,19 +135,27 @@ public struct SettingsScreen: View {
         }
     }
 
+    /// The app's language is chosen in the Settings app, which lists every language the app ships;
+    /// this row says which one is in use and leads there. Dates, times and numbers follow the
+    /// region, so the week and the energy unit sit beside it.
     @ViewBuilder
-    private var unitsSection: some View {
+    private var languageSection: some View {
         Section {
-            Picker(selection: Binding(
-                get: { store.settings.energyUnit },
-                set: { unit in store.updateSettings { $0.energyUnit = unit } }
-            )) {
-                ForEach(EnergyUnit.allCases, id: \.self) { unit in
-                    Text(unit.displayName).tag(unit)
+            Button(action: openSystemSettings) {
+                LabeledContent {
+                    HStack(spacing: AppSpacing.xSmall) {
+                        Text(verbatim: AppLanguage.currentName())
+                        Image(systemName: "arrow.up.forward.app")
+                            .font(.footnote)
+                            .accessibilityHidden(true)
+                    }
+                    .foregroundStyle(.secondary)
+                } label: {
+                    Text("settings.language.row", bundle: .module)
+                        .foregroundStyle(Color.primary)
                 }
-            } label: {
-                Text("settings.units.energy", bundle: .module)
             }
+            .accessibilityHint(Text("settings.language.hint", bundle: .module))
             Picker(selection: Binding(
                 get: { store.settings.firstWeekday },
                 set: { weekday in store.updateSettings { $0.firstWeekday = weekday } }
@@ -161,8 +167,20 @@ public struct SettingsScreen: View {
             } label: {
                 Text("settings.units.weekStart", bundle: .module)
             }
+            Picker(selection: Binding(
+                get: { store.settings.energyUnit },
+                set: { unit in store.updateSettings { $0.energyUnit = unit } }
+            )) {
+                ForEach(EnergyUnit.allCases, id: \.self) { unit in
+                    Text(unit.displayName).tag(unit)
+                }
+            } label: {
+                Text("settings.units.energy", bundle: .module)
+            }
         } header: {
-            Text("settings.units.header", bundle: .module)
+            Text("settings.language.header", bundle: .module)
+        } footer: {
+            Text(String(localized: "settings.language.footer", defaultValue: "Choose the language \(AppBrand.displayName) uses in the Settings app. Dates, times and numbers follow your iPhone’s region.", bundle: .module))
         }
     }
 
@@ -206,6 +224,11 @@ public struct SettingsScreen: View {
         } header: {
             Text("settings.about.header", bundle: .module)
         }
+    }
+
+    /// This app's page in the Settings app: its language, notifications and the rest.
+    private func openSystemSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
     }
 
     private var version: String {

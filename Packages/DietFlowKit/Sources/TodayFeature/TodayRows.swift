@@ -310,3 +310,53 @@ struct MealTimelineRow: View {
         }
     }
 }
+
+/// What the widget suggestion does when tapped or closed.
+struct WidgetTipModel {
+    let show: () -> Void
+    let dismiss: () -> Void
+}
+
+/// A quiet suggestion under today's meals: the widget is the point of the app, and many people
+/// never find the Widgets tab on their own. Closed once, it does not come back.
+struct WidgetTip: View {
+    let model: WidgetTipModel
+
+    var body: some View {
+        HStack(alignment: .top, spacing: AppSpacing.small) {
+            Image(systemName: "rectangle.3.group")
+                .font(.title3)
+                .foregroundStyle(AppColors.brandAccent)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: AppSpacing.xxSmall) {
+                Text("today.widgetTip.title", bundle: .module)
+                    .font(.subheadline.weight(.semibold))
+                    .fixedSize(horizontal: false, vertical: true)
+                Text("today.widgetTip.message", bundle: .module)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                Button(action: model.show) {
+                    Text("today.widgetTip.show", bundle: .module)
+                        .font(.subheadline.weight(.semibold))
+                }
+                .buttonStyle(.borderless)
+                .tint(AppColors.brandAccent)
+                .padding(.top, 2)
+            }
+            Spacer(minLength: 0)
+            Button(action: model.dismiss) {
+                Image(systemName: "xmark")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .frame(width: AppSpacing.minimumHitTarget, height: AppSpacing.minimumHitTarget, alignment: .topTrailing)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.borderless)
+            .accessibilityLabel(Text("today.widgetTip.dismiss", bundle: .module))
+        }
+        .padding(.vertical, AppSpacing.medium)
+        .listRowSeparator(.hidden)
+        .listRowInsets(EdgeInsets(top: 0, leading: AppSpacing.screenMargin, bottom: 0, trailing: AppSpacing.xSmall))
+    }
+}

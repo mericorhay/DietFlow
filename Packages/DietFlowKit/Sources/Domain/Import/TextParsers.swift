@@ -76,12 +76,7 @@ public enum MealTypeParser {
             return (.other, String(text.prefix(40)).capitalizedFirstLetter)
         }
         guard let time else { return (.other, nil) }
-        switch time.minutesSinceMidnight {
-        case ..<(10 * 60 + 30): return (.breakfast, nil)
-        case (11 * 60 + 30)..<(15 * 60): return (.lunch, nil)
-        case (17 * 60 + 30)..<(22 * 60): return (.dinner, nil)
-        default: return (.snack, nil)
-        }
+        return (MealType.suggested(for: time), nil)
     }
 
     /// Lowercased, accents and Turkish dotted/dotless i folded away, punctuation trimmed.

@@ -12,6 +12,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
     public var showFollowingMealOnWidget: Bool
     public var showCompletedMealsOnWidget: Bool
     public var hasCompletedOnboarding: Bool
+    /// The person closed Today's suggestion to add the widget.
+    public var hasDismissedWidgetTip: Bool
 
     public init(
         remindersEnabled: Bool = false,
@@ -21,7 +23,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
         showCaloriesOnWidget: Bool = false,
         showFollowingMealOnWidget: Bool = true,
         showCompletedMealsOnWidget: Bool = true,
-        hasCompletedOnboarding: Bool = false
+        hasCompletedOnboarding: Bool = false,
+        hasDismissedWidgetTip: Bool = false
     ) {
         self.remindersEnabled = remindersEnabled
         self.defaultReminder = defaultReminder
@@ -31,6 +34,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         self.showFollowingMealOnWidget = showFollowingMealOnWidget
         self.showCompletedMealsOnWidget = showCompletedMealsOnWidget
         self.hasCompletedOnboarding = hasCompletedOnboarding
+        self.hasDismissedWidgetTip = hasDismissedWidgetTip
     }
 
     public init(from decoder: any Decoder) throws {
@@ -44,6 +48,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         showFollowingMealOnWidget = (try? container.decode(Bool.self, forKey: .showFollowingMealOnWidget)) ?? defaults.showFollowingMealOnWidget
         showCompletedMealsOnWidget = (try? container.decode(Bool.self, forKey: .showCompletedMealsOnWidget)) ?? defaults.showCompletedMealsOnWidget
         hasCompletedOnboarding = (try? container.decode(Bool.self, forKey: .hasCompletedOnboarding)) ?? defaults.hasCompletedOnboarding
+        hasDismissedWidgetTip = (try? container.decode(Bool.self, forKey: .hasDismissedWidgetTip)) ?? defaults.hasDismissedWidgetTip
     }
 
     public var widgetPreferences: WidgetPreferences {

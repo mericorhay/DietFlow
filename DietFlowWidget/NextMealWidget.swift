@@ -49,6 +49,15 @@ struct NextMealEntryView: View {
             .tint(AppColors.brandAccent)
         }
         .modifier(WidgetBackground(family: family))
+        // A tap opens the meal the widget is showing; the Done button works without opening the app.
+        .widgetURL(link.url)
+    }
+
+    private var link: AppLink {
+        if case .active(let day) = entry.content, let primary = day.primary {
+            return .meal(primary.key)
+        }
+        return .today
     }
 }
 

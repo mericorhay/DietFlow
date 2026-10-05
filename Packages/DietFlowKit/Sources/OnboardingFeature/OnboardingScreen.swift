@@ -14,12 +14,15 @@ public struct OnboardingScreen: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let onCreatePlan: () -> Void
     private let onImportPlan: () -> Void
+    private let onTrySample: () -> Void
 
     private static let pageCount = 3
 
-    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void) {
+    /// - Parameter onTrySample: starts with the sample plan, for a look around first.
+    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void, onTrySample: @escaping () -> Void) {
         self.onCreatePlan = onCreatePlan
         self.onImportPlan = onImportPlan
+        self.onTrySample = onTrySample
     }
 
     public var body: some View {
@@ -82,6 +85,13 @@ public struct OnboardingScreen: View {
                 .controlSize(.large)
                 Button(action: onImportPlan) {
                     Text("onboarding.import", bundle: .module)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                Button(action: onTrySample) {
+                    Text("onboarding.trySample", bundle: .module)
+                        .font(.subheadline.weight(.semibold))
                         .frame(maxWidth: .infinity, minHeight: AppSpacing.minimumHitTarget)
                 }
                 .buttonStyle(.borderless)
@@ -205,11 +215,23 @@ private struct WidgetsPreview: View {
     }
 }
 
-/// The small widget at three times of the same day: it moves on by itself.
+/// The small widget at three times of the same day: it moves on by itself. Three real-size
+/// widgets are wider than a phone, so the row is scaled down to the room it has.
 private struct TimePreview: View {
+    private static let rowWidth: CGFloat = 3 * 170 + 2 * AppSpacing.large
+
     var body: some View {
+        GeometryReader { proxy in
+            let scale = min(1, (proxy.size.width - 2 * AppSpacing.medium) / Self.rowWidth)
+            row
+                .scaleEffect(scale)
+                .frame(width: proxy.size.width, height: proxy.size.height)
+        }
+    }
+
+    private var row: some View {
         let times = [TimeOfDay(hour: 9, minute: 12), TimeOfDay(hour: 13, minute: 18), TimeOfDay(hour: 18, minute: 40)]
-        HStack(spacing: AppSpacing.large) {
+        return HStack(spacing: AppSpacing.large) {
             ForEach(Array(times.enumerated()), id: \.offset) { index, time in
                 let date = time.date(on: .today())
                 VStack(spacing: AppSpacing.small) {
@@ -225,6 +247,5 @@ private struct TimePreview: View {
             }
         }
         .fixedSize()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

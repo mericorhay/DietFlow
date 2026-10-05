@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+	What the app target's INFOPLIST_KEY_ settings cannot express. Xcode merges these keys with the
+	generated ones. Kept outside the DietFlow folder, which Xcode syncs: inside it the file would also
+	be copied into the app as a resource.
+
+	- dietflow:// links: what the widget opens when tapped (Domain.AppLink).
+	- .mealplan files: a shared plan opens straight into Import's review. JSON files can be opened
+	  with the app too, for plans an AI assistant wrote.
+-->
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.orhay.dietflow</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>dietflow</string>
+			</array>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.orhay.dietflow.mealplan</string>
+			<key>UTTypeDescription</key>
+			<string>Meal Plan</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>mealplan</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/vnd.dietflow.mealplan+json</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Meal Plan</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.orhay.dietflow.mealplan</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>JSON</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.json</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<false/>
+</dict>
+</plist>

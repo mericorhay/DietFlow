@@ -18,6 +18,9 @@ public struct MealEditorScreen: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var draft: MealDraft
     @State private var confirmsDelete = false
+    /// The time the form chose for a new meal. While the person has not changed it, picking a type
+    /// moves the time to that type's usual hour.
+    @State private var suggestedTime: Date?
     @FocusState private var focusedField: Field?
     private let mode: Mode
     private let onDeleted: () -> Void
@@ -40,7 +43,7 @@ public struct MealEditorScreen: View {
     public var body: some View {
         Form {
             Section {
-                Picker(selection: $draft.type) {
+                Picker(selection: typeBinding) {
                     ForEach(MealType.allCases, id: \.self) { type in
                         Text(type.displayName).tag(type)
                     }
@@ -146,8 +149,30 @@ public struct MealEditorScreen: View {
             Text("meal.editor.deleteMessage", bundle: .module)
         }
         .onAppear {
-            if isNew { focusedField = .title }
+            guard isNew else { return }
+            if suggestedTime == nil {
+                // Open on the day's next sitting rather than always on lunch.
+                let suggestion = MealSuggestion.next(after: store.activePlan?.meals(onDayIndex: draft.dayIndex) ?? [])
+                draft.type = suggestion.type
+                draft.time = suggestion.time.date(on: .today())
+                suggestedTime = draft.time
+            }
+            focusedField = .title
         }
+    }
+
+    private var typeBinding: Binding<MealType> {
+        Binding(
+            get: { draft.type },
+            set: { type in
+                let timeFollowsType = isNew && draft.time == suggestedTime
+                draft.type = type
+                if timeFollowsType {
+                    draft.time = type.typicalTime.date(on: .today())
+                    suggestedTime = draft.time
+                }
+            }
+        )
     }
 
     private var isNew: Bool {
@@ -210,9 +235,9 @@ public struct MealEditorScreen: View {
         let meal = draft.meal(replacing: original)
         withAppAnimation(AppMotion.settle, reduceMotion: reduceMotion) {
             if isNew {
-                _ = try? store.addMeal(meal)
+                store.attempt { try store.addMeal(meal) }
             } else {
-                _ = try? store.updateMeal(meal)
+                store.attempt { try store.updateMeal(meal) }
             }
         }
         dismiss()
@@ -221,7 +246,7 @@ public struct MealEditorScreen: View {
     private func delete() {
         guard case .edit(let meal) = mode else { return }
         withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
-            _ = try? store.deleteMeal(id: meal.id)
+            store.attempt { try store.deleteMeal(id: meal.id) }
         }
         dismiss()
         onDeleted()

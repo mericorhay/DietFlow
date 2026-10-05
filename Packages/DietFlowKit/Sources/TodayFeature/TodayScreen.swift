@@ -9,13 +9,25 @@ public struct TodayActions {
     public var openSettings: () -> Void
     public var createPlan: () -> Void
     public var importPlan: () -> Void
+    public var trySample: () -> Void
     public var addMeal: (CalendarDay) -> Void
+    /// Opens the Widgets tab, where adding the widget is explained.
+    public var showWidgets: () -> Void
 
-    public init(openSettings: @escaping () -> Void, createPlan: @escaping () -> Void, importPlan: @escaping () -> Void, addMeal: @escaping (CalendarDay) -> Void) {
+    public init(
+        openSettings: @escaping () -> Void,
+        createPlan: @escaping () -> Void,
+        importPlan: @escaping () -> Void,
+        trySample: @escaping () -> Void,
+        addMeal: @escaping (CalendarDay) -> Void,
+        showWidgets: @escaping () -> Void
+    ) {
         self.openSettings = openSettings
         self.createPlan = createPlan
         self.importPlan = importPlan
+        self.trySample = trySample
         self.addMeal = addMeal
+        self.showWidgets = showWidgets
     }
 }
 
@@ -24,7 +36,11 @@ public struct TodayActions {
 public struct TodayScreen: View {
     @Environment(MealPlanStore.self) private var store
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
     @State private var selectedDay = CalendarDay.today()
+    /// Nil until checked. Checked again whenever the app comes back, as the person may just have
+    /// added the widget.
+    @State private var isWidgetOnScreen: Bool?
     private let actions: TodayActions
 
     public init(actions: TodayActions) {
@@ -37,6 +53,24 @@ public struct TodayScreen: View {
         }
         .navigationTitle(Text("today.title", bundle: .module))
         .toolbar { toolbar }
+        .task(id: scenePhase) {
+            guard scenePhase == .active else { return }
+            isWidgetOnScreen = await store.isWidgetOnScreen()
+        }
+    }
+
+    /// The suggestion to add the widget: once there is a plan to show, until a widget is on screen
+    /// or the person closes it.
+    private var widgetTip: WidgetTipModel? {
+        guard store.activePlan != nil, isWidgetOnScreen == false, !store.settings.hasDismissedWidgetTip else { return nil }
+        return WidgetTipModel(
+            show: actions.showWidgets,
+            dismiss: { [store] in
+                withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
+                    store.updateSettings { $0.hasDismissedWidgetTip = true }
+                }
+            }
+        )
     }
 
     @ViewBuilder
@@ -46,7 +80,7 @@ public struct TodayScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 header(today: today, schedule: schedule)
                 DayPager(days: pagerDays(around: today), selection: $selectedDay) { day in
-                    DayPage(day: day, today: today, now: now, actions: actions)
+                    DayPage(day: day, today: today, now: now, actions: actions, widgetTip: day == today ? widgetTip : nil)
                 }
             }
             .sensoryFeedback(trigger: completedCount(on: today)) { old, new in
@@ -58,7 +92,7 @@ public struct TodayScreen: View {
             }
         } else {
             ScrollView {
-                NoPlanView(onCreate: actions.createPlan, onImport: actions.importPlan)
+                NoPlanView(onCreate: actions.createPlan, onImport: actions.importPlan, onTrySample: actions.trySample)
                     .padding(.top, AppSpacing.xLarge)
             }
         }

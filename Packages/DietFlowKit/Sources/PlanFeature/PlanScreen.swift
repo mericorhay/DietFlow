@@ -10,13 +10,22 @@ public struct PlanActions {
     public var addMeal: (Int) -> Void
     public var importPlan: () -> Void
     public var newPlan: () -> Void
+    public var trySample: () -> Void
     public var editPlan: () -> Void
     public var openSettings: () -> Void
 
-    public init(addMeal: @escaping (Int) -> Void, importPlan: @escaping () -> Void, newPlan: @escaping () -> Void, editPlan: @escaping () -> Void, openSettings: @escaping () -> Void) {
+    public init(
+        addMeal: @escaping (Int) -> Void,
+        importPlan: @escaping () -> Void,
+        newPlan: @escaping () -> Void,
+        trySample: @escaping () -> Void,
+        editPlan: @escaping () -> Void,
+        openSettings: @escaping () -> Void
+    ) {
         self.addMeal = addMeal
         self.importPlan = importPlan
         self.newPlan = newPlan
+        self.trySample = trySample
         self.editPlan = editPlan
         self.openSettings = openSettings
     }
@@ -27,7 +36,6 @@ public struct PlanActions {
 public struct PlanScreen: View {
     @Environment(MealPlanStore.self) private var store
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var selectedDay = CalendarDay.today()
     @State private var confirmsPlanDeletion = false
     @State private var mealPendingDeletion: Meal?
     private let actions: PlanActions
@@ -42,7 +50,7 @@ public struct PlanScreen: View {
                 planList(plan, schedule: schedule)
             } else {
                 ScrollView {
-                    NoPlanView(onCreate: actions.newPlan, onImport: actions.importPlan)
+                    NoPlanView(onCreate: actions.newPlan, onImport: actions.importPlan, onTrySample: actions.trySample)
                         .padding(.top, AppSpacing.xLarge)
                 }
             }
@@ -53,7 +61,7 @@ public struct PlanScreen: View {
             Button(role: .destructive) {
                 guard let id = store.activePlan?.id else { return }
                 withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
-                    _ = try? store.deletePlan(id: id)
+                    store.attempt { try store.deletePlan(id: id) }
                 }
             } label: {
                 Text("plan.delete.confirm", bundle: .module)
@@ -69,7 +77,7 @@ public struct PlanScreen: View {
         ) { meal in
             Button(role: .destructive) {
                 withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
-                    _ = try? store.deleteMeal(id: meal.id)
+                    store.attempt { try store.deleteMeal(id: meal.id) }
                 }
             } label: {
                 Text("plan.deleteMeal.confirm", bundle: .module)
@@ -88,19 +96,11 @@ public struct PlanScreen: View {
         return ScrollViewReader { proxy in
             List {
                 Section {
-                    VStack(alignment: .leading, spacing: AppSpacing.small) {
-                        Text(summary(plan, schedule: schedule, today: today))
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        DateStrip(
-                            days: selectedDay.week(startingOn: store.settings.firstWeekday ?? Calendar.current.firstWeekday),
-                            selection: $selectedDay,
-                            today: today,
-                            isAvailable: { schedule.dayIndex(on: $0) != nil }
-                        )
-                    }
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets(top: 0, leading: AppSpacing.xxSmall, bottom: 0, trailing: AppSpacing.xxSmall))
+                    Text(summary(plan, schedule: schedule, today: today))
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets(top: 0, leading: AppSpacing.xxSmall, bottom: 0, trailing: AppSpacing.xxSmall))
                 }
 
                 ForEach(days, id: \.self) { day in
@@ -110,9 +110,10 @@ public struct PlanScreen: View {
             }
             .listStyle(.insetGrouped)
             .animation(AppMotion.animation(AppMotion.snappy, reduceMotion: reduceMotion), value: store.revision)
-            .onChange(of: selectedDay) { _, day in
-                withAnimation(reduceMotion ? nil : AppMotion.settle) {
-                    proxy.scrollTo(day, anchor: .top)
+            .onAppear {
+                // A plan that started days ago opens on today, not on its first day.
+                if let first = days.first, first < today, days.contains(today) {
+                    proxy.scrollTo(today, anchor: .top)
                 }
             }
         }
@@ -121,6 +122,7 @@ public struct PlanScreen: View {
     private func daySection(_ day: CalendarDay, plan: MealPlan, schedule: MealSchedule, today: CalendarDay) -> some View {
         let occurrences = schedule.occurrences(on: day, states: store.states)
         let dayIndex = schedule.dayIndex(on: day) ?? 0
+        let title = header(day, dayIndex: dayIndex, kind: plan.schedule.kind, today: today)
         return Section {
             if occurrences.isEmpty {
                 HStack {
@@ -133,6 +135,7 @@ public struct PlanScreen: View {
                         Text("plan.day.addMeal", bundle: .module)
                     }
                     .buttonStyle(.borderless)
+                    .tint(AppColors.brandAccent)
                 }
             }
             ForEach(occurrences) { occurrence in
@@ -162,8 +165,24 @@ public struct PlanScreen: View {
                 }
             }
         } header: {
-            Text(header(day, dayIndex: dayIndex, kind: plan.schedule.kind, today: today))
-                .foregroundStyle(day == today ? AnyShapeStyle(AppColors.brandAccent) : AnyShapeStyle(.secondary))
+            HStack(alignment: .center) {
+                Text(title)
+                    .foregroundStyle(day == today ? AnyShapeStyle(AppColors.brandAccent) : AnyShapeStyle(.secondary))
+                Spacer(minLength: AppSpacing.xSmall)
+                // Adding a meal to this very day, wherever the list is scrolled.
+                Button {
+                    actions.addMeal(dayIndex)
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.body.weight(.semibold))
+                        .frame(minWidth: AppSpacing.minimumHitTarget, minHeight: AppSpacing.minimumHitTarget, alignment: .trailing)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.borderless)
+                .tint(AppColors.brandAccent)
+                .accessibilityLabel(Text(String(localized: "plan.day.addMealTo", defaultValue: "Add meal to \(title)", bundle: .module)))
+            }
+            .textCase(nil)
         }
     }
 
@@ -175,7 +194,7 @@ public struct PlanScreen: View {
             Menu {
                 if store.activePlan != nil {
                     Button {
-                        actions.addMeal(store.schedule?.dayIndex(on: selectedDay) ?? 0)
+                        actions.addMeal(store.schedule?.dayIndex(on: .today()) ?? 0)
                     } label: {
                         Label { Text("plan.menu.addMeal", bundle: .module) } icon: { Image(systemName: "plus") }
                     }
@@ -201,7 +220,7 @@ public struct PlanScreen: View {
                             ForEach(store.plans) { summary in
                                 Button {
                                     withAppAnimation(AppMotion.settle, reduceMotion: reduceMotion) {
-                                        _ = try? store.activatePlan(id: summary.id)
+                                        store.attempt { try store.activatePlan(id: summary.id) }
                                     }
                                 } label: {
                                     if summary.isActive {

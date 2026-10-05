@@ -11,6 +11,12 @@ public enum MealPlanStoreError: Error, Sendable {
     case mealNotFound
 }
 
+/// A change the person asked for that could not be stored.
+public struct StoreFailure: Identifiable, Hashable, Sendable {
+    public let id = UUID()
+    public init() {}
+}
+
 /// The one place plans change, whoever changes them: a screen, a Shortcut, the widget's Done
 /// button, an import, or later an MCP bridge. Each operation stores the change, then brings the
 /// widget and the reminders along, so nothing that shows the plan can fall behind it.
@@ -30,6 +36,8 @@ public final class MealPlanStore {
     public private(set) var settings: AppSettings
     /// Changes with every stored change, for views that animate on it.
     public private(set) var revision = 0
+    /// Set when a change asked for by a screen could not be stored, so the app can say so.
+    public private(set) var failure: StoreFailure?
 
     @ObservationIgnored private let persistence: PlanStore
     @ObservationIgnored private let snapshotWriter: WidgetSnapshotWriter?
@@ -73,9 +81,29 @@ public final class MealPlanStore {
             reloadWidgets: {}
         )
         if withSample {
-            try? store.createPlan(SamplePlan.keto(startingOn: .today()))
+            _ = try? store.createPlan(SamplePlan.keto(startingOn: .today()))
         }
         return store
+    }
+
+    // MARK: - Asking for a change
+
+    /// Runs a change a screen asked for. If it cannot be stored, the error is logged and
+    /// `failure` is set, so the person hears about it instead of the change quietly not happening.
+    @discardableResult
+    public func attempt<Value>(_ change: () throws -> Value) -> Value? {
+        do {
+            return try change()
+        } catch {
+            logger.error("A change could not be stored: \(String(describing: error), privacy: .public)")
+            failure = StoreFailure()
+            return nil
+        }
+    }
+
+    /// The person has been told about `failure`.
+    public func clearFailure() {
+        failure = nil
     }
 
     // MARK: - Reading
@@ -214,6 +242,24 @@ public final class MealPlanStore {
     }
 
     // MARK: - Data
+
+    /// Adds the sample plan, starting today, and makes it the active plan. For trying the app
+    /// before writing a plan of one's own; nothing else is touched.
+    @discardableResult
+    public func addSamplePlan() throws -> MealPlan {
+        try createPlan(SamplePlan.keto(startingOn: .today()), activate: true)
+    }
+
+    /// Whether any of this app's widgets is on a Home Screen or the Lock Screen.
+    public func isWidgetOnScreen() async -> Bool {
+        await withCheckedContinuation { continuation in
+            // WidgetKit may answer on any queue: the callback must not assume the main actor.
+            WidgetCenter.shared.getCurrentConfigurations { @Sendable result in
+                let count = (try? result.get())?.count ?? 0
+                continuation.resume(returning: count > 0)
+            }
+        }
+    }
 
     /// Replaces everything with the sample plan, starting today.
     public func resetSampleData() throws {

@@ -8,6 +8,13 @@ import DesignSystem
 import Domain
 import PlanImport
 
+/// Something handed to Import from outside the screen: text from the Import Plan shortcut, or a
+/// file opened with the app from Files, Mail or AirDrop.
+public enum ImportInput: Sendable {
+    case text(String)
+    case file(Data, fileName: String)
+}
+
 /// Bringing in a plan the person already has: pasted text, a file, a photo or a PDF. Whatever the
 /// source, the plan is read on the device and always shown for review before anything is saved.
 public struct ImportPlanScreen: View {
@@ -20,15 +27,15 @@ public struct ImportPlanScreen: View {
     @State private var fileRequest: FileRequest?
     @State private var showsPhotoPicker = false
     @State private var photoItem: PhotosPickerItem?
-    private let initialText: String?
+    private let initialInput: ImportInput?
     private let onFinished: () -> Void
     private let service = MealPlanImportService()
 
     /// - Parameters:
-    ///   - initialText: text handed over by the Import Plan shortcut, read straight away.
+    ///   - initialInput: text or a file handed over from outside, read straight away.
     ///   - onFinished: called after a plan is saved.
-    public init(initialText: String? = nil, onFinished: @escaping () -> Void) {
-        self.initialText = initialText
+    public init(initialInput: ImportInput? = nil, onFinished: @escaping () -> Void) {
+        self.initialInput = initialInput
         self.onFinished = onFinished
     }
 
@@ -136,8 +143,13 @@ public struct ImportPlanScreen: View {
             Text(failure.message)
         }
         .task {
-            if let initialText {
-                await read(.text(initialText))
+            switch initialInput {
+            case .text(let text):
+                await read(.text(text))
+            case .file(let data, let fileName):
+                await read(fileName.lowercased().hasSuffix(".pdf") ? .pdf(data) : .file(data))
+            case nil:
+                break
             }
         }
     }
@@ -179,7 +191,7 @@ public struct ImportPlanScreen: View {
     // MARK: Saving
 
     private func save(_ plan: MealPlan) {
-        _ = try? store.createPlan(plan, activate: true)
+        store.attempt { try store.createPlan(plan, activate: true) }
         dismiss()
         onFinished()
     }
@@ -206,7 +218,7 @@ private enum FileRequest: Hashable {
     var contentTypes: [UTType] {
         switch self {
         case .plan:
-            return [.json, .plainText, UTType(filenameExtension: "mealplan") ?? .json]
+            return [.mealPlan, .json, .plainText]
         case .pdf:
             return [.pdf]
         }

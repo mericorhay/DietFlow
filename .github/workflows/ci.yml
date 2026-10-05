@@ -49,6 +49,7 @@ jobs:
       # The app scheme pulls in every module and embeds the widget extension, so this is the
       # compile gate for the whole codebase.
       - name: Build the app
+        id: build
         timeout-minutes: 25
         run: |
           set -euo pipefail
@@ -60,7 +61,16 @@ jobs:
             -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGN_IDENTITY="" \
-            DEVELOPMENT_TEAM=""
+            DEVELOPMENT_TEAM="" \
+            2>&1 | tee "$RUNNER_TEMP/build.log"
+
+      # Every warning and error from the build in one place, instead of scattered through
+      # thousands of lines of build output.
+      - name: Build diagnostics
+        if: always() && steps.build.outcome != 'skipped'
+        run: |
+          grep -E ': (warning|error): ' "$RUNNER_TEMP/build.log" \
+            | sed -E "s#^$GITHUB_WORKSPACE/##" | sort -u || echo "No warnings."
 
       # The app scheme's Test action runs DomainTests. Same derived data and the same settings as
       # the build above, so every module is already built and only the test bundle compiles.

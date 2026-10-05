@@ -204,7 +204,7 @@ public struct MealDetailScreen: View {
             set: { newValue in
                 var updated = meal
                 updated.reminder = newValue
-                _ = try? store.updateMeal(updated)
+                store.attempt { try store.updateMeal(updated) }
             }
         )) {
             Text(String(localized: "meal.reminder.default", defaultValue: "Default (\(defaultName))", bundle: .module))
@@ -266,7 +266,7 @@ public struct MealDetailScreen: View {
 
     private func set(_ state: OccurrenceState, _ occurrence: MealOccurrence) {
         withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
-            _ = try? store.setState(state, for: occurrence.key)
+            store.attempt { try store.setState(state, for: occurrence.key) }
         }
     }
 }

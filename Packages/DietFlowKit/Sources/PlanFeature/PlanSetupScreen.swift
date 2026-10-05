@@ -141,12 +141,12 @@ public struct PlanSetupScreen: View {
             switch mode {
             case .new:
                 let plan = MealPlan(name: name.trimmedNonEmpty ?? fallbackName, schedule: schedule)
-                _ = try? store.createPlan(plan)
+                store.attempt { try store.createPlan(plan) }
             case .edit(var plan):
                 plan.name = name.trimmedNonEmpty ?? plan.name
                 plan.schedule = schedule
                 plan.meals = plan.meals.filter { $0.dayIndex < schedule.length }
-                _ = try? store.replacePlan(plan)
+                store.attempt { try store.replacePlan(plan) }
             }
         }
         dismiss()

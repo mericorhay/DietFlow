@@ -83,6 +83,8 @@ struct WidgetLeadLabel: View {
             .font(.footnote.weight(.semibold))
             .foregroundStyle(isEmphasized ? AnyShapeStyle(AppColors.brandAccent) : AnyShapeStyle(.secondary))
             .lineLimit(1)
+            // Room for languages that say "Tomorrow · Breakfast" in more letters.
+            .minimumScaleFactor(0.85)
             .widgetAccentable(isEmphasized)
     }
 }
