@@ -21,16 +21,33 @@ xcrun simctl install "$UDID" "$APP"
 appearance() { xcrun simctl ui "$UDID" appearance "$1" >/dev/null 2>&1 || true; }
 textSize() { xcrun simctl ui "$UDID" content_size "$1" >/dev/null 2>&1 || true; }
 
+capture() {
+  local name="$1"
+  xcrun simctl io "$UDID" screenshot --type=png "$OUT/$name.png" >/dev/null 2>&1
+  sips -Z 560 "$OUT/$name.png" --out "$OUT/$name-small.png" >/dev/null
+  sips -s format jpeg -s formatOptions 50 "$OUT/$name-small.png" --out "$OUT/$name.jpg" >/dev/null
+}
+
 # shot <name> <launch arguments…>
+# A first launch after a text-size change can take longer than usual, so a blank capture (the
+# white launch screen) is retaken for up to about 20 seconds before it is reported.
 shot() {
   local name="$1"
   shift
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1 || true
   xcrun simctl launch "$UDID" "$BUNDLE" "$@" >/dev/null
   sleep 5
-  xcrun simctl io "$UDID" screenshot --type=png "$OUT/$name.png" >/dev/null 2>&1
-  sips -Z 560 "$OUT/$name.png" --out "$OUT/$name-small.png" >/dev/null
-  sips -s format jpeg -s formatOptions 50 "$OUT/$name-small.png" --out "$OUT/$name.jpg" >/dev/null
+  capture "$name"
+  local tries=0
+  while [ "$(stat -f%z "$OUT/$name.jpg")" -lt 7000 ] && [ "$tries" -lt 5 ]; do
+    sleep 3
+    capture "$name"
+    tries=$((tries + 1))
+  done
+  if [ "$(stat -f%z "$OUT/$name.jpg")" -lt 7000 ]; then
+    echo "NOTE $name still looks blank. Running: $(xcrun simctl spawn "$UDID" launchctl list 2>/dev/null | grep -c "$BUNDLE" || true)"
+    xcrun simctl spawn "$UDID" log show --last 1m --style compact --predicate 'process == "DietFlow"' 2>/dev/null | tail -25 || true
+  fi
   echo "SHOT-BEGIN $name"
   base64 -i "$OUT/$name.jpg" | fold -w 4000
   echo "SHOT-END $name"
@@ -40,9 +57,13 @@ EN=(-AppleLanguages "(en)" -AppleLocale en_US)
 TR=(-AppleLanguages "(tr)" -AppleLocale tr_TR)
 ES=(-AppleLanguages "(es)" -AppleLocale es_ES)
 SAMPLE=(-DebugSeed sample)
+NOW=(-DebugSeed now)
 
 appearance light
 textSize large
+shot today-now-en "${EN[@]}" "${NOW[@]}"
+shot widgets-now-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets
+shot meal-now-tr "${TR[@]}" "${NOW[@]}" -DebugMeal next
 shot today-en "${EN[@]}" "${SAMPLE[@]}"
 shot plan-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
 shot meal-en "${EN[@]}" "${SAMPLE[@]}" -DebugMeal next
@@ -57,9 +78,13 @@ shot today-long "${EN[@]}" "${SAMPLE[@]}" -NSDoubleLocalizedStrings YES
 shot today-rtl "${EN[@]}" "${SAMPLE[@]}" -AppleTextDirection YES -NSForceRightToLeftWritingDirection YES
 
 appearance dark
-shot today-tr-dark "${TR[@]}" "${SAMPLE[@]}"
+shot today-now-tr-dark "${TR[@]}" "${NOW[@]}"
+shot widgets-now-es-dark "${ES[@]}" "${NOW[@]}" -DebugTab widgets
 appearance light
 
 textSize accessibility-large
-shot today-large-text "${EN[@]}" "${SAMPLE[@]}"
+sleep 3
+shot today-large-text "${EN[@]}" "${NOW[@]}"
+shot plan-large-text "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
+shot meal-large-text "${EN[@]}" "${NOW[@]}" -DebugMeal next
 textSize large

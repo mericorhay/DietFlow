@@ -81,6 +81,27 @@ A corrupt or newer snapshot shows "open the app to update"; a missing one shows 
 The families are small, medium, large, Lock Screen rectangular and inline. The medium and large
 widgets have a Done button: `MarkMealDoneIntent`, which runs in the widget's process.
 
+## Links, files and reminders
+
+Everything that opens the app from outside lands in `RootView`, which owns the tabs and their
+navigation paths:
+
+- **Links.** `Domain.AppLink` names a place: `dietflow://today`, `dietflow://meal/<occurrence>`,
+  `dietflow://plan`, `dietflow://widgets`, `dietflow://import`. The widget opens the meal it shows;
+  the scheme is registered in `Config/DietFlow-Info.plist`.
+- **Files.** Plans are shared as `.mealplan` files (`UTType.mealPlan`, JSON in the import format,
+  declared in the same plist). Opening one — or any JSON file — with the app goes straight to
+  Import's review.
+- **Reminders.** Each carries Done and Skip buttons (`MealReminderAction`), answered by
+  `ReminderResponder` without opening the app; tapping the reminder opens that meal.
+
+## Language
+
+iOS picks the language from the person's preferred languages, or from the one chosen for this app
+in the Settings app. Settings › Language & Region shows it (`Domain.AppLanguage`) and leads there;
+nothing in the code lists languages. How strings are written, checked and translated — and how the
+thirty planned languages get added — is in [LOCALIZATION.md](LOCALIZATION.md).
+
 ## App Intents
 
 `Shared/Intents` is a folder synchronised into both the app and the widget target, so the widget
@@ -105,6 +126,15 @@ An MCP server would produce the same payload and call the same `MealPlanStore` o
 `AIServices`, `AssistantFeature`, `PlanSync` and `backend/` are kept from the first skeleton but no
 screen uses them: the app works entirely on the device and sends no plan anywhere. Whether to bring
 an assistant or a server back is a product decision for later.
+
+## Checking the screens
+
+Debug builds open a known state from launch arguments (`DietFlow/DebugLaunch.swift`): the sample
+plan or a first run in memory, a tab, a sheet, a meal, an onboarding page. Nothing is read from or
+written to the person's data. CI uses them when run with `screenshots: true`
+(`scripts/ci-screenshots.sh`): the main screens in English, Turkish and Spanish, in dark mode, at a
+large text size, and in Xcode's long and right-to-left pseudolanguages, printed into the job log
+as small images.
 
 ## Versions
 

@@ -198,13 +198,18 @@ public struct SettingsScreen: View {
                     Text("settings.data.export", bundle: .module)
                 }
             }
+        } header: {
+            Text("settings.data.header", bundle: .module)
+        }
+
+        // Apart from import and export, so the one action that deletes everything never sits
+        // between two that do not.
+        Section {
             Button(role: .destructive) {
                 confirmsReset = true
             } label: {
                 Text("settings.data.reset", bundle: .module)
             }
-        } header: {
-            Text("settings.data.header", bundle: .module)
         }
     }
 

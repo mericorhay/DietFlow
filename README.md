@@ -39,6 +39,7 @@ There is no local build on Windows; builds run on GitHub's macOS runners.
 
 ```bash
 gh workflow run ci.yml -R mericorhay/DietFlow          # compile + package tests + localization
+gh workflow run ci.yml -R mericorhay/DietFlow -f screenshots=true   # …and screenshots in the log
 gh workflow run testflight.yml -R mericorhay/DietFlow  # signed build to TestFlight
 ```
 
@@ -47,7 +48,11 @@ The localization checks run anywhere Node does:
 ```bash
 node --test tools/localization/catalogs.test.mjs
 node tools/localization/l10n.mjs validate
+node tools/localization/l10n.mjs status       # every shipping and planned language
 ```
+
+Thirty more languages are queued for translation by a language model; see
+[docs/LOCALIZATION.md](docs/LOCALIZATION.md).
 
 ## TestFlight setup, once
 
