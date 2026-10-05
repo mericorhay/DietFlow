@@ -49,6 +49,7 @@ jobs:
       # The app scheme pulls in every module and embeds the widget extension, so this is the
       # compile gate for the whole codebase.
       - name: Build the app
+        timeout-minutes: 25
         run: |
           set -euo pipefail
           xcodebuild build \
@@ -61,15 +62,21 @@ jobs:
             CODE_SIGN_IDENTITY="" \
             DEVELOPMENT_TEAM=""
 
-      - name: Run the package tests
-        working-directory: Packages/DietFlowKit
+      # The app scheme's Test action runs DomainTests. Same derived data and the same settings as
+      # the build above, so every module is already built and only the test bundle compiles.
+      # (Testing the package scheme instead rebuilds all of it with coverage, which took longer
+      # than the whole job allows.)
+      - name: Run the tests
+        timeout-minutes: 15
         run: |
           set -euo pipefail
-          SCHEME=$(xcodebuild -list -json \
-            | python3 -c "import json,sys;s=json.load(sys.stdin)['workspace']['schemes'];print('DietFlowKit-Package' if 'DietFlowKit-Package' in s else s[0])")
-          echo "Testing scheme $SCHEME"
           xcodebuild test \
-            -scheme "$SCHEME" \
+            -project DietFlow.xcodeproj \
+            -scheme DietFlow \
+            -derivedDataPath "$RUNNER_TEMP/DietFlowDerived" \
             -destination "id=${{ steps.sim.outputs.udid }}" \
+            -enableCodeCoverage NO \
             -skipMacroValidation \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM=""
