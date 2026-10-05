@@ -47,6 +47,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		10000000000000000000A601 /* DietFlow */ = {isa = PBXFileSystemSynchronizedRootGroup; path = DietFlow; sourceTree = "<group>"; };
 		10000000000000000000F601 /* DietFlowWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; path = DietFlowWidget; sourceTree = "<group>"; };
+		10000000000000000000B601 /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; path = Shared; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 				10000000000000000000E201 /* Config */,
 				10000000000000000000A601 /* DietFlow */,
 				10000000000000000000F601 /* DietFlowWidget */,
+				10000000000000000000B601 /* Shared */,
 				10000000000000000000A501 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +119,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				10000000000000000000A601 /* DietFlow */,
+				10000000000000000000B601 /* Shared */,
 			);
 			name = DietFlow;
 			packageProductDependencies = (
@@ -140,6 +143,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				10000000000000000000F601 /* DietFlowWidget */,
+				10000000000000000000B601 /* Shared */,
 			);
 			name = DietFlowWidget;
 			packageProductDependencies = (

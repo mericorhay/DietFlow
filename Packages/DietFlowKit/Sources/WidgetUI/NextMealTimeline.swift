@@ -2,30 +2,45 @@ import Foundation
 import WidgetKit
 import Domain
 
-public struct NextMealEntry: TimelineEntry, Sendable {
+/// One timeline entry: from `date` on, the widget shows `content`.
+public struct MealWidgetEntry: TimelineEntry, Sendable {
     public let date: Date
-    /// Nil when there is no plan, or nothing left in the window the timeline covers.
-    public let meal: ScheduledMeal?
+    public let content: WidgetContent
+    public let preferences: WidgetPreferences
 
-    public init(date: Date, meal: ScheduledMeal?) {
+    public init(date: Date, content: WidgetContent, preferences: WidgetPreferences) {
         self.date = date
-        self.meal = meal
+        self.content = content
+        self.preferences = preferences
+    }
+
+    /// The sample plan on its first day: the widget gallery and the placeholder.
+    public static func sample(now: Date = .now, preferences: WidgetPreferences = WidgetPreferences()) -> MealWidgetEntry {
+        let snapshot = WidgetSnapshot.sample(now: now, preferences: preferences)
+        return MealWidgetEntry(date: now, content: WidgetTimelineBuilder.content(for: snapshot, at: now), preferences: preferences)
+    }
+
+    /// The entry for `now` from a snapshot, for previews inside the app.
+    public static func current(for snapshot: WidgetSnapshot?, now: Date = .now) -> MealWidgetEntry {
+        MealWidgetEntry(date: now, content: WidgetTimelineBuilder.content(for: snapshot, at: now), preferences: snapshot?.preferences ?? WidgetPreferences())
     }
 }
 
-public enum NextMealTimeline {
-    /// One entry for now, then one at each meal time that moves the widget on to the meal after it.
-    /// WidgetKit plays these back on its own, so the widget stays right without the app running.
-    public static func entries(from plan: MealPlan?, now: Date = .now, calendar: Calendar = .current) -> [NextMealEntry] {
-        guard let plan else { return [NextMealEntry(date: now, meal: nil)] }
-        let upcoming = MealSchedule(plan: plan, calendar: calendar).upcoming(after: now, days: 2)
-        guard let first = upcoming.first else { return [NextMealEntry(date: now, meal: nil)] }
-
-        var entries = [NextMealEntry(date: now, meal: first)]
-        for (index, current) in upcoming.enumerated() {
-            let following = index + 1 < upcoming.count ? upcoming[index + 1] : nil
-            entries.append(NextMealEntry(date: current.date, meal: following))
+/// Turns the shared snapshot into WidgetKit entries. The widget extension reads the file and calls
+/// this; everything about what to show when is decided in `WidgetTimelineBuilder`, where it is tested.
+public enum MealWidgetTimeline {
+    public static func entries(snapshot: WidgetSnapshot?, isUnreadable: Bool, now: Date = .now, timeZone: TimeZone = .current) -> [MealWidgetEntry] {
+        let preferences = snapshot?.preferences ?? WidgetPreferences()
+        if isUnreadable {
+            return [MealWidgetEntry(date: now, content: .needsRefresh, preferences: preferences)]
         }
-        return entries
+        return WidgetTimelineBuilder.moments(for: snapshot, from: now, timeZone: timeZone).map {
+            MealWidgetEntry(date: $0.date, content: $0.content, preferences: preferences)
+        }
+    }
+
+    /// When WidgetKit should ask for a fresh timeline. The entries reach well past it.
+    public static func reloadDate(from now: Date = .now) -> Date {
+        now.addingTimeInterval(WidgetTimelineBuilder.reloadInterval)
     }
 }

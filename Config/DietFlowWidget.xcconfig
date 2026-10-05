@@ -15,7 +15,7 @@ SWIFT_VERSION = 5.0
 // The NSExtension dictionary cannot be expressed as INFOPLIST_KEY_ settings. Kept outside the
 // DietFlowWidget folder, which Xcode syncs: inside it the file would also be copied as a resource.
 INFOPLIST_FILE = Config/DietFlowWidget-Info.plist
-INFOPLIST_KEY_CFBundleDisplayName = DietFlow
+INFOPLIST_KEY_CFBundleDisplayName = $(APP_DISPLAY_NAME)
 
 APPLICATION_EXTENSION_API_ONLY = YES
 SKIP_INSTALL = YES

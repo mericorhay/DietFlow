@@ -11,10 +11,12 @@
     "es": "Spanish"
   },
   "protectedTerms": [
+    "Meal Widget",
     "DietFlow",
     "Apple",
     "Claude",
     "MCP",
-    "PDF"
+    "PDF",
+    "ChatGPT"
   ]
 }

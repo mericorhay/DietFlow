@@ -38,6 +38,9 @@ const positional = rest.filter((value, index) => !value.startsWith("--") && !(re
 const KEY_SHAPE = /^[a-z][A-Za-z0-9]*(\.[a-z][A-Za-z0-9]*)+$/;
 // Keys Apple defines; they cannot follow our naming.
 const SYSTEM_KEY = /^(CF|NS|UI)[A-Z]/;
+// In an App Shortcuts catalog the key is the Siri phrase itself, as Apple defines it.
+const PHRASE_CATALOG = /(^|\/)AppShortcuts\.xcstrings$/;
+const APP_NAME_TOKEN = "${applicationName}";
 
 function fail(message) {
   console.error(message);
@@ -56,11 +59,12 @@ async function validate() {
     const name = relative(file);
     if (catalog.sourceLanguage !== config.sourceLocale) errors.push(`${name}: sourceLanguage must be ${config.sourceLocale}`);
 
+    const isPhraseCatalog = PHRASE_CATALOG.test(name);
     for (const [key, entry] of Object.entries(catalog.strings ?? {})) {
       strings += 1;
       const where = `${name} :: ${key}`;
       if (!SYSTEM_KEY.test(key)) {
-        if (!KEY_SHAPE.test(key)) errors.push(`${where}: key must look like screen.element.role`);
+        if (!isPhraseCatalog && !KEY_SHAPE.test(key)) errors.push(`${where}: key must look like screen.element.role`);
         if (!entry.comment?.trim()) errors.push(`${where}: missing comment (the translator's only context)`);
       }
 
@@ -90,6 +94,9 @@ async function validate() {
           const source = sourceLeaf.stringUnit.value;
           const target = targetLeaf.stringUnit.value;
           for (const issue of validatePair(source, target, config.protectedTerms)) errors.push(`${where} [${locale}]: ${issue}`);
+          if (isPhraseCatalog && source.includes(APP_NAME_TOKEN) && !target.includes(APP_NAME_TOKEN)) {
+            errors.push(`${where} [${locale}]: Siri phrase lost ${APP_NAME_TOKEN}`);
+          }
           const isProtected = config.protectedTerms.some(term => source.includes(term));
           if (source === target && /[A-Za-z]{4}/.test(source) && !isProtected) warnings.push(`${where} [${locale}]: unchanged from source`);
         }

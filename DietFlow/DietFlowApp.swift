@@ -1,4 +1,5 @@
 import SwiftUI
+import AppCore
 
 @main
 struct DietFlowApp: App {
@@ -8,6 +9,7 @@ struct DietFlowApp: App {
         WindowGroup {
             RootView()
                 .environment(dependencies)
+                .environment(dependencies.store)
         }
     }
 }

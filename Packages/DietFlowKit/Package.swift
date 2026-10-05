@@ -11,20 +11,21 @@ let concurrency: [SwiftSetting] = [
 let ui: [SwiftSetting] = concurrency + [.defaultIsolation(MainActor.self)]
 
 // What the widget extension links. It runs in a tight memory budget and may only use
-// extension-safe API, so it gets the plan, the file it is stored in and its own views — nothing else.
-let widgetModules: [String] = ["Domain", "Persistence", "WidgetUI"]
+// extension-safe API: the plan logic, the shared files, the store its Done button writes through,
+// and its own views — nothing else.
+let widgetModules: [String] = ["Domain", "Persistence", "MealReminders", "AppCore", "DesignSystem", "WidgetUI"]
 
 let appModules: [String] = widgetModules + [
-    "AIServices", "PlanImport", "PlanSync", "MealReminders", "Purchases", "Analytics",
-    "DesignSystem",
-    "OnboardingFeature", "TodayFeature", "PlanFeature", "ImportFeature", "AssistantFeature", "SettingsFeature", "PaywallFeature",
+    "AIServices", "PlanImport", "PlanSync", "Purchases", "Analytics",
+    "OnboardingFeature", "TodayFeature", "PlanFeature", "MealFeature", "ImportFeature", "WidgetsFeature",
+    "AssistantFeature", "SettingsFeature", "PaywallFeature",
 ]
 
-func engine(_ name: String, _ dependencies: [Target.Dependency] = ["Domain"]) -> Target {
-    .target(name: name, dependencies: dependencies, swiftSettings: concurrency)
+func engine(_ name: String, _ dependencies: [Target.Dependency] = ["Domain"], resources: [Resource]? = nil) -> Target {
+    .target(name: name, dependencies: dependencies, resources: resources, swiftSettings: concurrency)
 }
 
-func feature(_ name: String, _ dependencies: [Target.Dependency] = ["Domain", "DesignSystem"]) -> Target {
+func feature(_ name: String, _ dependencies: [Target.Dependency] = ["Domain", "DesignSystem", "AppCore"]) -> Target {
     .target(name: name, dependencies: dependencies, resources: [.process("Resources")], swiftSettings: ui)
 }
 
@@ -32,43 +33,48 @@ let package = Package(
     name: "DietFlowKit",
     defaultLocalization: "en",
     // Must match IPHONEOS_DEPLOYMENT_TARGET in Config/Shared.xcconfig.
-    platforms: [.iOS(.v18)],
+    platforms: [.iOS(.v26)],
     products: [
         .library(name: "DietFlowKit", targets: appModules),
         .library(name: "DietFlowWidgetKit", targets: widgetModules),
     ],
     targets: [
-        // Pure models and pure logic. Foundation only.
-        engine("Domain", []),
+        // Pure models and pure logic: the schedule, the widget timeline, the import format.
+        // Foundation only; its strings are meal type names and relative times.
+        engine("Domain", [], resources: [.process("Resources")]),
 
         // Capabilities. No SwiftUI, no dependencies on each other unless listed.
-        // The plan file in the App Group container: the one thing app and widget share.
+        // The SwiftData store and the files the app and the widget share in the App Group.
         engine("Persistence"),
-        // Talks to our Worker. The provider key and the system prompt live there, never in the app.
-        engine("AIServices"),
-        // A dietitian's list as text, photo or PDF in; a MealPlan out.
-        engine("PlanImport", ["Domain", "AIServices"]),
-        // The phone's side of the MCP connection: a plan Claude wrote arrives through here.
-        engine("PlanSync"),
         // Local notifications at meal times.
-        engine("MealReminders"),
+        engine("MealReminders", resources: [.process("Resources")]),
+        // The one place plans change: storage, then the widget snapshot, widget reload and reminders.
+        // What the screens, the App Intents and a future MCP bridge all call.
+        engine("AppCore", ["Domain", "Persistence", "MealReminders"]),
+        // A plan as pasted text, a file, a photo or a PDF in; a draft for review out. On device.
+        engine("PlanImport"),
+        // Talks to our Worker. Not used by the current screens.
+        engine("AIServices"),
+        // The phone's side of a future MCP connection.
+        engine("PlanSync"),
         engine("Purchases", []),
         engine("Analytics", []),
 
-        // What the widget draws. Nonisolated so the timeline can be built off the main actor.
-        .target(name: "WidgetUI", dependencies: ["Domain"], resources: [.process("Resources")], swiftSettings: concurrency),
-
-        // Shared UI.
-        .target(name: "DesignSystem", swiftSettings: ui),
+        // Shared UI. Nonisolated so the widget can use the same tokens off the main actor.
+        .target(name: "DesignSystem", dependencies: ["Domain"], resources: [.process("Resources")], swiftSettings: concurrency),
+        // What the widget draws, also shown on the Widgets tab and in onboarding.
+        .target(name: "WidgetUI", dependencies: ["Domain", "DesignSystem"], resources: [.process("Resources")], swiftSettings: concurrency),
 
         // Features never import each other; the app target routes between them.
-        feature("OnboardingFeature"),
+        feature("OnboardingFeature", ["Domain", "DesignSystem", "AppCore", "WidgetUI"]),
         feature("TodayFeature"),
         feature("PlanFeature"),
-        feature("ImportFeature"),
-        feature("AssistantFeature"),
+        feature("MealFeature"),
+        feature("ImportFeature", ["Domain", "DesignSystem", "AppCore", "PlanImport"]),
+        feature("WidgetsFeature", ["Domain", "DesignSystem", "AppCore", "WidgetUI"]),
         feature("SettingsFeature"),
-        feature("PaywallFeature"),
+        feature("AssistantFeature", ["Domain", "DesignSystem"]),
+        feature("PaywallFeature", ["Domain", "DesignSystem"]),
 
         .testTarget(name: "DomainTests", dependencies: ["Domain"], swiftSettings: concurrency),
     ]

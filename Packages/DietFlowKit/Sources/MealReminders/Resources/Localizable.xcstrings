@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "notification.title.now" : {
+      "comment" : "Title of a meal reminder notification sent at the meal's time. %@ is the meal type, such as 'Lunch'. Example: 'Lunch now'. The meal's name is the body.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ now"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ zamanı"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: ahora"
+          }
+        }
+      }
+    },
+    "notification.title.upcoming" : {
+      "comment" : "Title of a meal reminder notification sent before a meal. %1$@ is the meal type, such as 'Lunch'; %2$@ is a duration such as '10 minutes' or '1 hour'. Example: 'Lunch in 10 minutes'. The meal's name is the body.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ in %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@ sonra"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ en %2$@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

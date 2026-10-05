@@ -27,9 +27,34 @@
       "es": "widget"
     },
     "import": {
-      "note": "Bringing an existing plan in from text, a photo or a PDF.",
+      "note": "Bringing an existing plan in from text, a file, a photo or a PDF.",
       "tr": "içe aktar",
       "es": "importar"
+    },
+    "Home Screen": {
+      "note": "The iPhone's Home Screen, as Apple names it.",
+      "tr": "Ana Ekran",
+      "es": "pantalla de inicio"
+    },
+    "Lock Screen": {
+      "note": "The iPhone's Lock Screen, as Apple names it.",
+      "tr": "Kilit Ekranı",
+      "es": "pantalla de bloqueo"
+    },
+    "done": {
+      "note": "A meal marked as eaten. As a button: 'Mark Done'. The brief fixes Turkish to 'Tamamlandı'.",
+      "tr": "tamamlandı",
+      "es": "hecha"
+    },
+    "skip": {
+      "note": "Recording that a meal was not eaten.",
+      "tr": "atla",
+      "es": "omitir"
+    },
+    "reminder": {
+      "note": "A notification before or at a meal's time.",
+      "tr": "hatırlatma",
+      "es": "recordatorio"
     }
   }
 }

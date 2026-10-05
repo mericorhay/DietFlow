@@ -1,0 +1,276 @@
+import Foundation
+import Observation
+import OSLog
+import WidgetKit
+import Domain
+import MealReminders
+import Persistence
+
+public enum MealPlanStoreError: Error, Sendable {
+    case noActivePlan
+    case mealNotFound
+}
+
+/// The one place plans change, whoever changes them: a screen, a Shortcut, the widget's Done
+/// button, an import, or later an MCP bridge. Each operation stores the change, then brings the
+/// widget and the reminders along, so nothing that shows the plan can fall behind it.
+///
+/// The operations are named for what they do to the plan (`createPlan`, `addMeal`,
+/// `markMealCompleted`, `getPlanForDate` …) rather than for a screen, so an agent can be handed the
+/// same verbs a person uses.
+@MainActor
+@Observable
+public final class MealPlanStore {
+    public private(set) var plans: [PlanSummary] = []
+    public private(set) var activePlan: MealPlan?
+    /// The active plan as a schedule, in the current time zone.
+    public private(set) var schedule: MealSchedule?
+    /// What happened to the active plan's meals, by occurrence.
+    public private(set) var states: OccurrenceStates = [:]
+    public private(set) var settings: AppSettings
+    /// Changes with every stored change, for views that animate on it.
+    public private(set) var revision = 0
+
+    @ObservationIgnored private let persistence: PlanStore
+    @ObservationIgnored private let snapshotWriter: WidgetSnapshotWriter?
+    @ObservationIgnored private let reminders: MealReminderScheduler
+    @ObservationIgnored private let reloadWidgets: @MainActor () -> Void
+    @ObservationIgnored private var reminderTask: Task<Void, Never>?
+    @ObservationIgnored private let logger = Logger(subsystem: "com.orhay.dietflow", category: "MealPlanStore")
+
+    public init(
+        persistence: PlanStore,
+        snapshotWriter: WidgetSnapshotWriter?,
+        reminders: MealReminderScheduler = MealReminderScheduler(),
+        settings: AppSettings,
+        reloadWidgets: @escaping @MainActor () -> Void
+    ) {
+        self.persistence = persistence
+        self.snapshotWriter = snapshotWriter
+        self.reminders = reminders
+        self.settings = settings
+        self.reloadWidgets = reloadWidgets
+        load()
+    }
+
+    /// The store the app and the intents use: the shared database, the shared snapshot, real
+    /// widget reloads and real notifications.
+    public static func live() -> MealPlanStore {
+        MealPlanStore(
+            persistence: PlanStore(container: PlanStore.makeContainer()),
+            snapshotWriter: WidgetSnapshotWriter.shared(),
+            settings: AppSettingsStore.load(),
+            reloadWidgets: { WidgetCenter.shared.reloadAllTimelines() }
+        )
+    }
+
+    /// An in-memory store for previews, optionally holding the sample plan.
+    public static func preview(withSample: Bool = true, settings: AppSettings = AppSettings(hasCompletedOnboarding: true)) -> MealPlanStore {
+        let store = MealPlanStore(
+            persistence: PlanStore(container: PlanStore.makeContainer(inMemory: true)),
+            snapshotWriter: nil,
+            settings: settings,
+            reloadWidgets: {}
+        )
+        if withSample {
+            try? store.createPlan(SamplePlan.keto(startingOn: .today()))
+        }
+        return store
+    }
+
+    // MARK: - Reading
+
+    public var hasPlans: Bool { !plans.isEmpty }
+
+    /// One day's meals and where each stands at `now`.
+    public func agenda(on day: CalendarDay, now: Date = .now) -> DayAgenda? {
+        schedule?.agenda(on: day, states: states, now: now)
+    }
+
+    /// The meal to put in front of the person at `now`.
+    public func focus(now: Date = .now) -> MealFocus? {
+        schedule?.focus(states: states, now: now)
+    }
+
+    public func occurrence(for key: OccurrenceKey) -> MealOccurrence? {
+        schedule?.occurrence(for: key, states: states)
+    }
+
+    public func meal(id: UUID) -> Meal? {
+        activePlan?.meals.first { $0.id == id }
+    }
+
+    public func getActivePlan() -> MealPlan? {
+        activePlan
+    }
+
+    /// The active plan's meals on `day`, each with its state and role at `now`.
+    public func getPlanForDate(_ day: CalendarDay, now: Date = .now) -> DayAgenda? {
+        agenda(on: day, now: now)
+    }
+
+    // MARK: - Plans
+
+    /// Stores a new plan; by default it becomes the active plan.
+    @discardableResult
+    public func createPlan(_ plan: MealPlan, activate: Bool = true) throws -> MealPlan {
+        try persistence.insert(plan, activate: activate || plans.isEmpty)
+        didChange("createPlan")
+        return plan
+    }
+
+    /// Replaces a plan's name, schedule and meals. Meals that keep their id keep their history.
+    public func replacePlan(_ plan: MealPlan) throws {
+        try persistence.replace(plan)
+        didChange("replacePlan")
+    }
+
+    public func activatePlan(id: UUID) throws {
+        try persistence.activate(planID: id)
+        didChange("activatePlan")
+    }
+
+    public func deletePlan(id: UUID) throws {
+        try persistence.deletePlan(id: id)
+        didChange("deletePlan")
+    }
+
+    // MARK: - Meals
+
+    /// Adds a meal to the active plan, or to `planID`.
+    @discardableResult
+    public func addMeal(_ meal: Meal, toPlan planID: UUID? = nil) throws -> Meal {
+        guard let target = planID ?? activePlan?.id else { throw MealPlanStoreError.noActivePlan }
+        try persistence.upsert(meal, planID: target)
+        didChange("addMeal")
+        return meal
+    }
+
+    public func updateMeal(_ meal: Meal, inPlan planID: UUID? = nil) throws {
+        guard let target = planID ?? activePlan?.id else { throw MealPlanStoreError.noActivePlan }
+        try persistence.upsert(meal, planID: target)
+        didChange("updateMeal")
+    }
+
+    public func deleteMeal(id: UUID) throws {
+        try persistence.deleteMeal(id: id)
+        didChange("deleteMeal")
+    }
+
+    // MARK: - What happened
+
+    public func markMealCompleted(_ key: OccurrenceKey) throws {
+        try setState(.completed, for: key)
+    }
+
+    public func markMealSkipped(_ key: OccurrenceKey) throws {
+        try setState(.skipped, for: key)
+    }
+
+    /// Back to not marked.
+    public func clearMealState(_ key: OccurrenceKey) throws {
+        try setState(.pending, for: key)
+    }
+
+    public func setState(_ state: OccurrenceState, for key: OccurrenceKey) throws {
+        guard let planID = activePlan?.id else { throw MealPlanStoreError.noActivePlan }
+        try persistence.setState(state, for: key, planID: planID)
+        didChange("setState")
+    }
+
+    // MARK: - Settings
+
+    public func updateSettings(_ change: (inout AppSettings) -> Void) {
+        var updated = settings
+        change(&updated)
+        guard updated != settings else { return }
+        settings = updated
+        AppSettingsStore.save(updated)
+        publish()
+    }
+
+    /// Turns reminders on, asking for notification permission the first time. False when the
+    /// person declines, in which case reminders stay off.
+    public func enableReminders() async -> Bool {
+        switch await reminders.authorization() {
+        case .denied:
+            return false
+        case .notDetermined:
+            guard await reminders.requestAuthorization() else { return false }
+        case .allowed:
+            break
+        }
+        updateSettings { $0.remindersEnabled = true }
+        return true
+    }
+
+    public func reminderAuthorization() async -> ReminderAuthorization {
+        await reminders.authorization()
+    }
+
+    /// True when the person has turned this app's notifications off in the Settings app.
+    public func areNotificationsDenied() async -> Bool {
+        await reminders.authorization() == .denied
+    }
+
+    // MARK: - Data
+
+    /// Replaces everything with the sample plan, starting today.
+    public func resetSampleData() throws {
+        try persistence.deleteAll()
+        try persistence.insert(SamplePlan.keto(startingOn: .today()), activate: true)
+        didChange("resetSampleData")
+    }
+
+    /// Re-reads the store — the widget's Done button may have written to it from its own process —
+    /// and brings the widget and reminders up to date. Called when the app comes to the front and
+    /// when the clock, the day or the time zone changes.
+    public func refresh() {
+        load()
+        publish()
+    }
+
+    // MARK: - Effects
+
+    private func load() {
+        do {
+            plans = try persistence.planSummaries()
+            let plan = try persistence.activePlan()
+            activePlan = plan
+            schedule = plan.map { MealSchedule(plan: $0, timeZone: .current) }
+            states = try plan.map { try persistence.states(planID: $0.id) } ?? [:]
+        } catch {
+            logger.error("Could not read plans: \(String(describing: error), privacy: .public)")
+        }
+        settings = AppSettingsStore.load()
+    }
+
+    private func didChange(_ operation: String) {
+        load()
+        revision += 1
+        logger.info("\(operation, privacy: .public)")
+        publish()
+    }
+
+    /// Writes the widget snapshot, asks WidgetKit to reload, and reschedules reminders.
+    private func publish(now: Date = .now) {
+        if let snapshotWriter {
+            let snapshot = WidgetSnapshot(plan: activePlan, states: states, preferences: settings.widgetPreferences, generatedAt: now)
+            do {
+                try snapshotWriter.write(snapshot)
+            } catch {
+                logger.error("Could not write the widget snapshot: \(String(describing: error), privacy: .public)")
+            }
+        }
+        reloadWidgets()
+
+        let requests = settings.remindersEnabled
+            ? ReminderPlanner.requests(plan: activePlan, states: states, defaultOffset: settings.defaultReminder, now: now)
+            : []
+        let reminders = self.reminders
+        reminderTask?.cancel()
+        reminderTask = Task {
+            await reminders.reschedule(requests)
+        }
+    }
+}

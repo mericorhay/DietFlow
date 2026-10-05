@@ -1,0 +1,126 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add a meal in ${applicationName}" : {
+      "comment" : "Siri phrase that adds a meal to the plan. Keep ${applicationName} exactly.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a meal in ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} öğün ekle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade una comida en ${applicationName}"
+          }
+        }
+      }
+    },
+    "I ate my meal in ${applicationName}" : {
+      "comment" : "Informal Siri phrase that marks the current or next meal done. Keep ${applicationName} exactly.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I ate my meal in ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} öğünümü yedim"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya comí en ${applicationName}"
+          }
+        }
+      }
+    },
+    "Mark my meal done in ${applicationName}" : {
+      "comment" : "Siri phrase that marks the current or next meal done. Keep ${applicationName} exactly.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark my meal done in ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} öğünümü tamamla"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca mi comida como hecha en ${applicationName}"
+          }
+        }
+      }
+    },
+    "Show my next meal in ${applicationName}" : {
+      "comment" : "Siri phrase that shows the next meal. Keep ${applicationName} exactly.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show my next meal in ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} sıradaki öğünümü göster"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra mi próxima comida en ${applicationName}"
+          }
+        }
+      }
+    },
+    "What's my next meal in ${applicationName}" : {
+      "comment" : "Siri phrase that asks for the next meal. Keep ${applicationName} exactly; it is the app's name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What's my next meal in ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} sıradaki öğünüm ne"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuál es mi próxima comida en ${applicationName}"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

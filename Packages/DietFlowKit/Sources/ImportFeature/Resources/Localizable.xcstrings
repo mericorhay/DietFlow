@@ -1,26 +1,1130 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "import.screen.title" : {
-      "comment" : "Navigation title of the screen where a plan is brought in from text, a photo or a PDF.",
+    "import.ai.copied" : {
+      "comment" : "Shown in place of 'Copy AI Instructions' for a moment after copying. One word.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import a plan"
+            "value" : "Copied"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Plan içe aktar"
+            "value" : "Kopyalandı"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importar un plan"
+            "value" : "Copiado"
+          }
+        }
+      }
+    },
+    "import.ai.copy" : {
+      "comment" : "Button that copies instructions for an AI chat to the clipboard. Three words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy AI Instructions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapay Zekâ Talimatlarını Kopyala"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar instrucciones para IA"
+          }
+        }
+      }
+    },
+    "import.ai.footer" : {
+      "comment" : "Explains how to use the copied instructions. One or two sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste the instructions into the chat along with your plan, then paste the reply here with Paste Plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Talimatları planınla birlikte sohbete yapıştır, sonra gelen cevabı Planı Yapıştır ile buraya ekle."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pega las instrucciones en el chat junto con tu plan y luego pega aquí la respuesta con Pegar plan."
+          }
+        }
+      }
+    },
+    "import.ai.header" : {
+      "comment" : "Section heading over the AI instructions button. Claude is a product name. A short question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Using ChatGPT or Claude?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ChatGPT veya Claude mu kullanıyorsun?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Usas ChatGPT o Claude?"
+          }
+        }
+      }
+    },
+    "import.cancel" : {
+      "comment" : "Button that closes the Import Plan sheet. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "import.defaultPlanName" : {
+      "comment" : "Name given to an imported plan that does not name itself. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imported Plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçe Aktarılan Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan importado"
+          }
+        }
+      }
+    },
+    "import.error.empty" : {
+      "comment" : "Import error: nothing was pasted. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's nothing to read yet."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz okunacak bir şey yok."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todavía no hay nada que leer."
+          }
+        }
+      }
+    },
+    "import.error.generic" : {
+      "comment" : "Import error for anything else. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong while reading the plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan okunurken bir sorun oldu."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algo salió mal al leer el plan."
+          }
+        }
+      }
+    },
+    "import.error.noMeals" : {
+      "comment" : "Import error: no meals were found. Suggests a fix. One or two sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No meals were found. Try one meal per line, or ask an AI to format it with Copy AI Instructions."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün bulunamadı. Her satıra bir öğün yazmayı dene ya da Yapay Zekâ Talimatlarını Kopyala ile bir yapay zekâya düzenlet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontraron comidas. Prueba con una comida por línea o pide a una IA que le dé formato con Copiar instrucciones para IA."
+          }
+        }
+      }
+    },
+    "import.error.noText" : {
+      "comment" : "Import error: no text was found in a photo or PDF. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No text could be read. Try a sharper photo with the whole plan in view."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metin okunamadı. Planın tamamının göründüğü daha net bir fotoğraf dene."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo leer texto. Prueba con una foto más nítida en la que se vea todo el plan."
+          }
+        }
+      }
+    },
+    "import.error.ok" : {
+      "comment" : "Button that closes the import error alert. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        }
+      }
+    },
+    "import.error.title" : {
+      "comment" : "Title of the alert when an import fails. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't import the plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan içe aktarılamadı"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo importar el plan"
+          }
+        }
+      }
+    },
+    "import.error.unreadable" : {
+      "comment" : "Import error: the file is not a plan. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This file isn't a meal plan this app can read."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dosya, uygulamanın okuyabildiği bir öğün planı değil."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este archivo no es un plan de comidas que la app pueda leer."
+          }
+        }
+      }
+    },
+    "import.file.subtitle" : {
+      "comment" : "Under 'Import File': which files work. Keep '.json' and '.mealplan' as they are.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A .json or .mealplan file"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".json veya .mealplan dosyası"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un archivo .json o .mealplan"
+          }
+        }
+      }
+    },
+    "import.file.title" : {
+      "comment" : "Import option: choose a plan file. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import File"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya Seç"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar archivo"
+          }
+        }
+      }
+    },
+    "import.intro" : {
+      "comment" : "Short explanation at the top of Import Plan. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bring in a plan you already have. You'll review every meal before it's saved."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elindeki diyet listesini getir. Kaydetmeden önce her öğünü kontrol edeceksin."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trae un plan que ya tengas. Revisarás cada comida antes de guardarlo."
+          }
+        }
+      }
+    },
+    "import.issue.dayOutOfRange" : {
+      "comment" : "Review warning. %lld is the day number.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day %lld is outside the plan and was left out."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. gün planın dışında, eklenmedi."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El día %lld está fuera del plan y se omitió."
+          }
+        }
+      }
+    },
+    "import.issue.newerFormat" : {
+      "comment" : "Review warning for a file made by a newer version of the app. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This file comes from a newer version of the app. Check it carefully."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dosya uygulamanın daha yeni bir sürümünden geliyor. Dikkatle kontrol et."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este archivo es de una versión más reciente de la app. Revísalo con atención."
+          }
+        }
+      }
+    },
+    "import.issue.nutrition" : {
+      "comment" : "Review warning. %1$lld is the day number, %2$@ the meal's name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day %1$lld: numbers for “%2$@” looked wrong and were left out."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün: “%2$@” için sayılar hatalı göründü ve eklenmedi."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Día %1$lld: los números de “%2$@” parecían incorrectos y se omitieron."
+          }
+        }
+      }
+    },
+    "import.issue.startDate" : {
+      "comment" : "Review warning. %@ is the text that is not a date.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” is not a date, so the plan starts today."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” bir tarih değil, bu yüzden plan bugün başlıyor."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” no es una fecha, así que el plan empieza hoy."
+          }
+        }
+      }
+    },
+    "import.issue.timeMissing" : {
+      "comment" : "Review warning. %1$lld is the day number, %2$@ the meal's name, %3$@ the time it was given.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day %1$lld: “%2$@” had no time, so it is set to %3$@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün: “%2$@” için saat yoktu, %3$@ olarak ayarlandı."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Día %1$lld: “%2$@” no tenía hora, así que se puso a las %3$@."
+          }
+        }
+      }
+    },
+    "import.issue.timeUnreadable" : {
+      "comment" : "Review warning. %1$lld is the day number, %2$@ the text that is not a time, %3$@ the meal's name, %4$@ the time it was given.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day %1$lld: “%2$@” is not a time, so “%3$@” is set to %4$@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün: “%2$@” bir saat değil, bu yüzden “%3$@” %4$@ olarak ayarlandı."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Día %1$lld: “%2$@” no es una hora, así que “%3$@” se puso a las %4$@."
+          }
+        }
+      }
+    },
+    "import.issue.untitled" : {
+      "comment" : "Review warning. %lld is the day number.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day %lld: a meal without a name was left out."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. gün: adı olmayan bir öğün eklenmedi."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Día %lld: se omitió una comida sin nombre."
+          }
+        }
+      }
+    },
+    "import.paste.continue" : {
+      "comment" : "Button that reads the pasted text and shows it for review. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        }
+      }
+    },
+    "import.paste.placeholder" : {
+      "comment" : "Placeholder in the empty text box where a plan is pasted. One or two short lines.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste your plan here. One meal per line works best: “10:00 Breakfast: Eggs and avocado”."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planını buraya yapıştır. Her satırda bir öğün en iyisi: “10:00 Kahvaltı: Yumurta ve avokado”."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pega tu plan aquí. Mejor una comida por línea: “10:00 Desayuno: Huevos y aguacate”."
+          }
+        }
+      }
+    },
+    "import.paste.subtitle" : {
+      "comment" : "Under 'Paste Plan': where such text comes from. Claude is a product name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text from ChatGPT, Claude or a dietitian"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ChatGPT, Claude veya diyetisyeninden gelen metin"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texto de ChatGPT, Claude o tu dietista"
+          }
+        }
+      }
+    },
+    "import.paste.title" : {
+      "comment" : "Import option: paste the plan as text. Also the title of the paste screen. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste Plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Yapıştır"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pegar plan"
+          }
+        }
+      }
+    },
+    "import.reading" : {
+      "comment" : "Shown while a plan is being read. One or two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okunuyor…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leyendo…"
+          }
+        }
+      }
+    },
+    "import.review.checkHeader" : {
+      "comment" : "Section heading over the list of things to check in an imported plan. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check before saving"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydetmeden önce kontrol et"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revisa antes de guardar"
+          }
+        }
+      }
+    },
+    "import.review.dayHeader" : {
+      "comment" : "Section heading for one day of the imported plan. %1$lld is the day number, %2$@ its date. Example: 'Day 1 · Tue, Oct 6'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day %1$lld · %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün · %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Día %1$lld · %2$@"
+          }
+        }
+      }
+    },
+    "import.review.days" : {
+      "comment" : "Part of the review summary: how many days the plan has.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld gün"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld gün"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld día"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld días"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "import.review.meals" : {
+      "comment" : "Part of the review summary: how many meals the plan has.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld meal"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld meals"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld öğün"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld öğün"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld comida"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld comidas"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "import.review.name" : {
+      "comment" : "Placeholder of the plan name field on the review screen. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan name"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan adı"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del plan"
+          }
+        }
+      }
+    },
+    "import.review.repeat" : {
+      "comment" : "Toggle on the review screen. %lld is the plan's last day. Example: 'Repeat after day 14'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repeat after day %lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. günden sonra tekrarla"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repetir después del día %lld"
+          }
+        }
+      }
+    },
+    "import.review.save" : {
+      "comment" : "Prominent button that saves the reviewed plan. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Kaydet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar plan"
+          }
+        }
+      }
+    },
+    "import.review.start" : {
+      "comment" : "Label of the start date picker on the review screen. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empieza"
+          }
+        }
+      }
+    },
+    "import.review.summary" : {
+      "comment" : "Summary under the plan name on the review screen. %1$@ is a number of days, %2$@ a number of meals, both already worded. Example: '14 days · 45 meals'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "import.review.timeAdded" : {
+      "comment" : "Note under a meal whose time was filled in because the plan gave none. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time added"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saat eklendi"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora añadida"
+          }
+        }
+      }
+    },
+    "import.review.title" : {
+      "comment" : "Title of the review screen shown before an imported plan is saved. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontrol Et"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revisar"
+          }
+        }
+      }
+    },
+    "import.scan.pdf" : {
+      "comment" : "Menu item: pick a PDF of a plan. PDF is a protected term.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose PDF"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF Seç"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir PDF"
+          }
+        }
+      }
+    },
+    "import.scan.photo" : {
+      "comment" : "Menu item: pick a photo of a plan. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Photo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf Seç"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir foto"
+          }
+        }
+      }
+    },
+    "import.scan.subtitle" : {
+      "comment" : "Under 'Photo or PDF': the reading happens on the phone, nothing is uploaded.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text is read on this iPhone"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metin bu iPhone'da okunur"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El texto se lee en este iPhone"
+          }
+        }
+      }
+    },
+    "import.scan.title" : {
+      "comment" : "Import option: read a plan from a photo or a PDF. PDF is a protected term.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo or PDF"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf veya PDF"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto o PDF"
+          }
+        }
+      }
+    },
+    "import.title" : {
+      "comment" : "Title of the Import Plan sheet. Two or three words. In Turkish, 'diyet listesi' may be used when describing importing.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import Plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı İçe Aktar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar plan"
           }
         }
       }
