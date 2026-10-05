@@ -26,4 +26,4 @@ GENERATE_INFOPLIST_FILE = YES
 
 // The name under the app icon, used by the app and the widget alike. The only place it is set;
 // the code reads it from the bundle. Localised copies live in DietFlow/Resources/InfoPlist.xcstrings.
-APP_DISPLAY_NAME = Meal Widget
+APP_DISPLAY_NAME = DietFlow

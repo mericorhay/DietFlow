@@ -1,6 +1,6 @@
 # DietFlow
 
-**Meal Widget** — set a meal plan once, and a Home Screen widget tells you what to eat now and
+**Meal Planner Widget: DietFlow** — set a meal plan once, and a Home Screen widget tells you what to eat now and
 next, moving with the time of day on its own.
 
 The plan can be typed in, or imported from a dietitian's list (pasted text, a file, a photo or a
@@ -39,7 +39,7 @@ There is no local build on Windows; builds run on GitHub's macOS runners.
 
 ```bash
 gh workflow run ci.yml -R mericorhay/DietFlow          # compile + package tests + localization
-gh workflow run ci.yml -R mericorhay/DietFlow -f screenshots=true   # …and screenshots in the log
+gh workflow run ci.yml -R mericorhay/DietFlow -f screenshots=core   # …and 7 screenshots in the log (all: 19)
 gh workflow run testflight.yml -R mericorhay/DietFlow  # signed build to TestFlight
 ```
 

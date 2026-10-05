@@ -22,7 +22,7 @@ struct ImportPlanIntent: AppIntent {
 }
 
 /// The phrases Siri and Spotlight offer without any setup.
-nonisolated struct MealWidgetShortcuts: AppShortcutsProvider {
+nonisolated struct DietFlowShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: ShowNextMealIntent(),

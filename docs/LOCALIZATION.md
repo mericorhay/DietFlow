@@ -119,7 +119,7 @@ of a shipping language.
 ## How the app picks a language
 
 iOS chooses: the person's preferred languages, or the language set for this app alone in
-**Settings › Meal Widget › Language**. The app's own Settings screen shows the current language and
+**Settings › DietFlow › Language**. The app's own Settings screen shows the current language and
 opens that page; nothing in the code lists languages, so a newly shipped language appears there
 without a code change. The widget and the Siri phrases follow the app. A right-to-left language
 mirrors the whole layout, which SwiftUI does on its own as long as rule 8 is kept.
