@@ -112,6 +112,9 @@ public enum PlanImportNormalizer {
         }
 
         guard !meals.isEmpty else { throw PlanImportError.noMeals }
+        // More meals than a year of plan can hold is a wrong file, not a plan. Refused whole
+        // rather than cut, because a plan silently missing its end is worse than no import.
+        guard meals.count <= PlanLimits.mealsPerPlan else { throw PlanImportError.unreadable }
 
         let declaredLength = payload.repeatCycle?.lengthInDays ?? 0
         let length = min(max(declaredLength, highestIndex + 1, 1), PlanSchedule.maximumLength)
@@ -181,18 +184,20 @@ public enum PlanImportNormalizer {
             issues.append(.nutritionDropped(day: dayIndex + 1, title: title))
         }
 
-        return Meal(
+        // The title was checked above, so sanitizing only trims and bounds the text.
+        let meal = Meal(
             id: id,
             dayIndex: dayIndex,
             type: type,
             customTypeName: customName,
             time: time,
-            title: String(title.prefix(200)),
+            title: title,
             details: details,
             portion: source.portion?.trimmedNonEmpty,
             nutrition: nutrition,
             notes: source.notes?.trimmedNonEmpty
         )
+        return meal.sanitized()
     }
 
     /// "2026-10-06", also with a time after it ("2026-10-06T00:00:00Z").

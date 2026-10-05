@@ -121,6 +121,24 @@ read with Vision on the device. Nothing is sent anywhere.
 "Copy AI Instructions" puts the format on the clipboard so ChatGPT or Claude can write a payload.
 An MCP server would produce the same payload and call the same `MealPlanStore` operations.
 
+## What comes in from outside
+
+A plan can be typed, pasted, opened from a file, read off a photo, handed over by a Shortcut, and
+later written by an MCP client. None of those is trusted to be small or well formed:
+
+- **Size is checked before anything is read.** `Domain.PlanLimits` holds every bound: a file is
+  measured before it is loaded, pasted or recognised text past the limit is refused, and a plan
+  with more meals than a year can hold is refused whole rather than cut short.
+- **`MealPlanStore` bounds what it stores.** `createPlan`, `replacePlan`, `addMeal` and
+  `updateMeal` pass everything through `MealPlan.sanitized()` / `Meal.sanitized()`: names become
+  one trimmed line, text is cut to its limit, numbers out of range are dropped, and a meal without
+  a name is rejected. The rule lives there, not in each screen, so a new way in cannot skip it.
+- **A link never costs the person their work.** `dietflow://` links can come from any app or web
+  page; while a form is open they are ignored. A reminder or link naming a meal that no longer
+  exists does nothing.
+- **Only the app's own Inbox is cleaned up.** A file opened with the app is deleted after reading
+  only if it is the copy iOS placed in `Documents/Inbox`.
+
 ## The assistant and the backend
 
 `AIServices`, `AssistantFeature`, `PlanSync` and `backend/` are kept from the first skeleton but no

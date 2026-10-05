@@ -35,6 +35,14 @@ enum AppSheet: Identifiable {
         case .editPlan(let plan): "editPlan-\(plan.id.uuidString)"
         }
     }
+
+    /// Whether closing this sheet could lose something the person typed.
+    var holdsUnsavedWork: Bool {
+        switch self {
+        case .settings: false
+        case .importPlan, .newMeal, .newPlan, .editPlan: true
+        }
+    }
 }
 
 /// Routes between features: three tabs, the sheets over them, first-run onboarding, and the links
@@ -207,6 +215,8 @@ struct RootView: View {
 
     /// Text handed over by the Import Plan shortcut opens straight into review.
     private func takePendingImport() {
+        // Left waiting while a form is open; it is picked up the next time the app comes forward.
+        guard sheet?.holdsUnsavedWork != true else { return }
         if let text = PendingImportInbox.take() {
             present(.importPlan(.text(text)))
         }
@@ -227,6 +237,9 @@ struct RootView: View {
     }
 
     private func route(_ link: AppLink) {
+        // Any app or web page can open a dietflow:// link. It may move the person around, but it
+        // must never close a form they are in the middle of filling in.
+        guard sheet?.holdsUnsavedWork != true else { return }
         switch link {
         case .today:
             dismissSheet()
@@ -247,18 +260,18 @@ struct RootView: View {
     }
 
     private func openFile(_ url: URL) {
-        let accessing = url.startAccessingSecurityScopedResource()
-        defer { if accessing { url.stopAccessingSecurityScopedResource() } }
-        guard let data = try? Data(contentsOf: url) else { return }
-        // Opened files arrive as copies in the app's Inbox; the plan is read from memory from here on.
-        if url.path(percentEncoded: false).contains("/Inbox/") {
+        let input = ImportInput.reading(fileAt: url)
+        // Opened files arrive as copies in the app's own Inbox; the plan is read from memory from
+        // here on. Only that folder is ever cleaned up: a file somewhere else is the person's.
+        if let inbox = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Inbox", isDirectory: true),
+           url.resolvingSymlinksInPath().path(percentEncoded: false).hasPrefix(inbox.resolvingSymlinksInPath().path(percentEncoded: false)) {
             try? FileManager.default.removeItem(at: url)
         }
         showsOnboarding = false
         if !store.settings.hasCompletedOnboarding {
             store.updateSettings { $0.hasCompletedOnboarding = true }
         }
-        present(.importPlan(.file(data, fileName: url.lastPathComponent)))
+        present(.importPlan(input))
     }
 
     private func dismissSheet() {

@@ -20,7 +20,8 @@ import Foundation
 public enum PastedPlanParser {
     public static func parse(_ text: String, today: CalendarDay = .today()) -> MealPlanPayload? {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return nil }
+        // Longer than any plan: not worth walking line by line.
+        guard !trimmed.isEmpty, trimmed.count <= PlanLimits.importTextLength else { return nil }
 
         if let payload = embeddedJSON(in: trimmed), payload.days.contains(where: { !$0.meals.isEmpty }) {
             return payload
@@ -337,7 +338,7 @@ private struct LineReader {
         var title = text
         var found = FoundNutrition()
 
-        if let match = title.firstMatch(of: /[\s(\[,–—-]*(?<value>\d{2,5}(?:[.,]\d+)?)\s*(?:kcal|kkal|kalori|calories|calorías|calorias|cal)\b[)\],]*/.ignoresCase()) {
+        if let match = title.firstMatch(of: /[\s(\[,–—-]*(?<value>\d{1,2}[.,]\d{3}|\d{2,5}(?:[.,]\d+)?)\s*(?:kcal|kkal|kalori|calories|calorías|calorias|cal)\b[)\],]*/.ignoresCase()) {
             found.calories = NumberScanner.leadingNumber(in: String(match.output.value))
             title.removeSubrange(match.range)
         }

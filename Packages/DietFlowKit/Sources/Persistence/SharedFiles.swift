@@ -82,6 +82,10 @@ public enum AppSettingsStore {
     }
 }
 
+public enum PendingImportError: Error, Sendable {
+    case tooLong
+}
+
 /// A plan handed over by the Import Plan shortcut, waiting for the app to show it for review.
 public enum PendingImportInbox {
     private static var fileURL: URL? {
@@ -90,6 +94,9 @@ public enum PendingImportInbox {
     }
 
     public static func put(_ text: String) throws {
+        // A Shortcut can pass anything. Text longer than Import reads is refused here, so the
+        // Shortcut fails where the person can see it instead of the app opening on an error.
+        guard text.count <= PlanLimits.importTextLength else { throw PendingImportError.tooLong }
         guard let fileURL else { return }
         try Data(text.utf8).write(to: fileURL, options: [.atomic])
     }

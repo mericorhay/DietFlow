@@ -29,8 +29,14 @@ public struct PlanExport: Transferable, Sendable {
 
     /// The plan's name, safe as a file name.
     var fileName: String {
-        let name = plan.name.trimmedNonEmpty ?? "Meal Plan"
+        let fallback = "Meal Plan"
         let unsafe = CharacterSet(charactersIn: "/\\:?%*|\"<>").union(.newlines).union(.controlCharacters)
-        return name.components(separatedBy: unsafe).joined(separator: "-")
+        let cleaned = (plan.name.trimmedNonEmpty ?? fallback)
+            .components(separatedBy: unsafe)
+            .joined(separator: "-")
+            // A leading dot would hide the file; a name of only dots and dashes says nothing.
+            .trimmingCharacters(in: CharacterSet(charactersIn: ".- "))
+        // File systems allow 255 bytes for a name; a plan name may be 80 characters of any script.
+        return String(cleaned.prefix(60)).trimmedNonEmpty ?? fallback
     }
 }

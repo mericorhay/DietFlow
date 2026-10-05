@@ -19,6 +19,9 @@ enum OnDevicePlanReader {
     static func payload(from text: String) async throws -> MealPlanPayload? {
         #if canImport(FoundationModels)
         guard isAvailable else { return nil }
+        // The on-device model takes a few pages of text at most. Longer than that is left to the
+        // caller to report as unreadable, rather than sent to fail.
+        guard text.count <= 12_000 else { return nil }
         let session = LanguageModelSession(instructions: """
             You turn a meal plan written in any language into structured data. \
             Copy meal names in their original language. \

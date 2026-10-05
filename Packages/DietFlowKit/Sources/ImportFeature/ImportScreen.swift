@@ -13,6 +13,22 @@ import PlanImport
 public enum ImportInput: Sendable {
     case text(String)
     case file(Data, fileName: String)
+    /// A file that could not be read, or is far larger than a plan can be. Import says so.
+    case unreadableFile
+
+    /// Reads a file handed to the app, refusing one too large to be a plan before any of it is
+    /// loaded: a file opened by mistake must not be able to exhaust the app's memory.
+    public static func reading(fileAt url: URL) -> ImportInput {
+        let accessing = url.startAccessingSecurityScopedResource()
+        defer { if accessing { url.stopAccessingSecurityScopedResource() } }
+        let isPDF = url.pathExtension.lowercased() == "pdf"
+        let limit = isPDF ? PlanLimits.importDocumentBytes : PlanLimits.importFileBytes
+        guard let size = try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize, size <= limit,
+              let data = try? Data(contentsOf: url) else {
+            return .unreadableFile
+        }
+        return .file(data, fileName: url.lastPathComponent)
+    }
 }
 
 /// Bringing in a plan the person already has: pasted text, a file, a photo or a PDF. Whatever the
@@ -148,6 +164,8 @@ public struct ImportPlanScreen: View {
                 await read(.text(text))
             case .file(let data, let fileName):
                 await read(fileName.lowercased().hasSuffix(".pdf") ? .pdf(data) : .file(data))
+            case .unreadableFile:
+                failure = ImportFailure(PlanImportError.unreadable)
             case nil:
                 break
             }
@@ -170,9 +188,7 @@ public struct ImportPlanScreen: View {
 
     private func readFile(_ result: Result<URL, any Error>, as request: FileRequest) async {
         guard case .success(let url) = result else { return }
-        let accessing = url.startAccessingSecurityScopedResource()
-        defer { if accessing { url.stopAccessingSecurityScopedResource() } }
-        guard let data = try? Data(contentsOf: url) else {
+        guard case .file(let data, _) = ImportInput.reading(fileAt: url) else {
             failure = ImportFailure(PlanImportError.unreadable)
             return
         }
@@ -181,7 +197,7 @@ public struct ImportPlanScreen: View {
 
     private func readPhoto(_ item: PhotosPickerItem) async {
         defer { photoItem = nil }
-        guard let data = try? await item.loadTransferable(type: Data.self) else {
+        guard let data = try? await item.loadTransferable(type: Data.self), data.count <= PlanLimits.importDocumentBytes else {
             failure = ImportFailure(PlanReadingError.noTextFound)
             return
         }

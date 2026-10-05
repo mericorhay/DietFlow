@@ -80,6 +80,8 @@ public struct MealReminderScheduler: Sendable {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = timeZone
         for request in requests {
+            // Superseded by a newer reschedule: stop adding what it is about to replace.
+            if Task.isCancelled { return }
             let content = UNMutableNotificationContent()
             content.title = Self.title(for: request)
             content.body = request.occurrence.meal.title

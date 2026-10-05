@@ -31,14 +31,17 @@ public struct MealPlanImportService: Sendable {
         case .file(let data):
             return try await importFile(data, defaults: defaults)
         case .image(let data):
+            guard data.count <= PlanLimits.importDocumentBytes else { throw PlanImportError.unreadable }
             return try await importText(try await TextRecognizer.text(inImage: data), defaults: defaults)
         case .pdf(let data):
+            guard data.count <= PlanLimits.importDocumentBytes else { throw PlanImportError.unreadable }
             return try await importText(try await TextRecognizer.text(inPDF: data), defaults: defaults)
         }
     }
 
     /// A file: the interchange format, or a text file holding a plan.
     public func importFile(_ data: Data, defaults: ImportDefaults) async throws -> ImportedPlanDraft {
+        guard data.count <= PlanLimits.importFileBytes else { throw PlanImportError.unreadable }
         if let payload = try? MealPlanPayload.decode(data), payload.days.contains(where: { !$0.meals.isEmpty }) {
             return try PlanImportNormalizer.draft(from: payload, defaults: defaults)
         }
@@ -50,6 +53,9 @@ public struct MealPlanImportService: Sendable {
     /// nothing, Apple's on-device model where the device has it.
     public func importText(_ text: String, defaults: ImportDefaults) async throws -> ImportedPlanDraft {
         guard text.trimmedNonEmpty != nil else { throw PlanImportError.empty }
+        // A whole book pasted or a three-hundred-page PDF picked by mistake: say it cannot be
+        // read, rather than reading the start of it and presenting that as the plan.
+        guard text.count <= PlanLimits.importTextLength else { throw PlanImportError.unreadable }
 
         if let payload = PastedPlanParser.parse(text, today: defaults.startDay) {
             return try PlanImportNormalizer.draft(from: payload, defaults: defaults)

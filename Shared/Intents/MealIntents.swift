@@ -174,6 +174,8 @@ struct AddMealIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog {
+        // Shortcuts can pass an empty name; ask for one rather than add a meal with nothing to show.
+        guard let name = mealName.trimmedNonEmpty else { throw $mealName.needsValueError() }
         let store = MealPlanStore.live()
         guard let plan = store.activePlan, let schedule = store.schedule else {
             return .result(dialog: IntentDialog("intent.addMeal.noPlan"))
@@ -187,10 +189,10 @@ struct AddMealIntent: AppIntent {
             dayIndex: dayIndex,
             type: type.mealType,
             time: TimeOfDay(hour: clock.hour ?? 12, minute: clock.minute ?? 0),
-            title: mealName.trimmingCharacters(in: .whitespacesAndNewlines)
+            title: name
         )
-        try store.addMeal(meal, toPlan: plan.id)
-        let title = meal.title
+        // The store bounds what it is given; say back the name as it was stored.
+        let title = try store.addMeal(meal, toPlan: plan.id).title
         return .result(dialog: IntentDialog(LocalizedStringResource("intent.addMeal.result", defaultValue: "Added \(title).")))
     }
 }

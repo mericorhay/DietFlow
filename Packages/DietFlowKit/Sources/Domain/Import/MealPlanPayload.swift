@@ -321,23 +321,30 @@ extension KeyedDecodingContainer where Key == FlexibleKey {
 }
 
 enum NumberScanner {
-    /// The first number in `text`: "510 kcal" → 510, "12,5 g" → 12.5, "~30g" → 30.
+    /// The first number in `text`: "510 kcal" → 510, "12,5 g" → 12.5, "~30g" → 30,
+    /// "1,200 kcal" and "1.200 kcal" → 1200.
     static func leadingNumber(in text: String) -> Double? {
-        var digits = ""
+        var whole = ""
+        var fraction = ""
         var seenSeparator = false
         var started = false
         for character in text {
             if character.isASCII, character.isNumber {
-                digits.append(character)
+                if seenSeparator { fraction.append(character) } else { whole.append(character) }
                 started = true
             } else if started, !seenSeparator, character == "." || character == "," {
-                digits.append(".")
                 seenSeparator = true
             } else if started {
                 break
             }
         }
-        if digits.hasSuffix(".") { digits.removeLast() }
-        return Double(digits)
+        guard !whole.isEmpty else { return nil }
+        // Exactly three digits after the mark is how thousands are grouped, in English with a
+        // comma and in Turkish and Spanish with a point. Read as a decimal, "1,200 kcal" would
+        // become one calorie and pass every range check.
+        if fraction.count == 3, whole.count <= 3, whole != "0" {
+            return Double(whole + fraction)
+        }
+        return Double(fraction.isEmpty ? whole : "\(whole).\(fraction)")
     }
 }

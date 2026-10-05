@@ -9,6 +9,10 @@ import Persistence
 public enum MealPlanStoreError: Error, Sendable {
     case noActivePlan
     case mealNotFound
+    /// A meal with no name: there would be nothing to show for it.
+    case mealHasNoTitle
+    /// The plan already holds as many meals as a plan can.
+    case planIsFull
 }
 
 /// A change the person asked for that could not be stored.
@@ -149,6 +153,9 @@ public final class MealPlanStore {
     /// Stores a new plan; by default it becomes the active plan.
     @discardableResult
     public func createPlan(_ plan: MealPlan, activate: Bool = true) throws -> MealPlan {
+        // Screens, imports, Shortcuts and later an MCP bridge all arrive here, so this is where
+        // what they hand over is bounded — not in each of them.
+        let plan = plan.sanitized()
         try persistence.insert(plan, activate: activate || plans.isEmpty)
         didChange("createPlan")
         return plan
@@ -156,7 +163,7 @@ public final class MealPlanStore {
 
     /// Replaces a plan's name, schedule and meals. Meals that keep their id keep their history.
     public func replacePlan(_ plan: MealPlan) throws {
-        try persistence.replace(plan)
+        try persistence.replace(plan.sanitized())
         didChange("replacePlan")
     }
 
@@ -176,6 +183,10 @@ public final class MealPlanStore {
     @discardableResult
     public func addMeal(_ meal: Meal, toPlan planID: UUID? = nil) throws -> Meal {
         guard let target = planID ?? activePlan?.id else { throw MealPlanStoreError.noActivePlan }
+        guard let meal = meal.sanitized() else { throw MealPlanStoreError.mealHasNoTitle }
+        if let plan = activePlan, plan.id == target, plan.meals.count >= PlanLimits.mealsPerPlan, !plan.meals.contains(where: { $0.id == meal.id }) {
+            throw MealPlanStoreError.planIsFull
+        }
         try persistence.upsert(meal, planID: target)
         didChange("addMeal")
         return meal
@@ -183,6 +194,7 @@ public final class MealPlanStore {
 
     public func updateMeal(_ meal: Meal, inPlan planID: UUID? = nil) throws {
         guard let target = planID ?? activePlan?.id else { throw MealPlanStoreError.noActivePlan }
+        guard let meal = meal.sanitized() else { throw MealPlanStoreError.mealHasNoTitle }
         try persistence.upsert(meal, planID: target)
         didChange("updateMeal")
     }
@@ -208,8 +220,11 @@ public final class MealPlanStore {
     }
 
     public func setState(_ state: OccurrenceState, for key: OccurrenceKey) throws {
-        guard let planID = activePlan?.id else { throw MealPlanStoreError.noActivePlan }
-        try persistence.setState(state, for: key, planID: planID)
+        guard let plan = activePlan else { throw MealPlanStoreError.noActivePlan }
+        // A reminder or a link can outlive the meal it names. Recording a state for a meal the
+        // plan no longer has would leave a row nothing ever reads or removes.
+        guard plan.meals.contains(where: { $0.id == key.mealID }) else { throw MealPlanStoreError.mealNotFound }
+        try persistence.setState(state, for: key, planID: plan.id)
         didChange("setState")
     }
 
@@ -320,9 +335,15 @@ public final class MealPlanStore {
         let requests = settings.remindersEnabled
             ? ReminderPlanner.requests(plan: activePlan, states: states, defaultOffset: settings.defaultReminder, now: now)
             : []
+        // One reschedule at a time, newest last. Run side by side, an older one could still be
+        // adding reminders after a newer one had cleared them, and bring back the reminder for a
+        // meal that was just marked done.
         let reminders = self.reminders
-        reminderTask?.cancel()
+        let previous = reminderTask
+        previous?.cancel()
         reminderTask = Task {
+            await previous?.value
+            guard !Task.isCancelled else { return }
             await reminders.reschedule(requests)
         }
     }

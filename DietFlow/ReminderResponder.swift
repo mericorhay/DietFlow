@@ -24,14 +24,17 @@ nonisolated final class ReminderResponder: NSObject, UNUserNotificationCenterDel
         let store = store
         let open = open
         await MainActor.run {
+            // The widget may have changed something since the app last looked.
+            store.refresh()
+            // A reminder delivered before its meal or plan was deleted has nothing left to mark;
+            // its buttons then do nothing, rather than raise an error about a change that was
+            // never possible.
+            let exists = store.occurrence(for: key) != nil
             switch action {
             case MealReminderAction.done.rawValue:
-                // The widget may have changed something since the app last looked.
-                store.refresh()
-                store.attempt { try store.markMealCompleted(key) }
+                if exists { store.attempt { try store.markMealCompleted(key) } }
             case MealReminderAction.skip.rawValue:
-                store.refresh()
-                store.attempt { try store.markMealSkipped(key) }
+                if exists { store.attempt { try store.markMealSkipped(key) } }
             default:
                 open(.meal(key))
             }
