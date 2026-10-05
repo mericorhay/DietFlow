@@ -7,6 +7,10 @@ import Domain
 // MarkMealDoneIntent in the widget's own process, and Shortcuts and Siri run all of them through
 // the app. Every intent goes through MealPlanStore, so the widget, the reminders and the Today
 // screen stay in step whichever way a change arrives.
+//
+// The app target defaults to the main actor and the widget target does not, so what App Intents
+// reads from any thread (titles, descriptions, `init()`) is marked nonisolated explicitly.
+// An intent with parameters cannot be nonisolated as a whole: its parameters are mutable storage.
 
 /// One meal on one day, as Shortcuts and Siri see it.
 nonisolated struct MealOccurrenceEntity: AppEntity, Identifiable {
@@ -87,14 +91,14 @@ nonisolated enum MealTypeOption: String, AppEnum {
 }
 
 /// Marks a meal done: the one chosen, or the meal that is on now or next.
-nonisolated struct MarkMealDoneIntent: AppIntent {
-    static let title: LocalizedStringResource = "intent.markDone.title"
-    static var description: IntentDescription { IntentDescription("intent.markDone.description") }
+struct MarkMealDoneIntent: AppIntent {
+    nonisolated static let title: LocalizedStringResource = "intent.markDone.title"
+    nonisolated static var description: IntentDescription { IntentDescription("intent.markDone.description") }
 
     @Parameter(title: "intent.parameter.meal")
     var meal: MealOccurrenceEntity?
 
-    init() {}
+    nonisolated init() {}
 
     init(meal: MealOccurrenceEntity) {
         self.meal = meal
@@ -150,9 +154,9 @@ nonisolated struct ShowNextMealIntent: AppIntent {
 }
 
 /// Adds a meal to the active plan, on the plan day that falls on the chosen date.
-nonisolated struct AddMealIntent: AppIntent {
-    static let title: LocalizedStringResource = "intent.addMeal.title"
-    static var description: IntentDescription { IntentDescription("intent.addMeal.description") }
+struct AddMealIntent: AppIntent {
+    nonisolated static let title: LocalizedStringResource = "intent.addMeal.title"
+    nonisolated static var description: IntentDescription { IntentDescription("intent.addMeal.description") }
 
     @Parameter(title: "intent.parameter.mealName")
     var mealName: String
@@ -166,7 +170,7 @@ nonisolated struct AddMealIntent: AppIntent {
     @Parameter(title: "intent.parameter.day")
     var day: Date?
 
-    init() {}
+    nonisolated init() {}
 
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog {

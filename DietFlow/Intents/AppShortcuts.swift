@@ -4,15 +4,15 @@ import Persistence
 
 /// Hands pasted plan text to the app, which opens it for review. Never saves on its own: every
 /// import is reviewed first.
-nonisolated struct ImportPlanIntent: AppIntent {
-    static let title: LocalizedStringResource = "intent.importPlan.title"
-    static var description: IntentDescription { IntentDescription("intent.importPlan.description") }
-    static let openAppWhenRun = true
+struct ImportPlanIntent: AppIntent {
+    nonisolated static let title: LocalizedStringResource = "intent.importPlan.title"
+    nonisolated static var description: IntentDescription { IntentDescription("intent.importPlan.description") }
+    nonisolated static let openAppWhenRun = true
 
     @Parameter(title: "intent.parameter.planText", inputOptions: String.IntentInputOptions(multiline: true))
     var text: String
 
-    init() {}
+    nonisolated init() {}
 
     @MainActor
     func perform() async throws -> some IntentResult {
