@@ -11,16 +11,40 @@
             "value" : "Add Meal"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir comida"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öğün Ekle"
           }
+        }
+      }
+    },
+    "plan.day.addMealTo" : {
+      "comment" : "VoiceOver label of the plus button on each day of the Plan list. %@ is that day's heading, for example 'Day 3 · Wednesday, 7 October'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add meal to %@"
+          }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Añadir comida"
+            "value" : "Añadir comida: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün ekle: %@"
           }
         }
       }
@@ -35,16 +59,16 @@
             "value" : "No meals"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğün yok"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin comidas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün yok"
           }
         }
       }
@@ -59,16 +83,16 @@
             "value" : "Day %1$lld · %2$@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld. gün · %2$@"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld · %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün · %2$@"
           }
         }
       }
@@ -83,16 +107,16 @@
             "value" : "Delete Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Sil"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Sil"
           }
         }
       }
@@ -107,16 +131,16 @@
             "value" : "Its meals and everything you marked done are deleted."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğünleri ve işaretlediğin her şey silinir."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se eliminan sus comidas y todo lo que marcaste."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğünleri ve işaretlediğin her şey silinir."
           }
         }
       }
@@ -131,16 +155,16 @@
             "value" : "Delete this plan?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu plan silinsin mi?"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Eliminar este plan?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu plan silinsin mi?"
           }
         }
       }
@@ -155,16 +179,16 @@
             "value" : "Delete Meal"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğünü Sil"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar comida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğünü Sil"
           }
         }
       }
@@ -179,16 +203,16 @@
             "value" : "It is removed from every repeat of the plan."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planın her tekrarından kaldırılır."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se quitará de todas las repeticiones del plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planın her tekrarından kaldırılır."
           }
         }
       }
@@ -203,16 +227,16 @@
             "value" : "Delete this meal?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu öğün silinsin mi?"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Eliminar esta comida?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu öğün silinsin mi?"
           }
         }
       }
@@ -227,16 +251,16 @@
             "value" : "Delete"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sil"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sil"
           }
         }
       }
@@ -251,16 +275,16 @@
             "value" : "Done"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamamlandı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamamlandı"
           }
         }
       }
@@ -275,16 +299,16 @@
             "value" : "Skipped"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atlandı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omitida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atlandı"
           }
         }
       }
@@ -299,16 +323,16 @@
             "value" : "Add"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ekle"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añadir"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle"
           }
         }
       }
@@ -323,16 +347,16 @@
             "value" : "Add Meal"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğün Ekle"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añadir comida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün Ekle"
           }
         }
       }
@@ -347,16 +371,16 @@
             "value" : "Delete Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Sil"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Sil"
           }
         }
       }
@@ -371,16 +395,16 @@
             "value" : "Edit Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Düzenle"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Editar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Düzenle"
           }
         }
       }
@@ -395,16 +419,16 @@
             "value" : "Export Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Dışa Aktar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exportar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Dışa Aktar"
           }
         }
       }
@@ -419,16 +443,16 @@
             "value" : "Import Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı İçe Aktar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı İçe Aktar"
           }
         }
       }
@@ -443,16 +467,16 @@
             "value" : "More"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diğer"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Más"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diğer"
           }
         }
       }
@@ -467,16 +491,16 @@
             "value" : "New Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni Plan"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuevo plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Plan"
           }
         }
       }
@@ -491,16 +515,16 @@
             "value" : "Settings"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayarlar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         }
       }
@@ -515,16 +539,16 @@
             "value" : "Switch Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan Değiştir"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cambiar de plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Değiştir"
           }
         }
       }
@@ -539,16 +563,16 @@
             "value" : "Same every day"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Her gün aynı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Igual todos los días"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her gün aynı"
           }
         }
       }
@@ -563,16 +587,16 @@
             "value" : "Ended %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ tarihinde bitti"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terminó el %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tarihinde bitti"
           }
         }
       }
@@ -587,13 +611,13 @@
             "value" : "%1$@ – %2$@"
           }
         },
-        "tr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ – %2$@"
           }
         },
-        "es" : {
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ – %2$@"
@@ -611,16 +635,16 @@
             "value" : "Day %1$lld of %2$lld"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%2$lld günün %1$lld. günü"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld de %2$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld günün %1$lld. günü"
           }
         }
       }
@@ -635,16 +659,16 @@
             "value" : "Day %1$lld of %2$lld · Repeats"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%2$lld günün %1$lld. günü · Tekrarlanır"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld de %2$lld · Se repite"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld günün %1$lld. günü · Tekrarlanır"
           }
         }
       }
@@ -659,16 +683,16 @@
             "value" : "Starts %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ başlıyor"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Empieza el %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ başlıyor"
           }
         }
       }
@@ -683,13 +707,13 @@
             "value" : "Plan"
           }
         },
-        "tr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan"
           }
         },
-        "es" : {
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan"
@@ -707,16 +731,16 @@
             "value" : "Cancel"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vazgeç"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
           }
         }
       }
@@ -731,16 +755,16 @@
             "value" : "My Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planım"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mi plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planım"
           }
         }
       }
@@ -755,16 +779,16 @@
             "value" : "Edit Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Düzenle"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Editar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Düzenle"
           }
         }
       }
@@ -779,16 +803,16 @@
             "value" : "Each day of the plan is a date on the calendar, starting with the start date."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planın her günü, başlangıç tarihinden itibaren takvimdeki bir güne denk gelir."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cada día del plan es una fecha del calendario, empezando por la fecha de inicio."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planın her günü, başlangıç tarihinden itibaren takvimdeki bir güne denk gelir."
           }
         }
       }
@@ -803,16 +827,16 @@
             "value" : "The plan ends after day %lld."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan %lld. günden sonra biter."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "El plan termina después del día %lld."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan %lld. günden sonra biter."
           }
         }
       }
@@ -827,16 +851,16 @@
             "value" : "After day %lld, the plan starts again from day 1."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld. günden sonra plan 1. günden yeniden başlar."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Después del día %lld, el plan vuelve a empezar desde el día 1."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. günden sonra plan 1. günden yeniden başlar."
           }
         }
       }
@@ -851,16 +875,16 @@
             "value" : "Plan type"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan türü"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tipo de plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan türü"
           }
         }
       }
@@ -875,16 +899,16 @@
             "value" : "Cycle"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Döngü"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ciclo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Döngü"
           }
         }
       }
@@ -899,16 +923,16 @@
             "value" : "Fixed dates"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sabit tarihler"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fechas fijas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sabit tarihler"
           }
         }
       }
@@ -923,16 +947,16 @@
             "value" : "Length"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Süre"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duración"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Süre"
           }
         }
       }
@@ -959,6 +983,30 @@
             }
           }
         },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld días"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld día"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld días"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -972,24 +1020,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%lld gün"
-                }
-              }
-            }
-          }
-        },
-        "es" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld día"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld días"
                 }
               }
             }
@@ -1007,16 +1037,16 @@
             "value" : "Plan name"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan adı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre del plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan adı"
           }
         }
       }
@@ -1031,16 +1061,16 @@
             "value" : "New Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni Plan"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuevo plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Plan"
           }
         }
       }
@@ -1055,16 +1085,16 @@
             "value" : "Repeat"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tekrarla"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Repetir"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrarla"
           }
         }
       }
@@ -1079,16 +1109,16 @@
             "value" : "Save"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kaydet"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydet"
           }
         }
       }
@@ -1103,16 +1133,16 @@
             "value" : "Shorten Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Kısalt"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acortar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Kısalt"
           }
         }
       }
@@ -1127,16 +1157,16 @@
             "value" : "Meals after day %lld will be deleted."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld. günden sonraki öğünler silinecek."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se eliminarán las comidas después del día %lld."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. günden sonraki öğünler silinecek."
           }
         }
       }
@@ -1151,16 +1181,16 @@
             "value" : "Shorten the plan?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan kısaltılsın mı?"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Acortar el plan?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan kısaltılsın mı?"
           }
         }
       }
@@ -1175,16 +1205,16 @@
             "value" : "Starts"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başlangıç"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Empieza"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç"
           }
         }
       }

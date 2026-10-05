@@ -11,16 +11,16 @@
             "value" : "About"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hakkında"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Información"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakkında"
           }
         }
       }
@@ -35,16 +35,16 @@
             "value" : "Privacy"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gizlilik"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Privacidad"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizlilik"
           }
         }
       }
@@ -59,16 +59,16 @@
             "value" : "Version"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sürüm"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versión"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürüm"
           }
         }
       }
@@ -83,16 +83,16 @@
             "value" : "Active Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Etkin Plan"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan activo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etkin Plan"
           }
         }
       }
@@ -107,16 +107,16 @@
             "value" : "None"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yok"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ninguno"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yok"
           }
         }
       }
@@ -131,16 +131,16 @@
             "value" : "Export Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Dışa Aktar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exportar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Dışa Aktar"
           }
         }
       }
@@ -155,16 +155,16 @@
             "value" : "Data"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veri"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Datos"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veri"
           }
         }
       }
@@ -179,16 +179,16 @@
             "value" : "Import Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı İçe Aktar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı İçe Aktar"
           }
         }
       }
@@ -203,16 +203,16 @@
             "value" : "Reset Sample Data"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Örnek Verilere Sıfırla"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restablecer datos de ejemplo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Örnek Verilere Sıfırla"
           }
         }
       }
@@ -227,16 +227,112 @@
             "value" : "Done"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bitti"
           }
+        }
+      }
+    },
+    "settings.language.footer" : {
+      "comment" : "Footer under the Language & Region section. %@ is the app's name. Explains that the language is chosen in Apple's Settings app and that dates, times and numbers follow the phone's region.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the language %@ uses in the Settings app. Dates, times and numbers follow your iPhone’s region."
+          }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "OK"
+            "value" : "Elige el idioma de %@ en la app Ajustes. Las fechas, las horas y los números siguen la región de tu iPhone."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ uygulamasının dilini Ayarlar uygulamasından seçebilirsin. Tarih, saat ve sayılar iPhone’unun bölge ayarına göre gösterilir."
+          }
+        }
+      }
+    },
+    "settings.language.header" : {
+      "comment" : "Section heading in Settings for the app language, the first day of the week and the energy unit. Three words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language & Region"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma y región"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dil ve Bölge"
+          }
+        }
+      }
+    },
+    "settings.language.hint" : {
+      "comment" : "VoiceOver hint for the App Language row: what tapping it does. Short phrase.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the Settings app"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre la app Ajustes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar uygulamasını açar"
+          }
+        }
+      }
+    },
+    "settings.language.row" : {
+      "comment" : "Row label in Settings; its value is the language the app is shown in (for example 'Türkçe'). Tapping it opens the Settings app. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Language"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma de la app"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama Dili"
           }
         }
       }
@@ -251,13 +347,13 @@
             "value" : "Plan"
           }
         },
-        "tr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan"
           }
         },
-        "es" : {
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan"
@@ -275,16 +371,16 @@
             "value" : "Your plan stays on this iPhone. %@ has no account, no analytics and no advertising, and nothing you enter is sent anywhere."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planın bu iPhone'da kalır. %@ uygulamasında hesap, analiz ve reklam yoktur; girdiğin hiçbir şey bir yere gönderilmez."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu plan se queda en este iPhone. %@ no tiene cuentas, análisis ni publicidad, y nada de lo que escribes se envía a ningún sitio."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planın bu iPhone'da kalır. %@ uygulamasında hesap, analiz ve reklam yoktur; girdiğin hiçbir şey bir yere gönderilmez."
           }
         }
       }
@@ -299,16 +395,16 @@
             "value" : "Photos, PDFs and text you import are read on this iPhone."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İçe aktardığın fotoğraflar, PDF'ler ve metinler bu iPhone'da okunur."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Las fotos, los PDF y el texto que importas se leen en este iPhone."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçe aktardığın fotoğraflar, PDF'ler ve metinler bu iPhone'da okunur."
           }
         }
       }
@@ -323,16 +419,16 @@
             "value" : "Widgets show your next meals on the Home Screen and Lock Screen, where anyone holding your phone can see them."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Widget'lar sıradaki öğünlerini Ana Ekran'da ve Kilit Ekranı'nda gösterir; telefonunu tutan herkes görebilir."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Los widgets muestran tus próximas comidas en la pantalla de inicio y de bloqueo, donde cualquiera con tu teléfono puede verlas."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget'lar sıradaki öğünlerini Ana Ekran'da ve Kilit Ekranı'nda gösterir; telefonunu tutan herkes görebilir."
           }
         }
       }
@@ -347,16 +443,16 @@
             "value" : "Default Reminder"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Varsayılan Hatırlatma"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recordatorio predeterminado"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varsayılan Hatırlatma"
           }
         }
       }
@@ -371,16 +467,16 @@
             "value" : "Notifications are off for %@ in the Settings app."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayarlar uygulamasında %@ için bildirimler kapalı."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Las notificaciones de %@ están desactivadas en la app Ajustes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar uygulamasında %@ için bildirimler kapalı."
           }
         }
       }
@@ -395,16 +491,16 @@
             "value" : "The widget keeps updating with reminders off."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hatırlatmalar kapalıyken de widget güncellenmeye devam eder."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "El widget sigue actualizándose con los recordatorios desactivados."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hatırlatmalar kapalıyken de widget güncellenmeye devam eder."
           }
         }
       }
@@ -419,16 +515,16 @@
             "value" : "Reminders"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hatırlatmalar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recordatorios"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hatırlatmalar"
           }
         }
       }
@@ -443,16 +539,16 @@
             "value" : "Open Settings App"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayarlar Uygulamasını Aç"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abrir la app Ajustes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar Uygulamasını Aç"
           }
         }
       }
@@ -467,16 +563,16 @@
             "value" : "Meal Reminders"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğün Hatırlatmaları"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recordatorios de comidas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün Hatırlatmaları"
           }
         }
       }
@@ -491,16 +587,16 @@
             "value" : "Reset"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sıfırla"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restablecer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıfırla"
           }
         }
       }
@@ -515,16 +611,16 @@
             "value" : "Your plans and everything you marked done are deleted."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planların ve işaretlediğin her şey silinir."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se eliminan tus planes y todo lo que marcaste."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planların ve işaretlediğin her şey silinir."
           }
         }
       }
@@ -539,16 +635,16 @@
             "value" : "Replace everything with the sample plan?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Her şey örnek planla değiştirilsin mi?"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Reemplazar todo por el plan de ejemplo?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her şey örnek planla değiştirilsin mi?"
           }
         }
       }
@@ -563,16 +659,16 @@
             "value" : "Settings"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayarlar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         }
       }
@@ -587,40 +683,16 @@
             "value" : "Energy"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enerji"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Energía"
           }
-        }
-      }
-    },
-    "settings.units.header" : {
-      "comment" : "Section heading for units and calendar options. One word.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Units"
-          }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Birimler"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unidades"
+            "value" : "Enerji"
           }
         }
       }
@@ -635,16 +707,16 @@
             "value" : "First Day of Week"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Haftanın İlk Günü"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Primer día de la semana"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftanın İlk Günü"
           }
         }
       }
@@ -659,16 +731,16 @@
             "value" : "System"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sistem"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sistema"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem"
           }
         }
       }

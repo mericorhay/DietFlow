@@ -34,3 +34,6 @@ DietFlow/Resources/AssistantEndpoint.json
 # Wrangler local cache
 .wrangler/
 node_modules/
+
+# Translation work files from tools/localization (the result lives in the catalogs)
+/translations/

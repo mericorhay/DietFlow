@@ -11,13 +11,13 @@
             "value" : "%1$@, %2$@, %3$@"
           }
         },
-        "tr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@, %2$@, %3$@"
           }
         },
-        "es" : {
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@, %2$@, %3$@"
@@ -35,13 +35,13 @@
             "value" : "%1$@, %2$@, %3$@, %4$@"
           }
         },
-        "tr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@, %2$@, %3$@, %4$@"
           }
         },
-        "es" : {
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@, %2$@, %3$@, %4$@"
@@ -59,16 +59,16 @@
             "value" : "Kilocalories (kcal)"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kilokalori (kcal)"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kilocalorías (kcal)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilokalori (kcal)"
           }
         }
       }
@@ -83,16 +83,16 @@
             "value" : "Kilojoules (kJ)"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kilojul (kJ)"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kilojulios (kJ)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilojul (kJ)"
           }
         }
       }
@@ -107,16 +107,16 @@
             "value" : "on now"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "şu an"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ahora"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "şu an"
           }
         }
       }
@@ -131,16 +131,16 @@
             "value" : "done"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tamamlandı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tamamlandı"
           }
         }
       }
@@ -155,16 +155,16 @@
             "value" : "next meal"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sıradaki öğün"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "próxima comida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sıradaki öğün"
           }
         }
       }
@@ -179,16 +179,16 @@
             "value" : "not marked"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "işaretlenmedi"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "sin marcar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "işaretlenmedi"
           }
         }
       }
@@ -203,16 +203,16 @@
             "value" : "skipped"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "atlandı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "omitida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "atlandı"
           }
         }
       }
@@ -227,16 +227,16 @@
             "value" : "Breakfast"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kahvaltı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desayuno"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kahvaltı"
           }
         }
       }
@@ -251,16 +251,16 @@
             "value" : "Dinner"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Akşam"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cena"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akşam"
           }
         }
       }
@@ -275,16 +275,16 @@
             "value" : "Lunch"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğle"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Almuerzo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğle"
           }
         }
       }
@@ -299,16 +299,16 @@
             "value" : "Other"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diğer"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otro"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diğer"
           }
         }
       }
@@ -323,16 +323,16 @@
             "value" : "Snack"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ara öğün"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Merienda"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ara öğün"
           }
         }
       }
@@ -347,16 +347,16 @@
             "value" : "%@ ago"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ önce"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "hace %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ önce"
           }
         }
       }
@@ -371,16 +371,16 @@
             "value" : "in %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ sonra"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "en %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sonra"
           }
         }
       }
@@ -395,16 +395,16 @@
             "value" : "At meal time"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğün saatinde"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "A la hora de la comida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün saatinde"
           }
         }
       }
@@ -419,16 +419,16 @@
             "value" : "No reminder"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hatırlatma yok"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin recordatorio"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hatırlatma yok"
           }
         }
       }
@@ -443,16 +443,16 @@
             "value" : "1 hour before"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 saat önce"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "1 hora antes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 saat önce"
           }
         }
       }
@@ -467,16 +467,16 @@
             "value" : "10 min before"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10 dk önce"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "10 min antes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 dk önce"
           }
         }
       }
@@ -491,16 +491,16 @@
             "value" : "30 min before"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "30 dk önce"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "30 min antes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 dk önce"
           }
         }
       }

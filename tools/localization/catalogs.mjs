@@ -6,6 +6,7 @@ const directory = path.dirname(fileURLToPath(import.meta.url));
 export const repositoryRoot = path.resolve(directory, "../..");
 export const configPath = path.join(directory, "localization.config.json");
 export const glossaryPath = path.join(directory, "glossary.json");
+export const languagesPath = path.join(directory, "languages.json");
 export const projectPath = path.join(repositoryRoot, "DietFlow.xcodeproj/project.pbxproj");
 
 export async function readConfig() {
@@ -14,6 +15,78 @@ export async function readConfig() {
 
 export async function readGlossary() {
   return JSON.parse(await fs.readFile(glossaryPath, "utf8"));
+}
+
+/** Reference data for every language the app ships or has queued: names, direction, plurals. */
+export async function readLanguages() {
+  return JSON.parse(await fs.readFile(languagesPath, "utf8")).languages;
+}
+
+// MARK: Languages
+
+/** "German", from the registry, the config, or the code itself. */
+export function languageName(locale, languages, config = {}) {
+  return languages[locale]?.name ?? config.localeNames?.[locale] ?? locale;
+}
+
+/** The CLDR plural categories a language needs, in CLDR order. Unknown languages get English's. */
+export function pluralCategories(locale, languages) {
+  return languages[locale]?.plural ?? ["one", "other"];
+}
+
+const PLURAL_ORDER = ["zero", "one", "two", "few", "many", "other"];
+
+/** Where in a leaf's path its plural category sits, or -1 when the leaf is not a plural form. */
+function pluralIndex(unitPath) {
+  for (let index = 0; index + 2 < unitPath.length; index += 3) {
+    if (unitPath[index] === "variations" && unitPath[index + 1] === "plural") return index + 2;
+  }
+  return -1;
+}
+
+/** The plural category of a leaf ("few"), or undefined for a plain string. */
+export function pluralChoice(unitPath) {
+  const index = pluralIndex(unitPath);
+  return index < 0 ? undefined : unitPath[index];
+}
+
+function withPluralChoice(unitPath, choice) {
+  const index = pluralIndex(unitPath);
+  if (index < 0) return unitPath;
+  const copy = [...unitPath];
+  copy[index] = choice;
+  return copy;
+}
+
+const samePath = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+
+/**
+ * The leaves a translation into `locale` must have, given the source's leaves. A plural string
+ * needs every category the target language uses, whichever ones English has: Arabic needs six
+ * forms of "%lld meals", Japanese one.
+ */
+export function expectedPaths(sourceLeaves, locale, languages) {
+  const categories = pluralCategories(locale, languages);
+  const paths = [];
+  for (const leaf of sourceLeaves) {
+    const candidates = pluralChoice(leaf.path) === undefined ? [leaf.path] : categories.map(choice => withPluralChoice(leaf.path, choice));
+    for (const candidate of candidates) {
+      if (!paths.some(existing => samePath(existing, candidate))) paths.push(candidate);
+    }
+  }
+  return paths.sort((a, b) => PLURAL_ORDER.indexOf(pluralChoice(a)) - PLURAL_ORDER.indexOf(pluralChoice(b)));
+}
+
+/**
+ * The source leaf a target leaf translates. A plural category English lacks ("few", "many",
+ * "two", "zero") is written from English's "other"; "one" from "one" when English has it.
+ */
+export function sourceLeafFor(sourceLeaves, targetPath) {
+  const exact = sourceLeaves.find(leaf => samePath(leaf.path, targetPath));
+  if (exact) return exact;
+  if (pluralChoice(targetPath) === undefined) return undefined;
+  return sourceLeaves.find(leaf => samePath(leaf.path, withPluralChoice(targetPath, "other")))
+    ?? sourceLeaves.find(leaf => pluralChoice(leaf.path) !== undefined && samePath(withPluralChoice(leaf.path, "other"), withPluralChoice(targetPath, "other")));
 }
 
 async function walk(current) {
@@ -89,10 +162,16 @@ export function validatePair(source, target, protectedTerms) {
   return errors;
 }
 
-// Xcode writes catalogs with a space before each colon. Matching it keeps a tool-written file
-// byte-identical to one Xcode saved, so diffs show only real changes.
+function sortedKeys(value) {
+  if (Array.isArray(value)) return value.map(sortedKeys);
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(Object.keys(value).sort().map(key => [key, sortedKeys(value[key])]));
+}
+
+// Xcode writes catalogs with sorted keys and a space before each colon. Matching it keeps a
+// tool-written file byte-identical to one Xcode saved, so diffs show only real changes.
 export function appleJSON(value) {
-  return `${JSON.stringify(value, null, 2).replace(/^(\s*)"((?:\\.|[^"\\])*)":/gm, '$1"$2" :')}\n`;
+  return `${JSON.stringify(sortedKeys(value), null, 2).replace(/^(\s*)"((?:\\.|[^"\\])*)":/gm, '$1"$2" :')}\n`;
 }
 
 export async function atomicWrite(file, contents) {

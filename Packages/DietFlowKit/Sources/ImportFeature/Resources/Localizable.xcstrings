@@ -11,16 +11,16 @@
             "value" : "Copied"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopyalandı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Copiado"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopyalandı"
           }
         }
       }
@@ -35,16 +35,16 @@
             "value" : "Copy AI Instructions"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yapay Zekâ Talimatlarını Kopyala"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Copiar instrucciones para IA"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapay Zekâ Talimatlarını Kopyala"
           }
         }
       }
@@ -59,16 +59,16 @@
             "value" : "Paste the instructions into the chat along with your plan, then paste the reply here with Paste Plan."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Talimatları planınla birlikte sohbete yapıştır, sonra gelen cevabı Planı Yapıştır ile buraya ekle."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pega las instrucciones en el chat junto con tu plan y luego pega aquí la respuesta con Pegar plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Talimatları planınla birlikte sohbete yapıştır, sonra gelen cevabı Planı Yapıştır ile buraya ekle."
           }
         }
       }
@@ -83,16 +83,16 @@
             "value" : "Using ChatGPT or Claude?"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ChatGPT veya Claude mu kullanıyorsun?"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Usas ChatGPT o Claude?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ChatGPT veya Claude mu kullanıyorsun?"
           }
         }
       }
@@ -107,16 +107,16 @@
             "value" : "Cancel"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vazgeç"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
           }
         }
       }
@@ -131,16 +131,16 @@
             "value" : "Imported Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İçe Aktarılan Plan"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan importado"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçe Aktarılan Plan"
           }
         }
       }
@@ -155,16 +155,16 @@
             "value" : "There's nothing to read yet."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Henüz okunacak bir şey yok."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Todavía no hay nada que leer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz okunacak bir şey yok."
           }
         }
       }
@@ -179,16 +179,16 @@
             "value" : "Something went wrong while reading the plan."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan okunurken bir sorun oldu."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Algo salió mal al leer el plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan okunurken bir sorun oldu."
           }
         }
       }
@@ -203,16 +203,16 @@
             "value" : "No meals were found. Try one meal per line, or ask an AI to format it with Copy AI Instructions."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğün bulunamadı. Her satıra bir öğün yazmayı dene ya da Yapay Zekâ Talimatlarını Kopyala ile bir yapay zekâya düzenlet."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se encontraron comidas. Prueba con una comida por línea o pide a una IA que le dé formato con Copiar instrucciones para IA."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün bulunamadı. Her satıra bir öğün yazmayı dene ya da Yapay Zekâ Talimatlarını Kopyala ile bir yapay zekâya düzenlet."
           }
         }
       }
@@ -227,16 +227,16 @@
             "value" : "No text could be read. Try a sharper photo with the whole plan in view."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Metin okunamadı. Planın tamamının göründüğü daha net bir fotoğraf dene."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se pudo leer texto. Prueba con una foto más nítida en la que se vea todo el plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metin okunamadı. Planın tamamının göründüğü daha net bir fotoğraf dene."
           }
         }
       }
@@ -251,16 +251,16 @@
             "value" : "OK"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamam"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aceptar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
           }
         }
       }
@@ -275,16 +275,16 @@
             "value" : "Couldn't import the plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan içe aktarılamadı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se pudo importar el plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan içe aktarılamadı"
           }
         }
       }
@@ -299,16 +299,16 @@
             "value" : "This file isn't a meal plan this app can read."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu dosya, uygulamanın okuyabildiği bir öğün planı değil."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Este archivo no es un plan de comidas que la app pueda leer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dosya, uygulamanın okuyabildiği bir öğün planı değil."
           }
         }
       }
@@ -323,16 +323,16 @@
             "value" : "A .json or .mealplan file"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ".json veya .mealplan dosyası"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Un archivo .json o .mealplan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".json veya .mealplan dosyası"
           }
         }
       }
@@ -347,16 +347,16 @@
             "value" : "Import File"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dosya Seç"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar archivo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya Seç"
           }
         }
       }
@@ -371,16 +371,16 @@
             "value" : "Bring in a plan you already have. You'll review every meal before it's saved."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elindeki diyet listesini getir. Kaydetmeden önce her öğünü kontrol edeceksin."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trae un plan que ya tengas. Revisarás cada comida antes de guardarlo."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elindeki diyet listesini getir. Kaydetmeden önce her öğünü kontrol edeceksin."
           }
         }
       }
@@ -395,16 +395,16 @@
             "value" : "Day %lld is outside the plan and was left out."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld. gün planın dışında, eklenmedi."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "El día %lld está fuera del plan y se omitió."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. gün planın dışında, eklenmedi."
           }
         }
       }
@@ -419,16 +419,16 @@
             "value" : "This file comes from a newer version of the app. Check it carefully."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu dosya uygulamanın daha yeni bir sürümünden geliyor. Dikkatle kontrol et."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Este archivo es de una versión más reciente de la app. Revísalo con atención."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dosya uygulamanın daha yeni bir sürümünden geliyor. Dikkatle kontrol et."
           }
         }
       }
@@ -443,16 +443,16 @@
             "value" : "Day %1$lld: numbers for “%2$@” looked wrong and were left out."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld. gün: “%2$@” için sayılar hatalı göründü ve eklenmedi."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld: los números de “%2$@” parecían incorrectos y se omitieron."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün: “%2$@” için sayılar hatalı göründü ve eklenmedi."
           }
         }
       }
@@ -467,16 +467,16 @@
             "value" : "“%@” is not a date, so the plan starts today."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "“%@” bir tarih değil, bu yüzden plan bugün başlıyor."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "“%@” no es una fecha, así que el plan empieza hoy."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” bir tarih değil, bu yüzden plan bugün başlıyor."
           }
         }
       }
@@ -491,16 +491,16 @@
             "value" : "Day %1$lld: “%2$@” had no time, so it is set to %3$@."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld. gün: “%2$@” için saat yoktu, %3$@ olarak ayarlandı."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld: “%2$@” no tenía hora, así que se puso a las %3$@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün: “%2$@” için saat yoktu, %3$@ olarak ayarlandı."
           }
         }
       }
@@ -515,16 +515,16 @@
             "value" : "Day %1$lld: “%2$@” is not a time, so “%3$@” is set to %4$@."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld. gün: “%2$@” bir saat değil, bu yüzden “%3$@” %4$@ olarak ayarlandı."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld: “%2$@” no es una hora, así que “%3$@” se puso a las %4$@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün: “%2$@” bir saat değil, bu yüzden “%3$@” %4$@ olarak ayarlandı."
           }
         }
       }
@@ -539,16 +539,16 @@
             "value" : "Day %lld: a meal without a name was left out."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld. gün: adı olmayan bir öğün eklenmedi."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %lld: se omitió una comida sin nombre."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. gün: adı olmayan bir öğün eklenmedi."
           }
         }
       }
@@ -563,16 +563,16 @@
             "value" : "Continue"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Devam"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continuar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam"
           }
         }
       }
@@ -587,16 +587,16 @@
             "value" : "Paste your plan here. One meal per line works best: “10:00 Breakfast: Eggs and avocado”."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planını buraya yapıştır. Her satırda bir öğün en iyisi: “10:00 Kahvaltı: Yumurta ve avokado”."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pega tu plan aquí. Mejor una comida por línea: “10:00 Desayuno: Huevos y aguacate”."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planını buraya yapıştır. Her satırda bir öğün en iyisi: “10:00 Kahvaltı: Yumurta ve avokado”."
           }
         }
       }
@@ -611,16 +611,16 @@
             "value" : "Text from ChatGPT, Claude or a dietitian"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ChatGPT, Claude veya diyetisyeninden gelen metin"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Texto de ChatGPT, Claude o tu dietista"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ChatGPT, Claude veya diyetisyeninden gelen metin"
           }
         }
       }
@@ -635,16 +635,16 @@
             "value" : "Paste Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Yapıştır"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pegar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Yapıştır"
           }
         }
       }
@@ -659,16 +659,16 @@
             "value" : "Reading…"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Okunuyor…"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leyendo…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okunuyor…"
           }
         }
       }
@@ -683,16 +683,16 @@
             "value" : "Check before saving"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kaydetmeden önce kontrol et"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Revisa antes de guardar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydetmeden önce kontrol et"
           }
         }
       }
@@ -707,16 +707,16 @@
             "value" : "Day %1$lld · %2$@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld. gün · %2$@"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld · %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld. gün · %2$@"
           }
         }
       }
@@ -743,6 +743,30 @@
             }
           }
         },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld días"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld día"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld días"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -756,24 +780,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%lld gün"
-                }
-              }
-            }
-          }
-        },
-        "es" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld día"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld días"
                 }
               }
             }
@@ -803,6 +809,30 @@
             }
           }
         },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld comidas"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld comida"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld comidas"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -816,24 +846,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%lld öğün"
-                }
-              }
-            }
-          }
-        },
-        "es" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld comida"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld comidas"
                 }
               }
             }
@@ -851,16 +863,16 @@
             "value" : "Plan name"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan adı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre del plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan adı"
           }
         }
       }
@@ -875,16 +887,16 @@
             "value" : "Repeat after day %lld"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld. günden sonra tekrarla"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Repetir después del día %lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. günden sonra tekrarla"
           }
         }
       }
@@ -899,16 +911,16 @@
             "value" : "Save Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı Kaydet"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı Kaydet"
           }
         }
       }
@@ -923,16 +935,16 @@
             "value" : "Starts"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başlangıç"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Empieza"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç"
           }
         }
       }
@@ -947,13 +959,13 @@
             "value" : "%1$@ · %2$@"
           }
         },
-        "tr" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · %2$@"
           }
         },
-        "es" : {
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · %2$@"
@@ -971,16 +983,16 @@
             "value" : "Time added"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saat eklendi"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hora añadida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saat eklendi"
           }
         }
       }
@@ -995,16 +1007,16 @@
             "value" : "Review"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kontrol Et"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Revisar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontrol Et"
           }
         }
       }
@@ -1019,16 +1031,16 @@
             "value" : "Choose PDF"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PDF Seç"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elegir PDF"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF Seç"
           }
         }
       }
@@ -1043,16 +1055,16 @@
             "value" : "Choose Photo"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fotoğraf Seç"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elegir foto"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf Seç"
           }
         }
       }
@@ -1067,16 +1079,16 @@
             "value" : "Text is read on this iPhone"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Metin bu iPhone'da okunur"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "El texto se lee en este iPhone"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metin bu iPhone'da okunur"
           }
         }
       }
@@ -1091,16 +1103,16 @@
             "value" : "Photo or PDF"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fotoğraf veya PDF"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Foto o PDF"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf veya PDF"
           }
         }
       }
@@ -1115,16 +1127,16 @@
             "value" : "Import Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı İçe Aktar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı İçe Aktar"
           }
         }
       }

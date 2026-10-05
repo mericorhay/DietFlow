@@ -1,8 +1,18 @@
 # Localization
 
-DietFlow ships English (`en`, the source), Turkish (`tr`) and Spanish (`es`), from Apple String
-Catalogs. The setup is built so that a language model can translate the whole app from one file
-and cannot break anything while doing it.
+English (`en`) is the source language. Turkish (`tr`) and Spanish (`es`) ship today, and thirty
+more are queued in [`tools/localization/localization.config.json`](../tools/localization/localization.config.json)
+(`plannedLocales`), ready for a language model to translate. Everything is built so that a model
+can translate the whole app from one file per language and cannot break anything while doing it.
+
+| | Languages |
+|---|---|
+| Shipping | English, Turkish, Spanish |
+| Planned | German, French, Italian, Portuguese (Brazil), Dutch, Swedish, Danish, Norwegian, Finnish, Polish, Czech, Slovak, Hungarian, Romanian, Greek, Russian, Ukrainian, Croatian, Catalan, Arabic, Hebrew, Hindi, Thai, Vietnamese, Indonesian, Malay, Japanese, Korean, Chinese (Simplified), Chinese (Traditional) |
+
+[`tools/localization/languages.json`](../tools/localization/languages.json) describes each language
+for the translator: its name, whether it is written right to left, and its plural forms with the
+counts each one covers (Arabic has six forms of "%lld meals", Russian four, Japanese one).
 
 ## Rules for every string
 
@@ -23,7 +33,7 @@ and cannot break anything while doing it.
    what it does, and how much room it has: *"Button under the photo preview. Starts the import.
    Two words at most."* The validator rejects a key without one.
 
-4. **All three languages, in the same commit.** A key missing a language fails CI.
+4. **Every shipping language, in the same commit.** A key missing a language fails CI.
 
 5. **Values are passed in, never glued on.** Use placeholders (`%@`, `%lld`), and number them
    when there is more than one (`%1$@`, `%2$lld`) so a translation can reorder them.
@@ -34,54 +44,88 @@ and cannot break anything while doing it.
 7. **What the person wrote is never translated.** Meal names, items and notes are their content,
    in their language.
 
+8. **Leave room.** German runs a third longer than English and Finnish longer still; Arabic and
+   Hebrew run right to left. So: no fixed widths on text, let labels wrap, use `leading` and
+   `trailing` (never left and right), and prefer symbols that mirror (`chevron.forward`, not
+   `chevron.right`). Dates, times and numbers always go through a formatter, so they follow the
+   person's region rather than the language.
+
 Recurring words are fixed in [`tools/localization/glossary.json`](../tools/localization/glossary.json),
 so a "meal" is not an "öğün" on one screen and a "yemek" on the next. Product names that must
 survive untouched are `protectedTerms` in `localization.config.json`.
 
 Siri phrases live in `DietFlow/Resources/AppShortcuts.xcstrings`, where Apple makes the phrase
 itself the key. The validator does not ask those keys to follow the naming, but checks that every
-translation keeps `${applicationName}`.
+translation keeps `${applicationName}`. Siri understands fewer languages than the app ships;
+phrases in a language Siri lacks are simply not offered.
 
 ## Checking
 
 ```bash
 node tools/localization/l10n.mjs validate
+node tools/localization/l10n.mjs status
 ```
 
-It fails on: a missing language, a string not marked translated, a key that does not follow the
-naming, a missing comment, a dropped or added placeholder, a changed line break, a translated
-protected term, or a language Xcode has not been told about. CI runs the same command.
+`validate` fails on: a missing language or plural form, a string not marked translated, a key that
+does not follow the naming, a missing comment, a dropped or added placeholder, a changed line
+break, a translated protected term, or a language Xcode has not been told about. CI runs it, with
+the tooling's own tests (`node --test tools/localization/catalogs.test.mjs`).
 
-## Translating with a model
+`status` lists every shipping and planned language with how much of it is translated.
+
+## Translating the planned languages with a model
 
 ```bash
-node tools/localization/l10n.mjs export --locale tr --out tr.json
+node tools/localization/l10n.mjs export --planned --out-dir translations
 ```
 
-`tr.json` holds every string that still needs Turkish, each with its key, comment and English
-source, plus the instructions and the glossary. Give the file to any model, ask for it back with
-the `translation` fields filled in, then:
+This writes `translations/<code>.json` for each planned language. Each file holds the language's
+plural forms, its writing direction, the instructions, the glossary, and one unit per string:
+key, comment, English source and an empty `translation`. A plural unit also says which form it is
+and which counts use it.
+
+Give each file to a model and ask for it back with every `translation` filled in, the glossary's
+first. Then:
 
 ```bash
-node tools/localization/l10n.mjs import tr.json
+node tools/localization/l10n.mjs import translations/*.json
 node tools/localization/l10n.mjs validate
 ```
 
-`import` checks every line and writes nothing unless all of them pass. It also refuses a
-translation whose English has changed since the export. Add `--all` to `export` to get every
-string, including already translated ones, for a review pass.
+`import` checks every unit and writes nothing from a file unless all of it passes. It refuses a
+translation whose English has changed since the export. A planned language is only written once
+it is complete; it then becomes a shipping language by itself — the config, the glossary and the
+Xcode project's known regions are all updated — so the app never shows a half-translated language.
+Commit the catalogs, `localization.config.json`, `glossary.json` and `project.pbxproj` together.
 
-## Adding a language
+One language at a time works the same way:
 
 ```bash
-node tools/localization/l10n.mjs add-locale de German
 node tools/localization/l10n.mjs export --locale de --out de.json
-# translate de.json
 node tools/localization/l10n.mjs import de.json
 ```
 
-`add-locale` registers the language in the config and in the Xcode project. Add the new
-language's words to the glossary before exporting, so the model uses them from the first string.
+Add `--all` to `export` to get every string, including already translated ones, for a review pass
+of a shipping language.
+
+## Adding a language that is not in the plan
+
+1. Add it to `languages.json`: its Xcode code (`pt-PT`, `zh-HK`), English and native name,
+   `"direction": "rtl"` if it is written right to left, and its CLDR plural categories with
+   the counts each covers.
+2. Add the code to `plannedLocales`.
+3. Translate it as above.
+
+## How the app picks a language
+
+iOS chooses: the person's preferred languages, or the language set for this app alone in
+**Settings › Meal Widget › Language**. The app's own Settings screen shows the current language and
+opens that page; nothing in the code lists languages, so a newly shipped language appears there
+without a code change. The widget and the Siri phrases follow the app. A right-to-left language
+mirrors the whole layout, which SwiftUI does on its own as long as rule 8 is kept.
+
+To check that a screen has room, run the app with Xcode's *Double-Length Pseudolanguage* or
+*Right-to-Left Pseudolanguage* (Scheme › Run › Options › App Language).
 
 ## Where catalogs live
 

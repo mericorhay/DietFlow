@@ -11,16 +11,16 @@
             "value" : "%@ now"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ zamanı"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@: ahora"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ zamanı"
           }
         }
       }
@@ -35,16 +35,16 @@
             "value" : "%1$@ in %2$@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$@ sonra"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ en %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@ sonra"
           }
         }
       }

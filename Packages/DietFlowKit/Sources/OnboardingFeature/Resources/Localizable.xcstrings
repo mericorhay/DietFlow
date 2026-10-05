@@ -11,16 +11,16 @@
             "value" : "Continue"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Devam"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continuar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam"
           }
         }
       }
@@ -35,16 +35,16 @@
             "value" : "Create My Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planımı Oluştur"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crear mi plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planımı Oluştur"
           }
         }
       }
@@ -59,16 +59,16 @@
             "value" : "Import a Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan İçe Aktar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar un plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan İçe Aktar"
           }
         }
       }
@@ -83,16 +83,16 @@
             "value" : "Page %1$lld of %2$lld"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sayfa %1$lld / %2$lld"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Página %1$lld de %2$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sayfa %1$lld / %2$lld"
           }
         }
       }
@@ -107,16 +107,16 @@
             "value" : "Build or import your meal schedule."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öğün programını oluştur ya da içe aktar."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crea o importa tu horario de comidas."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün programını oluştur ya da içe aktar."
           }
         }
       }
@@ -131,16 +131,16 @@
             "value" : "Plan once."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bir kez planla."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Planifica una vez."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir kez planla."
           }
         }
       }
@@ -155,16 +155,16 @@
             "value" : "At %@"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saat %@"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "A las %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saat %@"
           }
         }
       }
@@ -179,16 +179,16 @@
             "value" : "Today"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bugün"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün"
           }
         }
       }
@@ -203,16 +203,16 @@
             "value" : "Your plan moves with the time automatically."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planın saate göre kendiliğinden ilerler."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu plan avanza solo con la hora."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planın saate göre kendiliğinden ilerler."
           }
         }
       }
@@ -227,16 +227,40 @@
             "value" : "Stop deciding."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deja de decidir."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Düşünmeyi bırak."
           }
+        }
+      }
+    },
+    "onboarding.trySample" : {
+      "comment" : "Text button on the last onboarding page, under Create and Import. Starts the app with a ready-made 14-day sample plan. Four words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try a Sample Plan"
+          }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deja de decidir."
+            "value" : "Probar un plan de ejemplo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Örnek Planla Dene"
           }
         }
       }
@@ -251,16 +275,16 @@
             "value" : "Your Home Screen updates with your day."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ana Ekran'ın gününle birlikte güncellenir."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu pantalla de inicio se actualiza con tu día."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana Ekran'ın gününle birlikte güncellenir."
           }
         }
       }
@@ -275,16 +299,16 @@
             "value" : "See what's next."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sırada ne var, gör."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mira qué toca."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sırada ne var, gör."
           }
         }
       }

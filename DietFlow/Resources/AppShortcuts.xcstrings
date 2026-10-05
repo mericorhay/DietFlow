@@ -11,16 +11,16 @@
             "value" : "Add a meal in ${applicationName}"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "${applicationName} öğün ekle"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añade una comida en ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} öğün ekle"
           }
         }
       }
@@ -35,16 +35,16 @@
             "value" : "I ate my meal in ${applicationName}"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "${applicationName} öğünümü yedim"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ya comí en ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} öğünümü yedim"
           }
         }
       }
@@ -59,16 +59,16 @@
             "value" : "Mark my meal done in ${applicationName}"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "${applicationName} öğünümü tamamla"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marca mi comida como hecha en ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} öğünümü tamamla"
           }
         }
       }
@@ -83,16 +83,16 @@
             "value" : "Show my next meal in ${applicationName}"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "${applicationName} sıradaki öğünümü göster"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Muestra mi próxima comida en ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} sıradaki öğünümü göster"
           }
         }
       }
@@ -107,16 +107,16 @@
             "value" : "What's my next meal in ${applicationName}"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "${applicationName} sıradaki öğünüm ne"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuál es mi próxima comida en ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} sıradaki öğünüm ne"
           }
         }
       }

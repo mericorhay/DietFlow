@@ -11,16 +11,16 @@
             "value" : "Today"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bugün"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün"
           }
         }
       }
@@ -35,16 +35,16 @@
             "value" : "Create Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan Oluştur"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crear plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Oluştur"
           }
         }
       }
@@ -59,16 +59,16 @@
             "value" : "Import Plan"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planı İçe Aktar"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planı İçe Aktar"
           }
         }
       }
@@ -83,16 +83,16 @@
             "value" : "Create a schedule once, then let the widget handle the rest."
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Programını bir kez oluştur, gerisini widget halletsin."
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crea tu horario una vez y deja que el widget se encargue del resto."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programını bir kez oluştur, gerisini widget halletsin."
           }
         }
       }
@@ -107,16 +107,40 @@
             "value" : "No meal plan yet"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay plan de comidas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Henüz öğün planı yok"
           }
+        }
+      }
+    },
+    "noPlan.trySample" : {
+      "comment" : "Text button under Create Plan and Import Plan when there is no plan. Loads a ready-made 14-day sample plan to try the app with. Four words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try a Sample Plan"
+          }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aún no hay plan de comidas"
+            "value" : "Probar un plan de ejemplo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Örnek Planla Dene"
           }
         }
       }
