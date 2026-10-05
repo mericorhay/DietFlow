@@ -9,7 +9,6 @@ public struct TodayActions {
     public var openSettings: () -> Void
     public var createPlan: () -> Void
     public var importPlan: () -> Void
-    public var trySample: () -> Void
     public var addMeal: (CalendarDay) -> Void
     /// Opens the Widgets tab, where adding the widget is explained.
     public var showWidgets: () -> Void
@@ -18,14 +17,12 @@ public struct TodayActions {
         openSettings: @escaping () -> Void,
         createPlan: @escaping () -> Void,
         importPlan: @escaping () -> Void,
-        trySample: @escaping () -> Void,
         addMeal: @escaping (CalendarDay) -> Void,
         showWidgets: @escaping () -> Void
     ) {
         self.openSettings = openSettings
         self.createPlan = createPlan
         self.importPlan = importPlan
-        self.trySample = trySample
         self.addMeal = addMeal
         self.showWidgets = showWidgets
     }
@@ -92,7 +89,7 @@ public struct TodayScreen: View {
             }
         } else {
             ScrollView {
-                NoPlanView(onCreate: actions.createPlan, onImport: actions.importPlan, onTrySample: actions.trySample)
+                NoPlanView(onCreate: actions.createPlan, onImport: actions.importPlan)
                     .padding(.top, AppSpacing.xLarge)
             }
         }

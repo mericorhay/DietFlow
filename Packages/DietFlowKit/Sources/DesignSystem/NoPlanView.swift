@@ -5,13 +5,10 @@ import SwiftUI
 public struct NoPlanView: View {
     private let onCreate: () -> Void
     private let onImport: () -> Void
-    private let onTrySample: (() -> Void)?
 
-    /// - Parameter onTrySample: loads the sample plan, for a look around before writing one.
-    public init(onCreate: @escaping () -> Void, onImport: @escaping () -> Void, onTrySample: (() -> Void)? = nil) {
+    public init(onCreate: @escaping () -> Void, onImport: @escaping () -> Void) {
         self.onCreate = onCreate
         self.onImport = onImport
-        self.onTrySample = onTrySample
     }
 
     public var body: some View {
@@ -32,15 +29,6 @@ public struct NoPlanView: View {
                 VStack(alignment: .leading, spacing: AppSpacing.small) { buttons }
             }
             .padding(.top, AppSpacing.xSmall)
-            if let onTrySample {
-                Button(action: onTrySample) {
-                    Text("noPlan.trySample", bundle: .module)
-                        .font(.subheadline.weight(.semibold))
-                        .frame(minHeight: AppSpacing.minimumHitTarget)
-                }
-                .buttonStyle(.borderless)
-                .tint(AppColors.brandAccent)
-            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, AppSpacing.screenMargin)

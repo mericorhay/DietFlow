@@ -12,7 +12,7 @@ public struct SettingsScreen: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
     @State private var notificationsDenied = false
-    @State private var confirmsReset = false
+    @State private var confirmsDeleteAll = false
     private let importPlan: () -> Void
 
     /// - Parameter importPlan: opens Import Plan; Settings closes first.
@@ -40,14 +40,14 @@ public struct SettingsScreen: View {
                     }
                 }
             }
-            .confirmationDialog(Text("settings.reset.title", bundle: .module), isPresented: $confirmsReset, titleVisibility: .visible) {
+            .confirmationDialog(Text("settings.deleteAll.title", bundle: .module), isPresented: $confirmsDeleteAll, titleVisibility: .visible) {
                 Button(role: .destructive) {
-                    store.attempt { try store.resetSampleData() }
+                    store.attempt { try store.deleteAllData() }
                 } label: {
-                    Text("settings.reset.confirm", bundle: .module)
+                    Text("settings.deleteAll.confirm", bundle: .module)
                 }
             } message: {
-                Text("settings.reset.message", bundle: .module)
+                Text("settings.deleteAll.message", bundle: .module)
             }
             .task {
                 if store.settings.remindersEnabled {
@@ -206,9 +206,9 @@ public struct SettingsScreen: View {
         // between two that do not.
         Section {
             Button(role: .destructive) {
-                confirmsReset = true
+                confirmsDeleteAll = true
             } label: {
-                Text("settings.data.reset", bundle: .module)
+                Text("settings.data.deleteAll", bundle: .module)
             }
         }
     }

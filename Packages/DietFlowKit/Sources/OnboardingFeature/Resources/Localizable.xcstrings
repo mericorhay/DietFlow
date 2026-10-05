@@ -241,30 +241,6 @@
         }
       }
     },
-    "onboarding.trySample" : {
-      "comment" : "Text button on the last onboarding page, under Create and Import. Starts the app with a ready-made 14-day sample plan. Four words at most.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Try a Sample Plan"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Probar un plan de ejemplo"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Örnek Planla Dene"
-          }
-        }
-      }
-    },
     "onboarding.widget.message" : {
       "comment" : "Second onboarding page, the line under the title.",
       "extractionState" : "manual",

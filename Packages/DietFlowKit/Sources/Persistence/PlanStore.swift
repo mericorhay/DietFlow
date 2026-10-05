@@ -218,7 +218,7 @@ public final class PlanStore {
         try context.save()
     }
 
-    /// Deletes everything. Used by "Reset Sample Data".
+    /// Deletes every plan, meal and recorded state. Used by "Delete All Data".
     public func deleteAll() throws {
         let context = context()
         try context.delete(model: MealCompletionRecord.self)

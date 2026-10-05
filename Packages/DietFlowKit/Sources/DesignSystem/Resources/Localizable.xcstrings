@@ -120,30 +120,6 @@
           }
         }
       }
-    },
-    "noPlan.trySample" : {
-      "comment" : "Text button under Create Plan and Import Plan when there is no plan. Loads a ready-made 14-day sample plan to try the app with. Four words at most.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Try a Sample Plan"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Probar un plan de ejemplo"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Örnek Planla Dene"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

@@ -10,7 +10,6 @@ public struct PlanActions {
     public var addMeal: (Int) -> Void
     public var importPlan: () -> Void
     public var newPlan: () -> Void
-    public var trySample: () -> Void
     public var editPlan: () -> Void
     public var openSettings: () -> Void
 
@@ -18,14 +17,12 @@ public struct PlanActions {
         addMeal: @escaping (Int) -> Void,
         importPlan: @escaping () -> Void,
         newPlan: @escaping () -> Void,
-        trySample: @escaping () -> Void,
         editPlan: @escaping () -> Void,
         openSettings: @escaping () -> Void
     ) {
         self.addMeal = addMeal
         self.importPlan = importPlan
         self.newPlan = newPlan
-        self.trySample = trySample
         self.editPlan = editPlan
         self.openSettings = openSettings
     }
@@ -50,7 +47,7 @@ public struct PlanScreen: View {
                 planList(plan, schedule: schedule)
             } else {
                 ScrollView {
-                    NoPlanView(onCreate: actions.newPlan, onImport: actions.importPlan, onTrySample: actions.trySample)
+                    NoPlanView(onCreate: actions.newPlan, onImport: actions.importPlan)
                         .padding(.top, AppSpacing.xLarge)
                 }
             }

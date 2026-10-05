@@ -8,23 +8,20 @@ import Domain
 import WidgetUI
 
 /// First launch, three short pages: plan once, see what's next, stop deciding. The pictures are the
-/// app's own views drawing a sample plan, not illustrations.
+/// app's own views drawing an example day, not illustrations. The example is only drawn here:
+/// nothing on this screen puts it into the person's data.
 public struct OnboardingScreen: View {
     @State private var page = 0
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let onCreatePlan: () -> Void
     private let onImportPlan: () -> Void
-    private let onTrySample: () -> Void
 
     private static let pageCount = 3
 
-    /// - Parameters:
-    ///   - onTrySample: starts with the sample plan, for a look around first.
-    ///   - initialPage: the page shown first; 0 except when checking a later page.
-    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void, onTrySample: @escaping () -> Void, initialPage: Int = 0) {
+    /// - Parameter initialPage: the page shown first; 0 except when checking a later page.
+    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void, initialPage: Int = 0) {
         self.onCreatePlan = onCreatePlan
         self.onImportPlan = onImportPlan
-        self.onTrySample = onTrySample
         _page = State(initialValue: min(max(initialPage, 0), Self.pageCount - 1))
     }
 
@@ -92,13 +89,6 @@ public struct OnboardingScreen: View {
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.large)
-                Button(action: onTrySample) {
-                    Text("onboarding.trySample", bundle: .module)
-                        .font(.subheadline.weight(.semibold))
-                        .frame(maxWidth: .infinity, minHeight: AppSpacing.minimumHitTarget)
-                }
-                .buttonStyle(.borderless)
-                .tint(AppColors.brandAccent)
             }
         }
     }

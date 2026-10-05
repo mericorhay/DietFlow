@@ -265,13 +265,6 @@ public final class MealPlanStore {
 
     // MARK: - Data
 
-    /// Adds the sample plan, starting today, and makes it the active plan. For trying the app
-    /// before writing a plan of one's own; nothing else is touched.
-    @discardableResult
-    public func addSamplePlan() throws -> MealPlan {
-        try createPlan(SamplePlan.keto(startingOn: .today()), activate: true)
-    }
-
     /// Whether any of this app's widgets is on a Home Screen or the Lock Screen.
     public func isWidgetOnScreen() async -> Bool {
         await withCheckedContinuation { continuation in
@@ -283,11 +276,12 @@ public final class MealPlanStore {
         }
     }
 
-    /// Replaces everything with the sample plan, starting today.
-    public func resetSampleData() throws {
+    /// Deletes every plan and everything recorded against them. Settings are kept. The widget and
+    /// the reminders follow at once: the widget shows that there is no plan, and no reminder stays
+    /// scheduled for a meal that no longer exists.
+    public func deleteAllData() throws {
         try persistence.deleteAll()
-        try persistence.insert(SamplePlan.keto(startingOn: .today()), activate: true)
-        didChange("resetSampleData")
+        didChange("deleteAllData")
     }
 
     /// Re-reads the store — the widget's Done button may have written to it from its own process —

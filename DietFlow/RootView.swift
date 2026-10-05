@@ -86,7 +86,6 @@ struct RootView: View {
             OnboardingScreen(
                 onCreatePlan: { finishOnboarding(then: .newPlan) },
                 onImportPlan: { finishOnboarding(then: .importPlan(nil)) },
-                onTrySample: trySamplePlan,
                 initialPage: onboardingStartPage
             )
         }
@@ -132,7 +131,6 @@ struct RootView: View {
             openSettings: { present(.settings) },
             createPlan: { present(.newPlan) },
             importPlan: { present(.importPlan(nil)) },
-            trySample: trySamplePlan,
             addMeal: { day in present(.newMeal(dayIndex: store.schedule?.dayIndex(on: day) ?? 0)) },
             showWidgets: { tab = .widgets }
         )
@@ -143,7 +141,6 @@ struct RootView: View {
             addMeal: { dayIndex in present(.newMeal(dayIndex: dayIndex)) },
             importPlan: { present(.importPlan(nil)) },
             newPlan: { present(.newPlan) },
-            trySample: trySamplePlan,
             editPlan: {
                 if let plan = store.activePlan { present(.editPlan(plan)) }
             },
@@ -204,13 +201,6 @@ struct RootView: View {
         store.updateSettings { $0.hasCompletedOnboarding = true }
         showsOnboarding = false
         present(next, afterClosing: true)
-    }
-
-    private func trySamplePlan() {
-        store.attempt { try store.addSamplePlan() }
-        store.updateSettings { $0.hasCompletedOnboarding = true }
-        showsOnboarding = false
-        showToday()
     }
 
     /// Text handed over by the Import Plan shortcut opens straight into review.

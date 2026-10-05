@@ -121,6 +121,30 @@
         }
       }
     },
+    "settings.data.deleteAll" : {
+      "comment" : "Destructive button at the bottom of Settings that deletes every plan and everything recorded. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete All Data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar todos los datos"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm Verileri Sil"
+          }
+        }
+      }
+    },
     "settings.data.export" : {
       "comment" : "Button that shares the active plan as a file. Two words.",
       "extractionState" : "manual",
@@ -193,26 +217,74 @@
         }
       }
     },
-    "settings.data.reset" : {
-      "comment" : "Destructive button that replaces everything with the sample plan. A few words.",
+    "settings.deleteAll.confirm" : {
+      "comment" : "Destructive button confirming that all data is deleted. One or two words.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reset Sample Data"
+            "value" : "Delete Everything"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Restablecer datos de ejemplo"
+            "value" : "Borrar todo"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Örnek Verilere Sıfırla"
+            "value" : "Her Şeyi Sil"
+          }
+        }
+      }
+    },
+    "settings.deleteAll.message" : {
+      "comment" : "Under the confirmation title: what is deleted, and that it cannot be undone. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your plans and everything you marked will be deleted. This cannot be undone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se eliminarán tus planes y todo lo que marcaste. Esta acción no se puede deshacer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planların ve işaretlediğin her şey silinir. Bu işlem geri alınamaz."
+          }
+        }
+      }
+    },
+    "settings.deleteAll.title" : {
+      "comment" : "Title of the confirmation before deleting all data. A short question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all your data?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Borrar todos tus datos?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm verilerin silinsin mi?"
           }
         }
       }
@@ -573,78 +645,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öğün Hatırlatmaları"
-          }
-        }
-      }
-    },
-    "settings.reset.confirm" : {
-      "comment" : "Destructive button confirming the reset. One or two words.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reset"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restablecer"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sıfırla"
-          }
-        }
-      }
-    },
-    "settings.reset.message" : {
-      "comment" : "Explains what resetting deletes. One sentence.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your plans and everything you marked done are deleted."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se eliminan tus planes y todo lo que marcaste."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planların ve işaretlediğin her şey silinir."
-          }
-        }
-      }
-    },
-    "settings.reset.title" : {
-      "comment" : "Title of the confirmation before resetting. A short question.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Replace everything with the sample plan?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Reemplazar todo por el plan de ejemplo?"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Her şey örnek planla değiştirilsin mi?"
           }
         }
       }
