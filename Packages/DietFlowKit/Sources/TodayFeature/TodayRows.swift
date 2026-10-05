@@ -24,6 +24,8 @@ struct NextMealSection: View {
     var onDone: (() -> Void)? = nil
     var onSkip: (() -> Void)? = nil
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.xxSmall) {
             HStack(spacing: AppSpacing.xxSmall + 2) {
@@ -40,7 +42,11 @@ struct NextMealSection: View {
             }
             .font(.subheadline)
 
-            HStack(alignment: .firstTextBaseline, spacing: AppSpacing.small) {
+            // At accessibility sizes the large time takes the whole width, so the type goes under it.
+            let timeAndType = dynamicTypeSize.isAccessibilitySize
+                ? AnyLayout(VStackLayout(alignment: .leading, spacing: 2))
+                : AnyLayout(HStackLayout(alignment: .firstTextBaseline, spacing: AppSpacing.small))
+            timeAndType {
                 Text(occurrence.date, format: .dateTime.hour().minute())
                     .font(.largeTitle.weight(.bold))
                     .monospacedDigit()
@@ -76,7 +82,16 @@ struct NextMealSection: View {
     }
 
     private var actions: some View {
-        HStack(spacing: AppSpacing.small) {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: AppSpacing.small) { actionButtons }
+            VStack(alignment: .leading, spacing: AppSpacing.xSmall) { actionButtons }
+        }
+        .controlSize(.large)
+    }
+
+    @ViewBuilder
+    private var actionButtons: some View {
+        Group {
             if let onDone {
                 Button(action: onDone) {
                     Label {
@@ -95,7 +110,6 @@ struct NextMealSection: View {
                 .buttonStyle(.bordered)
             }
         }
-        .controlSize(.large)
     }
 
     private var leadTitle: String {

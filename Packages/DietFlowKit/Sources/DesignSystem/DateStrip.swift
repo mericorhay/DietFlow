@@ -28,6 +28,9 @@ public struct DateStrip: View {
                 dayButton(day)
             }
         }
+        // Seven days must share one row, like a tab bar: past the largest standard size the
+        // strip stops growing. VoiceOver reads each day's full date.
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .accessibilityElement(children: .contain)
     }
 
