@@ -18,17 +18,27 @@ public struct OnboardingScreen: View {
     @State private var page = 0
     private let onCreatePlan: () -> Void
     private let onImportPlan: () -> Void
+    private let onWritePlan: (() -> Void)?
     private let sceneTime: TimeInterval?
 
     private static let pageCount = 4
 
     /// - Parameters:
+    ///   - onWritePlan: has the assistant write the first plan; nil in a build without the
+    ///     assistant, and the last page then offers only the other two ways.
     ///   - initialPage: the page shown first; 0 except when checking a later page.
     ///   - sceneTime: stops the last page's animation at this many seconds in, to check one moment
     ///     of it; nil lets it play.
-    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void, initialPage: Int = 0, sceneTime: TimeInterval? = nil) {
+    public init(
+        onCreatePlan: @escaping () -> Void,
+        onImportPlan: @escaping () -> Void,
+        onWritePlan: (() -> Void)? = nil,
+        initialPage: Int = 0,
+        sceneTime: TimeInterval? = nil
+    ) {
         self.onCreatePlan = onCreatePlan
         self.onImportPlan = onImportPlan
+        self.onWritePlan = onWritePlan
         self.sceneTime = sceneTime
         _page = State(initialValue: min(max(initialPage, 0), Self.pageCount - 1))
     }
@@ -104,6 +114,37 @@ public struct OnboardingScreen: View {
             .buttonStyle(.borderedProminent)
             .tint(AppColors.brandAccent)
             .controlSize(.large)
+        } else if let onWritePlan {
+            // The quickest way to a first plan leads; the other two share the row under it.
+            VStack(spacing: AppSpacing.xSmall) {
+                Button(action: onWritePlan) {
+                    Label {
+                        Text("onboarding.write", bundle: .module)
+                    } icon: {
+                        Image(systemName: "sparkles")
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(AppColors.brandAccent)
+                .controlSize(.large)
+                HStack(spacing: AppSpacing.xSmall) {
+                    Button(action: onCreatePlan) {
+                        Text("onboarding.create", bundle: .module)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
+                            .frame(maxWidth: .infinity)
+                    }
+                    Button(action: onImportPlan) {
+                        Text("onboarding.import", bundle: .module)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+            }
         } else {
             VStack(spacing: AppSpacing.xSmall) {
                 Button(action: onCreatePlan) {

@@ -25,6 +25,8 @@ enum AppTab: Hashable {
 enum AppSheet: Identifiable {
     case settings
     case importPlan(ImportInput?)
+    /// Import Plan opened straight on one of the assistant's two jobs.
+    case assistant(ImportStart)
     case newMeal(dayIndex: Int)
     case newPlan
     case editPlan(MealPlan)
@@ -33,6 +35,7 @@ enum AppSheet: Identifiable {
         switch self {
         case .settings: "settings"
         case .importPlan: "importPlan"
+        case .assistant: "assistant"
         case .newMeal(let dayIndex): "newMeal-\(dayIndex)"
         case .newPlan: "newPlan"
         case .editPlan(let plan): "editPlan-\(plan.id.uuidString)"
@@ -42,7 +45,7 @@ enum AppSheet: Identifiable {
     /// Whether this sheet ends in a new plan beside whatever exists.
     var startsAnotherPlan: Bool {
         switch self {
-        case .newPlan, .importPlan: true
+        case .newPlan, .importPlan, .assistant: true
         case .settings, .newMeal, .editPlan: false
         }
     }
@@ -51,7 +54,7 @@ enum AppSheet: Identifiable {
     var holdsUnsavedWork: Bool {
         switch self {
         case .settings: false
-        case .importPlan, .newMeal, .newPlan, .editPlan: true
+        case .importPlan, .assistant, .newMeal, .newPlan, .editPlan: true
         }
     }
 }
@@ -106,6 +109,7 @@ struct RootView: View {
             OnboardingScreen(
                 onCreatePlan: { finishOnboarding(then: .newPlan) },
                 onImportPlan: { finishOnboarding(then: .importPlan(nil)) },
+                onWritePlan: hasAssistant ? { finishOnboarding(then: .assistant(.create)) } : nil,
                 initialPage: onboardingStartPage,
                 sceneTime: onboardingSceneTime
             )
@@ -168,13 +172,20 @@ struct RootView: View {
 
     // MARK: Routing
 
+    /// Whether this build has the assistant; without it nothing offers it.
+    private var hasAssistant: Bool {
+        dependencies.assistant != nil
+    }
+
     private var todayActions: TodayActions {
         TodayActions(
             openSettings: { present(.settings) },
             createPlan: { present(.newPlan) },
             importPlan: { present(.importPlan(nil)) },
             addMeal: { day in present(.newMeal(dayIndex: store.schedule?.dayIndex(on: day) ?? 0)) },
-            showWidgets: { tab = .widgets }
+            showWidgets: { tab = .widgets },
+            writePlan: hasAssistant ? { present(.assistant(.create)) } : nil,
+            organizeList: hasAssistant ? { present(.assistant(.organize)) } : nil
         )
     }
 
@@ -186,7 +197,9 @@ struct RootView: View {
             editPlan: {
                 if let plan = store.activePlan { present(.editPlan(plan)) }
             },
-            openSettings: { present(.settings) }
+            openSettings: { present(.settings) },
+            writePlan: hasAssistant ? { present(.assistant(.create)) } : nil,
+            organizeList: hasAssistant ? { present(.assistant(.organize)) } : nil
         )
     }
 
@@ -205,6 +218,11 @@ struct RootView: View {
         case .importPlan(let input):
             ImportPlanScreen(initialInput: input, assistant: dependencies.assistant) {
                 // A saved import is a plan with meals: show what comes next.
+                showToday()
+                plansSaved += 1
+            }
+        case .assistant(let start):
+            ImportPlanScreen(assistant: dependencies.assistant, start: start) {
                 showToday()
                 plansSaved += 1
             }
@@ -377,6 +395,8 @@ struct RootView: View {
         case "newMeal": sheet = .newMeal(dayIndex: store.schedule?.dayIndex(on: .today()) ?? 0)
         case "newPlan": sheet = .newPlan
         case "plus": dependencies.paywall = PaywallRequest(.upgrade)
+        case "write": sheet = .assistant(.create)
+        case "organize": sheet = .assistant(.organize)
         case "plusIntro":
             showsOnboarding = false
             showsPlusIntro = true

@@ -97,6 +97,54 @@
         }
       }
     },
+    "noPlan.organize.subtitle" : {
+      "comment" : "Line under the Organize Any List button on the screen shown before any plan exists. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste the list you have. AI puts it in order."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pega la lista que tienes. La IA la ordena."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elindeki listeyi yapıştır. Yapay zekâ düzene sokar."
+          }
+        }
+      }
+    },
+    "noPlan.organize.title" : {
+      "comment" : "Title of the second button on the screen shown before any plan exists. Asks the AI assistant to put a pasted list in order. The same words as on Import Plan. Four words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize Any List"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordenar una lista"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listeyi Düzene Sok"
+          }
+        }
+      }
+    },
     "noPlan.title" : {
       "comment" : "Title shown on Today and Plan before any meal plan exists. A few words.",
       "extractionState" : "manual",
@@ -117,6 +165,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Henüz öğün planı yok"
+          }
+        }
+      }
+    },
+    "noPlan.write.subtitle" : {
+      "comment" : "Line under the Write Me a Plan button on the screen shown before any plan exists. Says what to do and that AI does the writing. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Say how you want to eat. AI writes up to 30 days."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di cómo quieres comer. La IA escribe hasta 30 días."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasıl beslenmek istediğini söyle. Yapay zekâ 30 güne kadar yazar."
+          }
+        }
+      }
+    },
+    "noPlan.write.title" : {
+      "comment" : "Title of the first, most prominent button on the screen shown before any plan exists. Asks the AI assistant to write a plan. The same words as on Import Plan. Four words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write Me a Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escríbeme un plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bana Plan Yaz"
           }
         }
       }

@@ -480,6 +480,30 @@
           }
         }
       }
+    },
+    "onboarding.write" : {
+      "comment" : "The main button on the last page of the introduction. Has the AI assistant write the person's first plan. Five words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let AI Write My Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Que la IA escriba mi plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planımı Yapay Zekâ Yazsın"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

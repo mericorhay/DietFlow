@@ -33,6 +33,17 @@ public enum ImportInput: Sendable {
     }
 }
 
+/// Where Import Plan opens. The assistant is reached from the first screens of the app, and
+/// from there it should be one tap to what was asked for, not a list to choose from again.
+public enum ImportStart: Sendable {
+    /// Every way in, as a list.
+    case sources
+    /// The assistant putting a pasted list in order.
+    case organize
+    /// The assistant writing a new plan.
+    case create
+}
+
 /// Getting a plan in: one the person already has, as pasted text, a file, a photo or a PDF, read on
 /// the device; or, with the assistant, any list however untidy put in order, or a new plan written
 /// from a few wishes. Whatever the source, the plan is always shown for review before it is saved.
@@ -66,10 +77,18 @@ public struct ImportPlanScreen: View {
     /// - Parameters:
     ///   - initialInput: text or a file handed over from outside, read straight away.
     ///   - assistant: the plan assistant, or nil in a build without one; its rows are then left out.
+    ///   - start: the screen shown first. Back from it leads to the list of every way in.
     ///   - onFinished: called after a plan is saved.
-    public init(initialInput: ImportInput? = nil, assistant: PlanAssistantClient? = nil, onFinished: @escaping () -> Void) {
+    public init(initialInput: ImportInput? = nil, assistant: PlanAssistantClient? = nil, start: ImportStart = .sources, onFinished: @escaping () -> Void) {
         self.initialInput = initialInput
         self.assistant = assistant
+        if assistant != nil {
+            switch start {
+            case .sources: break
+            case .organize: _path = State(initialValue: [.assistantOrganize])
+            case .create: _path = State(initialValue: [.assistantCreate])
+            }
+        }
         self.onFinished = onFinished
     }
 

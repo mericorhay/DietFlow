@@ -12,19 +12,26 @@ public struct TodayActions {
     public var addMeal: (CalendarDay) -> Void
     /// Opens the Widgets tab, where adding the widget is explained.
     public var showWidgets: () -> Void
+    /// The assistant writing a plan, and putting a pasted list in order; nil without the assistant.
+    public var writePlan: (() -> Void)?
+    public var organizeList: (() -> Void)?
 
     public init(
         openSettings: @escaping () -> Void,
         createPlan: @escaping () -> Void,
         importPlan: @escaping () -> Void,
         addMeal: @escaping (CalendarDay) -> Void,
-        showWidgets: @escaping () -> Void
+        showWidgets: @escaping () -> Void,
+        writePlan: (() -> Void)? = nil,
+        organizeList: (() -> Void)? = nil
     ) {
         self.openSettings = openSettings
         self.createPlan = createPlan
         self.importPlan = importPlan
         self.addMeal = addMeal
         self.showWidgets = showWidgets
+        self.writePlan = writePlan
+        self.organizeList = organizeList
     }
 }
 
@@ -89,7 +96,7 @@ public struct TodayScreen: View {
             }
         } else {
             ScrollView {
-                NoPlanView(onCreate: actions.createPlan, onImport: actions.importPlan)
+                NoPlanView(onCreate: actions.createPlan, onImport: actions.importPlan, onWritePlan: actions.writePlan, onOrganizeList: actions.organizeList)
                     .padding(.top, AppSpacing.xLarge)
             }
         }

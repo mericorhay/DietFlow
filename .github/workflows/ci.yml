@@ -113,7 +113,7 @@ jobs:
       # long and right-to-left pseudolanguages, as small images inside the log.
       - name: Screenshots
         if: ${{ !cancelled() && inputs.screenshots != 'none' && steps.build.outcome == 'success' }}
-        timeout-minutes: 12
+        timeout-minutes: 25
         run: |
           bash scripts/ci-screenshots.sh "${{ steps.sim.outputs.udid }}" \
             "$RUNNER_TEMP/DietFlowDerived/Build/Products/Debug-iphonesimulator/DietFlow.app" \

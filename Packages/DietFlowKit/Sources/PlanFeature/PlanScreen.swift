@@ -12,19 +12,26 @@ public struct PlanActions {
     public var newPlan: () -> Void
     public var editPlan: () -> Void
     public var openSettings: () -> Void
+    /// The assistant writing a plan, and putting a pasted list in order; nil without the assistant.
+    public var writePlan: (() -> Void)?
+    public var organizeList: (() -> Void)?
 
     public init(
         addMeal: @escaping (Int) -> Void,
         importPlan: @escaping () -> Void,
         newPlan: @escaping () -> Void,
         editPlan: @escaping () -> Void,
-        openSettings: @escaping () -> Void
+        openSettings: @escaping () -> Void,
+        writePlan: (() -> Void)? = nil,
+        organizeList: (() -> Void)? = nil
     ) {
         self.addMeal = addMeal
         self.importPlan = importPlan
         self.newPlan = newPlan
         self.editPlan = editPlan
         self.openSettings = openSettings
+        self.writePlan = writePlan
+        self.organizeList = organizeList
     }
 }
 
@@ -47,7 +54,7 @@ public struct PlanScreen: View {
                 planList(plan, schedule: schedule)
             } else {
                 ScrollView {
-                    NoPlanView(onCreate: actions.newPlan, onImport: actions.importPlan)
+                    NoPlanView(onCreate: actions.newPlan, onImport: actions.importPlan, onWritePlan: actions.writePlan, onOrganizeList: actions.organizeList)
                         .padding(.top, AppSpacing.xLarge)
                 }
             }
@@ -194,6 +201,16 @@ public struct PlanScreen: View {
                         actions.addMeal(store.schedule?.dayIndex(on: .today()) ?? 0)
                     } label: {
                         Label { Text("plan.menu.addMeal", bundle: .module) } icon: { Image(systemName: "plus") }
+                    }
+                }
+                if let writePlan = actions.writePlan {
+                    Button(action: writePlan) {
+                        Label { Text("plan.menu.writePlan", bundle: .module) } icon: { Image(systemName: "sparkles") }
+                    }
+                }
+                if let organizeList = actions.organizeList {
+                    Button(action: organizeList) {
+                        Label { Text("plan.menu.organizeList", bundle: .module) } icon: { Image(systemName: "wand.and.stars") }
                     }
                 }
                 Button(action: actions.importPlan) {

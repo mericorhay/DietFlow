@@ -112,6 +112,11 @@ shot widgets-blue-bold-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidgetL
 shot widgets-green-soft-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidgetLook green.soft
 shot settings-plus-es "${ES[@]}" "${SAMPLE[@]}" -DebugSheet settings -DebugPlus trial
 shot empty-en "${EN[@]}" -DebugSeed empty
+shot empty-tr "${TR[@]}" -DebugSeed empty
+shot empty-plan-es "${ES[@]}" -DebugSeed empty -DebugTab plan
+shot write-tr "${TR[@]}" -DebugSeed empty -DebugSheet write
+shot organize-en "${EN[@]}" -DebugSeed empty -DebugSheet organize
+shot privacy-links-en "${EN[@]}" "${SAMPLE[@]}" -DebugSheet settings
 # Room for longer languages and right-to-left scripts: Xcode's pseudolanguages.
 shot today-long "${EN[@]}" "${SAMPLE[@]}" -NSDoubleLocalizedStrings YES
 shot today-rtl "${EN[@]}" "${SAMPLE[@]}" -AppleTextDirection YES -NSForceRightToLeftWritingDirection YES

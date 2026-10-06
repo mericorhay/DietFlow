@@ -14,7 +14,7 @@ import Purchases
 ///                                          current time (one meal done, one on now, one next); nothing;
 ///                                          or first run
 ///     -DebugTab today|plan|widgets
-///     -DebugSheet settings|import|newMeal|newPlan|plus|plusIntro
+///     -DebugSheet settings|import|write|organize|newMeal|newPlan|plus|plusIntro
 ///     -DebugMeal next                      opens the meal in front on Today
 ///     -DebugOnboardingPage 0…3
 ///     -DebugOnboardingTime <seconds>       stops the last page's animation at that moment

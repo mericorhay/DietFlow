@@ -505,6 +505,30 @@
         }
       }
     },
+    "plan.menu.organizeList" : {
+      "comment" : "Item in the Add menu on the Plan tab. Asks the AI assistant to put a pasted list in order. The same words as on Import Plan.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize Any List"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordenar una lista"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listeyi Düzene Sok"
+          }
+        }
+      }
+    },
     "plan.menu.settings" : {
       "comment" : "Menu item that opens Settings. One word.",
       "extractionState" : "manual",
@@ -549,6 +573,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan Değiştir"
+          }
+        }
+      }
+    },
+    "plan.menu.writePlan" : {
+      "comment" : "Item in the Add menu on the Plan tab. Asks the AI assistant to write a new plan. The same words as on Import Plan.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write Me a Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escríbeme un plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bana Plan Yaz"
           }
         }
       }
