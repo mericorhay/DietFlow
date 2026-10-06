@@ -31,6 +31,12 @@ public struct WidgetsScreen: View {
         previews.first { $0.id == preview } ?? previews[0]
     }
 
+    /// The large widget is given more room, so it can be read; the others leave the choices
+    /// under them in sight.
+    private var stageHeight: CGFloat {
+        selected.family == .large ? 330 : PreviewStage.height
+    }
+
     public var body: some View {
         List {
             Section {
@@ -50,7 +56,7 @@ public struct WidgetsScreen: View {
                         .scrollTargetBehavior(.paging)
                         .scrollPosition(id: $preview)
                         .scrollIndicators(.hidden)
-                        .frame(height: PreviewStage.height)
+                        .frame(height: stageHeight)
                         .clipShape(RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
                     }
                     VStack(spacing: AppSpacing.xxSmall) {
@@ -66,6 +72,7 @@ public struct WidgetsScreen: View {
                         .accessibilityHidden(true)
                     }
                 }
+                .animationAware(AppMotion.settle, reduceMotion: reduceMotion, value: stageHeight)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: AppSpacing.xxSmall, trailing: 0))
             }
@@ -231,34 +238,6 @@ private struct ColorSwatches: View {
     }
 }
 
-extension WidgetAccent {
-    var name: String {
-        switch self {
-        case .terracotta: String(localized: "widgets.color.terracotta", bundle: .module)
-        case .orange: String(localized: "widgets.color.orange", bundle: .module)
-        case .red: String(localized: "widgets.color.red", bundle: .module)
-        case .pink: String(localized: "widgets.color.pink", bundle: .module)
-        case .purple: String(localized: "widgets.color.purple", bundle: .module)
-        case .indigo: String(localized: "widgets.color.indigo", bundle: .module)
-        case .blue: String(localized: "widgets.color.blue", bundle: .module)
-        case .teal: String(localized: "widgets.color.teal", bundle: .module)
-        case .green: String(localized: "widgets.color.green", bundle: .module)
-        case .graphite: String(localized: "widgets.color.graphite", bundle: .module)
-        }
-    }
-}
-
-extension WidgetBackgroundStyle {
-    var name: String {
-        switch self {
-        case .system: String(localized: "widgets.background.system", bundle: .module)
-        case .soft: String(localized: "widgets.background.soft", bundle: .module)
-        case .bold: String(localized: "widgets.background.bold", bundle: .module)
-        case .dark: String(localized: "widgets.background.dark", bundle: .module)
-        }
-    }
-}
-
 /// One widget in one size, as the Widgets tab shows it.
 struct WidgetPreview: Identifiable, Hashable {
     let kind: MealWidgetKind
@@ -289,14 +268,6 @@ extension MealWidgetKind {
         case .nextMeal: "nextMeal"
         case .today: "today"
         case .progress: "progress"
-        }
-    }
-
-    var name: String {
-        switch self {
-        case .nextMeal: String(localized: "widgets.kind.nextMeal", bundle: .module)
-        case .today: String(localized: "widgets.kind.today", bundle: .module)
-        case .progress: String(localized: "widgets.kind.progress", bundle: .module)
         }
     }
 }

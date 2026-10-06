@@ -4,7 +4,7 @@
 # be looked at without downloading artifacts. The app opens each state from launch arguments
 # (DietFlow/DebugLaunch.swift) on in-memory sample data.
 #
-#   scripts/ci-screenshots.sh <simulator udid> <path to DietFlow.app> [core|all]
+#   scripts/ci-screenshots.sh <simulator udid> <path to DietFlow.app> [core|all|onboarding]
 #
 # Each shot is a cold launch on a CI simulator, about half a minute. "core" (the default) is the
 # seven screens that show whether a change broke something; "all" adds the languages, dark mode,
@@ -65,6 +65,25 @@ NOW=(-DebugSeed now)
 
 appearance light
 textSize large
+
+# The first-launch introduction on its own: every page, and four moments of the last page's animation.
+if [ "$SET" = "onboarding" ]; then
+  ONBOARDING=(-DebugSeed onboarding)
+  shot onboarding-plan-en "${EN[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 0
+  shot onboarding-day-tr "${TR[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 1
+  shot onboarding-setup-tr "${TR[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 2
+  shot onboarding-setup-blue-es "${ES[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 2 -DebugWidgetLook blue.bold
+  shot onboarding-add-hold-tr "${TR[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 3 -DebugOnboardingTime 1.3
+  shot onboarding-add-edit-en "${EN[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 3 -DebugOnboardingTime 2.5
+  shot onboarding-add-land-tr "${TR[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 3 -DebugOnboardingTime 3.4 -DebugWidgetLook green.soft
+  shot onboarding-add-done-es "${ES[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 3 -DebugOnboardingTime 6.2 -DebugWidgetLook blue.bold
+  appearance dark
+  shot onboarding-add-done-dark-tr "${TR[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 3 -DebugOnboardingTime 6.2
+  shot onboarding-setup-dark-en "${EN[@]}" "${ONBOARDING[@]}" -DebugOnboardingPage 2 -DebugWidgetLook purple.dark
+  appearance light
+  exit 0
+fi
+
 shot today-now-en "${EN[@]}" "${NOW[@]}"
 shot plan-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
 shot meal-now-tr "${TR[@]}" "${NOW[@]}" -DebugMeal next
@@ -75,7 +94,8 @@ shot widgets-progress-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget p
 shot widgets-lock-circle-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget progress.lockCircle
 shot settings-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet settings
 shot import-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet import
-shot onboarding-last-tr "${TR[@]}" -DebugSeed onboarding -DebugOnboardingPage 2
+shot onboarding-setup-tr "${TR[@]}" -DebugSeed onboarding -DebugOnboardingPage 2
+shot onboarding-add-tr "${TR[@]}" -DebugSeed onboarding -DebugOnboardingPage 3 -DebugOnboardingTime 6.2
 shot plus-intro-tr "${TR[@]}" -DebugSeed onboarding -DebugSheet plusIntro
 
 if [ "$SET" != "all" ]; then

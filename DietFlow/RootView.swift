@@ -106,7 +106,8 @@ struct RootView: View {
             OnboardingScreen(
                 onCreatePlan: { finishOnboarding(then: .newPlan) },
                 onImportPlan: { finishOnboarding(then: .importPlan(nil)) },
-                initialPage: onboardingStartPage
+                initialPage: onboardingStartPage,
+                sceneTime: onboardingSceneTime
             )
         }
         .sensoryFeedback(.success, trigger: plansSaved)
@@ -340,6 +341,15 @@ struct RootView: View {
         return DebugLaunch.value("DebugOnboardingPage").flatMap(Int.init) ?? 0
         #else
         return 0
+        #endif
+    }
+
+    /// A moment of the introduction's last page to stop at, for screenshots; nil lets it play.
+    private var onboardingSceneTime: TimeInterval? {
+        #if DEBUG
+        return DebugLaunch.value("DebugOnboardingTime").flatMap(Double.init)
+        #else
+        return nil
         #endif
     }
 

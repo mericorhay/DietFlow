@@ -7,25 +7,35 @@ import DesignSystem
 import Domain
 import WidgetUI
 
-/// First launch, three short pages: plan once, see what's next, stop deciding. The pictures are the
-/// app's own views drawing an example day, not illustrations. The example is only drawn here:
-/// nothing on this screen puts it into the person's data.
+/// First launch, four short pages: plan once, see what is next, make the widget yours, put it on
+/// the Home Screen. The pictures are the app's own views drawing an example day, not
+/// illustrations, and they move: the day goes by, the widget takes the colour that is tapped, a
+/// finger shows where to press. The example is only drawn here: nothing on this screen puts it
+/// into the person's data. The colour and tone chosen here are the person's own, and are kept.
 public struct OnboardingScreen: View {
-    @State private var page = 0
+    @Environment(MealPlanStore.self) private var store
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var page = 0
     private let onCreatePlan: () -> Void
     private let onImportPlan: () -> Void
+    private let sceneTime: TimeInterval?
 
-    private static let pageCount = 3
+    private static let pageCount = 4
 
-    /// - Parameter initialPage: the page shown first; 0 except when checking a later page.
-    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void, initialPage: Int = 0) {
+    /// - Parameters:
+    ///   - initialPage: the page shown first; 0 except when checking a later page.
+    ///   - sceneTime: stops the last page's animation at this many seconds in, to check one moment
+    ///     of it; nil lets it play.
+    public init(onCreatePlan: @escaping () -> Void, onImportPlan: @escaping () -> Void, initialPage: Int = 0, sceneTime: TimeInterval? = nil) {
         self.onCreatePlan = onCreatePlan
         self.onImportPlan = onImportPlan
+        self.sceneTime = sceneTime
         _page = State(initialValue: min(max(initialPage, 0), Self.pageCount - 1))
     }
 
     public var body: some View {
+        // The widget in every picture wears what has been chosen so far.
+        let look = store.settings.widgetPreferences
         VStack(spacing: 0) {
             TabView(selection: $page) {
                 OnboardingPage(
@@ -39,16 +49,29 @@ public struct OnboardingScreen: View {
                     title: Text("onboarding.widget.title", bundle: .module),
                     message: Text("onboarding.widget.message", bundle: .module)
                 ) {
-                    WidgetsPreview()
+                    DayLapsePreview(isActive: page == 1, look: look)
                 }
                 .tag(1)
                 OnboardingPage(
-                    title: Text("onboarding.time.title", bundle: .module),
-                    message: Text("onboarding.time.message", bundle: .module)
+                    title: Text("onboarding.setup.title", bundle: .module),
+                    message: Text("onboarding.setup.message", bundle: .module),
+                    picture: .interactive
                 ) {
-                    TimePreview()
+                    WidgetSetupStage(
+                        accent: setting(\.widgetAccent),
+                        background: setting(\.widgetBackground),
+                        look: look
+                    )
                 }
                 .tag(2)
+                OnboardingPage(
+                    title: Text("onboarding.add.title", bundle: .module),
+                    message: Text("onboarding.add.message", bundle: .module),
+                    picture: .described(AddWidgetSteps.all.joined(separator: ". "))
+                ) {
+                    AddWidgetPreview(isActive: page == 3, look: look, frozenAt: sceneTime)
+                }
+                .tag(3)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
 
@@ -60,6 +83,13 @@ public struct OnboardingScreen: View {
             .padding(.bottom, AppSpacing.small)
         }
         .background(Color(.systemBackground))
+    }
+
+    private func setting<Value>(_ keyPath: WritableKeyPath<AppSettings, Value>) -> Binding<Value> {
+        Binding(
+            get: { store.settings[keyPath: keyPath] },
+            set: { newValue in store.updateSettings { $0[keyPath: keyPath] = newValue } }
+        )
     }
 
     @ViewBuilder
@@ -94,10 +124,21 @@ public struct OnboardingScreen: View {
     }
 }
 
+/// What a page's picture is to VoiceOver.
+enum OnboardingPicture {
+    /// An illustration of what the title says: skipped.
+    case decorative
+    /// It has controls of its own, which speak for themselves.
+    case interactive
+    /// It shows something the text does not say; this says it.
+    case described(String)
+}
+
 /// A picture on top, a left-aligned title and one line under it.
 private struct OnboardingPage<Preview: View>: View {
     let title: Text
     let message: Text
+    var picture: OnboardingPicture = .decorative
     @ViewBuilder let preview: () -> Preview
 
     var body: some View {
@@ -106,7 +147,7 @@ private struct OnboardingPage<Preview: View>: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(.secondarySystemBackground))
                 .clipped()
-                .accessibilityHidden(true)
+                .modifier(PictureAccessibility(picture: picture))
             VStack(alignment: .leading, spacing: AppSpacing.xSmall) {
                 title
                     .font(.largeTitle.weight(.bold))
@@ -123,33 +164,58 @@ private struct OnboardingPage<Preview: View>: View {
     }
 }
 
+private struct PictureAccessibility: ViewModifier {
+    let picture: OnboardingPicture
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        switch picture {
+        case .decorative:
+            content.accessibilityHidden(true)
+        case .interactive:
+            content
+        case .described(let text):
+            content
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(Text(verbatim: text))
+        }
+    }
+}
+
+/// Where the person is: the current page's dot is drawn out into a short bar.
 private struct PageDots: View {
     let count: Int
     let current: Int
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         HStack(spacing: AppSpacing.xSmall) {
             ForEach(0..<count, id: \.self) { index in
-                Circle()
+                Capsule()
                     .fill(index == current ? Color.primary : Color.secondary.opacity(0.35))
-                    .frame(width: 8, height: 8)
+                    .frame(width: index == current ? 22 : 8, height: 8)
             }
         }
+        .animationAware(AppMotion.settle, reduceMotion: reduceMotion, value: current)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(String(localized: "onboarding.page", defaultValue: "Page \(current + 1) of \(count)", bundle: .module)))
     }
 }
 
-// MARK: - Previews of the real thing
+// MARK: - Plan once
 
-/// A slice of the Today screen on the sample plan.
+/// A slice of the Today screen on the sample plan. Its rows arrive one after the other.
 private struct TodayPreview: View {
+    @State private var hasArrived = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         let today = CalendarDay.today()
         let plan = SamplePlan.keto(startingOn: today)
         let schedule = MealSchedule(plan: plan)
         let occurrences = schedule.occurrences(on: today)
         let statuses: [MealStatusSymbol.Status] = [.done, .next, .pending, .pending]
+        let isShown = hasArrived || reduceMotion
         VStack(alignment: .leading, spacing: AppSpacing.small) {
             Text("onboarding.preview.today", bundle: .module)
                 .font(.title.weight(.bold))
@@ -177,6 +243,9 @@ private struct TodayPreview: View {
                         RoundedRectangle(cornerRadius: AppRadius.small, style: .continuous).fill(AppColors.brandWash)
                     }
                 }
+                .opacity(isShown ? 1 : 0)
+                .offset(y: isShown ? 0 : 22)
+                .animation(.spring(duration: 0.55, bounce: 0.28).delay(0.25 + Double(index) * 0.1), value: hasArrived)
             }
             Spacer(minLength: 0)
         }
@@ -185,60 +254,10 @@ private struct TodayPreview: View {
         .background(Color(.systemBackground), in: UnevenRoundedRectangle(topLeadingRadius: 32, topTrailingRadius: 32, style: .continuous))
         .padding(.top, AppSpacing.xxLarge)
         .padding(.horizontal, AppSpacing.xLarge)
-    }
-}
-
-/// The widget, as it sits on a Home Screen.
-private struct WidgetsPreview: View {
-    var body: some View {
-        let entry = MealWidgetEntry.sample(now: TimeOfDay(hour: 13, minute: 18).date(on: .today()))
-        VStack(spacing: AppSpacing.large) {
-            MealWidgetView(entry: entry, family: .systemMedium)
-                .padding(AppSpacing.medium)
-                .frame(maxWidth: 364)
-                .aspectRatio(364 / 170, contentMode: .fit)
-                .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-            MealWidgetView(entry: entry, family: .systemSmall)
-                .padding(AppSpacing.medium)
-                .frame(width: 170, height: 170)
-                .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-                .frame(maxWidth: 364, alignment: .leading)
-        }
-        .padding(.horizontal, AppSpacing.small)
-    }
-}
-
-/// The small widget at three times of the same day: it moves on by itself. Three real-size
-/// widgets are wider than a phone, so the row is scaled down to the room it has.
-private struct TimePreview: View {
-    private static let rowWidth: CGFloat = 3 * 170 + 2 * AppSpacing.large
-
-    var body: some View {
-        GeometryReader { proxy in
-            let scale = min(1, (proxy.size.width - 2 * AppSpacing.medium) / Self.rowWidth)
-            row
-                .scaleEffect(scale)
-                .frame(width: proxy.size.width, height: proxy.size.height)
-        }
-    }
-
-    private var row: some View {
-        let times = [TimeOfDay(hour: 9, minute: 12), TimeOfDay(hour: 13, minute: 18), TimeOfDay(hour: 18, minute: 40)]
-        return HStack(spacing: AppSpacing.large) {
-            ForEach(Array(times.enumerated()), id: \.offset) { index, time in
-                let date = time.date(on: .today())
-                VStack(spacing: AppSpacing.small) {
-                    Text(String(localized: "onboarding.preview.at", defaultValue: "At \(date.formatted(.dateTime.hour().minute()))", bundle: .module))
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(index == 1 ? .primary : .secondary)
-                    MealWidgetView(entry: MealWidgetEntry.sample(now: date), family: .systemSmall)
-                        .padding(AppSpacing.medium)
-                        .frame(width: 170, height: 170)
-                        .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-                }
-                .opacity(index == 1 ? 1 : 0.5)
-            }
-        }
-        .fixedSize()
+        // The sheet of paper comes up from the bottom of the picture.
+        .offset(y: isShown ? 0 : 60)
+        .animation(.spring(duration: 0.6, bounce: 0.2), value: hasArrived)
+        .onAppear { hasArrived = true }
+        .onDisappear { hasArrived = false }
     }
 }

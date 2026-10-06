@@ -1,6 +1,150 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "onboarding.add.edit" : {
+      "comment" : "Label of the Edit button drawn on the small picture of a Home Screen; the same word iOS uses there. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzenle"
+          }
+        }
+      }
+    },
+    "onboarding.add.message" : {
+      "comment" : "Under the title of the last introduction page. The steps themselves are shown in the animation above. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three steps, once. After that it keeps itself up to date."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tres pasos, una sola vez. Después se mantiene al día solo."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üç adım, bir kez. Sonrasında kendiliğinden güncel kalır."
+          }
+        }
+      }
+    },
+    "onboarding.add.step1" : {
+      "comment" : "Caption of step 1 in the animation that shows how to add the widget. A few words, no period.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch and hold an empty spot"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén pulsado un espacio vacío"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boş bir yere basılı tut"
+          }
+        }
+      }
+    },
+    "onboarding.add.step2" : {
+      "comment" : "Caption of step 2 in the animation that shows how to add the widget. Edit and Add Widget are the names of iOS's own buttons. A few words, no period.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Edit, then Add Widget"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca Editar y luego Añadir widget"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzenle'ye, sonra Widget Ekle'ye dokun"
+          }
+        }
+      }
+    },
+    "onboarding.add.step3" : {
+      "comment" : "Caption of step 3 in the animation that shows how to add the widget. %@ is the app's name. A few words, no period.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ uygulamasını seç"
+          }
+        }
+      }
+    },
+    "onboarding.add.title" : {
+      "comment" : "Title of the last introduction page, which shows how to add the widget to the Home Screen. A short sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Put it on your Home Screen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponlo en tu pantalla de inicio."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana Ekran'ına koy."
+          }
+        }
+      }
+    },
     "onboarding.continue" : {
       "comment" : "Button that goes to the next onboarding page. One word.",
       "extractionState" : "manual",
@@ -145,30 +289,6 @@
         }
       }
     },
-    "onboarding.preview.at" : {
-      "comment" : "Caption over a widget picture on the third onboarding page. %@ is a time such as '13:18'.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "At %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A las %@"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saat %@"
-          }
-        }
-      }
-    },
     "onboarding.preview.today" : {
       "comment" : "Title of the small Today screen drawn as a picture on the first onboarding page. One word.",
       "extractionState" : "manual",
@@ -193,50 +313,122 @@
         }
       }
     },
-    "onboarding.time.message" : {
-      "comment" : "Third onboarding page, the line under the title.",
+    "onboarding.setup.color" : {
+      "comment" : "VoiceOver label of the row of color swatches on the introduction page. One word.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your plan moves with the time automatically."
+            "value" : "Color"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu plan avanza solo con la hora."
+            "value" : "Color"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Planın saate göre kendiliğinden ilerler."
+            "value" : "Renk"
           }
         }
       }
     },
-    "onboarding.time.title" : {
-      "comment" : "Third onboarding page title. Very short, ends with a full stop.",
+    "onboarding.setup.message" : {
+      "comment" : "Under the title of the introduction page where the widget is chosen and colored. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stop deciding."
+            "value" : "Pick a widget, its color and its tone. You can change them any time."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deja de decidir."
+            "value" : "Elige un widget, su color y su tono. Puedes cambiarlos cuando quieras."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Düşünmeyi bırak."
+            "value" : "Widget'ı, rengini ve tonunu seç. İstediğin zaman değiştirebilirsin."
+          }
+        }
+      }
+    },
+    "onboarding.setup.title" : {
+      "comment" : "Title of the introduction page where the widget's kind, color and tone are chosen. A short sentence, three words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make it yours."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazlo tuyo."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kendine göre ayarla."
+          }
+        }
+      }
+    },
+    "onboarding.setup.tone" : {
+      "comment" : "VoiceOver label of the control that chooses the widget's background tone on the introduction page. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arka plan"
+          }
+        }
+      }
+    },
+    "onboarding.setup.widget" : {
+      "comment" : "VoiceOver label of the control that chooses which widget is shown on the introduction page. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
           }
         }
       }

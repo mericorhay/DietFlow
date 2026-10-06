@@ -16,7 +16,8 @@ import Purchases
 ///     -DebugTab today|plan|widgets
 ///     -DebugSheet settings|import|newMeal|newPlan|plus|plusIntro
 ///     -DebugMeal next                      opens the meal in front on Today
-///     -DebugOnboardingPage 0…2
+///     -DebugOnboardingPage 0…3
+///     -DebugOnboardingTime <seconds>       stops the last page's animation at that moment
 ///     -DebugPlus monthly|trial|yearly|lifetime
 ///                                          as if that were held, for Settings' Plus section
 ///     -DebugWidgetLook <colour>.<tone>     e.g. blue.bold, green.soft: the widget's colour and tone
