@@ -16,6 +16,11 @@ public struct AppSettings: Codable, Hashable, Sendable {
     public var hasDismissedWidgetTip: Bool
     /// The first-launch introduction to DietFlow Plus has been shown. It is shown once.
     public var hasSeenPlusIntro: Bool
+    /// How long a meal stays in front after its time, on the widget and on Today alike.
+    public var mealWindowMinutes: Int
+    public var showDoneButtonOnWidget: Bool
+    public var widgetAccent: WidgetAccent
+    public var widgetBackground: WidgetBackgroundStyle
 
     public init(
         remindersEnabled: Bool = false,
@@ -27,7 +32,11 @@ public struct AppSettings: Codable, Hashable, Sendable {
         showCompletedMealsOnWidget: Bool = true,
         hasCompletedOnboarding: Bool = false,
         hasDismissedWidgetTip: Bool = false,
-        hasSeenPlusIntro: Bool = false
+        hasSeenPlusIntro: Bool = false,
+        mealWindowMinutes: Int = WidgetPreferences.defaultWindowMinutes,
+        showDoneButtonOnWidget: Bool = false,
+        widgetAccent: WidgetAccent = .terracotta,
+        widgetBackground: WidgetBackgroundStyle = .system
     ) {
         self.remindersEnabled = remindersEnabled
         self.defaultReminder = defaultReminder
@@ -39,6 +48,10 @@ public struct AppSettings: Codable, Hashable, Sendable {
         self.hasCompletedOnboarding = hasCompletedOnboarding
         self.hasDismissedWidgetTip = hasDismissedWidgetTip
         self.hasSeenPlusIntro = hasSeenPlusIntro
+        self.mealWindowMinutes = WidgetPreferences.clampedWindow(mealWindowMinutes)
+        self.showDoneButtonOnWidget = showDoneButtonOnWidget
+        self.widgetAccent = widgetAccent
+        self.widgetBackground = widgetBackground
     }
 
     public init(from decoder: any Decoder) throws {
@@ -54,6 +67,10 @@ public struct AppSettings: Codable, Hashable, Sendable {
         hasCompletedOnboarding = (try? container.decode(Bool.self, forKey: .hasCompletedOnboarding)) ?? defaults.hasCompletedOnboarding
         hasDismissedWidgetTip = (try? container.decode(Bool.self, forKey: .hasDismissedWidgetTip)) ?? defaults.hasDismissedWidgetTip
         hasSeenPlusIntro = (try? container.decode(Bool.self, forKey: .hasSeenPlusIntro)) ?? defaults.hasSeenPlusIntro
+        mealWindowMinutes = WidgetPreferences.clampedWindow((try? container.decode(Int.self, forKey: .mealWindowMinutes)) ?? defaults.mealWindowMinutes)
+        showDoneButtonOnWidget = (try? container.decode(Bool.self, forKey: .showDoneButtonOnWidget)) ?? defaults.showDoneButtonOnWidget
+        widgetAccent = (try? container.decode(WidgetAccent.self, forKey: .widgetAccent)) ?? defaults.widgetAccent
+        widgetBackground = (try? container.decode(WidgetBackgroundStyle.self, forKey: .widgetBackground)) ?? defaults.widgetBackground
     }
 
     public var widgetPreferences: WidgetPreferences {
@@ -61,7 +78,11 @@ public struct AppSettings: Codable, Hashable, Sendable {
             showCalories: showCaloriesOnWidget,
             showFollowingMeal: showFollowingMealOnWidget,
             showCompletedMeals: showCompletedMealsOnWidget,
-            energyUnit: energyUnit
+            energyUnit: energyUnit,
+            mealWindowMinutes: mealWindowMinutes,
+            showDoneButton: showDoneButtonOnWidget,
+            accent: widgetAccent,
+            background: widgetBackground
         )
     }
 }

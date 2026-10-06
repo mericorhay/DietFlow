@@ -1,17 +1,78 @@
 import Foundation
 
+/// The colour a widget's accents, or its whole background, are drawn in. The raw values are
+/// stored, so they never change; what each looks like is decided where it is drawn.
+public enum WidgetAccent: String, Codable, CaseIterable, Sendable {
+    /// The app's own colour.
+    case terracotta
+    case orange
+    case red
+    case pink
+    case purple
+    case indigo
+    case blue
+    case teal
+    case green
+    case graphite
+}
+
+/// The tone of a Home Screen widget's background.
+public enum WidgetBackgroundStyle: String, Codable, CaseIterable, Sendable {
+    /// White in Light Mode, black in Dark Mode: what widgets look like by default.
+    case system
+    /// A light wash of the chosen colour.
+    case soft
+    /// The chosen colour itself, with white text.
+    case bold
+    /// Dark at any time of day.
+    case dark
+}
+
 /// What the person chose on the Widgets tab. Applies to every widget.
 public struct WidgetPreferences: Codable, Hashable, Sendable {
+    /// How long a meal can be kept in front, in minutes: what the Widgets tab offers.
+    public static let windowOptions = [30, 45, 60, 90, 120]
+    public static let defaultWindowMinutes = 60
+
     public var showCalories: Bool
     public var showFollowingMeal: Bool
     public var showCompletedMeals: Bool
     public var energyUnit: EnergyUnit
+    /// How long a meal stays in front after its time before the next one takes its place.
+    public var mealWindowMinutes: Int
+    /// Whether the medium and large widgets carry a Done button. Off by default: meals move on
+    /// by themselves, and ticking them off is for those who like to.
+    public var showDoneButton: Bool
+    public var accent: WidgetAccent
+    public var background: WidgetBackgroundStyle
 
-    public init(showCalories: Bool = false, showFollowingMeal: Bool = true, showCompletedMeals: Bool = true, energyUnit: EnergyUnit = .kilocalories) {
+    public init(
+        showCalories: Bool = false,
+        showFollowingMeal: Bool = true,
+        showCompletedMeals: Bool = true,
+        energyUnit: EnergyUnit = .kilocalories,
+        mealWindowMinutes: Int = WidgetPreferences.defaultWindowMinutes,
+        showDoneButton: Bool = false,
+        accent: WidgetAccent = .terracotta,
+        background: WidgetBackgroundStyle = .system
+    ) {
         self.showCalories = showCalories
         self.showFollowingMeal = showFollowingMeal
         self.showCompletedMeals = showCompletedMeals
         self.energyUnit = energyUnit
+        self.mealWindowMinutes = WidgetPreferences.clampedWindow(mealWindowMinutes)
+        self.showDoneButton = showDoneButton
+        self.accent = accent
+        self.background = background
+    }
+
+    /// Between a quarter of an hour and four hours, whatever was stored.
+    public static func clampedWindow(_ minutes: Int) -> Int {
+        min(max(minutes, 15), 240)
+    }
+
+    public var mealWindow: TimeInterval {
+        TimeInterval(mealWindowMinutes * 60)
     }
 
     // Tolerant decoding: a field added later must not make an older file unreadable.
@@ -22,6 +83,11 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
         showFollowingMeal = try container.decodeIfPresent(Bool.self, forKey: .showFollowingMeal) ?? defaults.showFollowingMeal
         showCompletedMeals = try container.decodeIfPresent(Bool.self, forKey: .showCompletedMeals) ?? defaults.showCompletedMeals
         energyUnit = (try? container.decodeIfPresent(EnergyUnit.self, forKey: .energyUnit)) ?? defaults.energyUnit
+        mealWindowMinutes = WidgetPreferences.clampedWindow((try? container.decodeIfPresent(Int.self, forKey: .mealWindowMinutes)) ?? defaults.mealWindowMinutes)
+        showDoneButton = (try? container.decodeIfPresent(Bool.self, forKey: .showDoneButton)) ?? defaults.showDoneButton
+        // A colour or tone this version does not know — written by a newer one — falls back to the default.
+        accent = (try? container.decodeIfPresent(WidgetAccent.self, forKey: .accent)) ?? defaults.accent
+        background = (try? container.decodeIfPresent(WidgetBackgroundStyle.self, forKey: .background)) ?? defaults.background
     }
 }
 
@@ -91,9 +157,9 @@ extension WidgetSnapshot {
     public static func sample(now: Date = .now, timeZone: TimeZone = .current, preferences: WidgetPreferences = WidgetPreferences()) -> WidgetSnapshot {
         let today = CalendarDay(now, in: timeZone)
         let plan = SamplePlan.keto(startingOn: today)
-        let schedule = MealSchedule(plan: plan, timeZone: timeZone)
+        let schedule = MealSchedule(plan: plan, timeZone: timeZone, currentWindow: preferences.mealWindow)
         var states: OccurrenceStates = [:]
-        for occurrence in schedule.occurrences(on: today) where occurrence.date.addingTimeInterval(MealSchedule.currentWindow) < now {
+        for occurrence in schedule.occurrences(on: today) where occurrence.date.addingTimeInterval(schedule.currentWindow) < now {
             states[occurrence.key] = .completed
         }
         return WidgetSnapshot(plan: plan, states: states, preferences: preferences, generatedAt: now, timeZone: timeZone)

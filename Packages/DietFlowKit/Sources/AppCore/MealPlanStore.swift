@@ -246,6 +246,7 @@ public final class MealPlanStore {
         guard updated != settings else { return }
         settings = updated
         if persistsSettings { AppSettingsStore.save(updated) }
+        schedule = activePlan.map(makeSchedule)
         publish()
     }
 
@@ -304,19 +305,26 @@ public final class MealPlanStore {
 
     // MARK: - Effects
 
+    /// The schedule Today and the intents ask, with the same "how long a meal stays in front" the
+    /// widget uses, so the app and the widget never disagree about which meal is on now.
+    private func makeSchedule(_ plan: MealPlan) -> MealSchedule {
+        MealSchedule(plan: plan, timeZone: .current, currentWindow: settings.widgetPreferences.mealWindow)
+    }
+
     private func load() {
+        // Settings first: the schedule below is built from them.
+        if persistsSettings { settings = AppSettingsStore.load() }
         do {
             plans = try persistence.planSummaries()
             let plan = try persistence.activePlan()
             activePlan = plan
-            schedule = plan.map { MealSchedule(plan: $0, timeZone: .current) }
+            schedule = plan.map(makeSchedule)
             states = try plan.map { try persistence.states(planID: $0.id) } ?? [:]
             lastLoadFailed = false
         } catch {
             lastLoadFailed = true
             logger.error("Could not read plans: \(String(describing: error), privacy: .public)")
         }
-        if persistsSettings { settings = AppSettingsStore.load() }
     }
 
     private func didChange(_ operation: String) {

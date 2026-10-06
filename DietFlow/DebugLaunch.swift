@@ -19,6 +19,7 @@ import Purchases
 ///     -DebugOnboardingPage 0…2
 ///     -DebugPlus monthly|trial|yearly|lifetime
 ///                                          as if that were held, for Settings' Plus section
+///     -DebugWidgetLook <colour>.<tone>     e.g. blue.bold, green.soft: the widget's colour and tone
 enum DebugLaunch {
     /// The Plus screen without the App Store: the prices as set in App Store Connect, in dollars.
     static func standInStore(entitlement: PlusEntitlement?) -> PlusStore {
@@ -64,18 +65,26 @@ enum DebugLaunch {
     /// A store holding only what the seed asks for, or nil for the real one. Seeded stores live in
     /// memory and never touch the person's data, settings or widget.
     static func seededStore() -> MealPlanStore? {
+        let store: MealPlanStore
         switch value("DebugSeed") {
         case "sample":
-            return .preview(withSample: true, settings: AppSettings(hasCompletedOnboarding: true))
+            store = .preview(withSample: true, settings: AppSettings(hasCompletedOnboarding: true))
         case "now":
-            return storeAroundNow()
+            store = storeAroundNow()
         case "empty":
-            return .preview(withSample: false, settings: AppSettings(hasCompletedOnboarding: true))
+            store = .preview(withSample: false, settings: AppSettings(hasCompletedOnboarding: true))
         case "onboarding":
-            return .preview(withSample: false, settings: AppSettings())
+            store = .preview(withSample: false, settings: AppSettings())
         default:
             return nil
         }
+        if let look = value("DebugWidgetLook")?.split(separator: ".").map(String.init), look.count == 2 {
+            store.updateSettings { settings in
+                settings.widgetAccent = WidgetAccent(rawValue: look[0]) ?? settings.widgetAccent
+                settings.widgetBackground = WidgetBackgroundStyle(rawValue: look[1]) ?? settings.widgetBackground
+            }
+        }
+        return store
     }
 
     /// Today's meals placed around the current time, so the screens show every state at once:

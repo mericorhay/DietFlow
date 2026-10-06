@@ -71,15 +71,29 @@ Rules that keep it that way:
 The extension (`DietFlowWidget/`) connects WidgetKit to `WidgetUI`. Its provider reads the
 snapshot and hands WidgetKit every moment the widget's face changes, worked out up front by
 `Domain.WidgetTimelineBuilder`: each meal's time (it becomes "Now"), the end of its "now" window
-(90 minutes, or the next meal, whichever is sooner), a countdown in five-minute steps during the
+(an hour unless the person chose otherwise, or the next meal, whichever is sooner), a countdown in five-minute steps during the
 hour before a meal ("in 15 min"), and midnight. Moments that would look the same are merged.
 WidgetKit plays them back on its own, the way the Calendar widget moves from event to event; the
 timeline asks to be rebuilt every twelve hours, and the app reloads it after every change.
 
 A corrupt or newer snapshot shows "open the app to update"; a missing one shows "no plan".
 
-The families are small, medium, large, Lock Screen rectangular and inline. The medium and large
-widgets have a Done button: `MarkMealDoneIntent`, which runs in the widget's process.
+The families are small, medium, large, Lock Screen rectangular and inline.
+
+**Nothing has to be tapped.** A meal whose time has come stays in front for its window, then gives
+way to the next one, and after the day's last meal the widget shows tomorrow's first. Marking a
+meal done is optional everywhere, and a meal left unmarked is simply earlier in the day, not a
+task undone. The window (30 minutes to 2 hours, an hour by default) is chosen on the Widgets tab
+and travels in the snapshot, so Today and the widget use the same one. A Done button for the medium
+and large widgets can be turned on there for moving on sooner: `MarkMealDoneIntent`, which runs in
+the widget's process.
+
+**Colour and tone** are chosen on the Widgets tab too: one of ten colours (`WidgetAccent`) and a
+background (`WidgetBackgroundStyle`: automatic, a soft wash of the colour, the colour itself with
+white text, or dark). `WidgetUI.WidgetTheme` turns the pair into the few colours the widget views
+ask for and hands it down through the environment; `WidgetThemeBackground` is the background both
+the extension and the app's previews draw, so the preview is what appears. Lock Screen widgets, and
+Home Screen widgets under tinted icons, are coloured by iOS and take none of it.
 
 ## Links, files and reminders
 

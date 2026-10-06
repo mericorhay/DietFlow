@@ -47,9 +47,9 @@ struct NextMealEntryView: View {
             }
             .buttonStyle(.bordered)
             .buttonBorderShape(.capsule)
-            .tint(AppColors.brandAccent)
+            .tint(WidgetTheme(entry.preferences).tint)
         }
-        .modifier(WidgetBackground(family: family))
+        .modifier(WidgetBackground(family: family, preferences: entry.preferences))
         // A tap opens the meal the widget is showing; the Done button works without opening the app.
         .widgetURL(link.url)
     }
@@ -62,10 +62,11 @@ struct NextMealEntryView: View {
     }
 }
 
-/// The system's widget background on the Home Screen; none on the Lock Screen, where the
-/// wallpaper shows through.
+/// The colour and tone chosen on the Widgets tab on the Home Screen; nothing on the Lock Screen,
+/// where the wallpaper shows through.
 private struct WidgetBackground: ViewModifier {
     let family: WidgetFamily
+    let preferences: WidgetPreferences
 
     @ViewBuilder
     func body(content: Content) -> some View {
@@ -73,7 +74,7 @@ private struct WidgetBackground: ViewModifier {
         case .accessoryRectangular, .accessoryInline, .accessoryCircular:
             content.containerBackground(for: .widget) { Color.clear }
         default:
-            content.containerBackground(.background, for: .widget)
+            content.containerBackground(for: .widget) { WidgetThemeBackground(preferences) }
         }
     }
 }

@@ -17,6 +17,11 @@ public struct MealWidgetView<Done: View>: View {
     }
 
     public var body: some View {
+        sized.modifier(WidgetThemed(theme: WidgetTheme(entry.preferences), family: family))
+    }
+
+    @ViewBuilder
+    private var sized: some View {
         switch family {
         case .systemSmall:
             SmallMealWidgetView(entry: entry)
@@ -46,6 +51,7 @@ extension MealWidgetView where Done == WidgetDonePreview {
 /// The most important widget: what is next, when, and nothing else.
 struct SmallMealWidgetView: View {
     let entry: MealWidgetEntry
+    @Environment(\.widgetTheme) private var theme
 
     var body: some View {
         if let message = WidgetMessageView.view(for: entry.content) {
@@ -97,7 +103,7 @@ struct SmallMealWidgetView: View {
         VStack(alignment: .leading, spacing: AppSpacing.xxSmall) {
             Image(systemName: "checkmark.circle.fill")
                 .font(.title2)
-                .foregroundStyle(AppColors.success)
+                .foregroundStyle(theme.success)
                 .widgetAccentable()
                 .accessibilityHidden(true)
             Text("widget.dayComplete", bundle: .module)
@@ -123,6 +129,7 @@ struct SmallMealWidgetView: View {
 struct MediumMealWidgetView<Done: View>: View {
     let entry: MealWidgetEntry
     let done: (WidgetMealItem) -> Done
+    @Environment(\.widgetTheme) private var theme
 
     var body: some View {
         if let message = WidgetMessageView.view(for: entry.content) {
@@ -152,7 +159,8 @@ struct MediumMealWidgetView<Done: View>: View {
                 .font(.headline)
                 .lineLimit(2)
             Spacer(minLength: 0)
-            if lead == .now || lead == .next {
+            // Off unless asked for: the meal gives way to the next one by itself.
+            if entry.preferences.showDoneButton, lead == .now || lead == .next {
                 done(primary)
             } else if let minutes = day.minutesUntilPrimary {
                 Text(RelativeTimeText.until(minutes: minutes))
@@ -188,7 +196,7 @@ struct MediumMealWidgetView<Done: View>: View {
         VStack(alignment: .leading, spacing: AppSpacing.xSmall) {
             Image(systemName: "checkmark.circle.fill")
                 .font(.title2)
-                .foregroundStyle(AppColors.success)
+                .foregroundStyle(theme.success)
                 .widgetAccentable()
                 .accessibilityHidden(true)
             Text("widget.dayComplete", bundle: .module)
@@ -208,6 +216,7 @@ struct LargeMealWidgetView<Done: View>: View {
     let done: (WidgetMealItem) -> Done
     /// Rows that fit at the standard text size; larger text shows fewer.
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.widgetTheme) private var theme
 
     private var rowLimit: Int {
         dynamicTypeSize >= .xxLarge ? 4 : 6
@@ -248,7 +257,7 @@ struct LargeMealWidgetView<Done: View>: View {
                     .lineLimit(1)
             } else if day.isDayComplete {
                 Image(systemName: "checkmark.circle.fill")
-                    .foregroundStyle(AppColors.success)
+                    .foregroundStyle(theme.success)
                     .widgetAccentable()
                     .accessibilityLabel(Text("widget.dayComplete", bundle: .module))
             }
@@ -273,7 +282,7 @@ struct LargeMealWidgetView<Done: View>: View {
                 .monospacedDigit()
                 .foregroundStyle(isMarked ? AnyShapeStyle(.secondary) : AnyShapeStyle(.primary))
                 .lineLimit(1)
-            MealStatusSymbol(MealStatusSymbol.Status(item.role), font: .subheadline)
+            MealStatusSymbol(MealStatusSymbol.Status(item.role), font: .subheadline, accent: theme.tint)
                 .widgetAccentable(item.role == .current || item.role == .next)
             VStack(alignment: .leading, spacing: 0) {
                 Text(item.typeLabel)
@@ -286,7 +295,7 @@ struct LargeMealWidgetView<Done: View>: View {
                     .lineLimit(1)
             }
             Spacer(minLength: 0)
-            if isFocus {
+            if isFocus, entry.preferences.showDoneButton {
                 done(item)
             } else if entry.preferences.showCalories, let calories = item.calories {
                 Text(entry.preferences.energyUnit.format(kilocalories: calories))

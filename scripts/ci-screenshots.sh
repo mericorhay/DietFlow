@@ -83,6 +83,8 @@ shot today-en "${EN[@]}" "${SAMPLE[@]}"
 shot meal-en "${EN[@]}" "${SAMPLE[@]}" -DebugMeal next
 shot newmeal-es "${ES[@]}" "${SAMPLE[@]}" -DebugSheet newMeal
 shot plus-en "${EN[@]}" "${SAMPLE[@]}" -DebugSheet plus
+shot widgets-blue-bold-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidgetLook blue.bold
+shot widgets-green-soft-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidgetLook green.soft
 shot settings-plus-es "${ES[@]}" "${SAMPLE[@]}" -DebugSheet settings -DebugPlus trial
 shot empty-en "${EN[@]}" -DebugSeed empty
 # Room for longer languages and right-to-left scripts: Xcode's pseudolanguages.

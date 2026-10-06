@@ -124,9 +124,28 @@ struct AgendaTests {
     }
 
     @Test func aCurrentMealLapsesAfterItsWindow() {
-        // 90 minutes after 14:00.
-        #expect(roles(at: 15, 29) == [.past, .current, .upcoming])
-        #expect(roles(at: 15, 31) == [.past, .past, .next])
+        // An hour after 14:00, with nothing marked: lunch gives way to dinner by itself.
+        #expect(roles(at: 14, 59) == [.past, .current, .upcoming])
+        #expect(roles(at: 15, 1) == [.past, .past, .next])
+    }
+
+    @Test func howLongAMealStaysInFrontCanBeChosen() {
+        func roles(window minutes: Double, at hour: Int, _ minute: Int) -> [MealRole] {
+            MealSchedule(plan: twoDayPlan(), timeZone: utc, currentWindow: minutes * 60)
+                .agenda(on: monday, now: at(monday, hour, minute)).items.map(\.role)
+        }
+        #expect(roles(window: 30, at: 14, 29) == [.past, .current, .upcoming])
+        #expect(roles(window: 30, at: 14, 31) == [.past, .past, .next])
+        #expect(roles(window: 120, at: 15, 59) == [.past, .current, .upcoming])
+        #expect(roles(window: 120, at: 16, 1) == [.past, .past, .next])
+    }
+
+    @Test func theDayMovesOnWithoutAnythingBeingMarked() throws {
+        // Nobody taps anything all day.
+        let titles = try [(10, 30), (12, 0), (14, 30), (16, 0), (19, 30), (21, 0)].map { hour, minute in
+            try #require(schedule.focus(now: at(monday, hour, minute))).occurrence.meal.title
+        }
+        #expect(titles == ["Halloumi salad", "Chicken Caesar", "Chicken Caesar", "Steak salad", "Steak salad", "Feta salad"])
     }
 
     @Test func currentWindowStopsAtTheNextMeal() {

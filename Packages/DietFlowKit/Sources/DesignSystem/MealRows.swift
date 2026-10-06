@@ -30,10 +30,14 @@ public struct MealStatusSymbol: View {
 
     private let status: Status
     private let font: Font
+    private let accent: Color?
 
-    public init(_ status: Status, font: Font = .title3) {
+    /// - Parameter accent: the colour for "now" and "next", where it is not the app's own: a
+    ///   widget drawn in the colour the person chose.
+    public init(_ status: Status, font: Font = .title3, accent: Color? = nil) {
         self.status = status
         self.font = font
+        self.accent = accent
     }
 
     public var body: some View {
@@ -58,7 +62,7 @@ public struct MealStatusSymbol: View {
     private var color: Color {
         switch status {
         case .done: AppColors.success
-        case .current, .next: AppColors.brandAccent
+        case .current, .next: accent ?? AppColors.brandAccent
         case .skipped, .missed: Color.secondary
         case .pending: Color(.tertiaryLabel)
         }

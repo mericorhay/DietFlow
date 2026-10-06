@@ -40,6 +40,39 @@ public struct WidgetsScreen: View {
             }
 
             Section {
+                ColorSwatches(selection: setting(\.widgetAccent))
+                Picker(selection: setting(\.widgetBackground)) {
+                    ForEach(WidgetBackgroundStyle.allCases, id: \.self) { style in
+                        Text(style.name).tag(style)
+                    }
+                } label: {
+                    Text("widgets.look.background", bundle: .module)
+                }
+            } header: {
+                Text("widgets.look.header", bundle: .module)
+            } footer: {
+                Text("widgets.look.footer", bundle: .module)
+            }
+
+            Section {
+                Picker(selection: setting(\.mealWindowMinutes)) {
+                    ForEach(windowOptions, id: \.self) { minutes in
+                        Text(Duration.seconds(minutes * 60).formatted(.units(allowed: [.hours, .minutes], width: .wide)))
+                            .tag(minutes)
+                    }
+                } label: {
+                    Text("widgets.timing.window", bundle: .module)
+                }
+                Toggle(isOn: setting(\.showDoneButtonOnWidget)) {
+                    Text("widgets.timing.done", bundle: .module)
+                }
+            } header: {
+                Text("widgets.timing.header", bundle: .module)
+            } footer: {
+                Text("widgets.timing.footer", bundle: .module)
+            }
+
+            Section {
                 Toggle(isOn: setting(\.showCaloriesOnWidget)) {
                     Text("widgets.show.calories", bundle: .module)
                 }
@@ -89,7 +122,16 @@ public struct WidgetsScreen: View {
         return MealWidgetEntry.current(for: snapshot, now: now)
     }
 
-    private func setting(_ keyPath: WritableKeyPath<AppSettings, Bool>) -> Binding<Bool> {
+    /// What the picker offers, with whatever is stored added if it is not one of them, so the
+    /// picker always has a row for the value in force.
+    private var windowOptions: [Int] {
+        let stored = store.settings.mealWindowMinutes
+        return WidgetPreferences.windowOptions.contains(stored)
+            ? WidgetPreferences.windowOptions
+            : (WidgetPreferences.windowOptions + [stored]).sorted()
+    }
+
+    private func setting<Value>(_ keyPath: WritableKeyPath<AppSettings, Value>) -> Binding<Value> {
         Binding(
             get: { store.settings[keyPath: keyPath] },
             set: { newValue in
@@ -112,6 +154,76 @@ public struct WidgetsScreen: View {
         }
         .padding(.vertical, AppSpacing.xxSmall)
         .accessibilityElement(children: .combine)
+    }
+}
+
+/// The widget's colour, as a row of swatches: seen, not read from a list of names.
+private struct ColorSwatches: View {
+    @Binding var selection: WidgetAccent
+
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: AppSpacing.xSmall) {
+                ForEach(WidgetAccent.allCases, id: \.self) { accent in
+                    let isSelected = accent == selection
+                    Button {
+                        selection = accent
+                    } label: {
+                        Circle()
+                            .fill(accent.fill)
+                            .frame(width: 30, height: 30)
+                            .overlay {
+                                if isSelected {
+                                    Image(systemName: "checkmark")
+                                        .font(.footnote.weight(.bold))
+                                        .foregroundStyle(.white)
+                                }
+                            }
+                            .padding(4)
+                            .overlay {
+                                Circle().strokeBorder(isSelected ? accent.fill : Color.clear, lineWidth: 2)
+                            }
+                            // A swatch is small; the tappable area is not.
+                            .frame(minWidth: AppSpacing.minimumHitTarget, minHeight: AppSpacing.minimumHitTarget)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(Text(verbatim: accent.name))
+                    .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+                }
+            }
+        }
+        .listRowInsets(EdgeInsets(top: AppSpacing.xxSmall, leading: AppSpacing.small, bottom: AppSpacing.xxSmall, trailing: 0))
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(Text("widgets.look.color", bundle: .module))
+    }
+}
+
+extension WidgetAccent {
+    var name: String {
+        switch self {
+        case .terracotta: String(localized: "widgets.color.terracotta", bundle: .module)
+        case .orange: String(localized: "widgets.color.orange", bundle: .module)
+        case .red: String(localized: "widgets.color.red", bundle: .module)
+        case .pink: String(localized: "widgets.color.pink", bundle: .module)
+        case .purple: String(localized: "widgets.color.purple", bundle: .module)
+        case .indigo: String(localized: "widgets.color.indigo", bundle: .module)
+        case .blue: String(localized: "widgets.color.blue", bundle: .module)
+        case .teal: String(localized: "widgets.color.teal", bundle: .module)
+        case .green: String(localized: "widgets.color.green", bundle: .module)
+        case .graphite: String(localized: "widgets.color.graphite", bundle: .module)
+        }
+    }
+}
+
+extension WidgetBackgroundStyle {
+    var name: String {
+        switch self {
+        case .system: String(localized: "widgets.background.system", bundle: .module)
+        case .soft: String(localized: "widgets.background.soft", bundle: .module)
+        case .bold: String(localized: "widgets.background.bold", bundle: .module)
+        case .dark: String(localized: "widgets.background.dark", bundle: .module)
+        }
     }
 }
 
@@ -175,7 +287,9 @@ struct PreviewStage: View {
             .padding(AppSpacing.medium)
             .frame(maxWidth: family.size.width)
             .aspectRatio(family.size.width / family.size.height, contentMode: .fit)
-            .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+            // The same background the widget extension draws, so the preview is what will appear.
+            .background { WidgetThemeBackground(entry.preferences) }
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
             .shadow(color: .black.opacity(0.06), radius: 2, y: 1)
             .padding(.vertical, AppSpacing.xLarge)
             .padding(.horizontal, AppSpacing.small)

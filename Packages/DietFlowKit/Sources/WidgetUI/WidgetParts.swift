@@ -77,11 +77,12 @@ enum WidgetText {
 struct WidgetLeadLabel: View {
     let text: String
     var isEmphasized = true
+    @Environment(\.widgetTheme) private var theme
 
     var body: some View {
         Text(text)
             .font(.footnote.weight(.semibold))
-            .foregroundStyle(isEmphasized ? AnyShapeStyle(AppColors.brandAccent) : AnyShapeStyle(.secondary))
+            .foregroundStyle(isEmphasized ? AnyShapeStyle(theme.tint) : AnyShapeStyle(.secondary))
             .lineLimit(1)
             // Room for languages that say "Tomorrow · Breakfast" in more letters.
             .minimumScaleFactor(0.85)
@@ -120,13 +121,15 @@ public struct WidgetDoneLabel: View {
 
 /// How the Done button looks in the app's own previews, where it does nothing.
 public struct WidgetDonePreview: View {
+    @Environment(\.widgetTheme) private var theme
+
     public init() {}
 
     public var body: some View {
         Button {} label: { WidgetDoneLabel() }
             .buttonStyle(.bordered)
             .buttonBorderShape(.capsule)
-            .tint(AppColors.brandAccent)
+            .tint(theme.tint)
             .allowsHitTesting(false)
             .accessibilityHidden(true)
     }
@@ -137,12 +140,13 @@ public struct WidgetDonePreview: View {
 struct WidgetHighlight: ViewModifier {
     let isActive: Bool
     @Environment(\.widgetRenderingMode) private var renderingMode
+    @Environment(\.widgetTheme) private var theme
 
     func body(content: Content) -> some View {
         content.background {
             if isActive {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(renderingMode == .fullColor ? AnyShapeStyle(AppColors.brandWash) : AnyShapeStyle(Color.primary.opacity(0.12)))
+                    .fill(renderingMode == .fullColor ? AnyShapeStyle(theme.wash) : AnyShapeStyle(Color.primary.opacity(0.12)))
             }
         }
     }

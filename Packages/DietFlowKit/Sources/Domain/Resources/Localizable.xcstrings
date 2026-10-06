@@ -176,19 +176,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "not marked"
+            "value" : "earlier"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "sin marcar"
+            "value" : "pasada"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "işaretlenmedi"
+            "value" : "geçti"
           }
         }
       }

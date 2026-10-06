@@ -21,13 +21,13 @@ struct WidgetTimelineTests {
     @Test func changesAtMealTimesWindowEndsCountdownsAndMidnight() {
         let dates = Set(WidgetTimelineBuilder.transitionDates(for: snapshot(), from: at(monday, 9), timeZone: utc))
         #expect(dates.contains(at(monday, 10)))
-        #expect(dates.contains(at(monday, 11, 30)))
+        #expect(dates.contains(at(monday, 11)))
         #expect(dates.contains(at(monday, 13)))
         #expect(dates.contains(at(monday, 13, 55)))
         #expect(dates.contains(at(monday, 14)))
-        #expect(dates.contains(at(monday, 15, 30)))
+        #expect(dates.contains(at(monday, 15)))
         #expect(dates.contains(at(monday, 19)))
-        #expect(dates.contains(at(monday, 20, 30)))
+        #expect(dates.contains(at(monday, 20)))
         #expect(dates.contains(tuesday.startDate(in: utc)))
         #expect(dates.contains(at(tuesday, 10)))
         #expect(!dates.contains { $0 <= at(monday, 9) })
@@ -47,6 +47,35 @@ struct WidgetTimelineTests {
         #expect(after.minutesUntilPrimary == nil)
         #expect(after.following?.title == "Steak salad")
         #expect(after.followingDay == nil)
+    }
+
+    @Test func theWidgetHoldsAMealForTheChosenTimeThenShowsTheNext() throws {
+        // Lunch is at 14:00 and dinner at 19:00; nothing is ever marked.
+        func lead(window: Int, at hour: Int, _ minute: Int) throws -> (WidgetDayContent.Lead?, String?) {
+            let data = WidgetSnapshot(plan: twoDayPlan(), states: [:], preferences: WidgetPreferences(mealWindowMinutes: window), generatedAt: at(monday, 9), timeZone: utc)
+            let day = try active(WidgetTimelineBuilder.content(for: data, at: at(monday, hour, minute), timeZone: utc))
+            return (day.lead, day.primary?.title)
+        }
+        #expect(try lead(window: 60, at: 14, 59) == (.now, "Chicken Caesar"))
+        #expect(try lead(window: 60, at: 15, 0) == (.next, "Steak salad"))
+        #expect(try lead(window: 30, at: 14, 30) == (.next, "Steak salad"))
+        #expect(try lead(window: 120, at: 15, 59) == (.now, "Chicken Caesar"))
+    }
+
+    @Test func theTimelineChangesFaceWhenTheChosenTimeIsUp() {
+        let data = WidgetSnapshot(plan: twoDayPlan(), states: [:], preferences: WidgetPreferences(mealWindowMinutes: 45), generatedAt: at(monday, 9), timeZone: utc)
+        let dates = Set(WidgetTimelineBuilder.transitionDates(for: data, from: at(monday, 9), timeZone: utc))
+        #expect(dates.contains(at(monday, 14, 45)))
+        #expect(!dates.contains(at(monday, 15)))
+    }
+
+    @Test func coloursAndTimingChosenByANewerVersionFallBackToDefaults() throws {
+        let json = #"{"version":1,"generatedAt":0,"states":{},"preferences":{"accent":"ultraviolet","background":"glass","mealWindowMinutes":100000,"showDoneButton":true}}"#
+        let preferences = try WidgetSnapshot.decode(Data(json.utf8)).preferences
+        #expect(preferences.accent == .terracotta)
+        #expect(preferences.background == .system)
+        #expect(preferences.mealWindowMinutes == 240)
+        #expect(preferences.showDoneButton)
     }
 
     @Test func countdownOnlyWithinTheHour() throws {

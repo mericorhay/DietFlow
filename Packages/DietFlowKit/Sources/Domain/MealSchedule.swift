@@ -19,12 +19,18 @@ public struct MealSchedule: Sendable {
     public let timeZone: TimeZone
     private let mealsByDayIndex: [Int: [Meal]]
 
-    /// How long a meal stays "now" after its time, unless the next meal starts sooner.
-    public static let currentWindow: TimeInterval = 90 * 60
+    /// How long a meal stays in front after its time when the person has not chosen otherwise.
+    public static let defaultWindow: TimeInterval = 60 * 60
 
-    public init(plan: MealPlan, timeZone: TimeZone = .current) {
+    /// How long a meal stays "now" after its time, unless the next meal starts sooner. When it is
+    /// over the meal simply gives way to the next one: nothing has to be marked for the day to
+    /// move on.
+    public let currentWindow: TimeInterval
+
+    public init(plan: MealPlan, timeZone: TimeZone = .current, currentWindow: TimeInterval = MealSchedule.defaultWindow) {
         self.plan = plan
         self.timeZone = timeZone
+        self.currentWindow = max(60, currentWindow)
         var grouped: [Int: [Meal]] = [:]
         for meal in plan.meals where meal.dayIndex < plan.schedule.length {
             grouped[meal.dayIndex, default: []].append(meal)
@@ -135,7 +141,7 @@ public struct MealSchedule: Sendable {
                 if day < today { return .past }
                 if day > today || occurrence.date > now { return .upcoming }
                 // Its time has come. It stays current for a while, but not into the next meal.
-                var windowEnd = min(occurrence.date.addingTimeInterval(Self.currentWindow), dayEnd)
+                var windowEnd = min(occurrence.date.addingTimeInterval(currentWindow), dayEnd)
                 if let later = occurrences[(index + 1)...].first(where: { $0.date > occurrence.date }) {
                     windowEnd = min(windowEnd, later.date)
                 }

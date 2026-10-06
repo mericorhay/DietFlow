@@ -107,7 +107,7 @@ public enum WidgetTimelineBuilder {
         guard snapshot.isReadable else { return .needsRefresh }
         guard let plan = snapshot.plan else { return .noPlan }
 
-        let schedule = MealSchedule(plan: plan, timeZone: timeZone)
+        let schedule = MealSchedule(plan: plan, timeZone: timeZone, currentWindow: snapshot.preferences.mealWindow)
         let states = snapshot.occurrenceStates
         let today = CalendarDay(date, in: timeZone)
         let phase = schedule.phase(on: today)
@@ -183,8 +183,8 @@ public enum WidgetTimelineBuilder {
     /// Every instant after `now`, up to `horizon`, at which the picture can change: midnight,
     /// each meal's time, the end of each meal's "now" window, and the countdown steps before a meal.
     public static func transitionDates(for snapshot: WidgetSnapshot?, from now: Date, timeZone: TimeZone = .current, horizon: TimeInterval = WidgetTimelineBuilder.horizon) -> [Date] {
-        guard let plan = snapshot?.plan, snapshot?.isReadable == true else { return [] }
-        let schedule = MealSchedule(plan: plan, timeZone: timeZone)
+        guard let snapshot, let plan = snapshot.plan, snapshot.isReadable else { return [] }
+        let schedule = MealSchedule(plan: plan, timeZone: timeZone, currentWindow: snapshot.preferences.mealWindow)
         let end = now.addingTimeInterval(horizon)
         let today = CalendarDay(now, in: timeZone)
         let days = Int(horizon / 86_400) + 2
@@ -197,7 +197,7 @@ public enum WidgetTimelineBuilder {
             let dayEnd = day.endDate(in: timeZone)
             for (index, occurrence) in occurrences.enumerated() {
                 dates.insert(occurrence.date)
-                var windowEnd = min(occurrence.date.addingTimeInterval(MealSchedule.currentWindow), dayEnd)
+                var windowEnd = min(occurrence.date.addingTimeInterval(schedule.currentWindow), dayEnd)
                 if let later = occurrences[(index + 1)...].first(where: { $0.date > occurrence.date }) {
                     windowEnd = min(windowEnd, later.date)
                 }
