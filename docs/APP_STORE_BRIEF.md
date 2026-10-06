@@ -431,11 +431,11 @@ These block a real submission and are the developer's to do. Do not attempt them
 | What | State |
 |---|---|
 | Signing: App IDs, App Group, two App Store provisioning profiles, repository secrets | Done |
-| A TestFlight build | Done: builds are uploading (1.0.0, build 7 at the time of writing) |
+| A TestFlight build | Done: submit build 9 or later, the first with analytics in it |
 | The assistant's server (Cloudflare Worker) deployed, with its secrets | Done: deployed and answering, using OpenAI |
 | GitHub Pages, so the privacy, terms and support URLs work | Done: all live |
-| The PostHog project key added to the build | **Not added.** Until it is, the build shares nothing and the Settings switch is absent; add it before submitting, or remove the analytics rows from the privacy answers |
-| The three in-app purchases created in App Store Connect | Not done: section 4. Until they exist the Plus screen cannot show prices |
+| The PostHog project key added to the build | Done: US Cloud. Builds from 9 on share anonymous usage data, on by default, with the switch in Settings |
+| The three in-app purchases created in App Store Connect | Done, per the developer: section 4. Check that each is attached to version 1.0.0 before submitting |
 | Purchases tested in the sandbox | Not tested |
 | Screenshots | Not taken: section 9 |
 
