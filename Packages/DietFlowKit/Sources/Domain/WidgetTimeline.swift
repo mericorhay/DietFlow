@@ -87,6 +87,20 @@ public enum WidgetTimelineBuilder {
     /// How far ahead of a meal the "in 12 min" countdown starts.
     public static let countdownLead = 60
     public static let countdownStep = 5
+    /// The most moments one timeline holds.
+    public static let momentLimit = 200
+
+    /// When the widget should ask for a fresh timeline: after `reloadInterval`, or sooner when the
+    /// moments end sooner. An ordinary plan's moments reach three times as far as the interval, so
+    /// this is the interval. But the moments are capped at `limit`, and if a plan ever filled the
+    /// cap before the interval was up, asking again only at the interval would leave the last
+    /// moment — "in 5 min", say — on screen for hours.
+    public static func reloadDate(after moments: [WidgetMoment], from now: Date, limit: Int = WidgetTimelineBuilder.momentLimit) -> Date {
+        let regular = now.addingTimeInterval(reloadInterval)
+        guard moments.count >= limit, let last = moments.last else { return regular }
+        // Never sooner than a quarter of an hour: WidgetKit budgets reloads.
+        return min(regular, max(last.date, now.addingTimeInterval(15 * 60)))
+    }
 
     public static func content(for snapshot: WidgetSnapshot?, at date: Date, timeZone: TimeZone = .current) -> WidgetContent {
         guard let snapshot else { return .noPlan }
@@ -154,7 +168,7 @@ public enum WidgetTimelineBuilder {
 
     /// The moments from `now` to `now + horizon`, first one at `now`. Consecutive moments that
     /// would look the same are merged.
-    public static func moments(for snapshot: WidgetSnapshot?, from now: Date, timeZone: TimeZone = .current, horizon: TimeInterval = WidgetTimelineBuilder.horizon, limit: Int = 200) -> [WidgetMoment] {
+    public static func moments(for snapshot: WidgetSnapshot?, from now: Date, timeZone: TimeZone = .current, horizon: TimeInterval = WidgetTimelineBuilder.horizon, limit: Int = WidgetTimelineBuilder.momentLimit) -> [WidgetMoment] {
         var result = [WidgetMoment(date: now, content: content(for: snapshot, at: now, timeZone: timeZone))]
         for date in transitionDates(for: snapshot, from: now, timeZone: timeZone, horizon: horizon) {
             guard result.count < limit else { break }

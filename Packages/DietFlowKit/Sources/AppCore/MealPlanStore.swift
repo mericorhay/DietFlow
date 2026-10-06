@@ -51,6 +51,10 @@ public final class MealPlanStore {
     @ObservationIgnored private let reminders: MealReminderScheduler
     @ObservationIgnored private let reloadWidgets: @MainActor () -> Void
     @ObservationIgnored private var reminderTask: Task<Void, Never>?
+    /// False in the widget's process, where the full reschedule is left to the app (see `publish`).
+    @ObservationIgnored private let reschedulesReminders: Bool
+    /// The last read of the store failed, so what is in memory may not be what is on disk.
+    @ObservationIgnored private var lastLoadFailed = false
     @ObservationIgnored private let logger = Logger(subsystem: "com.orhay.dietflow", category: "MealPlanStore")
 
     public init(
@@ -59,9 +63,11 @@ public final class MealPlanStore {
         reminders: MealReminderScheduler = MealReminderScheduler(),
         settings: AppSettings,
         persistsSettings: Bool = true,
+        reschedulesReminders: Bool = true,
         reloadWidgets: @escaping @MainActor () -> Void
     ) {
         self.persistence = persistence
+        self.reschedulesReminders = reschedulesReminders
         self.persistsSettings = persistsSettings
         self.snapshotWriter = snapshotWriter
         self.reminders = reminders
@@ -77,6 +83,8 @@ public final class MealPlanStore {
             persistence: PlanStore(container: PlanStore.makeContainer()),
             snapshotWriter: WidgetSnapshotWriter.shared(),
             settings: AppSettingsStore.load(),
+            // The widget's Done button runs this in the widget extension.
+            reschedulesReminders: !Bundle.main.bundlePath.hasSuffix(".appex"),
             reloadWidgets: { WidgetCenter.shared.reloadAllTimelines() }
         )
     }
@@ -225,6 +233,8 @@ public final class MealPlanStore {
         // plan no longer has would leave a row nothing ever reads or removes.
         guard plan.meals.contains(where: { $0.id == key.mealID }) else { throw MealPlanStoreError.mealNotFound }
         try persistence.setState(state, for: key, planID: plan.id)
+        // At once and in this process: a meal marked done must not then be announced.
+        if state != .pending { reminders.cancelReminder(for: key) }
         didChange("setState")
     }
 
@@ -301,7 +311,9 @@ public final class MealPlanStore {
             activePlan = plan
             schedule = plan.map { MealSchedule(plan: $0, timeZone: .current) }
             states = try plan.map { try persistence.states(planID: $0.id) } ?? [:]
+            lastLoadFailed = false
         } catch {
+            lastLoadFailed = true
             logger.error("Could not read plans: \(String(describing: error), privacy: .public)")
         }
         if persistsSettings { settings = AppSettingsStore.load() }
@@ -316,6 +328,13 @@ public final class MealPlanStore {
 
     /// Writes the widget snapshot, asks WidgetKit to reload, and reschedules reminders.
     private func publish(now: Date = .now) {
+        // The store on disk could not be opened or read, so this process is looking at nothing, or
+        // at something stale. Telling the widget "no plan" and clearing the reminders on that
+        // evidence would wipe what the person still has; leave both as they last were.
+        if snapshotWriter != nil, persistence.isTemporary || lastLoadFailed {
+            logger.error("Not publishing: the plan store could not be read")
+            return
+        }
         if let snapshotWriter {
             let snapshot = WidgetSnapshot(plan: activePlan, states: states, preferences: settings.widgetPreferences, generatedAt: now)
             do {
@@ -326,6 +345,10 @@ public final class MealPlanStore {
         }
         reloadWidgets()
 
+        // The widget extension is suspended as soon as its button's work returns, and may not be
+        // allowed what the app is. It only cancels the one reminder it made redundant (`setState`);
+        // the app brings the rest up to date the next time it comes forward.
+        guard reschedulesReminders else { return }
         let requests = settings.remindersEnabled
             ? ReminderPlanner.requests(plan: activePlan, states: states, defaultOffset: settings.defaultReminder, now: now)
             : []

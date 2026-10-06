@@ -39,8 +39,8 @@ public enum MealWidgetTimeline {
         }
     }
 
-    /// When WidgetKit should ask for a fresh timeline. The entries reach well past it.
-    public static func reloadDate(from now: Date = .now) -> Date {
-        now.addingTimeInterval(WidgetTimelineBuilder.reloadInterval)
+    /// When WidgetKit should ask for a fresh timeline: well before `entries` run out.
+    public static func reloadDate(after entries: [MealWidgetEntry], from now: Date = .now) -> Date {
+        WidgetTimelineBuilder.reloadDate(after: entries.map { WidgetMoment(date: $0.date, content: $0.content) }, from: now)
     }
 }

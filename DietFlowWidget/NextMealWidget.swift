@@ -22,7 +22,8 @@ struct NextMealProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<MealWidgetEntry>) -> Void) {
-        completion(Timeline(entries: entries(), policy: .after(MealWidgetTimeline.reloadDate())))
+        let entries = entries()
+        completion(Timeline(entries: entries, policy: .after(MealWidgetTimeline.reloadDate(after: entries))))
     }
 
     private func entries() -> [MealWidgetEntry] {

@@ -28,6 +28,12 @@ public final class PlanStore {
         self.container = container
     }
 
+    /// True when the store lives in memory only: a preview, or the stand-in used when the store
+    /// on disk could not be opened. What it holds says nothing about what the person has saved.
+    public var isTemporary: Bool {
+        container.configurations.contains { $0.isStoredInMemoryOnly }
+    }
+
     /// The shared on-disk store, or an in-memory one when the disk store cannot be opened, so the
     /// app always starts. The failure is logged; nothing is silently deleted.
     public static func makeContainer(inMemory: Bool = false) -> ModelContainer {

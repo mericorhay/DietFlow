@@ -68,14 +68,31 @@ public struct MealReminderScheduler: Sendable {
         }
     }
 
-    /// Replaces every pending meal reminder with `requests`.
+    /// Removes the reminder for one meal on one day, at once. Called the moment a meal is marked
+    /// done or skipped, from whichever process marked it: the widget's Done button runs in the
+    /// widget's process, which may be suspended before anything asynchronous finishes.
+    public func cancelReminder(for key: OccurrenceKey) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [Self.identifierPrefix + key.description])
+    }
+
+    /// Makes the pending meal reminders exactly `requests`.
+    ///
+    /// Nothing is cleared up front. Reminders that are no longer wanted are removed; the rest are
+    /// added over what is already there, since a request with the same identifier replaces the
+    /// pending one. So if this is cut off halfway — the app suspended, a newer reschedule taking
+    /// over — every reminder that should exist still does. Clearing first and adding after left a
+    /// window in which an interruption wiped them all.
     public func reschedule(_ requests: [ReminderRequest], timeZone: TimeZone = .current) async {
         let center = UNUserNotificationCenter.current()
         let pending = await center.pendingNotificationRequests()
         let ours = pending.map(\.identifier).filter { $0.hasPrefix(Self.identifierPrefix) }
-        center.removePendingNotificationRequests(withIdentifiers: ours)
 
-        guard await authorization() == .allowed else { return }
+        guard await authorization() == .allowed else {
+            center.removePendingNotificationRequests(withIdentifiers: ours)
+            return
+        }
+        let wanted = Set(requests.map(\.identifier))
+        center.removePendingNotificationRequests(withIdentifiers: ours.filter { !wanted.contains($0) })
 
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = timeZone
