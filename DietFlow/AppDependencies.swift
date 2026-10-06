@@ -21,7 +21,6 @@ final class AppDependencies {
     /// The plan assistant, or nil when this build was made without its address: the app then
     /// leaves the assistant out rather than offer something that cannot work.
     let assistant: PlanAssistantClient?
-    let analytics: any AnalyticsSink = NoAnalytics()
     /// True for the real app; false for a state seeded by launch arguments, where the first-launch
     /// Plus screen would cover what is being checked.
     let showsPlusOnFirstLaunch: Bool
@@ -50,7 +49,10 @@ final class AppDependencies {
             access = AccessModel()
             plus = PlusStore()
             // The store is the only judge of the tier; this is the one place its answer lands.
-            plus.onChange = { entitlement in access.apply(entitlement) }
+            plus.onChange = { entitlement in
+                access.apply(entitlement)
+                Analytics.remember(["tier": .text(access.tier.rawValue), "plus_kind": .text(entitlement?.kind.rawValue ?? "none")])
+            }
             assistant = AssistantEndpoint.bundled().map { PlanAssistantClient(endpoint: $0, installID: Self.installID()) }
         } else {
             #if DEBUG
@@ -69,6 +71,9 @@ final class AppDependencies {
         // Asks the App Store what is held, and follows it from here on. A stand-in store ignores this.
         plus.start()
 
+        // A state seeded for a screenshot is not a person using the app.
+        if seeded == nil { startAnalytics() }
+
         // Set before launch finishes, so a reminder's button that launches the app is answered.
         let responder = ReminderResponder(store: self.store) { [weak self] link in
             self?.pendingLink = link
@@ -76,6 +81,24 @@ final class AppDependencies {
         reminderResponder = responder
         UNUserNotificationCenter.current().delegate = responder
         MealReminderScheduler().registerActions()
+    }
+
+    /// Starts sharing, unless it is turned off, and says what every event carries. All of it is
+    /// counts and settings; none of it is anything the person wrote.
+    private func startAnalytics() {
+        Analytics.start()
+        Analytics.remember([
+            "tier": .text(access.tier.rawValue),
+            "plus_kind": .text(access.entitlement?.kind.rawValue ?? "none"),
+            "app_language": .text(Locale.current.language.languageCode?.identifier ?? "unknown"),
+            "build": .text(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "?"),
+            "assistant_available": .flag(assistant != nil),
+        ])
+        Analytics.track("app_launched", [
+            "plans": .int(store.plans.count),
+            "meals_in_active_plan": .int(store.activePlan?.mealCount ?? 0),
+            "reminders": .flag(store.settings.remindersEnabled),
+        ])
     }
 
     /// A random identifier made on first launch. It lets the assistant's server limit one phone

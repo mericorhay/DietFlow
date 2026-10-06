@@ -30,6 +30,8 @@ fastlane/test_output/
 
 # Assistant endpoint, written by CI from repository secrets
 DietFlow/Resources/AssistantEndpoint.json
+# PostHog key, written by CI from repository secrets
+DietFlow/Resources/Analytics.json
 
 # Wrangler local cache
 .wrangler/

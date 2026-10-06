@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import UIKit
+import Analytics
 import DesignSystem
 import Domain
 import Purchases
@@ -316,7 +317,13 @@ public struct PaywallScreen: View {
     private func purchase() {
         guard let offer = selectedOffer else { return }
         Task {
-            switch await plus.purchase(offer.id) {
+            let outcome = await plus.purchase(offer.id)
+            Analytics.track("plus_purchase", [
+                "product": .text(offer.kind.rawValue),
+                "trial": .flag(offer.trial != nil),
+                "outcome": .text(String(describing: outcome)),
+            ])
+            switch outcome {
             case .purchased:
                 close()
             case .pending:
@@ -334,7 +341,9 @@ public struct PaywallScreen: View {
         isRestoring = true
         Task {
             // Restore always answers, found or not: silence here reads as a broken button.
-            notice = await plus.restore() ? .restored : .nothingToRestore
+            let found = await plus.restore()
+            Analytics.track("plus_restore", ["found": .flag(found), "from": "paywall"])
+            notice = found ? .restored : .nothingToRestore
             isRestoring = false
         }
     }

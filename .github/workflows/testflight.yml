@@ -16,6 +16,8 @@ name: TestFlight
 #   IOS_WIDGET_PROVISIONING_PROFILE  base64 of the com.orhay.dietflow.widget App Store profile
 # Optional, for the in-app assistant:
 #   DIETFLOW_ASSISTANT_URL, DIETFLOW_ASSISTANT_TOKEN
+# Optional, for anonymous usage data (PostHog):
+#   POSTHOG_API_KEY, POSTHOG_HOST
 on:
   workflow_dispatch:
     inputs:
@@ -123,6 +125,21 @@ jobs:
             echo "Assistant endpoint written."
           else
             echo "::warning::DIETFLOW_ASSISTANT_URL / DIETFLOW_ASSISTANT_TOKEN not set; the assistant will show as not connected."
+          fi
+
+      # PostHog's project key, written into the bundle like the assistant endpoint. Without it the
+      # app sends no analytics at all and leaves the switch out of Settings. POSTHOG_HOST is
+      # optional (US cloud by default; https://eu.i.posthog.com for an EU project).
+      - name: Analytics key
+        env:
+          POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+          POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}
+        run: |
+          if [ -n "$POSTHOG_API_KEY" ]; then
+            python3 -c 'import json,os; json.dump({"apiKey": os.environ["POSTHOG_API_KEY"], "host": os.environ.get("POSTHOG_HOST") or "https://us.i.posthog.com"}, open("DietFlow/Resources/Analytics.json","w"))'
+            echo "Analytics key written."
+          else
+            echo "::warning::POSTHOG_API_KEY not set; this build sends no analytics."
           fi
 
       - name: Build and upload to TestFlight

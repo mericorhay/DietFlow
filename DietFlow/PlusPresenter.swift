@@ -1,4 +1,5 @@
 import SwiftUI
+import Analytics
 import AppCore
 import Domain
 import PaywallFeature
@@ -22,11 +23,14 @@ extension AppDependencies {
         case .allowed:
             break
         case .plusOnly:
+            Analytics.track("paywall_shown", ["reason": "additional_plan"])
             paywall = PaywallRequest(.additionalPlan)
         case .limitReached(let limit):
             if access.tier == .plus {
+                Analytics.track("allowance_used_up", ["limit": .int(limit)])
                 allowanceResetsAt = access.resetsAt
             } else {
+                Analytics.track("paywall_shown", ["reason": "assistant_limit"])
                 paywall = PaywallRequest(.assistantLimit(limit: limit, resetsAt: access.resetsAt))
             }
         }

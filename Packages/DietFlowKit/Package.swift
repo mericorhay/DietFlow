@@ -38,6 +38,10 @@ let package = Package(
         .library(name: "DietFlowKit", targets: appModules),
         .library(name: "DietFlowWidgetKit", targets: widgetModules),
     ],
+    dependencies: [
+        // Product analytics. Only the Analytics module sees it.
+        .package(url: "https://github.com/PostHog/posthog-ios.git", from: "3.0.0"),
+    ],
     targets: [
         // Pure models and pure logic: the schedule, the widget timeline, the import format.
         // Foundation only; its strings are meal type names and relative times.
@@ -59,7 +63,8 @@ let package = Package(
         engine("PlanSync"),
         // DietFlow Plus through StoreKit. App only: the widget never asks what was bought.
         engine("Purchases"),
-        engine("Analytics", []),
+        // Which features are used and where people stop. Nothing the person wrote leaves in it.
+        engine("Analytics", [.product(name: "PostHog", package: "posthog-ios")]),
 
         // Shared UI. Nonisolated so the widget can use the same tokens off the main actor.
         .target(name: "DesignSystem", dependencies: ["Domain"], resources: [.process("Resources")], swiftSettings: concurrency),
@@ -71,11 +76,11 @@ let package = Package(
         feature("TodayFeature"),
         feature("PlanFeature"),
         feature("MealFeature"),
-        feature("ImportFeature", ["Domain", "DesignSystem", "AppCore", "PlanImport", "AIServices"]),
+        feature("ImportFeature", ["Domain", "DesignSystem", "AppCore", "PlanImport", "AIServices", "Analytics"]),
         feature("WidgetsFeature", ["Domain", "DesignSystem", "AppCore", "WidgetUI"]),
-        feature("SettingsFeature", ["Domain", "DesignSystem", "AppCore", "Purchases"]),
+        feature("SettingsFeature", ["Domain", "DesignSystem", "AppCore", "Purchases", "Analytics"]),
         feature("AssistantFeature", ["Domain", "DesignSystem"]),
-        feature("PaywallFeature", ["Domain", "DesignSystem", "Purchases"]),
+        feature("PaywallFeature", ["Domain", "DesignSystem", "Purchases", "Analytics"]),
 
         .testTarget(name: "DomainTests", dependencies: ["Domain"], swiftSettings: concurrency),
     ]

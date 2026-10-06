@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import Analytics
 import AppCore
 import DesignSystem
 import Domain
@@ -128,7 +129,9 @@ struct PlusSection: View {
         isRestoring = true
         Task {
             // Always answers, found or not: a Restore row that says nothing reads as broken.
-            restoreResult = await plus.restore() ? .restored : .nothing
+            let found = await plus.restore()
+            Analytics.track("plus_restore", ["found": .flag(found), "from": "settings"])
+            restoreResult = found ? .restored : .nothing
             isRestoring = false
         }
     }

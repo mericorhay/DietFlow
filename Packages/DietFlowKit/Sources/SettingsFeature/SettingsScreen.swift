@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import UIKit
+import Analytics
 import AppCore
 import DesignSystem
 import Domain
@@ -13,6 +14,8 @@ public struct SettingsScreen: View {
     @Environment(\.openURL) private var openURL
     @State private var notificationsDenied = false
     @State private var confirmsDeleteAll = false
+    /// Mirrors `Analytics.isOn`, which is not observable, so the switch redraws when it is flipped.
+    @State private var sharesUsage = Analytics.isOn
     private let importPlan: () -> Void
     private let showPlus: () -> Void
     private let showsAssistant: Bool
@@ -223,9 +226,25 @@ public struct SettingsScreen: View {
 
     @ViewBuilder
     private var aboutSection: some View {
+        // Left out of a build that cannot share anything: a switch that changes nothing is a lie.
+        if Analytics.isConfigured {
+            Section {
+                Toggle(isOn: Binding(
+                    get: { sharesUsage },
+                    set: { isOn in
+                        sharesUsage = isOn
+                        Analytics.isOn = isOn
+                    }
+                )) {
+                    Text("settings.usage.toggle", bundle: .module)
+                }
+            } footer: {
+                Text("settings.usage.footer", bundle: .module)
+            }
+        }
         Section {
             NavigationLink {
-                PrivacyScreen(showsAssistant: showsAssistant)
+                PrivacyScreen(showsAssistant: showsAssistant, sharesUsage: Analytics.isConfigured)
             } label: {
                 Text("settings.about.privacy", bundle: .module)
             }
@@ -256,11 +275,16 @@ public struct SettingsScreen: View {
 /// assistant, which has to reach a server to be read. The screen says exactly that.
 struct PrivacyScreen: View {
     let showsAssistant: Bool
+    /// Whether this build shares anonymous usage data at all.
+    let sharesUsage: Bool
 
     var body: some View {
         List {
             Section {
-                Text(String(localized: "settings.privacy.body", defaultValue: "Your plan stays on this iPhone. \(AppBrand.displayName) has no account, no analytics and no advertising.", bundle: .module))
+                Text(String(localized: "settings.privacy.body", defaultValue: "Your plan stays on this iPhone. \(AppBrand.displayName) has no account and no advertising.", bundle: .module))
+                if sharesUsage {
+                    Text("settings.privacy.usage", bundle: .module)
+                }
                 if showsAssistant {
                     Text("settings.privacy.assistant", bundle: .module)
                 } else {

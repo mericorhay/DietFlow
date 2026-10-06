@@ -986,25 +986,25 @@
       }
     },
     "settings.privacy.assistant" : {
-      "comment" : "Paragraph of the Privacy screen about the assistant: the one case where text leaves the phone. Plain and exact; three short sentences.",
+      "comment" : "Paragraph of the Privacy screen about the assistant: the one case where something the person typed leaves the phone. Plain and exact; three short sentences.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "When you use the assistant, the text you give it is sent to our server and to the AI service that reads it, so that your plan can be written. It is not stored. Nothing else leaves your iPhone."
+            "value" : "When you use the assistant, the text you give it is sent to our server and to the AI service that reads it, so that your plan can be written. It is not stored. Nothing else you type leaves your iPhone."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cuando usas el asistente, el texto que le das se envía a nuestro servidor y al servicio de IA que lo lee, para poder escribir tu plan. No se guarda. Nada más sale de tu iPhone."
+            "value" : "Cuando usas el asistente, el texto que le das se envía a nuestro servidor y al servicio de IA que lo lee, para poder escribir tu plan. No se guarda. Nada más de lo que escribes sale de tu iPhone."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Asistanı kullandığında, ona verdiğin metin planının yazılabilmesi için sunucumuza ve metni okuyan yapay zeka hizmetine gönderilir. Saklanmaz. Bunun dışında hiçbir şey iPhone'undan çıkmaz."
+            "value" : "Asistanı kullandığında, ona verdiğin metin planının yazılabilmesi için sunucumuza ve metni okuyan yapay zeka hizmetine gönderilir. Saklanmaz. Yazdığın başka hiçbir şey iPhone'undan çıkmaz."
           }
         }
       }
@@ -1016,19 +1016,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your plan stays on this iPhone. %@ has no account, no analytics and no advertising."
+            "value" : "Your plan stays on this iPhone. %@ has no account and no advertising."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu plan se queda en este iPhone. %@ no tiene cuenta, ni analíticas ni publicidad."
+            "value" : "Tu plan se queda en este iPhone. %@ no tiene cuenta ni publicidad."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Planın bu iPhone'da kalır. %@ hesap, analiz ya da reklam içermez."
+            "value" : "Planın bu iPhone'da kalır. %@ hesap ya da reklam içermez."
           }
         }
       }
@@ -1058,25 +1058,49 @@
       }
     },
     "settings.privacy.local" : {
-      "comment" : "Paragraph of the Privacy screen in a build without the assistant. One sentence.",
+      "comment" : "Paragraph of the Privacy screen in a build without the assistant: what is typed into the app is not sent. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nothing you enter is sent anywhere."
+            "value" : "What you type into the app is not sent anywhere."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nada de lo que escribes se envía a ningún sitio."
+            "value" : "Lo que escribes en la app no se envía a ningún sitio."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Girdiğin hiçbir şey bir yere gönderilmez."
+            "value" : "Uygulamaya yazdıkların hiçbir yere gönderilmez."
+          }
+        }
+      }
+    },
+    "settings.privacy.usage" : {
+      "comment" : "Paragraph of the Privacy screen about anonymous usage data. Says what is sent, what never is, that it is not tied to the person, and where to turn it off. Plain and exact.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To help improve the app, it shares anonymous usage data: which features are used, where a limit is reached and whether a purchase was made. It is tied to a random number made on this iPhone, not to you or your Apple Account, and never includes your meals, your plan or anything you type. You can turn it off in Settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para mejorar la app, se comparten datos de uso anónimos: qué funciones se usan, dónde se alcanza un límite y si se hizo una compra. Están asociados a un número aleatorio creado en este iPhone, no a ti ni a tu cuenta de Apple, y nunca incluyen tus comidas, tu plan ni nada de lo que escribes. Puedes desactivarlo en Ajustes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulamayı geliştirmek için anonim kullanım verileri paylaşılır: hangi özelliklerin kullanıldığı, hangi sınıra ulaşıldığı ve satın alma yapılıp yapılmadığı. Bu veriler sana ya da Apple Hesabına değil, bu iPhone'da üretilen rastgele bir numaraya bağlıdır; öğünlerini, planını ya da yazdığın hiçbir şeyi içermez. Ayarlar'dan kapatabilirsin."
           }
         }
       }
@@ -1341,6 +1365,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sistem"
+          }
+        }
+      }
+    },
+    "settings.usage.footer" : {
+      "comment" : "Under the 'Share Anonymous Usage Data' switch: what is shared and what never is. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which features are used and where things go wrong, to help improve the app. Never your meals, your plan or anything you type."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qué funciones se usan y dónde algo falla, para mejorar la app. Nunca tus comidas, tu plan ni nada de lo que escribes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hangi özelliklerin kullanıldığı ve nerede sorun çıktığı, uygulamayı geliştirmek için paylaşılır. Öğünlerin, planın ya da yazdığın hiçbir şey paylaşılmaz."
+          }
+        }
+      }
+    },
+    "settings.usage.toggle" : {
+      "comment" : "Switch in Settings, on by default: sends anonymous usage data to help improve the app. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share Anonymous Usage Data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir datos de uso anónimos"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anonim Kullanım Verilerini Paylaş"
           }
         }
       }

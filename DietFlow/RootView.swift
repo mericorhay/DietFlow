@@ -1,6 +1,7 @@
 import Combine
 import SwiftUI
 import UIKit
+import Analytics
 import AppCore
 import Domain
 import ImportFeature
@@ -120,6 +121,7 @@ struct RootView: View {
         .onAppear {
             // Once, on first launch, and never to someone who already holds Plus.
             if dependencies.showsPlusOnFirstLaunch, !store.settings.hasSeenPlusIntro, access.tier == .free {
+                Analytics.track("paywall_shown", ["reason": "intro"])
                 showsPlusIntro = true
             } else {
                 showsOnboarding = needsOnboarding
@@ -136,6 +138,8 @@ struct RootView: View {
             route(link)
         }
         .onChange(of: scenePhase) { _, phase in
+            // A short visit must not be lost to the next batch.
+            if phase == .background { Analytics.flush() }
             guard phase == .active else { return }
             // The widget's Done button may have written while the app was away, and the day may
             // have changed: bring everything up to date.
@@ -187,7 +191,10 @@ struct RootView: View {
             SettingsScreen(
                 showsAssistant: dependencies.assistant != nil,
                 importPlan: { present(.importPlan(nil), afterClosing: true) },
-                showPlus: { dependencies.paywall = PaywallRequest(.upgrade) }
+                showPlus: {
+                    Analytics.track("paywall_shown", ["reason": "settings"])
+                    dependencies.paywall = PaywallRequest(.upgrade)
+                }
             )
         case .importPlan(let input):
             ImportPlanScreen(initialInput: input, assistant: dependencies.assistant) {
@@ -203,6 +210,7 @@ struct RootView: View {
             NavigationStack {
                 // A new plan has no meals yet: the Plan tab is where they are added, day by day.
                 PlanSetupScreen(mode: .new) {
+                    Analytics.track("plan_saved", ["source": "manual"])
                     planPath = []
                     tab = .plan
                     plansSaved += 1

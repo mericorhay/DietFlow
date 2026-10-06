@@ -4,6 +4,7 @@ import SwiftUI
 import UIKit
 import UniformTypeIdentifiers
 import AIServices
+import Analytics
 import AppCore
 import DesignSystem
 import Domain
@@ -43,6 +44,8 @@ public struct ImportPlanScreen: View {
     @State private var isReading = false
     /// The assistant is working: a longer wait than reading on the device, and worded as one.
     @State private var isAsking = false
+    /// How the plan on the review screen came in, for the event sent when it is saved.
+    @State private var lastSource = "unknown"
     @State private var failure: ImportFailure?
     @State private var copiedInstructions = false
     @State private var fileRequest: FileRequest?
@@ -212,10 +215,23 @@ public struct ImportPlanScreen: View {
         let defaults = ImportDefaults(planName: String(localized: "import.defaultPlanName", bundle: .module), startDay: .today())
         do {
             let draft = try await service.importPlan(from: source, defaults: defaults)
+            report(source.analyticsName, draft: draft)
             path.append(.review(draft))
         } catch {
+            Analytics.track("plan_import_failed", ["source": .text(source.analyticsName), "reason": .text(analyticsReason(error))])
             failure = ImportFailure(error)
         }
+    }
+
+    /// The shape of what was read: how it came in and how big it is. Never what is in it.
+    private func report(_ source: String, draft: ImportedPlanDraft) {
+        lastSource = source
+        Analytics.track("plan_imported", [
+            "source": .text(source),
+            "days": .int(draft.plan.schedule.length),
+            "meals": .int(draft.plan.meals.count),
+            "issues": .int(draft.issues.count),
+        ])
     }
 
     // MARK: The assistant
@@ -232,16 +248,16 @@ public struct ImportPlanScreen: View {
     }
 
     private func organizeWithAssistant(_ text: String) async {
-        await ask { assistant in try await assistant.organize(text: text) }
+        await ask("assistant_organize") { assistant in try await assistant.organize(text: text) }
     }
 
     private func createWithAssistant(_ wishes: PlanWishes) async {
-        await ask { assistant in try await assistant.create(wishes) }
+        await ask("assistant_create") { assistant in try await assistant.create(wishes) }
     }
 
     /// One request to the assistant, counted against the allowance. A request that fails for any
     /// reason is given back: the allowance is only spent on a plan the person got to see.
-    private func ask(_ request: (PlanAssistantClient) async throws -> MealPlanPayload) async {
+    private func ask(_ source: String, _ request: (PlanAssistantClient) async throws -> MealPlanPayload) async {
         guard let assistant else { return }
         // Refused, the access model records why and the app shows what Plus adds.
         guard access.use(.aiPlan) else { return }
@@ -256,9 +272,11 @@ public struct ImportPlanScreen: View {
             let payload = try await request(assistant)
             // The same checks as a file or a pasted list: nothing a model writes skips them.
             let draft = try PlanImportNormalizer.draft(from: payload, defaults: defaults)
+            report(source, draft: draft)
             path.append(.review(draft))
         } catch {
             access.refund(.aiPlan)
+            Analytics.track("plan_import_failed", ["source": .text(source), "reason": .text(analyticsReason(error))])
             failure = ImportFailure(error)
         }
     }
@@ -285,6 +303,7 @@ public struct ImportPlanScreen: View {
 
     private func save(_ plan: MealPlan) {
         store.attempt { try store.createPlan(plan, activate: true) }
+        Analytics.track("plan_saved", ["source": .text(lastSource)])
         dismiss()
         onFinished()
     }
@@ -295,6 +314,29 @@ public struct ImportPlanScreen: View {
         Task {
             try? await Task.sleep(for: .seconds(2))
             withAnimation(AppMotion.snappy) { copiedInstructions = false }
+        }
+    }
+}
+
+/// Why an import stopped, as one of a fixed set of words. An error's own description can quote the
+/// text it failed on, so it is never what gets sent.
+private func analyticsReason(_ error: any Error) -> String {
+    switch error {
+    case let error as PlanImportError: String(describing: error)
+    case let error as PlanAssistantError: String(describing: error)
+    case is PlanReadingError: "noTextFound"
+    default: "other"
+    }
+}
+
+extension PlanSource {
+    /// The way in, by name. The content never goes with it.
+    var analyticsName: String {
+        switch self {
+        case .text: "paste"
+        case .file: "file"
+        case .image: "photo"
+        case .pdf: "pdf"
         }
     }
 }

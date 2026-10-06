@@ -189,6 +189,30 @@ A build made without the Worker's address has no assistant: its rows, its line o
 and its paragraph on the Privacy screen are all left out, rather than offer something that cannot
 work. With it, the Privacy screen says exactly what is sent.
 
+## Anonymous usage data
+
+`Analytics` is the one place the app talks to PostHog. Sharing is on unless the person turns it
+off in Settings; off, nothing is sent or queued. A build without the key (`Analytics.json`, written
+by CI from a repository secret) sends nothing and leaves the switch out.
+
+An event is a name and a few plain values, and the type system keeps it that way: a property is an
+`AnalyticsValue` — a fixed word, a number or a flag — so nothing the person wrote can ride along by
+accident. An error is sent as one of a fixed set of reasons, never as its own description, which
+can quote the text it failed on.
+
+| Event | Carries |
+|---|---|
+| `app_launched` | how many plans, how many meals in the active one, whether reminders are on |
+| `paywall_shown` | why: intro, settings, assistant limit, a second plan |
+| `plus_purchase`, `plus_restore` | the product, whether it had a trial, the outcome |
+| `plan_imported`, `plan_import_failed` | the way in (paste, file, photo, PDF, assistant), sizes, the reason |
+| `plan_saved` | the way in |
+| `allowance_used_up` | the limit |
+
+Every event also carries the tier, the app's language and the build. PostHog adds app opened,
+backgrounded, installed and updated. There is no screen or tap capture and no session replay, and
+seeded screenshot states send nothing. The app's privacy manifest declares all of it.
+
 `PlanSync` and `backend/mcp` are still only a contract: an MCP server would produce the same
 payload and call the same `MealPlanStore` operations.
 

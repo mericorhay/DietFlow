@@ -6,7 +6,8 @@ next, moving with the time of day on its own.
 The plan can be typed in, or imported from a dietitian's list (pasted text, a file, a photo or a
 PDF) or from ChatGPT or Claude using the copyable AI format. After that the widget, the Today
 screen and the optional meal reminders all run off the same plan without the app being opened.
-Everything stays on the device, except what is handed to the plan assistant.
+The plan stays on the device; what is handed to the plan assistant goes to our server to be read,
+and anonymous usage data is shared unless turned off in Settings.
 
 DietFlow Plus adds the assistant — it puts any list in order and writes plans of up to 30 days —
 and more than one plan. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#dietflow-plus).
@@ -89,6 +90,14 @@ it could not reach the App Store and the app works as the free version.
 
 The Plus screen links to the privacy policy at `https://mericorhay.github.io/DietFlow/privacy`,
 which is `docs/privacy.md`: turn on GitHub Pages for the `docs/` folder of `main` to publish it.
+
+## Anonymous usage data, once
+
+Create a PostHog project and give the app its key with the repository secret `POSTHOG_API_KEY`
+(and `POSTHOG_HOST` for an EU project: `https://eu.i.posthog.com`). The TestFlight workflow writes
+it into the bundle. Sharing is on by default and has a switch in Settings; a build without the key
+sends nothing and leaves the switch out. What an event may carry is in
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#anonymous-usage-data).
 
 ## The plan assistant, once
 
