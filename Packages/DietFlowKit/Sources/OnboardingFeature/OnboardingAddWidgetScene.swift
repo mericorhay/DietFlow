@@ -149,9 +149,10 @@ struct HomeScreenScene: View {
 
     // MARK: When things happen
 
-    /// 0 while the icons are where they began, 1 once they have moved down to make room.
+    /// 0 while the icons are where they began, 1 once they have moved down to make room. They
+    /// move first; the widget lands in the room they have made.
     private var roomMade: Double {
-        eased(time, 3.0, 3.6) - eased(time, 7.0, 7.4)
+        eased(time, 2.9, 3.45) - eased(time, 7.0, 7.4)
     }
 
     /// How hard the icons jiggle: from the long press until Done.
@@ -166,11 +167,11 @@ struct HomeScreenScene: View {
     }
 
     private var widgetOpacity: Double {
-        eased(time, 3.0, 3.25) * (1 - eased(time, 6.9, 7.2))
+        eased(time, 3.2, 3.45) * (1 - eased(time, 6.9, 7.2))
     }
 
     private var widgetScale: Double {
-        0.55 + 0.45 * landing(progress(time, 3.05, 3.8))
+        0.55 + 0.45 * landing(progress(time, 3.2, 3.95))
     }
 
     private var editOpacity: Double {

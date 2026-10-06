@@ -234,6 +234,8 @@ struct WidgetSetupStage: View {
                 let isSelected = option == accent
                 Circle()
                     .fill(option.fill)
+                    // A hairline, so the darkest colour does not vanish into a dark picture.
+                    .overlay { Circle().strokeBorder(Color.primary.opacity(0.18), lineWidth: 0.5) }
                     .frame(width: 24, height: 24)
                     .overlay {
                         if isSelected {

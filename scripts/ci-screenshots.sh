@@ -34,7 +34,8 @@ capture() {
 
 # shot <name> <launch arguments…>
 # A first launch after a text-size change can take longer than usual, so a blank capture (the
-# white launch screen) is retaken for up to about 20 seconds before it is reported.
+# white launch screen) is retaken for up to about 35 seconds before it is reported: a CI simulator
+# has been seen to take 28 seconds over one launch.
 shot() {
   local name="$1"
   shift
@@ -43,7 +44,7 @@ shot() {
   sleep 3
   capture "$name"
   local tries=0
-  while [ "$(stat -f%z "$OUT/$name.jpg")" -lt 7000 ] && [ "$tries" -lt 5 ]; do
+  while [ "$(stat -f%z "$OUT/$name.jpg")" -lt 7000 ] && [ "$tries" -lt 10 ]; do
     sleep 3
     capture "$name"
     tries=$((tries + 1))
