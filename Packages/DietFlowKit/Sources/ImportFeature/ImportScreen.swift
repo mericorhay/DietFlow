@@ -109,7 +109,7 @@ public struct ImportPlanScreen: View {
                             SourceRow(symbol: "wand.and.stars", title: "import.assistant.organize.title", subtitle: "import.assistant.organize.subtitle")
                         }
                         NavigationLink(value: ImportRoute.assistantCreate) {
-                            SourceRow(symbol: "calendar.badge.plus", title: "import.assistant.create.title", subtitle: "import.assistant.create.subtitle")
+                            SourceRow(symbol: "sparkles", title: "import.assistant.create.title", subtitle: "import.assistant.create.subtitle")
                         }
                     } header: {
                         Text("import.assistant.header", bundle: .module)
