@@ -46,10 +46,9 @@ public struct PaywallScreen: View {
     public var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: AppSpacing.xLarge) {
+                VStack(alignment: .leading, spacing: AppSpacing.large) {
                     header
                     benefits
-                    products
                     footer
                 }
                 .padding(.horizontal, AppSpacing.screenMargin)
@@ -92,8 +91,8 @@ public struct PaywallScreen: View {
             Image(systemName: "sparkles")
                 .font(.title)
                 .foregroundStyle(AppColors.onBrandAccent)
-                .frame(width: 56, height: 56)
-                .background(AppColors.brandAccent, in: RoundedRectangle(cornerRadius: AppRadius.medium, style: .continuous))
+                .frame(width: 48, height: 48)
+                .background(AppColors.brandAccent, in: RoundedRectangle(cornerRadius: AppRadius.small, style: .continuous))
                 .accessibilityHidden(true)
             Text("paywall.title", bundle: .module)
                 .font(.largeTitle.weight(.bold))
@@ -156,7 +155,7 @@ public struct PaywallScreen: View {
                 .buttonStyle(.bordered)
             }
         case .loaded:
-            VStack(spacing: AppSpacing.xSmall) {
+            VStack(spacing: AppSpacing.xxSmall + 2) {
                 ForEach(plus.offers) { offer in
                     ProductRow(
                         title: title(for: offer.kind),
@@ -218,6 +217,10 @@ public struct PaywallScreen: View {
 
     private var purchaseBar: some View {
         VStack(spacing: AppSpacing.xSmall) {
+            // The prices stay in sight with the button, whatever is scrolled above them: nobody
+            // should have to go looking for what this costs.
+            products
+                .padding(.bottom, AppSpacing.xxSmall)
             Button(action: purchase) {
                 ZStack {
                     Text(selectedOffer?.trial == nil ? "paywall.cta.continue" : "paywall.cta.trial", bundle: .module)
@@ -449,7 +452,7 @@ private struct ProductRow: View {
                         VStack(alignment: .leading, spacing: AppSpacing.xxSmall) { heading }
                     }
                     Text(verbatim: detail)
-                        .font(.subheadline)
+                        .font(.footnote)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -458,7 +461,8 @@ private struct ProductRow: View {
                     .font(.headline)
                     .monospacedDigit()
             }
-            .padding(AppSpacing.medium)
+            .padding(.horizontal, AppSpacing.small)
+            .padding(.vertical, AppSpacing.xSmall)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(isSelected ? AppColors.brandWash : Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: AppRadius.medium, style: .continuous))
             .overlay {
@@ -475,7 +479,7 @@ private struct ProductRow: View {
     @ViewBuilder
     private var heading: some View {
         Text(verbatim: title)
-            .font(.headline)
+            .font(.subheadline.weight(.semibold))
         if let badge {
             Text(verbatim: badge)
                 .font(.caption.weight(.semibold))
