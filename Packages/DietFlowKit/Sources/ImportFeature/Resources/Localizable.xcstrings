@@ -1171,6 +1171,30 @@
         }
       }
     },
+    "import.paste.clear" : {
+      "comment" : "Button under the text box where a plan is pasted. Empties the box. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizle"
+          }
+        }
+      }
+    },
     "import.paste.continue" : {
       "comment" : "Button that reads the pasted text and shows it for review. One word.",
       "extractionState" : "manual",
@@ -1191,6 +1215,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Devam"
+          }
+        }
+      }
+    },
+    "import.paste.nothing" : {
+      "comment" : "Shown under the text box after Paste is tapped with nothing copied. Says what to do. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is nothing to paste. Copy your plan first, then come back."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay nada que pegar. Copia tu plan primero y vuelve aquí."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapıştıracak bir şey yok. Önce planını kopyala, sonra buraya dön."
+          }
+        }
+      }
+    },
+    "import.paste.paste" : {
+      "comment" : "Button under the text box where a plan is pasted. Puts the copied text in the box. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pegar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapıştır"
           }
         }
       }
@@ -1779,6 +1851,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Planı İçe Aktar"
+          }
+        }
+      }
+    },
+    "import.working.cancel" : {
+      "comment" : "Button under the spinner while a plan is being read or the assistant is working. Stops the work and stays on the screen. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
           }
         }
       }

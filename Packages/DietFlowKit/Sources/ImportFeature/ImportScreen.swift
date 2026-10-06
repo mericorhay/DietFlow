@@ -44,6 +44,11 @@ public struct ImportPlanScreen: View {
     @State private var isReading = false
     /// The assistant is working: a longer wait than reading on the device, and worded as one.
     @State private var isAsking = false
+    /// The reading or the request under way. There is only ever one: a second tap while it runs
+    /// must not start a second, and Cancel has to be able to stop it.
+    @State private var work: Task<Void, Never>?
+    @State private var didReadInitialInput = false
+    @State private var didSave = false
     /// How the plan on the review screen came in, for the event sent when it is saved.
     @State private var lastSource = "unknown"
     @State private var failure: ImportFailure?
@@ -150,55 +155,72 @@ public struct ImportPlanScreen: View {
                 switch route {
                 case .paste:
                     PastePlanScreen { text in
-                        await read(.text(text))
+                        run { await read(.text(text)) }
                     }
                 case .assistantOrganize:
                     PastePlanScreen(title: "import.assistant.organize.title", placeholder: "import.assistant.organize.placeholder", characterLimit: PlanAssistantClient.textLimit) { text in
-                        await organizeWithAssistant(text)
+                        run(asking: true) { await organizeWithAssistant(text) }
                     }
                 case .assistantCreate:
                     AssistantPlanScreen { wishes in
-                        await createWithAssistant(wishes)
+                        run(asking: true) { await createWithAssistant(wishes) }
                     }
                 case .review(let draft):
                     ImportReviewScreen(draft: draft, onSave: save)
                 }
             }
-            .disabled(isReading)
-            .overlay {
-                if isReading {
+        }
+        // On the whole stack, not on the first screen: the wait starts from the screens pushed
+        // on top of it, and that is where it has to show and where a second tap has to be stopped.
+        .disabled(isReading)
+        .overlay {
+            if isReading {
+                VStack(spacing: AppSpacing.medium) {
                     ProgressView {
                         Text(isAsking ? "import.assistant.working" : "import.reading", bundle: .module)
                             .multilineTextAlignment(.center)
                     }
-                    .padding(AppSpacing.xLarge)
-                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
+                    Button(role: .cancel) {
+                        work?.cancel()
+                    } label: {
+                        Text("import.working.cancel", bundle: .module)
+                    }
+                    .buttonStyle(.bordered)
                 }
+                .padding(AppSpacing.xLarge)
+                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
+                .padding(AppSpacing.xLarge)
             }
         }
+        .interactiveDismissDisabled(isReading)
+        .onDisappear { work?.cancel() }
         .fileImporter(
             isPresented: Binding(get: { fileRequest != nil }, set: { if !$0 { fileRequest = nil } }),
             allowedContentTypes: fileRequest?.contentTypes ?? FileRequest.plan.contentTypes
         ) { result in
             let request = fileRequest ?? .plan
-            Task { await readFile(result, as: request) }
+            run { await readFile(result, as: request) }
         }
         .photosPicker(isPresented: $showsPhotoPicker, selection: $photoItem, matching: .images)
         .onChange(of: photoItem) { _, item in
             guard let item else { return }
-            Task { await readPhoto(item) }
+            photoItem = nil
+            run { await readPhoto(item) }
         }
         .alert(Text("import.error.title", bundle: .module), isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } }), presenting: failure) { _ in
             Button(role: .cancel) {} label: { Text("import.error.ok", bundle: .module) }
         } message: { failure in
             Text(failure.message)
         }
-        .task {
+        .onAppear {
+            // Once: coming back from a picker must not read what was handed over a second time.
+            guard !didReadInitialInput else { return }
+            didReadInitialInput = true
             switch initialInput {
             case .text(let text):
-                await read(.text(text))
+                run { await read(.text(text)) }
             case .file(let data, let fileName):
-                await read(fileName.lowercased().hasSuffix(".pdf") ? .pdf(data) : .file(data))
+                run { await read(fileName.lowercased().hasSuffix(".pdf") ? .pdf(data) : .file(data)) }
             case .unreadableFile:
                 failure = ImportFailure(PlanImportError.unreadable)
             case nil:
@@ -209,15 +231,38 @@ public struct ImportPlanScreen: View {
 
     // MARK: Reading
 
-    private func read(_ source: PlanSource) async {
+    /// Starts a reading or a request, unless one is already running. The wait shows from the tap,
+    /// not from whenever the work gets going.
+    private func run(asking: Bool = false, _ operation: @escaping @MainActor () async -> Void) {
+        guard work == nil else { return }
         isReading = true
-        defer { isReading = false }
+        isAsking = asking
+        work = Task {
+            await operation()
+            isReading = false
+            isAsking = false
+            work = nil
+        }
+    }
+
+    /// Shows a plan for review. Only ever one review on the stack: Back from it leads to what was
+    /// typed, not to an earlier reading of it.
+    private func review(_ draft: ImportedPlanDraft) {
+        path.removeAll { route in
+            if case .review = route { true } else { false }
+        }
+        path.append(.review(draft))
+    }
+
+    private func read(_ source: PlanSource) async {
         let defaults = ImportDefaults(planName: String(localized: "import.defaultPlanName", bundle: .module), startDay: .today())
         do {
             let draft = try await service.importPlan(from: source, defaults: defaults)
+            guard !Task.isCancelled else { return }
             report(source.analyticsName, draft: draft)
-            path.append(.review(draft))
+            review(draft)
         } catch {
+            guard !Task.isCancelled else { return }
             Analytics.track("plan_import_failed", ["source": .text(source.analyticsName), "reason": .text(analyticsReason(error))])
             failure = ImportFailure(error)
         }
@@ -261,21 +306,21 @@ public struct ImportPlanScreen: View {
         guard let assistant else { return }
         // Refused, the access model records why and the app shows what Plus adds.
         guard access.use(.aiPlan) else { return }
-        isReading = true
-        isAsking = true
-        defer {
-            isReading = false
-            isAsking = false
-        }
         let defaults = ImportDefaults(planName: String(localized: "import.defaultPlanName", bundle: .module), startDay: .today())
         do {
             let payload = try await request(assistant)
             // The same checks as a file or a pasted list: nothing a model writes skips them.
             let draft = try PlanImportNormalizer.draft(from: payload, defaults: defaults)
+            // Cancelled while the answer was on its way: not shown, so not spent.
+            guard !Task.isCancelled else {
+                access.refund(.aiPlan)
+                return
+            }
             report(source, draft: draft)
-            path.append(.review(draft))
+            review(draft)
         } catch {
             access.refund(.aiPlan)
+            guard !Task.isCancelled else { return }
             Analytics.track("plan_import_failed", ["source": .text(source), "reason": .text(analyticsReason(error))])
             failure = ImportFailure(error)
         }
@@ -291,7 +336,6 @@ public struct ImportPlanScreen: View {
     }
 
     private func readPhoto(_ item: PhotosPickerItem) async {
-        defer { photoItem = nil }
         guard let data = try? await item.loadTransferable(type: Data.self), data.count <= PlanLimits.importDocumentBytes else {
             failure = ImportFailure(PlanReadingError.noTextFound)
             return
@@ -302,7 +346,11 @@ public struct ImportPlanScreen: View {
     // MARK: Saving
 
     private func save(_ plan: MealPlan) {
-        store.attempt { try store.createPlan(plan, activate: true) }
+        // Save answers once: a second tap while the sheet closes must not store the plan again.
+        guard !didSave else { return }
+        // Not stored: the store says why, and the review stays so nothing read is lost.
+        guard store.attempt({ try store.createPlan(plan, activate: true) }) != nil else { return }
+        didSave = true
         Analytics.track("plan_saved", ["source": .text(lastSource)])
         dismiss()
         onFinished()
@@ -427,9 +475,22 @@ struct PastePlanScreen: View {
     var placeholder: LocalizedStringKey = "import.paste.placeholder"
     /// Characters the reader takes; past it Continue is off and a line says why.
     var characterLimit: Int = PlanLimits.importTextLength
-    let onContinue: (String) async -> Void
+    let onContinue: (String) -> Void
     @State private var text = ""
+    @State private var nothingToPaste = false
     @FocusState private var isFocused: Bool
+
+    private var isTooLong: Bool { text.count > characterLimit }
+
+    /// Puts the clipboard in the box. After what is already there, if anything is: a plan copied
+    /// in two pieces is still one plan, and a slip must not wipe what was typed.
+    private func paste() {
+        guard let pasted = UIPasteboard.general.string?.trimmedNonEmpty else {
+            nothingToPaste = true
+            return
+        }
+        text = text.trimmedNonEmpty == nil ? pasted : text + "\n" + pasted
+    }
 
     var body: some View {
         TextEditor(text: $text)
@@ -449,35 +510,56 @@ struct PastePlanScreen: View {
             }
             .navigationTitle(Text(title, bundle: .module))
             .navigationBarTitleDisplayMode(.inline)
+            // In the screen, above the keyboard: a bar at the bottom edge sits under the keyboard,
+            // which is up for most of the time this screen is.
             .safeAreaInset(edge: .bottom) {
-                if text.count > characterLimit {
-                    Text(String(localized: "import.paste.tooLong", defaultValue: "This is \(text.count) characters; up to \(characterLimit) can be read.", bundle: .module))
-                        .font(.footnote)
-                        .foregroundStyle(.red)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, AppSpacing.screenMargin)
-                        .padding(.vertical, AppSpacing.xSmall)
-                        .background(.bar)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    PasteButton(payloadType: String.self) { strings in
-                        Task { @MainActor in
-                            text = strings.joined(separator: "\n")
+                VStack(alignment: .leading, spacing: AppSpacing.xSmall) {
+                    if isTooLong {
+                        Text(String(localized: "import.paste.tooLong", defaultValue: "This is \(text.count) characters; up to \(characterLimit) can be read.", bundle: .module))
+                            .font(.footnote)
+                            .foregroundStyle(.red)
+                    } else if nothingToPaste {
+                        Text("import.paste.nothing", bundle: .module)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                    HStack {
+                        Button(action: paste) {
+                            Label {
+                                Text("import.paste.paste", bundle: .module)
+                            } icon: {
+                                Image(systemName: "doc.on.clipboard")
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(AppColors.brandAccent)
+                        Spacer()
+                        if !text.isEmpty {
+                            Button(role: .destructive) {
+                                text = ""
+                            } label: {
+                                Text("import.paste.clear", bundle: .module)
+                            }
+                            .buttonStyle(.bordered)
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, AppSpacing.screenMargin)
+                .padding(.vertical, AppSpacing.xSmall)
+                .background(.bar)
+            }
+            .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         isFocused = false
-                        Task { await onContinue(text) }
+                        onContinue(text)
                     } label: {
                         Text("import.paste.continue", bundle: .module)
                     }
-                    .disabled(text.trimmedNonEmpty == nil || text.count > characterLimit)
+                    .disabled(text.trimmedNonEmpty == nil || isTooLong)
                 }
             }
-            .onAppear { isFocused = true }
+            .onChange(of: text) { nothingToPaste = false }
     }
 }

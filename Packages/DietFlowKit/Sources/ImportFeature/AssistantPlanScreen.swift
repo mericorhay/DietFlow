@@ -7,7 +7,7 @@ import Domain
 /// Asking the assistant for a new plan: how many days, how many meals a day, and whatever the
 /// person wants to say about how they eat. What comes back is shown for review like any import.
 struct AssistantPlanScreen: View {
-    let onContinue: (PlanWishes) async -> Void
+    let onContinue: (PlanWishes) -> Void
     @State private var wishes = PlanWishes()
     @FocusState private var isWritingWishes: Bool
 
@@ -57,7 +57,7 @@ struct AssistantPlanScreen: View {
             ToolbarItem(placement: .confirmationAction) {
                 Button {
                     isWritingWishes = false
-                    Task { await onContinue(wishes) }
+                    onContinue(wishes)
                 } label: {
                     Text("import.assistant.create.continue", bundle: .module)
                 }
