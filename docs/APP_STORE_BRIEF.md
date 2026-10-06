@@ -150,7 +150,7 @@ Write each of these in all three languages. Limits are Apple's.
    > Subscriptions.
    >
    > Privacy Policy: https://mericorhay.github.io/DietFlow/privacy
-   > Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+   > Terms of Use (EULA): https://mericorhay.github.io/DietFlow/terms
 
 Tone: plain, concrete, second person. No exclamation marks, no emoji, no "revolutionary", no
 "AI-powered" as a headline. Say what the thing does.
@@ -227,11 +227,17 @@ billing day, not on the first of the month.
 | Field | Value |
 |---|---|
 | Privacy Policy URL | https://mericorhay.github.io/DietFlow/privacy |
-| Support URL | https://github.com/mericorhay/DietFlow/issues (**DECIDE**: or a support page or email) |
-| Marketing URL | Leave empty (**DECIDE**) |
-| License agreement | Apple's standard EULA. Do not upload a custom one. |
+| Terms of Use (EULA) | https://mericorhay.github.io/DietFlow/terms |
+| Support URL | https://mericorhay.github.io/DietFlow/support |
+| Marketing URL | https://mericorhay.github.io/DietFlow/ (optional) |
+| License agreement | Keep Apple's standard EULA selected in App Store Connect. The Terms of Use page builds on it and adds the subscription and assistant terms; link it in the description, as above. |
 
-The privacy page only works once GitHub Pages is turned on for the repository's `docs/` folder.
+All four pages are live, published from the repository's `docs/` folder by GitHub Pages. The same
+three links are inside the app: on the DietFlow Plus screen, and under Settings › About.
+
+The support page's contact is the repository's public issue tracker. **DECIDE**: add a support
+email address to `docs/support.md`, `docs/privacy.md` and `docs/terms.md` if one should be given;
+Apple expects a way to reach the developer, and a privacy request should not have to be public.
 
 ---
 
@@ -247,7 +253,7 @@ advertising identifier.
 | Usage Data › Product Interaction | Anonymous usage events: which features are used, where a limit is reached | Analytics |
 | Purchases › Purchase History | Whether a DietFlow Plus purchase was started, completed or cancelled, as an anonymous event | Analytics |
 | Identifiers › Device ID | A random identifier created on the phone, used by the analytics service and to rate-limit the assistant. Not the device's real identifier, not linked to an Apple Account | Analytics, App Functionality |
-| User Content › Other User Content | The text a person hands to the assistant (a diet list, or what they want to eat). Sent to the developer's server and to an AI service to produce the plan; not stored | App Functionality |
+| User Content › Other User Content | The text a person hands to the assistant (a diet list, or what they want to eat). Sent to the developer's server and from there to OpenAI to produce the plan, after the person agrees in the app; not stored by the developer | App Functionality |
 
 **DECIDE**: a diet list can be read as health information. The cautious answer is to also declare
 *Health & Fitness › Health* with the purpose App Functionality, not linked, not tracking. Raise
@@ -301,6 +307,25 @@ be; check that its status is Active.
 
 ---
 
+## 7a. The AI, said plainly
+
+Apple's guideline 5.1.2(i) asks an app to say clearly when personal data is shared with a third
+party's AI and to get explicit permission first. DietFlow does both, and the store pages should
+say the same thing the app does:
+
+- **Which AI**: the assistant uses **OpenAI's GPT models**, through OpenAI's API. Name OpenAI in
+  the description wherever the assistant is described, in the notes for App Review, and in the
+  App Privacy answers. Do not write "our AI" or "AI service" without the name.
+- **Permission**: the first time the assistant is used, the app shows an alert, "Send this to
+  OpenAI?", saying the text goes through our server to OpenAI and is not stored by DietFlow.
+  Nothing is sent before the person taps Allow. It can be withdrawn in Settings › Privacy › Send
+  Assistant Text to OpenAI.
+- **On the device**: where the iPhone has Apple Intelligence, pasted and scanned plans are read
+  by Apple's on-device model. Nothing leaves the phone for that, so it needs no permission, but
+  the Privacy screen and the privacy policy mention it.
+- **Not medical advice**: the assistant's screen, the Terms of Use and the privacy policy all say
+  so, and every plan is shown for review before it is saved (guideline 1.4.1).
+
 ## 8. Notes for App Review
 
 Put this in *App Review Information › Notes*, in English:
@@ -318,7 +343,7 @@ Put this in *App Review Information › Notes*, in English:
 > beyond two free requests a month and keeping more than one plan. The assistant is in Import
 > Plan (Settings › Import Plan, or the menu on the Plan tab): "Organize Any List" and "Write Me
 > a Plan". It needs a network connection: the
-> text is sent to our server and an AI service to produce the plan, which is shown for review
+> text is sent to our server and from there to OpenAI (GPT models, via OpenAI's API) to produce the plan, after the person agrees to an in-app alert that names OpenAI, which is shown for review
 > before it is saved. It writes everyday meal plans and states that it is not medical advice.
 >
 > Anonymous usage data is shared by default and can be turned off in Settings › Share Anonymous
@@ -380,7 +405,7 @@ These block a real submission and are the developer's to do. Do not attempt them
 | A TestFlight build | None uploaded yet |
 | The assistant's server (Cloudflare Worker) deployed, with its secrets | Not deployed. Without it the build has no assistant, and the store text must not promise one |
 | The PostHog project key added to the build | Not added. Without it nothing is shared, and the privacy answers about analytics should wait |
-| GitHub Pages turned on, so the privacy policy URL works | Not on |
+| GitHub Pages turned on, so the privacy policy URL works | On: privacy, terms and support pages are live |
 | Purchases tested in the sandbox | Not tested |
 
 **The store pages must describe the build that is submitted.** If the first build goes out

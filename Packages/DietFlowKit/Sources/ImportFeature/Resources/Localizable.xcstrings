@@ -121,6 +121,102 @@
         }
       }
     },
+    "import.assistant.consent.allow" : {
+      "comment" : "Button of the alert shown before text is first sent to the assistant. Agrees and sends. One or two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin Ver"
+          }
+        }
+      }
+    },
+    "import.assistant.consent.decline" : {
+      "comment" : "Button of the alert shown before text is first sent to the assistant. Sends nothing and closes the alert. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Now"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora no"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdi Değil"
+          }
+        }
+      }
+    },
+    "import.assistant.consent.message" : {
+      "comment" : "Message of the alert shown before text is first sent to the assistant. %1$@ is the company whose AI reads the text, %2$@ is this app's name. Three short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To write your plan, the text you entered is sent through our server to %1$@, whose AI reads it. %2$@ does not store it. Leave out anything you would not want shared."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para escribir tu plan, el texto que has introducido se envía a través de nuestro servidor a %1$@, cuya IA lo lee. %2$@ no lo guarda. No incluyas nada que no quieras compartir."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planını yazabilmek için girdiğin metin, sunucumuz üzerinden %1$@ şirketine gönderilir; metni onun yapay zekâsı okur. %2$@ bu metni saklamaz. Paylaşılmasını istemediğin şeyleri yazma."
+          }
+        }
+      }
+    },
+    "import.assistant.consent.title" : {
+      "comment" : "Title of the alert shown before text is first sent to the assistant. %@ is the company whose AI reads it, such as OpenAI. A short question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send this to %@?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Enviar esto a %@?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ile paylaşılsın mı?"
+          }
+        }
+      }
+    },
     "import.assistant.create.continue" : {
       "comment" : "Button in the navigation bar that asks the assistant for the plan. One word.",
       "extractionState" : "manual",
@@ -668,25 +764,25 @@
       }
     },
     "import.assistant.privacy" : {
-      "comment" : "Footer under the assistant's rows: what happens to the text. Two short sentences.",
+      "comment" : "Footer under the assistant's rows on Import Plan. %@ is the company whose AI the assistant uses, such as OpenAI. Says where the text goes. Three short sentences.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "What you give the assistant is sent to our server to be read. It is not stored."
+            "value" : "The assistant is powered by %@. What you give it is sent there through our server to be read. We do not store it."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lo que le das al asistente se envía a nuestro servidor para leerlo. No se guarda."
+            "value" : "El asistente funciona con la IA de %@. Lo que le das se envía allí a través de nuestro servidor para leerlo. Nosotros no lo guardamos."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Asistana verdiğin metin okunmak üzere sunucumuza gönderilir. Saklanmaz."
+            "value" : "Asistan %@ yapay zekâsıyla çalışır. Ona verdiğin metin, okunmak üzere sunucumuz üzerinden oraya gönderilir. Biz saklamayız."
           }
         }
       }

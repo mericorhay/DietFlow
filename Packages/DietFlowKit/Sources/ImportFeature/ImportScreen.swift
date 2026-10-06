@@ -49,6 +49,8 @@ public struct ImportPlanScreen: View {
     @State private var work: Task<Void, Never>?
     @State private var didReadInitialInput = false
     @State private var didSave = false
+    /// A request waiting for the person to agree that its text goes to the AI company.
+    @State private var consent: AssistantConsent?
     /// How the plan on the review screen came in, for the event sent when it is saved.
     @State private var lastSource = "unknown"
     @State private var failure: ImportFailure?
@@ -159,11 +161,11 @@ public struct ImportPlanScreen: View {
                     }
                 case .assistantOrganize:
                     PastePlanScreen(title: "import.assistant.organize.title", placeholder: "import.assistant.organize.placeholder", characterLimit: PlanAssistantClient.textLimit) { text in
-                        run(asking: true) { await organizeWithAssistant(text) }
+                        askAssistant { await organizeWithAssistant(text) }
                     }
                 case .assistantCreate:
                     AssistantPlanScreen { wishes in
-                        run(asking: true) { await createWithAssistant(wishes) }
+                        askAssistant { await createWithAssistant(wishes) }
                     }
                 case .review(let draft):
                     ImportReviewScreen(draft: draft, onSave: save)
@@ -211,6 +213,21 @@ public struct ImportPlanScreen: View {
             Button(role: .cancel) {} label: { Text("import.error.ok", bundle: .module) }
         } message: { failure in
             Text(failure.message)
+        }
+        .alert(
+            Text(String(localized: "import.assistant.consent.title", defaultValue: "Send this to \(AssistantProvider.name)?", bundle: .module)),
+            isPresented: Binding(get: { consent != nil }, set: { if !$0 { consent = nil } }),
+            presenting: consent
+        ) { consent in
+            Button {
+                store.updateSettings { $0.allowsAssistantSharing = true }
+                run(asking: true, consent.request)
+            } label: {
+                Text("import.assistant.consent.allow", bundle: .module)
+            }
+            Button(role: .cancel) {} label: { Text("import.assistant.consent.decline", bundle: .module) }
+        } message: { _ in
+            Text(String(localized: "import.assistant.consent.message", defaultValue: "To write your plan, the text you entered is sent through our server to \(AssistantProvider.name), whose AI reads it. \(AppBrand.displayName) does not store it. Leave out anything you would not want shared.", bundle: .module))
         }
         .onAppear {
             // Once: coming back from a picker must not read what was handed over a second time.
@@ -281,14 +298,25 @@ public struct ImportPlanScreen: View {
 
     // MARK: The assistant
 
-    /// "2 of 2 left. They come back on 1 November.", then what happens to the text.
+    /// Sends a request to the assistant, once the person has agreed to where its text goes. The
+    /// first time, and whenever that has been switched off in Settings, they are asked; nothing
+    /// leaves the phone until they say yes.
+    private func askAssistant(_ request: @escaping @MainActor () async -> Void) {
+        if store.settings.allowsAssistantSharing {
+            run(asking: true, request)
+        } else {
+            consent = AssistantConsent(request: request)
+        }
+    }
+
+    /// "2 of 2 left. They come back on 1 November.", then whose AI it is and what happens to the text.
     private var assistantFooter: String {
         var lines: [String] = []
         if let limit = access.limit(.aiPlan), let left = access.remaining(.aiPlan) {
             let date = access.resetsAt.formatted(.dateTime.day().month(.wide))
             lines.append(String(localized: "import.assistant.allowance", defaultValue: "\(left) of \(limit) left. They come back on \(date).", bundle: .module))
         }
-        lines.append(String(localized: "import.assistant.privacy", bundle: .module))
+        lines.append(String(localized: "import.assistant.privacy", defaultValue: "The assistant is powered by \(AssistantProvider.name). What you give it is sent there through our server to be read. We do not store it.", bundle: .module))
         return lines.joined(separator: "\n")
     }
 
@@ -387,6 +415,12 @@ extension PlanSource {
         case .pdf: "pdf"
         }
     }
+}
+
+/// A request held back until the person agrees to its text being sent.
+private struct AssistantConsent: Identifiable {
+    let id = UUID()
+    let request: @MainActor () async -> Void
 }
 
 enum ImportRoute: Hashable {

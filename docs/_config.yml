@@ -1,0 +1,8 @@
+title: DietFlow
+description: Meal Planner Widget for iPhone
+theme: jekyll-theme-minimal
+# Only the public pages are published; the repository's own documentation stays on GitHub.
+exclude:
+  - ARCHITECTURE.md
+  - LOCALIZATION.md
+  - APP_STORE_BRIEF.md

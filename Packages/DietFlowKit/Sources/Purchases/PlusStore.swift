@@ -288,7 +288,8 @@ public final class PlusStore {
 
     // MARK: Links every subscription screen must carry
 
-    /// Apple's standard licence agreement, which the app is sold under.
-    public static let termsURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
-    public static let privacyURL = URL(string: "https://mericorhay.github.io/DietFlow/privacy")!
+    /// The app's terms, which rest on Apple's standard licence agreement and add what is the
+    /// app's own: the subscription and the assistant.
+    public static let termsURL = LegalLinks.terms
+    public static let privacyURL = LegalLinks.privacy
 }

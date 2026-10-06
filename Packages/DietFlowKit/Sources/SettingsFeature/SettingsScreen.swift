@@ -248,6 +248,15 @@ public struct SettingsScreen: View {
             } label: {
                 Text("settings.about.privacy", bundle: .module)
             }
+            Link(destination: LegalLinks.privacy) {
+                Text("settings.about.privacyPolicy", bundle: .module)
+            }
+            Link(destination: LegalLinks.terms) {
+                Text("settings.about.terms", bundle: .module)
+            }
+            Link(destination: LegalLinks.support) {
+                Text("settings.about.support", bundle: .module)
+            }
             LabeledContent {
                 Text(verbatim: version)
             } label: {
@@ -274,6 +283,7 @@ public struct SettingsScreen: View {
 /// What happens to the person's data: it stays on the phone, except the text they hand the
 /// assistant, which has to reach a server to be read. The screen says exactly that.
 struct PrivacyScreen: View {
+    @Environment(MealPlanStore.self) private var store
     let showsAssistant: Bool
     /// Whether this build shares anonymous usage data at all.
     let sharesUsage: Bool
@@ -286,12 +296,29 @@ struct PrivacyScreen: View {
                     Text("settings.privacy.usage", bundle: .module)
                 }
                 if showsAssistant {
-                    Text("settings.privacy.assistant", bundle: .module)
+                    Text(String(localized: "settings.privacy.assistant", defaultValue: "When you use the assistant, the text you give it is sent through our server to \(AssistantProvider.name), whose AI reads it and writes your plan. We do not store it. Nothing else you type leaves your iPhone.", bundle: .module))
                 } else {
                     Text("settings.privacy.local", bundle: .module)
                 }
                 Text("settings.privacy.import", bundle: .module)
                 Text("settings.privacy.widget", bundle: .module)
+            }
+            if showsAssistant {
+                Section {
+                    Toggle(isOn: Binding(
+                        get: { store.settings.allowsAssistantSharing },
+                        set: { isOn in store.updateSettings { $0.allowsAssistantSharing = isOn } }
+                    )) {
+                        Text(String(localized: "settings.privacy.assistantSharing", defaultValue: "Send Assistant Text to \(AssistantProvider.name)", bundle: .module))
+                    }
+                } footer: {
+                    Text("settings.privacy.assistantSharing.footer", bundle: .module)
+                }
+            }
+            Section {
+                Link(destination: LegalLinks.privacy) {
+                    Text("settings.about.privacyPolicy", bundle: .module)
+                }
             }
         }
         .navigationTitle(Text("settings.about.privacy", bundle: .module))

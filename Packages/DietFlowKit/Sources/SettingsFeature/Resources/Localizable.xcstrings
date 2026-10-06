@@ -49,6 +49,78 @@
         }
       }
     },
+    "settings.about.privacyPolicy" : {
+      "comment" : "Row in Settings, About. Opens the full privacy policy on the web. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de privacidad"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizlilik Politikası"
+          }
+        }
+      }
+    },
+    "settings.about.support" : {
+      "comment" : "Row in Settings, About. Opens the help page on the web. Three words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help and Support"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayuda y soporte"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yardım ve Destek"
+          }
+        }
+      }
+    },
+    "settings.about.terms" : {
+      "comment" : "Row in Settings, About. Opens the terms of use on the web. Three words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Términos de uso"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanım Koşulları"
+          }
+        }
+      }
+    },
     "settings.about.version" : {
       "comment" : "Row label for the app version. One word.",
       "extractionState" : "manual",
@@ -986,25 +1058,73 @@
       }
     },
     "settings.privacy.assistant" : {
-      "comment" : "Paragraph of the Privacy screen about the assistant: the one case where something the person typed leaves the phone. Plain and exact; three short sentences.",
+      "comment" : "Paragraph on the Privacy screen, in builds with the assistant. %@ is the company whose AI reads the text, such as OpenAI.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "When you use the assistant, the text you give it is sent to our server and to the AI service that reads it, so that your plan can be written. It is not stored. Nothing else you type leaves your iPhone."
+            "value" : "When you use the assistant, the text you give it is sent through our server to %@, whose AI reads it and writes your plan. We do not store it. Nothing else you type leaves your iPhone."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cuando usas el asistente, el texto que le das se envía a nuestro servidor y al servicio de IA que lo lee, para poder escribir tu plan. No se guarda. Nada más de lo que escribes sale de tu iPhone."
+            "value" : "Cuando usas el asistente, el texto que le das se envía a través de nuestro servidor a %@, cuya IA lo lee y escribe tu plan. Nosotros no lo guardamos. Nada más de lo que escribes sale de tu iPhone."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Asistanı kullandığında, ona verdiğin metin planının yazılabilmesi için sunucumuza ve metni okuyan yapay zeka hizmetine gönderilir. Saklanmaz. Yazdığın başka hiçbir şey iPhone'undan çıkmaz."
+            "value" : "Asistanı kullandığında ona verdiğin metin, sunucumuz üzerinden %@ şirketine gönderilir; onun yapay zekâsı metni okuyup planını yazar. Biz saklamayız. Yazdığın başka hiçbir şey iPhone'undan çıkmaz."
+          }
+        }
+      }
+    },
+    "settings.privacy.assistantSharing" : {
+      "comment" : "Switch on the Privacy screen. On means the person has agreed that the assistant's text is sent to the company whose AI reads it. %@ is that company, such as OpenAI.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send Assistant Text to %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar el texto del asistente a %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan Metnini %@ ile Paylaş"
+          }
+        }
+      }
+    },
+    "settings.privacy.assistantSharing.footer" : {
+      "comment" : "Footer under the switch that allows the assistant's text to be sent. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When this is off, the assistant asks before it sends anything."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si está desactivado, el asistente pregunta antes de enviar nada."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapalıyken asistan bir şey göndermeden önce sorar."
           }
         }
       }
@@ -1034,25 +1154,25 @@
       }
     },
     "settings.privacy.import" : {
-      "comment" : "Privacy note, second paragraph: imports are read on the device.",
+      "comment" : "Paragraph on the Privacy screen about importing a plan without the assistant. Names Apple's on-device model, which reads the text where the iPhone has it.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Photos, PDFs and text you import are read on this iPhone."
+            "value" : "Photos, PDFs and text you import are read on this iPhone, by Apple's on-device model where the iPhone has it."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las fotos, los PDF y el texto que importas se leen en este iPhone."
+            "value" : "Las fotos, los PDF y el texto que importas se leen en este iPhone, con el modelo en el dispositivo de Apple si el iPhone lo tiene."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İçe aktardığın fotoğraflar, PDF'ler ve metinler bu iPhone'da okunur."
+            "value" : "İçe aktardığın fotoğraflar, PDF'ler ve metinler bu iPhone'da okunur; iPhone'unda varsa Apple'ın cihaz üzerindeki modeliyle."
           }
         }
       }

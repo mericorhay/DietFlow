@@ -21,6 +21,9 @@ public struct AppSettings: Codable, Hashable, Sendable {
     public var showDoneButtonOnWidget: Bool
     public var widgetAccent: WidgetAccent
     public var widgetBackground: WidgetBackgroundStyle
+    /// The person has agreed that what they give the assistant is sent to the AI company that
+    /// reads it. Asked the first time, and again whenever this is switched back off.
+    public var allowsAssistantSharing: Bool
 
     public init(
         remindersEnabled: Bool = false,
@@ -36,7 +39,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
         mealWindowMinutes: Int = WidgetPreferences.defaultWindowMinutes,
         showDoneButtonOnWidget: Bool = false,
         widgetAccent: WidgetAccent = .terracotta,
-        widgetBackground: WidgetBackgroundStyle = .system
+        widgetBackground: WidgetBackgroundStyle = .system,
+        allowsAssistantSharing: Bool = false
     ) {
         self.remindersEnabled = remindersEnabled
         self.defaultReminder = defaultReminder
@@ -52,6 +56,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         self.showDoneButtonOnWidget = showDoneButtonOnWidget
         self.widgetAccent = widgetAccent
         self.widgetBackground = widgetBackground
+        self.allowsAssistantSharing = allowsAssistantSharing
     }
 
     public init(from decoder: any Decoder) throws {
@@ -71,6 +76,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         showDoneButtonOnWidget = (try? container.decode(Bool.self, forKey: .showDoneButtonOnWidget)) ?? defaults.showDoneButtonOnWidget
         widgetAccent = (try? container.decode(WidgetAccent.self, forKey: .widgetAccent)) ?? defaults.widgetAccent
         widgetBackground = (try? container.decode(WidgetBackgroundStyle.self, forKey: .widgetBackground)) ?? defaults.widgetBackground
+        allowsAssistantSharing = (try? container.decode(Bool.self, forKey: .allowsAssistantSharing)) ?? defaults.allowsAssistantSharing
     }
 
     public var widgetPreferences: WidgetPreferences {

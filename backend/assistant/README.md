@@ -69,3 +69,12 @@ the provider asks for.
 The Worker does not check that the caller has paid: the app counts uses against the person's
 allowance, and the Worker limits each address and install. Checking the App Store's signed
 transaction on the server is the next step if the key is ever abused.
+
+## The provider is named to the person
+
+The app asks for permission before it sends anything here, and names the company whose model
+reads the text ("Send this to OpenAI?"). That name is `AssistantProvider.name` in
+`Packages/DietFlowKit/Sources/Domain/AppBrand.swift`, and it is also written in `docs/privacy.md`,
+`docs/terms.md` and `docs/support.md`. If the Worker is ever pointed at another provider
+(`GROQ_API_KEY`, `LLM_BASE_URL`), change all of those in the same release: what the app says and
+what the server does have to be the same thing.
