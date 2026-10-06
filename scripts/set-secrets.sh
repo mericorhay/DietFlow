@@ -32,20 +32,28 @@ set_from_file() {
 
 info "Dosyadan okunan secret'lar"
 
-# Each file holds one line of base64: base64 -i <file> | tr -d '\n'
-set_from_file IOS_DISTRIBUTION_CERT_P12        "$DESKTOP/IOS_DISTRIBUTION_CERT_P12.txt" || true
-set_from_file IOS_PROVISIONING_PROFILE         "$DESKTOP/DIETFLOW_PROVISIONING_PROFILE.txt" || true
-set_from_file IOS_WIDGET_PROVISIONING_PROFILE  "$DESKTOP/DIETFLOW_WIDGET_PROVISIONING_PROFILE.txt" || true
+# The certificate file holds the .p12 as one line of base64.
+set_from_file IOS_DISTRIBUTION_CERT_P12 "$DESKTOP/IOS_DISTRIBUTION_CERT_P12.txt" || true
+
+# The profiles are taken as downloaded from the developer portal and encoded here.
+set_profile() {
+  local name="$1" path="$2"
+  if [ ! -s "$path" ]; then bad "$name — dosya yok: $path"; return 1; fi
+  base64 -w0 "$path" | gh secret set "$name" -R "$REPO"
+  ok "$name  ($(basename "$path"))"
+}
+set_profile IOS_PROVISIONING_PROFILE        "$DOWNLOADS/DietFlow_App_Store.mobileprovision" || true
+set_profile IOS_WIDGET_PROVISIONING_PROFILE "$DOWNLOADS/DietFlow_Widget_App_Store.mobileprovision" || true
 
 # The key file is named after its own key id, so find it rather than hardcode it.
-AUTHKEY=$(ls -1 "$DOWNLOADS"/AuthKey_*.p8 2>/dev/null | head -1 || true)
+AUTHKEY=$(ls -1 "$DOWNLOADS"/AuthKey_*.p8 "$DESKTOP"/AuthKey_*.p8 2>/dev/null | head -1 || true)
 if [ -n "$AUTHKEY" ]; then
   set_from_file APP_STORE_CONNECT_API_KEY "$AUTHKEY"
   KEY_ID=$(basename "$AUTHKEY" .p8 | sed 's/^AuthKey_//')
   gh secret set APP_STORE_CONNECT_API_KEY_ID -R "$REPO" -b "$KEY_ID"
   ok "APP_STORE_CONNECT_API_KEY_ID  ($KEY_ID)"
 else
-  bad "AuthKey_*.p8 bulunamadi: $DOWNLOADS"
+  bad "AuthKey_*.p8 bulunamadi: Downloads ya da Desktop klasorune koy"
 fi
 
 gh secret set APPLE_TEAM_ID -R "$REPO" -b "XYB3NLV654"
