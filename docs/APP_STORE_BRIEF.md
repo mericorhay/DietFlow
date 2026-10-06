@@ -31,30 +31,48 @@ The developer built it for their own use, following a keto plan.
 
 ### What it does
 
-**The widget (the point of the app)**
+**The widgets (the point of the app)**
 
-- Small, medium and large Home Screen widgets, and two Lock Screen widgets (rectangular and inline).
-- Shows the meal that is on now or coming next, its time, and the meal after it. The large widget
-  shows the whole day.
-- Moves on by itself. When a meal's time comes it stays in front for an hour (adjustable from 30
-  minutes to 2 hours), then the next meal takes its place. After the day's last meal it shows
-  tomorrow's first. Nothing has to be tapped and the app does not have to be opened.
+There are three widgets:
+
+| Widget | Sizes | What it shows |
+|---|---|---|
+| Next Meal | Home Screen small and medium; Lock Screen rectangular and inline | The meal that is on now or coming next, its time, and the meal after it |
+| Today's Meals | Home Screen medium and large | The day as a list, with the meal that is on now or next marked |
+| Day Progress | Home Screen small; Lock Screen circular | A ring that fills as the day's meals go by ("2/4"), and the next meal |
+
+- They move on by themselves. When a meal's time comes it stays in front for an hour (adjustable
+  from 30 minutes to 2 hours), then the next meal takes its place. After the day's last meal they
+  show tomorrow's first. Nothing has to be tapped and the app does not have to be opened.
 - A countdown in the hour before a meal ("in 15 min").
 - Colour and tone are the person's choice: ten colours and four backgrounds (automatic, soft,
-  bold, dark). Lock Screen widgets use iOS's own colours.
-- An optional Done button on the medium and large widgets, off by default.
+  bold, dark). Lock Screen widgets, and Home Screen widgets with tinted or clear icons, use iOS's
+  own colours.
+- An optional Done button on the larger widgets, off by default.
+- The Widgets tab in the app shows every widget at its real size in a gallery to swipe through.
+
+**First launch**
+
+- A four-page introduction that moves: the day's meals arrive, one widget goes through a day by
+  itself, the person picks a widget with its colour and tone and sees it change as they tap, and a
+  small animated Home Screen shows the three steps of adding the widget. iOS does not let an app
+  add its own widget, so the app shows how. Do not claim it "installs" or "adds" the widget.
 
 **Getting a plan in**
 
 - Type it in: a plan is a run of days (1 to 366), each with its meals; it can repeat (the same
   week every week) or run once.
-- Paste text: a list copied from a message, a note, ChatGPT or Claude. Read on the device.
+- Paste text: a list copied from a message, a note, ChatGPT or Claude. Read on the device, by
+  Apple's on-device model where the iPhone has Apple Intelligence.
 - A photo or a PDF of a list: the text is recognised on the device.
 - A file: `.mealplan` or JSON.
 - Whatever the source, the plan is shown for review before it is saved.
 - Plans can be shared as `.mealplan` files.
 
 **The assistant (DietFlow Plus)**
+
+The assistant uses **OpenAI's GPT models**. The first time it is used the app asks permission to
+send the text to OpenAI; nothing is sent before the person agrees. See section 7a.
 
 - *Organize Any List*: paste a diet list exactly as it is — out of order, with typos, mixed with
   greetings and prices — and the assistant sorts it into days and meals. It copies; it does not
@@ -135,9 +153,10 @@ Write each of these in all three languages. Limits are Apple's.
 ### Description structure
 
 1. Two or three sentences on the problem and the answer: the plan is always on the Home Screen.
-2. The widget: sizes, that it moves on by itself, colours.
+2. The widgets: the three kinds and their sizes, that they move on by themselves, colours.
 3. Getting a plan in: type, paste, photo, PDF, file.
-4. The assistant, clearly marked as part of DietFlow Plus.
+4. The assistant, clearly marked as part of DietFlow Plus, and named as using OpenAI's GPT
+   models, with the text sent to OpenAI only after the person agrees.
 5. Reminders, Siri and Shortcuts.
 6. What is free and what is in DietFlow Plus (section 4).
 7. The subscription terms and the two links, which Apple requires in the description of an app
@@ -266,8 +285,8 @@ Facts behind the answers, for any follow-up question the form asks:
 - Analytics goes to PostHog. It is on by default and can be turned off in the app (Settings ›
   Share Anonymous Usage Data). There is no session replay and no screen or tap recording. Events
   never contain meal names, plan names, notes or pasted text.
-- The assistant's text goes to the developer's Cloudflare Worker and from there to an AI model
-  provider. The Worker does not store or log it.
+- The assistant's text goes to the developer's Cloudflare Worker and from there to OpenAI, after
+  the person agrees in the app. The Worker does not store or log it.
 - Purchases go through Apple; the developer receives no name or payment details.
 - There is no account, so there is no account deletion flow. Settings › Delete All Data removes
   everything from the phone.
@@ -335,22 +354,31 @@ Put this in *App Review Information › Notes*, in English:
 >
 > First launch: the DietFlow Plus screen is shown once as an introduction. It can be closed with
 > the X or "Continue with the Free Version"; everything except the limits below then works free.
+> A four-page introduction follows; its third page sets the widget's colour and its last page
+> shows how to add the widget.
 >
-> To see the app working: tap Create Plan, add a few meals with times around the current time,
-> then add the widget (long-press the Home Screen › Edit › Add Widget › DietFlow). The widget shows
-> the meal that is on now or next and moves on by itself; nothing needs tapping.
+> To see the app working: tap Create My Plan, add a few meals with times around the current time,
+> then add a widget (touch and hold the Home Screen › Edit › Add Widget › DietFlow). There are
+> three: Next Meal, Today's Meals and Day Progress. They show the meal that is on now or next and
+> move on by themselves; nothing needs tapping.
 >
 > DietFlow Plus (monthly with a 7-day free trial, yearly, or lifetime) adds the plan assistant
 > beyond two free requests a month and keeping more than one plan. The assistant is in Import
 > Plan (Settings › Import Plan, or the menu on the Plan tab): "Organize Any List" and "Write Me
-> a Plan". It needs a network connection: the
-> text is sent to our server and from there to OpenAI (GPT models, via OpenAI's API) to produce the plan, after the person agrees to an in-app alert that names OpenAI, which is shown for review
-> before it is saved. It writes everyday meal plans and states that it is not medical advice.
+> a Plan".
+>
+> Third-party AI (guideline 5.1.2(i)): the assistant uses OpenAI's GPT models through OpenAI's
+> API. The first time it is used, an alert titled "Send this to OpenAI?" explains that the text
+> is sent through our server to OpenAI and is not stored by us; nothing is sent unless the person
+> taps Allow. The permission can be withdrawn in Settings › Privacy. The plan that comes back is
+> shown for review before it is saved. The assistant writes everyday meal plans and states that it
+> is not medical advice. Pasted and scanned plans are otherwise read on the device.
 >
 > Anonymous usage data is shared by default and can be turned off in Settings › Share Anonymous
 > Usage Data. The app does not track and shows no advertising.
 >
-> Restore Purchases is on the Plus screen and in Settings.
+> Restore Purchases is on the Plus screen and in Settings. Privacy Policy, Terms of Use and
+> Support are linked on the Plus screen and under Settings › About.
 
 Contact name, phone and email for App Review: **DECIDE** (the developer's).
 
@@ -363,15 +391,15 @@ The developer captures these from a TestFlight build; an assistant cannot make t
 - Required: iPhone 6.9-inch (1320 × 2868 or 1290 × 2796 pixels, portrait), 3 to 10 images, in each
   of the three languages. No iPad set, because the app is iPhone only.
 - Suggested order, with a short caption above each in the language of the listing:
-  1. A Home Screen with the medium widget showing the next meal. Caption: your plan, always in
-     front of you.
-  2. The large widget with the whole day.
-  3. The Widgets tab with the colour swatches and a coloured widget. Caption: your colours.
-  4. Import: paste, photo, PDF. Caption: any list you already have.
-  5. The assistant turning a messy list into days and meals. Caption marked "DietFlow Plus".
-  6. "Write Me a Plan" with a 30-day plan in review. Caption marked "DietFlow Plus".
-  7. The Today screen.
-  8. The Lock Screen widget.
+  1. A Home Screen with the medium Next Meal widget. Caption: your plan, always in front of you.
+  2. The large Today's Meals widget with the whole day.
+  3. The small Day Progress widget beside a small Next Meal widget.
+  4. The Widgets tab with the colour swatches and a coloured widget. Caption: your colours.
+  5. Import: paste, photo, PDF. Caption: any list you already have.
+  6. The assistant turning a messy list into days and meals. Caption marked "DietFlow Plus".
+  7. "Write Me a Plan" with a 30-day plan in review. Caption marked "DietFlow Plus".
+  8. The Today screen.
+  9. The Lock Screen widgets.
 - Captions follow the same rules as the description: no health claims, no promises.
 - The same Plus-screen image is used as the review screenshot for the three in-app purchases.
 
@@ -402,12 +430,14 @@ These block a real submission and are the developer's to do. Do not attempt them
 
 | What | State |
 |---|---|
-| Signing: App IDs, App Group, two App Store provisioning profiles, repository secrets | Not done |
-| A TestFlight build | None uploaded yet |
-| The assistant's server (Cloudflare Worker) deployed, with its secrets | Not deployed. Without it the build has no assistant, and the store text must not promise one |
-| The PostHog project key added to the build | Not added. Without it nothing is shared, and the privacy answers about analytics should wait |
-| GitHub Pages turned on, so the privacy policy URL works | On: privacy, terms and support pages are live |
+| Signing: App IDs, App Group, two App Store provisioning profiles, repository secrets | Done |
+| A TestFlight build | Done: builds are uploading (1.0.0, build 7 at the time of writing) |
+| The assistant's server (Cloudflare Worker) deployed, with its secrets | Done: deployed and answering, using OpenAI |
+| GitHub Pages, so the privacy, terms and support URLs work | Done: all live |
+| The PostHog project key added to the build | **Not added.** Until it is, the build shares nothing and the Settings switch is absent; add it before submitting, or remove the analytics rows from the privacy answers |
+| The three in-app purchases created in App Store Connect | Not done: section 4. Until they exist the Plus screen cannot show prices |
 | Purchases tested in the sandbox | Not tested |
+| Screenshots | Not taken: section 9 |
 
 **The store pages must describe the build that is submitted.** If the first build goes out
 without the assistant, remove the assistant from the description, the screenshots, the
