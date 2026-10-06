@@ -35,7 +35,7 @@ Dependencies point one way: down this list.
 | Layer | Modules | May import |
 |---|---|---|
 | App | `DietFlow/`, `DietFlowWidget/`, `Shared/` | anything |
-| Features | `TodayFeature`, `PlanFeature`, `MealFeature`, `ImportFeature`, `WidgetsFeature`, `SettingsFeature`, `OnboardingFeature` (and the unused `AssistantFeature`, `PaywallFeature`) | `Domain`, `DesignSystem`, `AppCore`, the engines they need |
+| Features | `TodayFeature`, `PlanFeature`, `MealFeature`, `ImportFeature`, `WidgetsFeature`, `SettingsFeature`, `OnboardingFeature`, `PaywallFeature` (and the unused `AssistantFeature`) | `Domain`, `DesignSystem`, `AppCore`, the engines they need |
 | Shared UI | `DesignSystem`, `WidgetUI` | `Domain` |
 | App core | `AppCore` | `Domain`, `Persistence`, `MealReminders` |
 | Engines | `Persistence`, `MealReminders`, `PlanImport`, `PlanSync`, `AIServices`, `Purchases`, `Analytics` | `Domain` (and what `Package.swift` lists) |
@@ -116,7 +116,8 @@ Every source — a `.json`/`.mealplan` file, pasted text, a photo or a PDF — b
 a list of anything that was filled in or left out. The draft is always shown for review before it
 is saved. Pasted text is read by `PastedPlanParser` (any JSON in it first, then lines in English,
 Turkish or Spanish), and by Apple's on-device model where the device has it. Photos and PDFs are
-read with Vision on the device. Nothing is sent anywhere.
+read with Vision on the device. None of that sends anything anywhere; only the assistant, below,
+does.
 
 "Copy AI Instructions" puts the format on the clipboard so ChatGPT or Claude can write a payload.
 An MCP server would produce the same payload and call the same `MealPlanStore` operations.
@@ -139,11 +140,57 @@ later written by an MCP client. None of those is trusted to be small or well for
 - **Only the app's own Inbox is cleaned up.** A file opened with the app is deleted after reading
   only if it is the copy iOS placed in `Documents/Inbox`.
 
-## The assistant and the backend
+## DietFlow Plus
 
-`AIServices`, `AssistantFeature`, `PlanSync` and `backend/` are kept from the first skeleton but no
-screen uses them: the app works entirely on the device and sends no plan anywhere. Whether to bring
-an assistant or a server back is a product decision for later.
+What is paid for is one table, `Domain.AccessPolicy`, and nowhere else:
+
+| | Free | Plus |
+|---|---|---|
+| Plans kept | 1 | any number |
+| Assistant requests | 2 a calendar month | 60 a billing month |
+| Everything else — every widget, reminders, importing on the device | yes | yes |
+
+- **`Purchases.PlusStore`** is StoreKit: three products (monthly with a free trial, yearly, a
+  one-time lifetime purchase), the purchase, restore, offer codes, and what is held now. It reads
+  the current entitlements at every launch and follows `Transaction.updates`, so a renewal, a
+  refund or a purchase on another device arrives without the person doing anything. Nothing in it
+  is worded for the screen.
+- **`AppCore.AccessModel`** is the tier in force and what has been used of its allowances. It is
+  asked before anything paid runs (`check`, `use`), gives a use back when an attempt fails
+  (`refund`), and remembers the store's last answer so a subscriber is on Plus from the first frame.
+  Counts live in the Keychain, so reinstalling does not reset them.
+- **`Domain.BillingCycle`** works out the dates: when a trial started now would end, and the
+  window an allowance is counted over. A monthly subscription uses the period the App Store
+  charged for, trial included. A year or a lifetime is counted month by month from the day it was
+  bought. Windows are measured from that day itself, never from the window before, so a billing day
+  on the 31st goes 28 February, 31 March rather than slipping to the 28th for good. All of it is
+  counted in UTC, and all of it is tested.
+- **`PaywallFeature.PaywallScreen`** is shown once on first launch as the app's introduction, from
+  Settings, and when something is refused. It can always be closed. Every price on it comes from
+  the App Store; every date is worked out from what the App Store said.
+
+A refusal is recorded on `AccessModel.request`; `RootView` turns it into what the person sees
+(`AppDependencies.answer`), and `PlusPresenter`, attached to the tabs and to every sheet, shows it
+from whatever is in front. On Plus the only refusal is a used-up allowance, and an alert says when
+it comes back instead of selling anything.
+
+## The assistant
+
+The assistant does two things, both from Import: it puts a pasted list in order however untidy it
+is, and it writes a new plan of up to 30 days from a few wishes.
+
+`AIServices.PlanAssistantClient` posts to our Worker (`backend/assistant`), never to a model
+provider: the key and the prompts stay server-side, so a prompt changes without an app release.
+The Worker reads a long list in parts and writes a long plan a week at a time; to the app either
+is one request. What comes back is a `MealPlanPayload`, and it goes through `PlanImportNormalizer`
+and the review screen like a file or a pasted list — nothing a model writes is saved unseen.
+
+A build made without the Worker's address has no assistant: its rows, its line on the Plus screen
+and its paragraph on the Privacy screen are all left out, rather than offer something that cannot
+work. With it, the Privacy screen says exactly what is sent.
+
+`PlanSync` and `backend/mcp` are still only a contract: an MCP server would produce the same
+payload and call the same `MealPlanStore` operations.
 
 ## Checking the screens
 
