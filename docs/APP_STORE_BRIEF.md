@@ -235,9 +235,10 @@ billing day, not on the first of the month.
 All four pages are live, published from the repository's `docs/` folder by GitHub Pages. The same
 three links are inside the app: on the DietFlow Plus screen, and under Settings › About.
 
-The support page's contact is the repository's public issue tracker. **DECIDE**: add a support
-email address to `docs/support.md`, `docs/privacy.md` and `docs/terms.md` if one should be given;
-Apple expects a way to reach the developer, and a privacy request should not have to be public.
+The contact on all three pages is mericorhayy@gmail.com, the same address the developer's other apps
+publish. The Terms of Use carry the clauses Apple requires of a developer's own licence
+agreement (the app is licensed by the developer, not Apple; support, warranty, claims, legal
+compliance, Apple as third-party beneficiary).
 
 ---
 

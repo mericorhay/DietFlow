@@ -7,7 +7,7 @@ title: DietFlow Privacy Policy
 *Last updated 6 October 2026.*
 
 DietFlow ("Meal Planner Widget: DietFlow") is a meal plan app for iPhone, published by its
-developer (github.com/mericorhay). This page says what happens to what you put into it, who else
+developer ("we"). This page says what happens to what you put into it, who else
 is involved, and what you can do about it.
 
 In short: your plan stays on your iPhone. Two things can leave it, and each has its own switch:
@@ -117,7 +117,7 @@ notes say so.
 
 ## Contact
 
-Questions about this policy, or a request about your data: open an issue at
-<https://github.com/mericorhay/DietFlow/issues>, or see the [support page](support).
+Questions about this policy, or a request about your data: write to <mericorhayy@gmail.com>. See also the
+[support page](support).
 
 See also the [Terms of Use](terms).

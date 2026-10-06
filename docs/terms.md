@@ -7,7 +7,8 @@ title: DietFlow Terms of Use
 *Last updated 6 October 2026.*
 
 These terms cover your use of DietFlow ("Meal Planner Widget: DietFlow"), an app for iPhone
-published by its developer (github.com/mericorhay). By using the app you agree to them.
+published by its developer ("we"). By using the app you agree to them. If you do not, please do
+not use it.
 
 ## 1. The licence
 
@@ -97,9 +98,32 @@ We may update the app and these terms. If the terms change in a way that matters
 top changes and the app's update notes say so. You can stop using DietFlow at any time by
 deleting it; cancel any subscription first, since deleting the app does not cancel it.
 
-## 9. Contact
+## 9. Apple
 
-Questions about these terms: open an issue at <https://github.com/mericorhay/DietFlow/issues>, or
-see the [support page](support).
+These terms are between you and the DietFlow developer, not Apple. Apple is not responsible for
+the app or its content.
+
+- **Support.** We are responsible for maintaining and supporting DietFlow. Apple has no
+  obligation to provide maintenance or support for it.
+- **Warranty.** If the app fails to conform to a warranty that applies, you may notify Apple,
+  and Apple will refund the purchase price, if any. To the extent the law allows, Apple has no
+  other warranty obligation for the app.
+- **Claims.** We, not Apple, are responsible for addressing any claim about the app or your use
+  of it, including product liability claims, claims that it fails to meet a legal or regulatory
+  requirement, and claims under consumer protection or privacy law.
+- **Intellectual property.** If someone claims that the app infringes their intellectual property
+  rights, we, not Apple, are responsible for investigating, defending and settling that claim.
+- **Legal compliance.** You confirm that you are not located in a country under a U.S. Government
+  embargo or designated by it as a "terrorist supporting" country, and that you are not on any
+  U.S. Government list of prohibited or restricted parties.
+- **Other terms.** When you use the app you must also keep to any third-party terms that apply,
+  such as your mobile data agreement.
+- **Apple's rights.** Apple and its subsidiaries are third-party beneficiaries of these terms and,
+  once you accept them, may enforce them against you.
+
+## 10. Contact
+
+Questions about these terms, or anything else: write to <mericorhayy@gmail.com>. See also the
+[support page](support).
 
 See also the [Privacy Policy](privacy).

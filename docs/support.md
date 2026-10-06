@@ -8,9 +8,11 @@ Help with DietFlow ("Meal Planner Widget: DietFlow") for iPhone.
 
 ## Get in touch
 
-Open an issue at <https://github.com/mericorhay/DietFlow/issues>. Say what you did, what you
-expected and what happened, and which iPhone and iOS version you use. Do not include anything
-private: issues are public.
+Write to <mericorhayy@gmail.com>. Say what you did, what you expected and what happened, and which iPhone
+and iOS version you use. We answer in English and Turkish.
+
+Bugs can also be reported at <https://github.com/mericorhay/DietFlow/issues>. Issues there are
+public, so leave out anything private.
 
 ## Common questions
 
