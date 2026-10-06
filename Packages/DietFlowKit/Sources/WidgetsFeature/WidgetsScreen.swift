@@ -162,8 +162,9 @@ private struct ColorSwatches: View {
     @Binding var selection: WidgetAccent
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: AppSpacing.xSmall) {
+        // A grid, not a scrolling row: every colour, and which one is chosen, is in sight at once.
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: AppSpacing.minimumHitTarget), spacing: AppSpacing.xxSmall)], spacing: AppSpacing.xxSmall) {
+            Group {
                 ForEach(WidgetAccent.allCases, id: \.self) { accent in
                     let isSelected = accent == selection
                     Button {
@@ -193,7 +194,7 @@ private struct ColorSwatches: View {
                 }
             }
         }
-        .listRowInsets(EdgeInsets(top: AppSpacing.xxSmall, leading: AppSpacing.small, bottom: AppSpacing.xxSmall, trailing: 0))
+        .listRowInsets(EdgeInsets(top: AppSpacing.xxSmall, leading: AppSpacing.small, bottom: AppSpacing.xxSmall, trailing: AppSpacing.small))
         .accessibilityElement(children: .contain)
         .accessibilityLabel(Text("widgets.look.color", bundle: .module))
     }
