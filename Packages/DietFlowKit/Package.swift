@@ -53,11 +53,12 @@ let package = Package(
         engine("AppCore", ["Domain", "Persistence", "MealReminders"]),
         // A plan as pasted text, a file, a photo or a PDF in; a draft for review out. On device.
         engine("PlanImport"),
-        // Talks to our Worker. Not used by the current screens.
+        // The plan assistant: talks to our Worker, which holds the provider key and the prompts.
         engine("AIServices"),
         // The phone's side of a future MCP connection.
         engine("PlanSync"),
-        engine("Purchases", []),
+        // DietFlow Plus through StoreKit. App only: the widget never asks what was bought.
+        engine("Purchases"),
         engine("Analytics", []),
 
         // Shared UI. Nonisolated so the widget can use the same tokens off the main actor.
@@ -70,11 +71,11 @@ let package = Package(
         feature("TodayFeature"),
         feature("PlanFeature"),
         feature("MealFeature"),
-        feature("ImportFeature", ["Domain", "DesignSystem", "AppCore", "PlanImport"]),
+        feature("ImportFeature", ["Domain", "DesignSystem", "AppCore", "PlanImport", "AIServices"]),
         feature("WidgetsFeature", ["Domain", "DesignSystem", "AppCore", "WidgetUI"]),
-        feature("SettingsFeature"),
+        feature("SettingsFeature", ["Domain", "DesignSystem", "AppCore", "Purchases"]),
         feature("AssistantFeature", ["Domain", "DesignSystem"]),
-        feature("PaywallFeature", ["Domain", "DesignSystem"]),
+        feature("PaywallFeature", ["Domain", "DesignSystem", "Purchases"]),
 
         .testTarget(name: "DomainTests", dependencies: ["Domain"], swiftSettings: concurrency),
     ]

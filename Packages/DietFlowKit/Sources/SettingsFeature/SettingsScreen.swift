@@ -14,15 +14,23 @@ public struct SettingsScreen: View {
     @State private var notificationsDenied = false
     @State private var confirmsDeleteAll = false
     private let importPlan: () -> Void
+    private let showPlus: () -> Void
+    private let showsAssistant: Bool
 
-    /// - Parameter importPlan: opens Import Plan; Settings closes first.
-    public init(importPlan: @escaping () -> Void) {
+    /// - Parameters:
+    ///   - showsAssistant: whether this build has the assistant, so its allowance is shown.
+    ///   - importPlan: opens Import Plan; Settings closes first.
+    ///   - showPlus: opens the DietFlow Plus screen over Settings.
+    public init(showsAssistant: Bool, importPlan: @escaping () -> Void, showPlus: @escaping () -> Void) {
+        self.showsAssistant = showsAssistant
         self.importPlan = importPlan
+        self.showPlus = showPlus
     }
 
     public var body: some View {
         NavigationStack {
             Form {
+                PlusSection(showsAssistant: showsAssistant, showPlus: showPlus)
                 planSection
                 remindersSection
                 languageSection
@@ -217,7 +225,7 @@ public struct SettingsScreen: View {
     private var aboutSection: some View {
         Section {
             NavigationLink {
-                PrivacyScreen()
+                PrivacyScreen(showsAssistant: showsAssistant)
             } label: {
                 Text("settings.about.privacy", bundle: .module)
             }
@@ -244,12 +252,20 @@ public struct SettingsScreen: View {
     }
 }
 
-/// What happens to the person's data: nothing leaves the phone.
+/// What happens to the person's data: it stays on the phone, except the text they hand the
+/// assistant, which has to reach a server to be read. The screen says exactly that.
 struct PrivacyScreen: View {
+    let showsAssistant: Bool
+
     var body: some View {
         List {
             Section {
-                Text(String(localized: "settings.privacy.body", defaultValue: "Your plan stays on this iPhone. \(AppBrand.displayName) has no account, no analytics and no advertising, and nothing you enter is sent anywhere.", bundle: .module))
+                Text(String(localized: "settings.privacy.body", defaultValue: "Your plan stays on this iPhone. \(AppBrand.displayName) has no account, no analytics and no advertising.", bundle: .module))
+                if showsAssistant {
+                    Text("settings.privacy.assistant", bundle: .module)
+                } else {
+                    Text("settings.privacy.local", bundle: .module)
+                }
                 Text("settings.privacy.import", bundle: .module)
                 Text("settings.privacy.widget", bundle: .module)
             }

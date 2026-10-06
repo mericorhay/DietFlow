@@ -97,6 +97,624 @@
         }
       }
     },
+    "import.assistant.allowance" : {
+      "comment" : "Footer under the assistant's rows: how many requests are left this period and when the count starts again. %1$lld is what is left, %2$lld the allowance, %3$@ a date (\"1 November\").",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left: %1$lld of %2$lld. They come back on %3$@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quedan %1$lld de %2$lld. Vuelven el %3$@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan: %2$lld üzerinden %1$lld. %3$@ tarihinde yenilenir."
+          }
+        }
+      }
+    },
+    "import.assistant.create.continue" : {
+      "comment" : "Button in the navigation bar that asks the assistant for the plan. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribir"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaz"
+          }
+        }
+      }
+    },
+    "import.assistant.create.days" : {
+      "comment" : "Label of the stepper for how many days the assistant writes. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Days"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Días"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün"
+          }
+        }
+      }
+    },
+    "import.assistant.create.daysValue" : {
+      "comment" : "Value beside the Days stepper. %lld is 1 to 30.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld días"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld día"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld días"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld gün"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld gün"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "import.assistant.create.disclaimer" : {
+      "comment" : "Footer under the text box, before the assistant is asked for a plan. Must stay plain and unhedged: not medical advice. Two sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant writes everyday meal plans, not medical advice. If you have a health condition, check with your doctor or dietitian before changing how you eat."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente escribe planes de comidas cotidianos, no da consejo médico. Si tienes un problema de salud, consulta a tu médico o dietista antes de cambiar tu alimentación."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan günlük öğün planı yazar, tıbbi tavsiye vermez. Bir sağlık sorunun varsa beslenmeni değiştirmeden önce doktoruna ya da diyetisyenine danış."
+          }
+        }
+      }
+    },
+    "import.assistant.create.meals" : {
+      "comment" : "Label of the stepper for how many meals a day the assistant writes. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comidas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğün"
+          }
+        }
+      }
+    },
+    "import.assistant.create.mealsValue" : {
+      "comment" : "Value beside the Meals stepper. %lld is 2 to 6.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld a day"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld al día"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günde %lld"
+          }
+        }
+      }
+    },
+    "import.assistant.create.subtitle" : {
+      "comment" : "Under 'Write Me a Plan'. 30 is the most days it writes. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up to 30 days, from how you want to eat"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta 30 días, según cómo quieras comer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasıl beslenmek istediğine göre, 30 güne kadar"
+          }
+        }
+      }
+    },
+    "import.assistant.create.title" : {
+      "comment" : "Row on Import, and the title of the screen it opens: the assistant writes a new plan. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write Me a Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escríbeme un plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bana Plan Yaz"
+          }
+        }
+      }
+    },
+    "import.assistant.create.wishes.header" : {
+      "comment" : "Header above the text box where the person says how they want to eat. A short question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do you want to eat?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cómo quieres comer?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasıl beslenmek istiyorsun?"
+          }
+        }
+      }
+    },
+    "import.assistant.create.wishes.placeholder" : {
+      "comment" : "Grey placeholder in that text box: examples of what to write. Keep the examples short and local.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keto, about 1800 kcal, no fish, quick breakfasts…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keto, unas 1800 kcal, sin pescado, desayunos rápidos…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keto, yaklaşık 1800 kcal, balık yok, hızlı kahvaltılar…"
+          }
+        }
+      }
+    },
+    "import.assistant.create.wishes.tooLong" : {
+      "comment" : "Red line under the text box when too much is written. %1$lld is the length, %2$lld the most that is read.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is %1$lld characters; up to %2$lld are read."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son %1$lld caracteres; se leen hasta %2$lld."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu %1$lld karakter; en fazla %2$lld karakter okunur."
+          }
+        }
+      }
+    },
+    "import.assistant.error.busy" : {
+      "comment" : "Alert message when the assistant has too many requests at the moment. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant is busy just now. Try again in a minute."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente está ocupado ahora. Inténtalo de nuevo en un minuto."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan şu an yoğun. Bir dakika sonra tekrar dene."
+          }
+        }
+      }
+    },
+    "import.assistant.error.dailyLimit" : {
+      "comment" : "Alert message when this phone has made as many assistant requests as one day allows. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That is as many requests as one day allows. Try again tomorrow."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Has alcanzado el máximo de solicitudes por día. Inténtalo mañana."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir günde yapılabilecek istek sayısına ulaştın. Yarın tekrar dene."
+          }
+        }
+      }
+    },
+    "import.assistant.error.noPlan" : {
+      "comment" : "Alert message when the assistant read the text and found no meals. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant found no meals in that text."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente no encontró comidas en ese texto."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan bu metinde öğün bulamadı."
+          }
+        }
+      }
+    },
+    "import.assistant.error.offline" : {
+      "comment" : "Alert message when the assistant's server could not be reached. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant could not be reached. Check your connection and try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo contactar con el asistente. Revisa tu conexión e inténtalo de nuevo."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistana ulaşılamadı. Bağlantını kontrol edip tekrar dene."
+          }
+        }
+      }
+    },
+    "import.assistant.error.tooLong" : {
+      "comment" : "Alert message when the text is longer than the assistant reads. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That is more text than the assistant reads at once. Try it in two parts."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es más texto del que el asistente lee de una vez. Prueba en dos partes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu, asistanın tek seferde okuyabildiğinden uzun. İki parça halinde dene."
+          }
+        }
+      }
+    },
+    "import.assistant.error.unavailable" : {
+      "comment" : "Alert message when the assistant is down or answered with something unusable. Says the attempt was not counted. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant is not available right now. Nothing was taken from your allowance."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente no está disponible ahora. No se descontó nada de tu cupo."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan şu an kullanılamıyor. Hakkından bir şey düşülmedi."
+          }
+        }
+      }
+    },
+    "import.assistant.header" : {
+      "comment" : "Header of the Import section with the two things the assistant does. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistente"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan"
+          }
+        }
+      }
+    },
+    "import.assistant.organize.placeholder" : {
+      "comment" : "Grey placeholder in the empty text box where a list is pasted for the assistant.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste the list here, exactly as you have it: a message, notes, a table copied from a PDF…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pega aquí la lista tal como la tienes: un mensaje, notas, una tabla copiada de un PDF…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listeyi olduğu gibi buraya yapıştır: mesaj, notlar, PDF'ten kopyalanmış tablo…"
+          }
+        }
+      }
+    },
+    "import.assistant.organize.subtitle" : {
+      "comment" : "Under 'Organize Any List'. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste it as it is, however messy"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pégala tal cual, por desordenada que esté"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olduğu gibi yapıştır, ne kadar dağınık olursa olsun"
+          }
+        }
+      }
+    },
+    "import.assistant.organize.title" : {
+      "comment" : "Row on Import, and the title of the screen it opens: paste any list and the assistant puts it in order. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize Any List"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordenar una lista"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listeyi Düzene Sok"
+          }
+        }
+      }
+    },
+    "import.assistant.privacy" : {
+      "comment" : "Footer under the assistant's rows: what happens to the text. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What you give the assistant is sent to our server to be read. It is not stored."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo que le das al asistente se envía a nuestro servidor para leerlo. No se guarda."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistana verdiğin metin okunmak üzere sunucumuza gönderilir. Saklanmaz."
+          }
+        }
+      }
+    },
+    "import.assistant.working" : {
+      "comment" : "Under a spinner while the assistant works. Says it can take a while. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant is working. A long plan can take a minute."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente está trabajando. Un plan largo puede tardar un minuto."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan çalışıyor. Uzun bir plan bir dakika sürebilir."
+          }
+        }
+      }
+    },
     "import.cancel" : {
       "comment" : "Button that closes the Import Plan sheet. One word.",
       "extractionState" : "manual",
@@ -645,6 +1263,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Planı Yapıştır"
+          }
+        }
+      }
+    },
+    "import.paste.tooLong" : {
+      "comment" : "Red line under the paste box when the text is too long to read. %1$lld is its length, %2$lld the most that can be read.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is %1$lld characters; up to %2$lld can be read."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son %1$lld caracteres; se pueden leer hasta %2$lld."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu %1$lld karakter; en fazla %2$lld karakter okunabilir."
           }
         }
       }

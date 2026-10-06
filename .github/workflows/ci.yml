@@ -31,6 +31,8 @@ jobs:
           node-version: "24"
       - run: node --test tools/localization/catalogs.test.mjs
       - run: node tools/localization/l10n.mjs validate
+      # The plan assistant's Worker: prompts, splitting, reading answers, limits. No network.
+      - run: node --test backend/assistant/plan.test.mjs
 
   build:
     name: Build and test

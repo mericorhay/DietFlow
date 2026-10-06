@@ -1,7 +1,9 @@
 #if DEBUG
 import Foundation
+import AIServices
 import AppCore
 import Domain
+import Purchases
 
 /// Launch arguments that open the app in a known state, so every screen can be checked — in every
 /// language, in dark mode, at large text sizes — without tapping through. Debug builds only; CI
@@ -12,10 +14,47 @@ import Domain
 ///                                          current time (one meal done, one on now, one next); nothing;
 ///                                          or first run
 ///     -DebugTab today|plan|widgets
-///     -DebugSheet settings|import|newMeal|newPlan
+///     -DebugSheet settings|import|newMeal|newPlan|plus|plusIntro
 ///     -DebugMeal next                      opens the meal in front on Today
 ///     -DebugOnboardingPage 0…2
+///     -DebugPlus monthly|trial|yearly|lifetime
+///                                          as if that were held, for Settings' Plus section
 enum DebugLaunch {
+    /// The Plus screen without the App Store: the prices as set in App Store Connect, in dollars.
+    static func standInStore(entitlement: PlusEntitlement?) -> PlusStore {
+        PlusStore(
+            standInOffers: [
+                .init(id: PlusStore.monthlyID, kind: .monthly, displayPrice: "$3.99", trial: entitlement == nil ? BillingCycle.Span(value: 7, unit: .day) : nil),
+                .init(id: PlusStore.yearlyID, kind: .yearly, displayPrice: "$24.99", pricePerMonth: "$2.08"),
+                .init(id: PlusStore.lifetimeID, kind: .lifetime, displayPrice: "$34.99"),
+            ],
+            yearlySavingPercent: 48,
+            entitlement: entitlement
+        )
+    }
+
+    static func seededEntitlement(now: Date = .now) -> PlusEntitlement? {
+        let started = now.addingTimeInterval(-3 * 86_400)
+        switch value("DebugPlus") {
+        case "monthly":
+            return PlusEntitlement(kind: .monthly, periodStart: started, periodEnd: BillingCycle.date(byAdding: .init(value: 1, unit: .month), to: started), willRenew: true, isTrial: false)
+        case "trial":
+            return PlusEntitlement(kind: .monthly, periodStart: started, periodEnd: BillingCycle.date(byAdding: .init(value: 7, unit: .day), to: started), willRenew: true, isTrial: true)
+        case "yearly":
+            return PlusEntitlement(kind: .yearly, periodStart: started, periodEnd: BillingCycle.date(byAdding: .init(value: 1, unit: .year), to: started), willRenew: false, isTrial: false)
+        case "lifetime":
+            return PlusEntitlement(kind: .lifetime, periodStart: started, periodEnd: nil, willRenew: false, isTrial: false)
+        default:
+            return nil
+        }
+    }
+
+    /// An assistant that is there to be shown and reaches nothing: its rows appear in screenshots.
+    static func standInAssistant() -> PlanAssistantClient? {
+        guard let url = URL(string: "https://assistant.invalid") else { return nil }
+        return PlanAssistantClient(endpoint: AssistantEndpoint(url: url, appToken: ""), installID: "debug")
+    }
+
     static func value(_ name: String) -> String? {
         let arguments = ProcessInfo.processInfo.arguments
         guard let index = arguments.firstIndex(of: "-\(name)"), arguments.indices.contains(index + 1) else { return nil }

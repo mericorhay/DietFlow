@@ -433,26 +433,602 @@
         }
       }
     },
-    "settings.privacy.body" : {
-      "comment" : "Privacy note, first paragraph. %@ is the app's name.",
+    "settings.plus.assistant" : {
+      "comment" : "Footer of the Plus section: how many assistant plans are left in this period and when the count starts again. %1$lld is what is left, %2$lld the allowance, %3$@ a date (\"16 November 2026\").",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your plan stays on this iPhone. %@ has no account, no analytics and no advertising, and nothing you enter is sent anywhere."
+            "value" : "Assistant plans left: %1$lld of %2$lld. They come back on %3$@."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu plan se queda en este iPhone. %@ no tiene cuentas, análisis ni publicidad, y nada de lo que escribes se envía a ningún sitio."
+            "value" : "Planes del asistente restantes: %1$lld de %2$lld. Vuelven el %3$@."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Planın bu iPhone'da kalır. %@ uygulamasında hesap, analiz ve reklam yoktur; girdiğin hiçbir şey bir yere gönderilmez."
+            "value" : "Kalan asistan planı: %2$lld üzerinden %1$lld. %3$@ tarihinde yenilenir."
+          }
+        }
+      }
+    },
+    "settings.plus.free" : {
+      "comment" : "Footer of the Plus section for someone on the free version, in a build without the assistant. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are on the free version: one plan, every widget and reminders."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estás en la versión gratuita: un plan, todos los widgets y recordatorios."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz sürümdesin: tek plan, tüm widget'lar ve hatırlatmalar."
+          }
+        }
+      }
+    },
+    "settings.plus.get" : {
+      "comment" : "Row at the top of Settings for someone on the free version; opens the Plus screen. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get DietFlow Plus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtener DietFlow Plus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus'a Geç"
+          }
+        }
+      }
+    },
+    "settings.plus.get.assistant" : {
+      "comment" : "Under 'Get DietFlow Plus': what it adds, in a build with the assistant. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An assistant that organizes any list and writes plans for you."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un asistente que ordena cualquier lista y escribe planes para ti."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her listeyi düzenleyen ve senin için plan yazan bir asistan."
+          }
+        }
+      }
+    },
+    "settings.plus.get.plans" : {
+      "comment" : "Under 'Get DietFlow Plus' in a build without the assistant. One short sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep more than one plan."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten más de un plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birden fazla plan tut."
+          }
+        }
+      }
+    },
+    "settings.plus.header" : {
+      "comment" : "Header of the Settings section about the paid tier. The product's name; stays as is.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        }
+      }
+    },
+    "settings.plus.kind.lifetime" : {
+      "comment" : "Value beside 'Purchase': the one-time purchase. One or two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lifetime"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De por vida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ömür Boyu"
+          }
+        }
+      }
+    },
+    "settings.plus.kind.monthly" : {
+      "comment" : "Value beside 'Purchase': the monthly subscription. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensual"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aylık"
+          }
+        }
+      }
+    },
+    "settings.plus.kind.yearly" : {
+      "comment" : "Value beside 'Purchase': the yearly subscription. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yearly"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anual"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yıllık"
+          }
+        }
+      }
+    },
+    "settings.plus.manage" : {
+      "comment" : "Row that opens Apple's sheet for changing or cancelling the subscription. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Subscription"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar suscripción"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aboneliği Yönet"
+          }
+        }
+      }
+    },
+    "settings.plus.nothing.message" : {
+      "comment" : "Alert message under 'Nothing to restore'. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No DietFlow Plus purchase was found for this Apple Account."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ninguna compra de DietFlow Plus para esta cuenta de Apple."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Apple Hesabı için DietFlow Plus satın alımı bulunamadı."
+          }
+        }
+      }
+    },
+    "settings.plus.nothing.title" : {
+      "comment" : "Alert title after Restore Purchases in Settings found nothing. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing to restore"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nada que restaurar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yüklenecek bir şey yok"
+          }
+        }
+      }
+    },
+    "settings.plus.notice.ok" : {
+      "comment" : "Button that closes the alert after Restore Purchases. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "settings.plus.plan" : {
+      "comment" : "Label of the row showing which Plus product is held: Monthly, Yearly or Lifetime. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alım"
+          }
+        }
+      }
+    },
+    "settings.plus.redeem" : {
+      "comment" : "Settings row that opens Apple's sheet for entering an offer code. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redeem Code"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canjear código"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kod Kullan"
+          }
+        }
+      }
+    },
+    "settings.plus.restore" : {
+      "comment" : "Settings row that brings back an earlier purchase. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Purchases"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar compras"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın Alımları Geri Yükle"
+          }
+        }
+      }
+    },
+    "settings.plus.restored.message" : {
+      "comment" : "Alert message under 'Purchases restored'. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus is active on this iPhone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus está activo en este iPhone."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus bu iPhone'da etkin."
+          }
+        }
+      }
+    },
+    "settings.plus.restored.title" : {
+      "comment" : "Alert title after Restore Purchases in Settings found Plus. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchases restored"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compras restauradas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alımlar geri yüklendi"
+          }
+        }
+      }
+    },
+    "settings.plus.status.ends" : {
+      "comment" : "Footer of the Plus section for a cancelled subscription still in its paid period. %@ is the date it ends.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ends on %@. It will not renew."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termina el %@. No se renovará."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tarihinde sona erer. Yenilenmeyecek."
+          }
+        }
+      }
+    },
+    "settings.plus.status.lifetime" : {
+      "comment" : "Footer of the Plus section for someone who bought Plus once. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yours for good. Nothing renews and nothing ends."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es tuyo para siempre. No se renueva ni caduca."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalıcı olarak senin. Yenilenen ya da biten bir şey yok."
+          }
+        }
+      }
+    },
+    "settings.plus.status.renews" : {
+      "comment" : "Footer of the Plus section for an active subscription. %@ is the date of the next charge.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renews on %@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se renueva el %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tarihinde yenilenir."
+          }
+        }
+      }
+    },
+    "settings.plus.status.trial" : {
+      "comment" : "Footer of the Plus section during a free trial that will turn into a paid subscription. %@ is the date the trial ends.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free trial until %@. It then renews, unless cancelled at least a day before."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba gratis hasta el %@. Después se renueva, salvo que la canceles al menos un día antes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tarihine kadar ücretsiz deneme. En az bir gün önce iptal edilmezse sonra yenilenir."
+          }
+        }
+      }
+    },
+    "settings.plus.status.trialEnds" : {
+      "comment" : "Footer of the Plus section during a free trial that has been cancelled. %@ is the date the trial ends.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free trial until %@. It will not renew."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba gratis hasta el %@. No se renovará."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tarihine kadar ücretsiz deneme. Yenilenmeyecek."
+          }
+        }
+      }
+    },
+    "settings.privacy.assistant" : {
+      "comment" : "Paragraph of the Privacy screen about the assistant: the one case where text leaves the phone. Plain and exact; three short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you use the assistant, the text you give it is sent to our server and to the AI service that reads it, so that your plan can be written. It is not stored. Nothing else leaves your iPhone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuando usas el asistente, el texto que le das se envía a nuestro servidor y al servicio de IA que lo lee, para poder escribir tu plan. No se guarda. Nada más sale de tu iPhone."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistanı kullandığında, ona verdiğin metin planının yazılabilmesi için sunucumuza ve metni okuyan yapay zeka hizmetine gönderilir. Saklanmaz. Bunun dışında hiçbir şey iPhone'undan çıkmaz."
+          }
+        }
+      }
+    },
+    "settings.privacy.body" : {
+      "comment" : "First paragraph of the Privacy screen. %@ is the app's name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your plan stays on this iPhone. %@ has no account, no analytics and no advertising."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu plan se queda en este iPhone. %@ no tiene cuenta, ni analíticas ni publicidad."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planın bu iPhone'da kalır. %@ hesap, analiz ya da reklam içermez."
           }
         }
       }
@@ -477,6 +1053,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İçe aktardığın fotoğraflar, PDF'ler ve metinler bu iPhone'da okunur."
+          }
+        }
+      }
+    },
+    "settings.privacy.local" : {
+      "comment" : "Paragraph of the Privacy screen in a build without the assistant. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing you enter is sent anywhere."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nada de lo que escribes se envía a ningún sitio."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Girdiğin hiçbir şey bir yere gönderilmez."
           }
         }
       }

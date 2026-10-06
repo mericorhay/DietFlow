@@ -14,6 +14,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
     public var hasCompletedOnboarding: Bool
     /// The person closed Today's suggestion to add the widget.
     public var hasDismissedWidgetTip: Bool
+    /// The first-launch introduction to DietFlow Plus has been shown. It is shown once.
+    public var hasSeenPlusIntro: Bool
 
     public init(
         remindersEnabled: Bool = false,
@@ -24,7 +26,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
         showFollowingMealOnWidget: Bool = true,
         showCompletedMealsOnWidget: Bool = true,
         hasCompletedOnboarding: Bool = false,
-        hasDismissedWidgetTip: Bool = false
+        hasDismissedWidgetTip: Bool = false,
+        hasSeenPlusIntro: Bool = false
     ) {
         self.remindersEnabled = remindersEnabled
         self.defaultReminder = defaultReminder
@@ -35,6 +38,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         self.showCompletedMealsOnWidget = showCompletedMealsOnWidget
         self.hasCompletedOnboarding = hasCompletedOnboarding
         self.hasDismissedWidgetTip = hasDismissedWidgetTip
+        self.hasSeenPlusIntro = hasSeenPlusIntro
     }
 
     public init(from decoder: any Decoder) throws {
@@ -49,6 +53,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         showCompletedMealsOnWidget = (try? container.decode(Bool.self, forKey: .showCompletedMealsOnWidget)) ?? defaults.showCompletedMealsOnWidget
         hasCompletedOnboarding = (try? container.decode(Bool.self, forKey: .hasCompletedOnboarding)) ?? defaults.hasCompletedOnboarding
         hasDismissedWidgetTip = (try? container.decode(Bool.self, forKey: .hasDismissedWidgetTip)) ?? defaults.hasDismissedWidgetTip
+        hasSeenPlusIntro = (try? container.decode(Bool.self, forKey: .hasSeenPlusIntro)) ?? defaults.hasSeenPlusIntro
     }
 
     public var widgetPreferences: WidgetPreferences {

@@ -1,8 +1,1112 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "paywall.screen.title" : {
-      "comment" : "Name of the paid tier, shown as the title of the upgrade screen. 'Plus' is part of the product name and stays as is.",
+    "paywall.autoRenew" : {
+      "comment" : "Small print under the price for the two subscriptions; App Review requires it. The path names Apple's own Settings screens.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscriptions renew automatically until cancelled. Cancel at least a day before renewal in Settings › Apple Account › Subscriptions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las suscripciones se renuevan automáticamente hasta que se cancelan. Cancela al menos un día antes de la renovación en Ajustes › Cuenta de Apple › Suscripciones."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abonelikler iptal edilene kadar otomatik yenilenir. Yenilenmeden en az bir gün önce Ayarlar › Apple Hesabı › Abonelikler bölümünden iptal edebilirsin."
+          }
+        }
+      }
+    },
+    "paywall.badge.saving" : {
+      "comment" : "Small badge beside 'Yearly': how much less it costs than twelve months. %@ is a percentage (\"48%\").",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorra %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tasarruf"
+          }
+        }
+      }
+    },
+    "paywall.badge.trial" : {
+      "comment" : "Small badge beside a product that starts with a free trial. %@ is its length (\"7 days\").",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ free"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ gratis"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ücretsiz"
+          }
+        }
+      }
+    },
+    "paywall.benefit.create.message" : {
+      "comment" : "Under 'A plan written for you'. One sentence. 30 is the most days it writes.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Say how you eat and what you avoid, and get up to 30 days of meals."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di cómo comes y qué evitas, y recibe hasta 30 días de comidas."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasıl beslendiğini ve nelerden kaçındığını söyle, 30 güne kadar öğünlerin hazır olsun."
+          }
+        }
+      }
+    },
+    "paywall.benefit.create.title" : {
+      "comment" : "Heading of a benefit row on the Plus screen: the assistant writes a new plan. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A plan written for you"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un plan escrito para ti"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sana özel yazılmış plan"
+          }
+        }
+      }
+    },
+    "paywall.benefit.free.message" : {
+      "comment" : "Under 'Free, for good'. Lists what the free version includes. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One plan, every widget and meal reminders never need Plus."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un plan, todos los widgets y los recordatorios de comidas no necesitan Plus."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek plan, tüm widget'lar ve öğün hatırlatmaları için Plus gerekmez."
+          }
+        }
+      }
+    },
+    "paywall.benefit.free.title" : {
+      "comment" : "Heading of the last, quieter row on the Plus screen: what never needs paying for. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free, for good"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratis para siempre"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hep ücretsiz"
+          }
+        }
+      }
+    },
+    "paywall.benefit.organize.message" : {
+      "comment" : "Under 'Any list, put in order'. What the person does and what they get. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste a dietitian's message or your own notes, however messy. The assistant sorts it into days and meals."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pega el mensaje de tu dietista o tus notas, por desordenadas que estén. El asistente lo ordena en días y comidas."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diyetisyeninin mesajını ya da kendi notlarını, ne kadar dağınık olursa olsun yapıştır. Asistan günlere ve öğünlere ayırır."
+          }
+        }
+      }
+    },
+    "paywall.benefit.organize.title" : {
+      "comment" : "Heading of a benefit row on the Plus screen: the assistant tidies up a pasted list. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Any list, put in order"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cualquier lista, en orden"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her liste düzene girer"
+          }
+        }
+      }
+    },
+    "paywall.benefit.plans.message" : {
+      "comment" : "Under 'More than one plan'. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep this month's plan and the next one side by side, and switch whenever you like."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda el plan de este mes y el siguiente, y cambia cuando quieras."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu ayın planını ve sonrakini yan yana tut, istediğin zaman geçiş yap."
+          }
+        }
+      }
+    },
+    "paywall.benefit.plans.title" : {
+      "comment" : "Heading of a benefit row on the Plus screen: keeping several meal plans. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More than one plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más de un plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birden fazla plan"
+          }
+        }
+      }
+    },
+    "paywall.close" : {
+      "comment" : "Accessibility label of the X button that closes the Plus screen. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        }
+      }
+    },
+    "paywall.continueFree" : {
+      "comment" : "Text button under the price on first launch: carries on without buying. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue with the Free Version"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguir con la versión gratuita"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz Sürümle Devam Et"
+          }
+        }
+      }
+    },
+    "paywall.cta.continue" : {
+      "comment" : "The main button on the Plus screen when there is no free trial; it opens Apple's purchase sheet. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam Et"
+          }
+        }
+      }
+    },
+    "paywall.cta.trial" : {
+      "comment" : "The main button on the Plus screen when the chosen product starts with a free trial. Three words at most.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Free Trial"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar prueba gratis"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz Denemeyi Başlat"
+          }
+        }
+      }
+    },
+    "paywall.notice.failed.message" : {
+      "comment" : "Alert message under 'The purchase did not go through'. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing was charged. Please try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se cobró nada. Inténtalo de nuevo."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senden ücret alınmadı. Lütfen tekrar dene."
+          }
+        }
+      }
+    },
+    "paywall.notice.failed.title" : {
+      "comment" : "Alert title when a purchase failed. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The purchase did not go through"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo completar la compra"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alma tamamlanamadı"
+          }
+        }
+      }
+    },
+    "paywall.notice.nothing.message" : {
+      "comment" : "Alert message under 'Nothing to restore'. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No DietFlow Plus purchase was found for this Apple Account."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ninguna compra de DietFlow Plus para esta cuenta de Apple."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Apple Hesabı için DietFlow Plus satın alımı bulunamadı."
+          }
+        }
+      }
+    },
+    "paywall.notice.nothing.title" : {
+      "comment" : "Alert title after Restore Purchases found nothing. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing to restore"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nada que restaurar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yüklenecek bir şey yok"
+          }
+        }
+      }
+    },
+    "paywall.notice.ok" : {
+      "comment" : "Button that closes an alert on the Plus screen. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "paywall.notice.pending.message" : {
+      "comment" : "Alert message under 'Waiting for approval'. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The purchase needs to be approved. Plus opens as soon as it is."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La compra debe aprobarse. Plus se activará en cuanto se apruebe."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alımın onaylanması gerekiyor. Onaylanınca Plus açılır."
+          }
+        }
+      }
+    },
+    "paywall.notice.pending.title" : {
+      "comment" : "Alert title when a purchase waits for someone's approval (Ask to Buy, a bank). A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting for approval"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esperando aprobación"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onay bekleniyor"
+          }
+        }
+      }
+    },
+    "paywall.notice.restored.message" : {
+      "comment" : "Alert message under 'Purchases restored'. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus is active on this iPhone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus está activo en este iPhone."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus bu iPhone'da etkin."
+          }
+        }
+      }
+    },
+    "paywall.notice.restored.title" : {
+      "comment" : "Alert title after Restore Purchases found Plus. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchases restored"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compras restauradas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alımlar geri yüklendi"
+          }
+        }
+      }
+    },
+    "paywall.privacy" : {
+      "comment" : "Link at the bottom of the Plus screen to the privacy policy. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de privacidad"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizlilik Politikası"
+          }
+        }
+      }
+    },
+    "paywall.product.lifetime" : {
+      "comment" : "Name of the one-time purchase in the list of ways to buy Plus. One or two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lifetime"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De por vida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ömür Boyu"
+          }
+        }
+      }
+    },
+    "paywall.product.lifetime.detail" : {
+      "comment" : "Under 'Lifetime' in the list of ways to buy. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pay once, keep it for good"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paga una vez, es tuyo para siempre"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir kez öde, hep senin olsun"
+          }
+        }
+      }
+    },
+    "paywall.product.monthly" : {
+      "comment" : "Name of the monthly subscription in the list of ways to buy Plus. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensual"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aylık"
+          }
+        }
+      }
+    },
+    "paywall.product.monthly.detail" : {
+      "comment" : "Under 'Monthly' in the list of ways to buy. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Billed every month"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se cobra cada mes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her ay faturalanır"
+          }
+        }
+      }
+    },
+    "paywall.product.yearly" : {
+      "comment" : "Name of the yearly subscription in the list of ways to buy Plus. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yearly"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anual"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yıllık"
+          }
+        }
+      }
+    },
+    "paywall.product.yearly.detail" : {
+      "comment" : "Under 'Yearly' when the monthly equivalent is not known. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Billed once a year"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se cobra una vez al año"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yılda bir faturalanır"
+          }
+        }
+      }
+    },
+    "paywall.product.yearly.perMonth" : {
+      "comment" : "Under 'Yearly': what a year comes to per month. %@ is a price (\"$2.08\").",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ a month"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ al mes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayda %@"
+          }
+        }
+      }
+    },
+    "paywall.products.failed" : {
+      "comment" : "On the Plus screen when prices could not be fetched. Two short sentences; a Try Again button follows.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The App Store could not be reached. Check your connection and try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo conectar con el App Store. Revisa tu conexión e inténtalo de nuevo."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store'a ulaşılamadı. Bağlantını kontrol edip tekrar dene."
+          }
+        }
+      }
+    },
+    "paywall.products.loading" : {
+      "comment" : "Beside a spinner on the Plus screen while prices are fetched. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asking the App Store…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultando el App Store…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store'a soruluyor…"
+          }
+        }
+      }
+    },
+    "paywall.products.retry" : {
+      "comment" : "Button that fetches the prices again. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Again"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrar Dene"
+          }
+        }
+      }
+    },
+    "paywall.restore" : {
+      "comment" : "Link at the bottom of the Plus screen that brings back an earlier purchase. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Purchases"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar compras"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın Alımları Geri Yükle"
+          }
+        }
+      }
+    },
+    "paywall.subtitle.additionalPlan" : {
+      "comment" : "Under the title on the Plus screen when someone on the free version asks for a second meal plan. Says they can delete the current one instead. Two sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The free version keeps one plan at a time. Delete your current plan to start another, or keep them all with Plus."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La versión gratuita guarda un solo plan a la vez. Borra tu plan actual para empezar otro, o consérvalos todos con Plus."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz sürümde aynı anda tek plan tutulur. Yenisine başlamak için şimdiki planını sil ya da Plus ile hepsini sakla."
+          }
+        }
+      }
+    },
+    "paywall.subtitle.assistant" : {
+      "comment" : "Under the title on the Plus screen, on first launch and when opened from Settings. Says the app stays free and what Plus adds. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything DietFlow does stays free. Plus adds an assistant that builds the plan for you."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo lo que hace DietFlow sigue siendo gratis. Plus añade un asistente que crea el plan por ti."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow'un yaptığı her şey ücretsiz kalır. Plus, planı senin yerine kuran bir asistan ekler."
+          }
+        }
+      }
+    },
+    "paywall.subtitle.limit" : {
+      "comment" : "Under the title on the Plus screen when the free monthly allowance of assistant plans is used up. %1$lld is that allowance (a small number), %2$@ the date it comes back (\"1 November\"), %3$lld what Plus includes a month.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This month's free assistant plans (%1$lld) are used up. They come back on %2$@. Plus includes %3$lld a month."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya usaste los planes gratuitos del asistente de este mes (%1$lld). Vuelven el %2$@. Plus incluye %3$lld al mes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu ayın ücretsiz asistan planları (%1$lld) bitti. %2$@ tarihinde yenilenir. Plus ayda %3$lld plan içerir."
+          }
+        }
+      }
+    },
+    "paywall.subtitle.plans" : {
+      "comment" : "Under the title on the Plus screen in a build without the assistant. Two short sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything DietFlow does stays free. Plus lets you keep more than one plan."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo lo que hace DietFlow sigue siendo gratis. Con Plus puedes tener más de un plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow'un yaptığı her şey ücretsiz kalır. Plus ile birden fazla plan tutabilirsin."
+          }
+        }
+      }
+    },
+    "paywall.terms" : {
+      "comment" : "Link at the bottom of the Plus screen to the terms of use. Two or three words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Términos de uso"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanım Koşulları"
+          }
+        }
+      }
+    },
+    "paywall.terms.lifetime" : {
+      "comment" : "Under the main button for the one-time purchase. %@ is the price.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ once. No subscription, nothing to cancel."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ una sola vez. Sin suscripción, nada que cancelar."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek seferde %@. Abonelik yok, iptal edilecek bir şey yok."
+          }
+        }
+      }
+    },
+    "paywall.terms.monthly" : {
+      "comment" : "Under the main button for the monthly subscription without a trial. %@ is the price.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ a month. Cancel anytime."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ al mes. Cancela cuando quieras."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayda %@. İstediğin zaman iptal et."
+          }
+        }
+      }
+    },
+    "paywall.terms.trialMonthly" : {
+      "comment" : "Under the main button for the monthly subscription with a free trial. %1$@ is the trial's length (\"7 days\"), %2$@ the price (\"$3.99\"), %3$@ the date of the first charge (\"13 October\").",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ free, then %2$@ a month. Nothing is charged before %3$@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ gratis, luego %2$@ al mes. No se cobra nada antes del %3$@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ücretsiz, sonra ayda %2$@. %3$@ tarihinden önce ücret alınmaz."
+          }
+        }
+      }
+    },
+    "paywall.terms.trialYearly" : {
+      "comment" : "Under the main button for the yearly subscription with a free trial. %1$@ is the trial's length, %2$@ the price, %3$@ the date of the first charge.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ free, then %2$@ a year. Nothing is charged before %3$@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ gratis, luego %2$@ al año. No se cobra nada antes del %3$@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ücretsiz, sonra yılda %2$@. %3$@ tarihinden önce ücret alınmaz."
+          }
+        }
+      }
+    },
+    "paywall.terms.yearly" : {
+      "comment" : "Under the main button for the yearly subscription without a trial. %@ is the price.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ a year. Cancel anytime."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ al año. Cancela cuando quieras."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yılda %@. İstediğin zaman iptal et."
+          }
+        }
+      }
+    },
+    "paywall.title" : {
+      "comment" : "Large title of the screen that sells the paid tier. The product's name; stays as is.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

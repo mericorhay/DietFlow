@@ -72,6 +72,7 @@ shot widgets-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab widgets
 shot settings-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet settings
 shot import-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet import
 shot onboarding-last-tr "${TR[@]}" -DebugSeed onboarding -DebugOnboardingPage 2
+shot plus-intro-tr "${TR[@]}" -DebugSeed onboarding -DebugSheet plusIntro
 
 if [ "$SET" != "all" ]; then
   exit 0
@@ -81,6 +82,8 @@ shot widgets-now-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets
 shot today-en "${EN[@]}" "${SAMPLE[@]}"
 shot meal-en "${EN[@]}" "${SAMPLE[@]}" -DebugMeal next
 shot newmeal-es "${ES[@]}" "${SAMPLE[@]}" -DebugSheet newMeal
+shot plus-en "${EN[@]}" "${SAMPLE[@]}" -DebugSheet plus
+shot settings-plus-es "${ES[@]}" "${SAMPLE[@]}" -DebugSheet settings -DebugPlus trial
 shot empty-en "${EN[@]}" -DebugSeed empty
 # Room for longer languages and right-to-left scripts: Xcode's pseudolanguages.
 shot today-long "${EN[@]}" "${SAMPLE[@]}" -NSDoubleLocalizedStrings YES

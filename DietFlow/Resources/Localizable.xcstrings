@@ -793,6 +793,78 @@
         }
       }
     },
+    "plus.allowance.message" : {
+      "comment" : "Alert message under that title. %@ is the date the allowance comes back (\"16 November\").",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant's plans for this period are used up. They come back on %@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los planes del asistente de este periodo se acabaron. Vuelven el %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistanın bu dönemki planları bitti. %@ tarihinde yenilenir."
+          }
+        }
+      }
+    },
+    "plus.allowance.ok" : {
+      "comment" : "Button that closes that alert. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "plus.allowance.title" : {
+      "comment" : "Alert title for someone on Plus who has used the period's assistant plans. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This period's plans are used up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se acabaron los planes de este periodo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dönemin planları bitti"
+          }
+        }
+      }
+    },
     "shortcut.addMeal" : {
       "comment" : "Short title of the 'add meal' shortcut. Two words.",
       "extractionState" : "manual",

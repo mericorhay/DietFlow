@@ -3,6 +3,7 @@ import PhotosUI
 import SwiftUI
 import UIKit
 import UniformTypeIdentifiers
+import AIServices
 import AppCore
 import DesignSystem
 import Domain
@@ -31,27 +32,34 @@ public enum ImportInput: Sendable {
     }
 }
 
-/// Bringing in a plan the person already has: pasted text, a file, a photo or a PDF. Whatever the
-/// source, the plan is read on the device and always shown for review before anything is saved.
+/// Getting a plan in: one the person already has, as pasted text, a file, a photo or a PDF, read on
+/// the device; or, with the assistant, any list however untidy put in order, or a new plan written
+/// from a few wishes. Whatever the source, the plan is always shown for review before it is saved.
 public struct ImportPlanScreen: View {
     @Environment(MealPlanStore.self) private var store
+    @Environment(AccessModel.self) private var access
     @Environment(\.dismiss) private var dismiss
     @State private var path: [ImportRoute] = []
     @State private var isReading = false
+    /// The assistant is working: a longer wait than reading on the device, and worded as one.
+    @State private var isAsking = false
     @State private var failure: ImportFailure?
     @State private var copiedInstructions = false
     @State private var fileRequest: FileRequest?
     @State private var showsPhotoPicker = false
     @State private var photoItem: PhotosPickerItem?
     private let initialInput: ImportInput?
+    private let assistant: PlanAssistantClient?
     private let onFinished: () -> Void
     private let service = MealPlanImportService()
 
     /// - Parameters:
     ///   - initialInput: text or a file handed over from outside, read straight away.
+    ///   - assistant: the plan assistant, or nil in a build without one; its rows are then left out.
     ///   - onFinished: called after a plan is saved.
-    public init(initialInput: ImportInput? = nil, onFinished: @escaping () -> Void) {
+    public init(initialInput: ImportInput? = nil, assistant: PlanAssistantClient? = nil, onFinished: @escaping () -> Void) {
         self.initialInput = initialInput
+        self.assistant = assistant
         self.onFinished = onFinished
     }
 
@@ -64,6 +72,21 @@ public struct ImportPlanScreen: View {
                         .foregroundStyle(.secondary)
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets(top: 0, leading: AppSpacing.xxSmall, bottom: 0, trailing: AppSpacing.xxSmall))
+                }
+
+                if assistant != nil {
+                    Section {
+                        NavigationLink(value: ImportRoute.assistantOrganize) {
+                            SourceRow(symbol: "wand.and.stars", title: "import.assistant.organize.title", subtitle: "import.assistant.organize.subtitle")
+                        }
+                        NavigationLink(value: ImportRoute.assistantCreate) {
+                            SourceRow(symbol: "calendar.badge.plus", title: "import.assistant.create.title", subtitle: "import.assistant.create.subtitle")
+                        }
+                    } header: {
+                        Text("import.assistant.header", bundle: .module)
+                    } footer: {
+                        Text(verbatim: assistantFooter)
+                    }
                 }
 
                 Section {
@@ -126,6 +149,14 @@ public struct ImportPlanScreen: View {
                     PastePlanScreen { text in
                         await read(.text(text))
                     }
+                case .assistantOrganize:
+                    PastePlanScreen(title: "import.assistant.organize.title", placeholder: "import.assistant.organize.placeholder", characterLimit: PlanAssistantClient.textLimit) { text in
+                        await organizeWithAssistant(text)
+                    }
+                case .assistantCreate:
+                    AssistantPlanScreen { wishes in
+                        await createWithAssistant(wishes)
+                    }
                 case .review(let draft):
                     ImportReviewScreen(draft: draft, onSave: save)
                 }
@@ -134,7 +165,8 @@ public struct ImportPlanScreen: View {
             .overlay {
                 if isReading {
                     ProgressView {
-                        Text("import.reading", bundle: .module)
+                        Text(isAsking ? "import.assistant.working" : "import.reading", bundle: .module)
+                            .multilineTextAlignment(.center)
                     }
                     .padding(AppSpacing.xLarge)
                     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
@@ -186,6 +218,51 @@ public struct ImportPlanScreen: View {
         }
     }
 
+    // MARK: The assistant
+
+    /// "2 of 2 left. They come back on 1 November.", then what happens to the text.
+    private var assistantFooter: String {
+        var lines: [String] = []
+        if let limit = access.limit(.aiPlan), let left = access.remaining(.aiPlan) {
+            let date = access.resetsAt.formatted(.dateTime.day().month(.wide))
+            lines.append(String(localized: "import.assistant.allowance", defaultValue: "\(left) of \(limit) left. They come back on \(date).", bundle: .module))
+        }
+        lines.append(String(localized: "import.assistant.privacy", bundle: .module))
+        return lines.joined(separator: "\n")
+    }
+
+    private func organizeWithAssistant(_ text: String) async {
+        await ask { assistant in try await assistant.organize(text: text) }
+    }
+
+    private func createWithAssistant(_ wishes: PlanWishes) async {
+        await ask { assistant in try await assistant.create(wishes) }
+    }
+
+    /// One request to the assistant, counted against the allowance. A request that fails for any
+    /// reason is given back: the allowance is only spent on a plan the person got to see.
+    private func ask(_ request: (PlanAssistantClient) async throws -> MealPlanPayload) async {
+        guard let assistant else { return }
+        // Refused, the access model records why and the app shows what Plus adds.
+        guard access.use(.aiPlan) else { return }
+        isReading = true
+        isAsking = true
+        defer {
+            isReading = false
+            isAsking = false
+        }
+        let defaults = ImportDefaults(planName: String(localized: "import.defaultPlanName", bundle: .module), startDay: .today())
+        do {
+            let payload = try await request(assistant)
+            // The same checks as a file or a pasted list: nothing a model writes skips them.
+            let draft = try PlanImportNormalizer.draft(from: payload, defaults: defaults)
+            path.append(.review(draft))
+        } catch {
+            access.refund(.aiPlan)
+            failure = ImportFailure(error)
+        }
+    }
+
     private func readFile(_ result: Result<URL, any Error>, as request: FileRequest) async {
         guard case .success(let url) = result else { return }
         guard case .file(let data, _) = ImportInput.reading(fileAt: url) else {
@@ -224,6 +301,8 @@ public struct ImportPlanScreen: View {
 
 enum ImportRoute: Hashable {
     case paste
+    case assistantOrganize
+    case assistantCreate
     case review(ImportedPlanDraft)
 }
 
@@ -256,6 +335,18 @@ struct ImportFailure: Identifiable {
             message = String(localized: "import.error.unreadable", bundle: .module)
         case PlanReadingError.noTextFound:
             message = String(localized: "import.error.noText", bundle: .module)
+        case PlanAssistantError.offline:
+            message = String(localized: "import.assistant.error.offline", bundle: .module)
+        case PlanAssistantError.tooLong:
+            message = String(localized: "import.assistant.error.tooLong", bundle: .module)
+        case PlanAssistantError.noPlan:
+            message = String(localized: "import.assistant.error.noPlan", bundle: .module)
+        case PlanAssistantError.busy:
+            message = String(localized: "import.assistant.error.busy", bundle: .module)
+        case PlanAssistantError.dailyLimit:
+            message = String(localized: "import.assistant.error.dailyLimit", bundle: .module)
+        case PlanAssistantError.unavailable:
+            message = String(localized: "import.assistant.error.unavailable", bundle: .module)
         default:
             message = String(localized: "import.error.generic", bundle: .module)
         }
@@ -290,6 +381,10 @@ private struct SourceRow: View {
 
 /// A plan pasted from ChatGPT, Claude, a dietitian's message or a note.
 struct PastePlanScreen: View {
+    var title: LocalizedStringKey = "import.paste.title"
+    var placeholder: LocalizedStringKey = "import.paste.placeholder"
+    /// Characters the reader takes; past it Continue is off and a line says why.
+    var characterLimit: Int = PlanLimits.importTextLength
     let onContinue: (String) async -> Void
     @State private var text = ""
     @FocusState private var isFocused: Bool
@@ -301,7 +396,7 @@ struct PastePlanScreen: View {
             .padding(.horizontal, AppSpacing.medium)
             .overlay(alignment: .topLeading) {
                 if text.isEmpty {
-                    Text("import.paste.placeholder", bundle: .module)
+                    Text(placeholder, bundle: .module)
                         .font(.body)
                         .foregroundStyle(.tertiary)
                         .padding(.horizontal, AppSpacing.large)
@@ -310,8 +405,19 @@ struct PastePlanScreen: View {
                         .accessibilityHidden(true)
                 }
             }
-            .navigationTitle(Text("import.paste.title", bundle: .module))
+            .navigationTitle(Text(title, bundle: .module))
             .navigationBarTitleDisplayMode(.inline)
+            .safeAreaInset(edge: .bottom) {
+                if text.count > characterLimit {
+                    Text(String(localized: "import.paste.tooLong", defaultValue: "This is \(text.count) characters; up to \(characterLimit) can be read.", bundle: .module))
+                        .font(.footnote)
+                        .foregroundStyle(.red)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, AppSpacing.screenMargin)
+                        .padding(.vertical, AppSpacing.xSmall)
+                        .background(.bar)
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     PasteButton(payloadType: String.self) { strings in
@@ -327,7 +433,7 @@ struct PastePlanScreen: View {
                     } label: {
                         Text("import.paste.continue", bundle: .module)
                     }
-                    .disabled(text.trimmedNonEmpty == nil)
+                    .disabled(text.trimmedNonEmpty == nil || text.count > characterLimit)
                 }
             }
             .onAppear { isFocused = true }

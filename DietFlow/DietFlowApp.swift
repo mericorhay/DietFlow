@@ -10,6 +10,8 @@ struct DietFlowApp: App {
             RootView()
                 .environment(dependencies)
                 .environment(dependencies.store)
+                .environment(dependencies.access)
+                .environment(dependencies.plus)
         }
     }
 }

@@ -1,0 +1,24 @@
+name = "dietflow-assistant"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+# Secrets are not configured here. Set them once with:
+#   npx wrangler secret put APP_TOKEN       any long random string; the same value goes in the
+#                                           repository secret DIETFLOW_ASSISTANT_TOKEN
+#   npx wrangler secret put GROQ_API_KEY    or OPENAI_API_KEY, which takes over when set
+
+# Per client address: 12 requests a minute. A plan is one request (a 30-day plan is still one,
+# the Worker makes the several model calls itself). Remove this block to run without the limit.
+[[ratelimits]]
+name = "LIMITER"
+namespace_id = "2001"
+
+  [ratelimits.simple]
+  limit = 12
+  period = 60
+
+# Optional: a daily cap per install, 40 requests unless DAILY_REQUESTS says otherwise. Create the
+# namespace with `npx wrangler kv namespace create USAGE`, put its id here and uncomment.
+# [[kv_namespaces]]
+# binding = "USAGE"
+# id = ""

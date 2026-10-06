@@ -6,7 +6,9 @@ import Domain
 import ImportFeature
 import MealFeature
 import OnboardingFeature
+import PaywallFeature
 import Persistence
+import Purchases
 import PlanFeature
 import SettingsFeature
 import TodayFeature
@@ -36,6 +38,14 @@ enum AppSheet: Identifiable {
         }
     }
 
+    /// Whether this sheet ends in a new plan beside whatever exists.
+    var startsAnotherPlan: Bool {
+        switch self {
+        case .newPlan, .importPlan: true
+        case .settings, .newMeal, .editPlan: false
+        }
+    }
+
     /// Whether closing this sheet could lose something the person typed.
     var holdsUnsavedWork: Bool {
         switch self {
@@ -51,12 +61,16 @@ enum AppSheet: Identifiable {
 struct RootView: View {
     @Environment(AppDependencies.self) private var dependencies
     @Environment(MealPlanStore.self) private var store
+    @Environment(AccessModel.self) private var access
+    @Environment(PlusStore.self) private var plus
     @Environment(\.scenePhase) private var scenePhase
     @State private var tab: AppTab = .today
     @State private var todayPath: [MealRoute] = []
     @State private var planPath: [MealRoute] = []
     @State private var sheet: AppSheet?
     @State private var showsOnboarding = false
+    /// The first thing a new person sees: what the app does and what Plus adds, before anything else.
+    @State private var showsPlusIntro = false
     @State private var plansSaved = 0
 
     var body: some View {
@@ -81,6 +95,11 @@ struct RootView: View {
         }
         .sheet(item: $sheet) { sheet in
             sheetContent(sheet)
+                .modifier(PlusPresenter(isFrontmost: true))
+        }
+        .modifier(PlusPresenter(isFrontmost: sheet == nil && !showsOnboarding && !showsPlusIntro))
+        .fullScreenCover(isPresented: $showsPlusIntro, onDismiss: plusIntroClosed) {
+            PaywallScreen(reason: .intro, showsAssistant: dependencies.assistant != nil)
         }
         .fullScreenCover(isPresented: $showsOnboarding) {
             OnboardingScreen(
@@ -99,7 +118,12 @@ struct RootView: View {
             Text("error.save.message")
         }
         .onAppear {
-            showsOnboarding = !store.hasPlans && !store.settings.hasCompletedOnboarding
+            // Once, on first launch, and never to someone who already holds Plus.
+            if dependencies.showsPlusOnFirstLaunch, !store.settings.hasSeenPlusIntro, access.tier == .free {
+                showsPlusIntro = true
+            } else {
+                showsOnboarding = needsOnboarding
+            }
             takePendingImport()
             #if DEBUG
             applyDebugLaunch()
@@ -117,6 +141,14 @@ struct RootView: View {
             // have changed: bring everything up to date.
             store.refresh()
             takePendingImport()
+            // A subscription may have renewed, lapsed or been bought on another device meanwhile.
+            Task { await plus.refresh() }
+        }
+        .onChange(of: access.request) { _, request in
+            // Something only Plus does was asked for, or an allowance ran out: say so.
+            guard let request else { return }
+            access.request = nil
+            dependencies.answer(request)
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.significantTimeChangeNotification)) { _ in
             // Midnight, a time zone change, or a daylight-saving jump.
@@ -152,9 +184,13 @@ struct RootView: View {
     private func sheetContent(_ sheet: AppSheet) -> some View {
         switch sheet {
         case .settings:
-            SettingsScreen(importPlan: { present(.importPlan(nil), afterClosing: true) })
+            SettingsScreen(
+                showsAssistant: dependencies.assistant != nil,
+                importPlan: { present(.importPlan(nil), afterClosing: true) },
+                showPlus: { dependencies.paywall = PaywallRequest(.upgrade) }
+            )
         case .importPlan(let input):
-            ImportPlanScreen(initialInput: input) {
+            ImportPlanScreen(initialInput: input, assistant: dependencies.assistant) {
                 // A saved import is a plan with meals: show what comes next.
                 showToday()
                 plansSaved += 1
@@ -181,6 +217,12 @@ struct RootView: View {
 
     /// Presents `next`, first letting whatever is on screen finish closing.
     private func present(_ next: AppSheet, afterClosing isClosing: Bool = false) {
+        // The free plan keeps one plan. Asking for a second records the refusal, and the Plus
+        // screen that follows says the current plan can be deleted instead.
+        if next.startsAnotherPlan, store.hasPlans, !access.check(.additionalPlan) {
+            if isClosing { sheet = nil }
+            return
+        }
         guard sheet != nil || isClosing else {
             sheet = next
             return
@@ -195,6 +237,17 @@ struct RootView: View {
     private func showToday() {
         todayPath = []
         tab = .today
+    }
+
+    private var needsOnboarding: Bool {
+        !store.hasPlans && !store.settings.hasCompletedOnboarding
+    }
+
+    /// The introduction was closed, with or without a purchase: it is not shown again, and the
+    /// rest of the first launch carries on.
+    private func plusIntroClosed() {
+        store.updateSettings { $0.hasSeenPlusIntro = true }
+        if sheet == nil { showsOnboarding = needsOnboarding }
     }
 
     private func finishOnboarding(then next: AppSheet) {
@@ -291,6 +344,10 @@ struct RootView: View {
         case "import": sheet = .importPlan(nil)
         case "newMeal": sheet = .newMeal(dayIndex: store.schedule?.dayIndex(on: .today()) ?? 0)
         case "newPlan": sheet = .newPlan
+        case "plus": dependencies.paywall = PaywallRequest(.upgrade)
+        case "plusIntro":
+            showsOnboarding = false
+            showsPlusIntro = true
         default: break
         }
         if DebugLaunch.value("DebugMeal") == "next", let focus = store.focus() {
