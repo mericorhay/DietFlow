@@ -12,31 +12,62 @@ import WidgetUI
 public struct WidgetsScreen: View {
     @Environment(MealPlanStore.self) private var store
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var family: PreviewFamily = .medium
+    @State private var preview: WidgetPreview.ID?
     @State private var isInstalled: Bool?
+    private let previews: [WidgetPreview]
 
-    public init() {}
+    /// - Parameter firstPreview: the preview to open on, as "kind.size" ("today.large"); the
+    ///   usual order otherwise.
+    public init(firstPreview: String? = nil) {
+        var all = WidgetPreview.all
+        if let index = all.firstIndex(where: { $0.id == firstPreview }) {
+            all.insert(all.remove(at: index), at: 0)
+        }
+        previews = all
+        _preview = State(initialValue: all.first?.id)
+    }
+
+    private var selected: WidgetPreview {
+        previews.first { $0.id == preview } ?? previews[0]
+    }
 
     public var body: some View {
         List {
             Section {
-                Picker(selection: $family) {
-                    ForEach(PreviewFamily.allCases) { family in
-                        Text(family.name).tag(family)
+                VStack(spacing: AppSpacing.small) {
+                    // Every widget there is, side by side: swipe to see the next.
+                    TimelineView(.everyMinute) { context in
+                        let shown = entry(at: context.date)
+                        ScrollView(.horizontal) {
+                            HStack(spacing: 0) {
+                                ForEach(previews) { preview in
+                                    PreviewStage(preview: preview, entry: shown, now: context.date)
+                                        .containerRelativeFrame(.horizontal)
+                                }
+                            }
+                            .scrollTargetLayout()
+                        }
+                        .scrollTargetBehavior(.paging)
+                        .scrollPosition(id: $preview)
+                        .scrollIndicators(.hidden)
+                        .frame(height: PreviewStage.height)
+                        .clipShape(RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
                     }
-                } label: {
-                    Text("widgets.size", bundle: .module)
+                    VStack(spacing: AppSpacing.xxSmall) {
+                        Text(verbatim: selected.caption)
+                            .font(.subheadline.weight(.semibold))
+                        HStack(spacing: 6) {
+                            ForEach(previews) { preview in
+                                Circle()
+                                    .fill(preview.id == selected.id ? Color.primary : Color.secondary.opacity(0.3))
+                                    .frame(width: 6, height: 6)
+                            }
+                        }
+                        .accessibilityHidden(true)
+                    }
                 }
-                .pickerStyle(.segmented)
                 .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets(top: 0, leading: AppSpacing.xxSmall, bottom: AppSpacing.small, trailing: AppSpacing.xxSmall))
-
-                TimelineView(.everyMinute) { context in
-                    PreviewStage(family: family, entry: entry(at: context.date), now: context.date)
-                }
-                .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets())
-                .animation(AppMotion.animation(AppMotion.settle, reduceMotion: reduceMotion), value: family)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: AppSpacing.xxSmall, trailing: 0))
             }
 
             Section {
@@ -103,7 +134,7 @@ public struct WidgetsScreen: View {
                     step(2, Text("widgets.add.step2", bundle: .module))
                     step(3, Text(String(localized: "widgets.add.step3", defaultValue: "Search for \(AppBrand.displayName) and pick a size.", bundle: .module)))
                 } header: {
-                    Text(family == .lockScreen ? "widgets.add.lockHeader" : "widgets.add.header", bundle: .module)
+                    Text(selected.family.isLockScreen ? "widgets.add.lockHeader" : "widgets.add.header", bundle: .module)
                 }
             }
         }
@@ -167,30 +198,30 @@ private struct ColorSwatches: View {
             Group {
                 ForEach(WidgetAccent.allCases, id: \.self) { accent in
                     let isSelected = accent == selection
-                    Button {
-                        selection = accent
-                    } label: {
-                        Circle()
-                            .fill(accent.fill)
-                            .frame(width: 30, height: 30)
-                            .overlay {
-                                if isSelected {
-                                    Image(systemName: "checkmark")
-                                        .font(.footnote.weight(.bold))
-                                        .foregroundStyle(.white)
-                                }
+                    Circle()
+                        .fill(accent.fill)
+                        .frame(width: 30, height: 30)
+                        .overlay {
+                            if isSelected {
+                                Image(systemName: "checkmark")
+                                    .font(.footnote.weight(.bold))
+                                    .foregroundStyle(.white)
                             }
-                            .padding(4)
-                            .overlay {
-                                Circle().strokeBorder(isSelected ? accent.fill : Color.clear, lineWidth: 2)
-                            }
-                            // A swatch is small; the tappable area is not.
-                            .frame(minWidth: AppSpacing.minimumHitTarget, minHeight: AppSpacing.minimumHitTarget)
-                            .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(Text(verbatim: accent.name))
-                    .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+                        }
+                        .padding(4)
+                        .overlay {
+                            Circle().strokeBorder(isSelected ? accent.fill : Color.clear, lineWidth: 2)
+                        }
+                        // A swatch is small; the tappable area is not.
+                        .frame(minWidth: AppSpacing.minimumHitTarget, minHeight: AppSpacing.minimumHitTarget)
+                        .contentShape(Rectangle())
+                        // A tap, not a button: a list row can hand a tap anywhere in it to its
+                        // buttons, and ten of them in one row must each get their own.
+                        .onTapGesture { selection = accent }
+                        .accessibilityElement()
+                        .accessibilityLabel(Text(verbatim: accent.name))
+                        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+                        .accessibilityAction { selection = accent }
                 }
             }
         }
@@ -228,21 +259,66 @@ extension WidgetBackgroundStyle {
     }
 }
 
-enum PreviewFamily: String, CaseIterable, Identifiable {
+/// One widget in one size, as the Widgets tab shows it.
+struct WidgetPreview: Identifiable, Hashable {
+    let kind: MealWidgetKind
+    let family: PreviewFamily
+
+    var id: String { "\(kind.previewName).\(family.rawValue)" }
+
+    /// "Next Meal · Medium".
+    var caption: String {
+        String(localized: "widgets.preview.caption", defaultValue: "\(kind.name) · \(family.name)", bundle: .module)
+    }
+
+    /// The one most people add comes first.
+    static let all: [WidgetPreview] = [
+        WidgetPreview(kind: .nextMeal, family: .medium),
+        WidgetPreview(kind: .nextMeal, family: .small),
+        WidgetPreview(kind: .today, family: .large),
+        WidgetPreview(kind: .today, family: .medium),
+        WidgetPreview(kind: .progress, family: .small),
+        WidgetPreview(kind: .nextMeal, family: .lockScreen),
+        WidgetPreview(kind: .progress, family: .lockCircle),
+    ]
+}
+
+extension MealWidgetKind {
+    var previewName: String {
+        switch self {
+        case .nextMeal: "nextMeal"
+        case .today: "today"
+        case .progress: "progress"
+        }
+    }
+
+    var name: String {
+        switch self {
+        case .nextMeal: String(localized: "widgets.kind.nextMeal", bundle: .module)
+        case .today: String(localized: "widgets.kind.today", bundle: .module)
+        case .progress: String(localized: "widgets.kind.progress", bundle: .module)
+        }
+    }
+}
+
+enum PreviewFamily: String {
     case small
     case medium
     case large
     case lockScreen
-
-    var id: String { rawValue }
+    case lockCircle
 
     var name: String {
         switch self {
         case .small: String(localized: "widgets.size.small", bundle: .module)
         case .medium: String(localized: "widgets.size.medium", bundle: .module)
         case .large: String(localized: "widgets.size.large", bundle: .module)
-        case .lockScreen: String(localized: "widgets.size.lockScreen", bundle: .module)
+        case .lockScreen, .lockCircle: String(localized: "widgets.size.lockScreen", bundle: .module)
         }
+    }
+
+    var isLockScreen: Bool {
+        self == .lockScreen || self == .lockCircle
     }
 
     var widgetFamily: WidgetFamily {
@@ -251,53 +327,59 @@ enum PreviewFamily: String, CaseIterable, Identifiable {
         case .medium: .systemMedium
         case .large: .systemLarge
         case .lockScreen: .accessoryRectangular
+        case .lockCircle: .accessoryCircular
         }
     }
 
-    /// The widget's size on a 6.1-inch iPhone. Previews shrink to fit narrower screens.
+    /// The widget's size on a 6.1-inch iPhone.
     var size: CGSize {
         switch self {
         case .small: CGSize(width: 170, height: 170)
         case .medium: CGSize(width: 364, height: 170)
         case .large: CGSize(width: 364, height: 382)
         case .lockScreen: CGSize(width: 172, height: 76)
+        case .lockCircle: CGSize(width: 76, height: 76)
         }
     }
 }
 
-/// The widget drawn at its real size on a plain backdrop, or under a clock for the Lock Screen.
+/// The widget laid out at its real size on a plain backdrop, or under a clock for the Lock Screen,
+/// then scaled down as a whole where the stage is smaller: what fits in the preview is what fits
+/// on the Home Screen.
 struct PreviewStage: View {
-    let family: PreviewFamily
+    static let height: CGFloat = 236
+
+    let preview: WidgetPreview
     let entry: MealWidgetEntry
     let now: Date
 
     var body: some View {
         Group {
-            if family == .lockScreen {
+            if preview.family.isLockScreen {
                 lockScreen
             } else {
                 homeScreen
             }
         }
-        .frame(maxWidth: .infinity)
         .accessibilityElement(children: .contain)
     }
 
     private var homeScreen: some View {
-        MealWidgetView(entry: entry, family: family.widgetFamily)
-            .padding(AppSpacing.medium)
-            .frame(maxWidth: family.size.width)
-            .aspectRatio(family.size.width / family.size.height, contentMode: .fit)
-            // The same background the widget extension draws, so the preview is what will appear.
-            .background { WidgetThemeBackground(entry.preferences) }
-            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-            .shadow(color: .black.opacity(0.06), radius: 2, y: 1)
-            .padding(.vertical, AppSpacing.xLarge)
-            .padding(.horizontal, AppSpacing.small)
-            .frame(maxWidth: .infinity)
-            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
-            .id(family)
-            .transition(.opacity)
+        GeometryReader { proxy in
+            let size = preview.family.size
+            let margin = AppSpacing.medium * 2
+            let scale = min(1, (proxy.size.width - margin) / size.width, (proxy.size.height - margin) / size.height)
+            MealWidgetView(entry: entry, kind: preview.kind, family: preview.family.widgetFamily)
+                .padding(AppSpacing.medium)
+                .frame(width: size.width, height: size.height)
+                // The same background the widget extension draws, so the preview is what will appear.
+                .background { WidgetThemeBackground(entry.preferences) }
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                .shadow(color: .black.opacity(0.06), radius: 2, y: 1)
+                .scaleEffect(max(scale, 0.1))
+                .frame(width: proxy.size.width, height: proxy.size.height)
+        }
+        .background(Color(.secondarySystemBackground))
     }
 
     private var lockScreen: some View {
@@ -306,15 +388,12 @@ struct PreviewStage: View {
                 .font(.system(size: 64, weight: .semibold, design: .rounded))
                 .monospacedDigit()
                 .accessibilityHidden(true)
-            MealWidgetView(entry: entry, family: .accessoryRectangular)
-                .frame(maxWidth: family.size.width, minHeight: family.size.height)
+            MealWidgetView(entry: entry, kind: preview.kind, family: preview.family.widgetFamily)
+                .frame(width: preview.family.size.width, height: preview.family.size.height)
         }
         .foregroundStyle(.white)
         .environment(\.colorScheme, .dark)
-        .padding(.vertical, AppSpacing.xLarge)
-        .frame(maxWidth: .infinity)
-        .background(Color(red: 0.11, green: 0.14, blue: 0.2), in: RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
-        .id(family)
-        .transition(.opacity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 0.11, green: 0.14, blue: 0.2))
     }
 }

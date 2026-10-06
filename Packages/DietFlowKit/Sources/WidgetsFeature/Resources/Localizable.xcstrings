@@ -481,6 +481,78 @@
         }
       }
     },
+    "widgets.kind.nextMeal" : {
+      "comment" : "Name of a widget, in the caption under its preview on the Widgets tab. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Meal"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próxima comida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıradaki Öğün"
+          }
+        }
+      }
+    },
+    "widgets.kind.progress" : {
+      "comment" : "Name of the widget that shows how many of today's meals are behind, in the caption under its preview on the Widgets tab. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day Progress"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso del día"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün Durumu"
+          }
+        }
+      }
+    },
+    "widgets.kind.today" : {
+      "comment" : "Name of the widget that lists the whole day's meals, in the caption under its preview on the Widgets tab. Two or three words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today’s Meals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comidas de hoy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünün Öğünleri"
+          }
+        }
+      }
+    },
     "widgets.look.background" : {
       "comment" : "Label of the picker for the tone of the widget's background. One word.",
       "extractionState" : "manual",
@@ -573,6 +645,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Görünüm"
+          }
+        }
+      }
+    },
+    "widgets.preview.caption" : {
+      "comment" : "Caption under a widget preview on the Widgets tab. %1$@ is the widget's name, %2$@ its size, such as Medium or Lock Screen.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
           }
         }
       }

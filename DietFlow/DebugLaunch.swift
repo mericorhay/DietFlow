@@ -20,6 +20,7 @@ import Purchases
 ///     -DebugPlus monthly|trial|yearly|lifetime
 ///                                          as if that were held, for Settings' Plus section
 ///     -DebugWidgetLook <colour>.<tone>     e.g. blue.bold, green.soft: the widget's colour and tone
+///     -DebugWidget <kind>.<size>           e.g. today.large, progress.small: the preview the Widgets tab opens on
 enum DebugLaunch {
     /// The Plus screen without the App Store: the prices as set in App Store Connect, in dollars.
     static func standInStore(entitlement: PlusEntitlement?) -> PlusStore {

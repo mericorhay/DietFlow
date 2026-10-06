@@ -5,5 +5,7 @@ import WidgetKit
 struct DietFlowWidgetBundle: WidgetBundle {
     var body: some Widget {
         NextMealWidget()
+        TodayMealsWidget()
+        DayProgressWidget()
     }
 }

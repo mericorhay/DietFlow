@@ -403,6 +403,54 @@
         }
       }
     },
+    "widget.progress.accessibility" : {
+      "comment" : "VoiceOver label of the Day Progress widget. %1$lld is how many of today's meals are behind, %2$lld how many there are today.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meals today: %1$lld of %2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comidas de hoy: %1$lld de %2$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünkü öğünler: %2$lld öğünden %1$lld"
+          }
+        }
+      }
+    },
+    "widget.progress.caption" : {
+      "comment" : "Small grey word under a count like 2/4 on the Day Progress widget: the count is of today's meals. One short word, lowercase.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "today"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hoy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bugün"
+          }
+        }
+      }
+    },
     "widget.refresh.message" : {
       "comment" : "Widget: what to do when the saved plan could not be read. %@ is the app's name.",
       "extractionState" : "manual",

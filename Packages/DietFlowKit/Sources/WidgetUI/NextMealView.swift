@@ -7,11 +7,13 @@ import DesignSystem
 /// App Intent button in the widget extension, an inert look-alike in the app's previews.
 public struct MealWidgetView<Done: View>: View {
     private let entry: MealWidgetEntry
+    private let kind: MealWidgetKind
     private let family: WidgetFamily
     private let done: (WidgetMealItem) -> Done
 
-    public init(entry: MealWidgetEntry, family: WidgetFamily, @ViewBuilder done: @escaping (WidgetMealItem) -> Done) {
+    public init(entry: MealWidgetEntry, kind: MealWidgetKind = .nextMeal, family: WidgetFamily, @ViewBuilder done: @escaping (WidgetMealItem) -> Done) {
         self.entry = entry
+        self.kind = kind
         self.family = family
         self.done = done
     }
@@ -22,27 +24,37 @@ public struct MealWidgetView<Done: View>: View {
 
     @ViewBuilder
     private var sized: some View {
-        switch family {
-        case .systemSmall:
-            SmallMealWidgetView(entry: entry)
-        case .systemMedium:
-            MediumMealWidgetView(entry: entry, done: done)
-        case .systemLarge, .systemExtraLarge:
-            LargeMealWidgetView(entry: entry, done: done)
-        case .accessoryRectangular:
-            RectangularMealWidgetView(entry: entry)
-        case .accessoryInline:
-            InlineMealWidgetView(entry: entry)
-        default:
-            SmallMealWidgetView(entry: entry)
+        switch kind {
+        case .progress:
+            if family == .accessoryCircular {
+                CircularProgressWidgetView(entry: entry)
+            } else {
+                ProgressWidgetView(entry: entry)
+            }
+        case .today:
+            LargeMealWidgetView(entry: entry, isCompact: family == .systemMedium, done: done)
+        case .nextMeal:
+            switch family {
+            case .systemMedium:
+                MediumMealWidgetView(entry: entry, done: done)
+            // Next Meal was once offered large too; one still on a Home Screen keeps working.
+            case .systemLarge, .systemExtraLarge:
+                LargeMealWidgetView(entry: entry, done: done)
+            case .accessoryRectangular:
+                RectangularMealWidgetView(entry: entry)
+            case .accessoryInline:
+                InlineMealWidgetView(entry: entry)
+            default:
+                SmallMealWidgetView(entry: entry)
+            }
         }
     }
 }
 
 extension MealWidgetView where Done == WidgetDonePreview {
     /// For previews inside the app: the Done button is drawn but does nothing.
-    public init(entry: MealWidgetEntry, family: WidgetFamily) {
-        self.init(entry: entry, family: family) { _ in WidgetDonePreview() }
+    public init(entry: MealWidgetEntry, kind: MealWidgetKind = .nextMeal, family: WidgetFamily) {
+        self.init(entry: entry, kind: kind, family: family) { _ in WidgetDonePreview() }
     }
 }
 
@@ -213,13 +225,18 @@ struct MediumMealWidgetView<Done: View>: View {
 /// The whole day, with the meal that is on now or next marked, and the start of tomorrow.
 struct LargeMealWidgetView<Done: View>: View {
     let entry: MealWidgetEntry
+    /// The medium size: fewer rows, each on one line.
+    var isCompact = false
     let done: (WidgetMealItem) -> Done
     /// Rows that fit at the standard text size; larger text shows fewer.
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.widgetTheme) private var theme
 
     private var rowLimit: Int {
-        dynamicTypeSize >= .xxLarge ? 4 : 6
+        if isCompact {
+            return dynamicTypeSize >= .xxLarge ? 2 : 3
+        }
+        return dynamicTypeSize >= .xxLarge ? 4 : 6
     }
 
     var body: some View {
@@ -238,7 +255,9 @@ struct LargeMealWidgetView<Done: View>: View {
                         }
                     }
                     Spacer(minLength: 0)
-                    footer(day, hidden: rows.hidden)
+                    if !isCompact {
+                        footer(day, hidden: rows.hidden)
+                    }
                 }
             }
         }
@@ -285,17 +304,20 @@ struct LargeMealWidgetView<Done: View>: View {
             MealStatusSymbol(MealStatusSymbol.Status(item.role), font: .subheadline, accent: theme.tint)
                 .widgetAccentable(item.role == .current || item.role == .next)
             VStack(alignment: .leading, spacing: 0) {
-                Text(item.typeLabel)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
+                if !isCompact {
+                    Text(item.typeLabel)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
                 Text(item.title)
                     .font(.subheadline.weight(isFocus ? .semibold : .regular))
                     .foregroundStyle(isMarked ? AnyShapeStyle(.secondary) : AnyShapeStyle(.primary))
                     .lineLimit(1)
             }
             Spacer(minLength: 0)
-            if isFocus, entry.preferences.showDoneButton {
+            // A one-line row has no room for a button.
+            if isFocus, entry.preferences.showDoneButton, !isCompact {
                 done(item)
             } else if entry.preferences.showCalories, let calories = item.calories {
                 Text(entry.preferences.energyUnit.format(kilocalories: calories))
@@ -304,7 +326,7 @@ struct LargeMealWidgetView<Done: View>: View {
                     .lineLimit(1)
             }
         }
-        .padding(.vertical, 5)
+        .padding(.vertical, isCompact ? 4 : 5)
         .padding(.horizontal, 6)
         .modifier(WidgetHighlight(isActive: isFocus))
         .accessibilityElement(children: .contain)
@@ -339,7 +361,7 @@ struct LargeMealWidgetView<Done: View>: View {
             WidgetTimeText(date: primary.date)
             Text(primary.title)
                 .font(.headline)
-                .lineLimit(3)
+                .lineLimit(isCompact ? 1 : 3)
             Spacer(minLength: 0)
         }
         .padding(.horizontal, 6)

@@ -69,6 +69,10 @@ shot today-now-en "${EN[@]}" "${NOW[@]}"
 shot plan-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
 shot meal-now-tr "${TR[@]}" "${NOW[@]}" -DebugMeal next
 shot widgets-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab widgets
+shot widgets-today-large-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.large
+shot widgets-today-medium-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.medium
+shot widgets-progress-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget progress.small -DebugWidgetLook blue.bold
+shot widgets-lock-circle-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget progress.lockCircle
 shot settings-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet settings
 shot import-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet import
 shot onboarding-last-tr "${TR[@]}" -DebugSeed onboarding -DebugOnboardingPage 2

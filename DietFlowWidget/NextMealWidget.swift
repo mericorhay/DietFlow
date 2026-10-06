@@ -36,12 +36,13 @@ struct NextMealProvider: TimelineProvider {
     }
 }
 
-struct NextMealEntryView: View {
+struct MealWidgetEntryView: View {
     let entry: MealWidgetEntry
+    let kind: MealWidgetKind
     @Environment(\.widgetFamily) private var family
 
     var body: some View {
-        MealWidgetView(entry: entry, family: family) { item in
+        MealWidgetView(entry: entry, kind: kind, family: family) { item in
             Button(intent: MarkMealDoneIntent(meal: MealOccurrenceEntity(item))) {
                 WidgetDoneLabel()
             }
@@ -79,13 +80,38 @@ private struct WidgetBackground: ViewModifier {
     }
 }
 
+/// What to eat now or next. The widget most people add.
 struct NextMealWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "NextMeal", provider: NextMealProvider()) { entry in
-            NextMealEntryView(entry: entry)
+        StaticConfiguration(kind: MealWidgetKind.nextMeal.rawValue, provider: NextMealProvider()) { entry in
+            MealWidgetEntryView(entry: entry, kind: .nextMeal)
         }
         .configurationDisplayName(Text("widget.nextMeal.name"))
         .description(Text("widget.nextMeal.description"))
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryRectangular, .accessoryInline])
+        .supportedFamilies(MealWidgetKind.nextMeal.families)
+    }
+}
+
+/// The whole day as a list.
+struct TodayMealsWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: MealWidgetKind.today.rawValue, provider: NextMealProvider()) { entry in
+            MealWidgetEntryView(entry: entry, kind: .today)
+        }
+        .configurationDisplayName(Text("widget.today.name"))
+        .description(Text("widget.today.description"))
+        .supportedFamilies(MealWidgetKind.today.families)
+    }
+}
+
+/// How far through the day's meals the person is.
+struct DayProgressWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: MealWidgetKind.progress.rawValue, provider: NextMealProvider()) { entry in
+            MealWidgetEntryView(entry: entry, kind: .progress)
+        }
+        .configurationDisplayName(Text("widget.progress.name"))
+        .description(Text("widget.progress.description"))
+        .supportedFamilies(MealWidgetKind.progress.families)
     }
 }

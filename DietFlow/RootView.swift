@@ -90,7 +90,7 @@ struct RootView: View {
             }
             Tab("tab.widgets", systemImage: "rectangle.3.group", value: AppTab.widgets) {
                 NavigationStack {
-                    WidgetsScreen()
+                    WidgetsScreen(firstPreview: debugWidgetPreview)
                 }
             }
         }
@@ -138,8 +138,13 @@ struct RootView: View {
             route(link)
         }
         .onChange(of: scenePhase) { _, phase in
-            // A short visit must not be lost to the next batch.
-            if phase == .background { Analytics.flush() }
+            if phase == .background {
+                // A short visit must not be lost to the next batch.
+                Analytics.flush()
+                // On the way to the Home Screen, where the widget is about to be looked at: write
+                // what it shows once more and ask for it to be redrawn.
+                store.refresh()
+            }
             guard phase == .active else { return }
             // The widget's Done button may have written while the app was away, and the day may
             // have changed: bring everything up to date.
@@ -335,6 +340,15 @@ struct RootView: View {
         return DebugLaunch.value("DebugOnboardingPage").flatMap(Int.init) ?? 0
         #else
         return 0
+        #endif
+    }
+
+    /// The widget the Widgets tab opens on, for screenshots; the usual first one otherwise.
+    private var debugWidgetPreview: String? {
+        #if DEBUG
+        return DebugLaunch.value("DebugWidget")
+        #else
+        return nil
         #endif
     }
 

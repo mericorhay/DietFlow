@@ -90,6 +90,7 @@ extension EnvironmentValues {
 struct WidgetThemed: ViewModifier {
     let theme: WidgetTheme
     let family: WidgetFamily
+    @Environment(\.widgetRenderingMode) private var renderingMode
 
     private var isHomeScreen: Bool {
         switch family {
@@ -100,7 +101,9 @@ struct WidgetThemed: ViewModifier {
 
     @ViewBuilder
     func body(content: Content) -> some View {
-        if !isHomeScreen {
+        // With tinted or clear icons iOS takes the background away and draws the widget in its own
+        // colours; white text chosen for a Bold background would be left on nothing.
+        if !isHomeScreen || renderingMode != .fullColor {
             content.environment(\.widgetTheme, .standard)
         } else if theme.background == .bold {
             content

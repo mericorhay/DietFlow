@@ -696,6 +696,102 @@
           }
         }
       }
+    },
+    "widget.progress.description" : {
+      "comment" : "Description of the Day Progress widget in the widget gallery. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How far through today’s meals you are, and what comes next."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuánto llevas de las comidas de hoy y qué viene después."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünkü öğünlerin neresinde olduğunu ve sırada ne olduğunu gösterir."
+          }
+        }
+      }
+    },
+    "widget.progress.name" : {
+      "comment" : "Name of the widget that shows how many of today's meals are behind, in the widget gallery. Two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day progress"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso del día"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün durumu"
+          }
+        }
+      }
+    },
+    "widget.today.description" : {
+      "comment" : "Description of the Today's Meals widget in the widget gallery. One sentence.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every meal of the day in order, with the one that is next marked."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas las comidas del día en orden, con la siguiente marcada."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün bütün öğünleri sırayla, sıradaki işaretli."
+          }
+        }
+      }
+    },
+    "widget.today.name" : {
+      "comment" : "Name of the widget that lists the whole day's meals, in the widget gallery. Two or three words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today’s meals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comidas de hoy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünün öğünleri"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
