@@ -65,19 +65,25 @@ public struct MealOccurrence: Hashable, Identifiable, Sendable {
     /// When it is scheduled, in the time zone the schedule was asked in.
     public let date: Date
     public let state: OccurrenceState
+    /// The clock time it is at on this day: the plan's own time, or a later one when the day started
+    /// late (`DayStart`).
+    public let time: TimeOfDay
 
-    public init(meal: Meal, day: CalendarDay, date: Date, state: OccurrenceState) {
+    public init(meal: Meal, day: CalendarDay, date: Date, state: OccurrenceState, time: TimeOfDay? = nil) {
         self.meal = meal
         self.day = day
         self.date = date
         self.state = state
+        self.time = time ?? meal.time
     }
 
     public var key: OccurrenceKey { OccurrenceKey(mealID: meal.id, day: day) }
     public var id: OccurrenceKey { key }
     public var isPending: Bool { state == .pending }
+    /// Moved from the plan's time today because the day started late.
+    public var isMoved: Bool { time != meal.time }
 
     public func with(state: OccurrenceState) -> MealOccurrence {
-        MealOccurrence(meal: meal, day: day, date: date, state: state)
+        MealOccurrence(meal: meal, day: day, date: date, state: state, time: time)
     }
 }

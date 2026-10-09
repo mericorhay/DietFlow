@@ -41,11 +41,19 @@ extension Nutrition {
         func grams(_ value: Double?) -> Double? {
             value.flatMap { $0.isFinite && Nutrition.gramRange.contains($0) ? $0 : nil }
         }
-        return Nutrition(
+        let kept = Nutrition(
             calories: calories.flatMap { Nutrition.calorieRange.contains($0) ? $0 : nil },
             protein: grams(protein),
             carbohydrates: grams(carbohydrates),
             fat: grams(fat)
+        )
+        // An estimate stays marked as one; with nothing left there is nothing to mark.
+        return kept.isEmpty ? kept : Nutrition(
+            calories: kept.calories,
+            protein: kept.protein,
+            carbohydrates: kept.carbohydrates,
+            fat: kept.fat,
+            estimated: estimated
         )
     }
 }

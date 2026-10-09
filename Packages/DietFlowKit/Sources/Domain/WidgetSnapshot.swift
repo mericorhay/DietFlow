@@ -110,8 +110,12 @@ public struct WidgetSnapshot: Codable, Hashable, Sendable {
     /// Occurrence key → state, for the days in `stateWindow`. Missing means pending.
     public var states: [String: OccurrenceState]
     public var preferences: WidgetPreferences
+    /// Calendar day ("2026-10-05") → where that day's first meal went after a late start, for the
+    /// days in `stateWindow`. Optional so that a snapshot written before late starts existed still
+    /// reads; nil and empty both mean every day follows the plan.
+    public var dayStarts: [String: DayStart]?
 
-    public init(plan: MealPlan?, states: OccurrenceStates, preferences: WidgetPreferences, generatedAt: Date = .now, timeZone: TimeZone = .current) {
+    public init(plan: MealPlan?, states: OccurrenceStates, preferences: WidgetPreferences, generatedAt: Date = .now, timeZone: TimeZone = .current, dayStarts: DayStarts = [:]) {
         let today = CalendarDay(generatedAt, in: timeZone)
         let first = today.adding(days: Self.stateWindow.lowerBound)
         let last = today.adding(days: Self.stateWindow.upperBound)
@@ -125,6 +129,17 @@ public struct WidgetSnapshot: Codable, Hashable, Sendable {
             uniquingKeysWith: { _, latest in latest }
         )
         self.preferences = preferences
+        let starts = dayStarts.filter { $0.key >= first && $0.key <= last }
+        self.dayStarts = starts.isEmpty ? nil : Dictionary(uniqueKeysWithValues: starts.map { ($0.key.description, $0.value) })
+    }
+
+    /// The late starts this snapshot carries, by day.
+    public var recordedDayStarts: DayStarts {
+        var result: DayStarts = [:]
+        for (text, start) in dayStarts ?? [:] {
+            if let day = CalendarDay(text) { result[day] = start }
+        }
+        return result
     }
 
     public var occurrenceStates: OccurrenceStates {

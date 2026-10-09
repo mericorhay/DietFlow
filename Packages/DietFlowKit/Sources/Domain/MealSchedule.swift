@@ -27,10 +27,15 @@ public struct MealSchedule: Sendable {
     /// move on.
     public let currentWindow: TimeInterval
 
-    public init(plan: MealPlan, timeZone: TimeZone = .current, currentWindow: TimeInterval = MealSchedule.defaultWindow) {
+    /// Days that started late, and where their first meal went. Their meals are laid out again by
+    /// `DayShift`; every other day follows the plan's clock times.
+    public let dayStarts: DayStarts
+
+    public init(plan: MealPlan, timeZone: TimeZone = .current, currentWindow: TimeInterval = MealSchedule.defaultWindow, dayStarts: DayStarts = [:]) {
         self.plan = plan
         self.timeZone = timeZone
         self.currentWindow = max(60, currentWindow)
+        self.dayStarts = dayStarts
         var grouped: [Int: [Meal]] = [:]
         for meal in plan.meals where meal.dayIndex < plan.schedule.length {
             grouped[meal.dayIndex, default: []].append(meal)
@@ -105,11 +110,27 @@ public struct MealSchedule: Sendable {
         return meals(onDayIndex: index)
     }
 
+    /// This is the one place a meal gets its instant: the plan's clock time on that day, or the time
+    /// a late start moved it to, turned into a moment in `timeZone`.
     public func occurrences(on day: CalendarDay, states: OccurrenceStates = [:]) -> [MealOccurrence] {
-        meals(on: day).map { meal in
+        let dayMeals = meals(on: day)
+        return zip(dayMeals, clockTimes(for: dayMeals, on: day)).map { meal, time in
             let key = OccurrenceKey(mealID: meal.id, day: day)
-            return MealOccurrence(meal: meal, day: day, date: meal.time.date(on: day, in: timeZone), state: states[key] ?? .pending)
+            return MealOccurrence(meal: meal, day: day, date: time.date(on: day, in: timeZone), state: states[key] ?? .pending, time: time)
         }
+    }
+
+    /// The clock time each of `meals` — one day's, in clock order — is at on `day`.
+    public func clockTimes(for meals: [Meal], on day: CalendarDay) -> [TimeOfDay] {
+        let planned = meals.map(\.time)
+        guard let start = dayStarts[day] else { return planned }
+        return DayShift.times(planned, firstMeal: start.firstMeal)
+    }
+
+    /// How many minutes later than planned `day` starts: 0 when it follows the plan.
+    public func delay(on day: CalendarDay) -> Int {
+        guard let start = dayStarts[day] else { return 0 }
+        return DayShift.delay(meals(on: day).map(\.time), firstMeal: start.firstMeal)
     }
 
     /// The occurrence `key` names, if that meal really is scheduled on that day.

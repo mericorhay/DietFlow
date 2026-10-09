@@ -141,8 +141,11 @@ public struct MealPayload: Codable, Hashable, Sendable {
     public var carbs: Double?
     public var fat: Double?
     public var notes: String?
+    /// True when the nutrition figures are an estimate (the assistant's, say) rather than the
+    /// plan's own, so they travel as estimates through a shared file.
+    public var estimated: Bool?
 
-    public init(time: String? = nil, type: String? = nil, title: String? = nil, description: String? = nil, portion: String? = nil, calories: Double? = nil, protein: Double? = nil, carbs: Double? = nil, fat: Double? = nil, notes: String? = nil) {
+    public init(time: String? = nil, type: String? = nil, title: String? = nil, description: String? = nil, portion: String? = nil, calories: Double? = nil, protein: Double? = nil, carbs: Double? = nil, fat: Double? = nil, notes: String? = nil, estimated: Bool? = nil) {
         self.time = time
         self.type = type
         self.title = title
@@ -153,10 +156,11 @@ public struct MealPayload: Codable, Hashable, Sendable {
         self.carbs = carbs
         self.fat = fat
         self.notes = notes
+        self.estimated = estimated
     }
 
     enum CodingKeys: String, CodingKey {
-        case time, type, title, description, portion, calories, protein, carbs, fat, notes
+        case time, type, title, description, portion, calories, protein, carbs, fat, notes, estimated
     }
 
     public init(from decoder: any Decoder) throws {
@@ -171,6 +175,7 @@ public struct MealPayload: Codable, Hashable, Sendable {
         carbs = container.flexibleNumber(["carbs", "carbohydrates", "carbohydrate", "carbGrams"])
         fat = container.flexibleNumber(["fat", "fats", "fatGrams"])
         notes = container.flexibleString(["notes", "note", "comment", "tips"])
+        estimated = container.flexibleBool(["estimated", "isEstimate", "nutritionEstimated"])
     }
 
     public func encode(to encoder: any Encoder) throws {
@@ -185,6 +190,7 @@ public struct MealPayload: Codable, Hashable, Sendable {
         try container.encodeIfPresent(carbs, forKey: .carbs)
         try container.encodeIfPresent(fat, forKey: .fat)
         try container.encodeIfPresent(notes, forKey: .notes)
+        try container.encodeIfPresent(estimated == true ? true : nil, forKey: .estimated)
     }
 }
 
@@ -244,7 +250,8 @@ extension MealPayload {
             protein: meal.nutrition.protein,
             carbs: meal.nutrition.carbohydrates,
             fat: meal.nutrition.fat,
-            notes: meal.notes
+            notes: meal.notes,
+            estimated: meal.nutrition.isEstimated ? true : nil
         )
     }
 }

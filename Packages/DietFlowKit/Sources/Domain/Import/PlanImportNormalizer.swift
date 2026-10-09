@@ -179,7 +179,7 @@ public enum PlanImportNormalizer {
                 droppedNutrition = true
             }
         }
-        let nutrition = Nutrition(calories: calories, protein: grams(source.protein), carbohydrates: grams(source.carbs), fat: grams(source.fat))
+        let nutrition = Nutrition(calories: calories, protein: grams(source.protein), carbohydrates: grams(source.carbs), fat: grams(source.fat), estimated: source.estimated)
         if droppedNutrition {
             issues.append(.nutritionDropped(day: dayIndex + 1, title: title))
         }

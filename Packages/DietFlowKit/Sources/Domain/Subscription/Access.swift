@@ -15,11 +15,17 @@ public enum AccessPoint: String, Hashable, CaseIterable, Sendable {
     case aiPlan
     /// Keeping a second plan beside the first.
     case additionalPlan
+    /// The assistant working out what meals hold — a whole plan's missing nutrition at once, or one
+    /// meal's. One model request either way.
+    case aiNutrition
+    /// The assistant writing how to cook a meal, with substitutes. A recipe already written is kept
+    /// on the phone and opening it again is free.
+    case aiRecipe
 
     /// The name its uses are counted under, for the points that are counted.
     public var meterKey: String? {
         switch self {
-        case .aiPlan: rawValue
+        case .aiPlan, .aiNutrition, .aiRecipe: rawValue
         case .additionalPlan: nil
         }
     }
@@ -64,7 +70,7 @@ public struct UsageLedger: Codable, Hashable, Sendable {
 public enum AccessPolicy {
     public static func isPlusOnly(_ point: AccessPoint) -> Bool {
         switch point {
-        case .aiPlan: false
+        case .aiPlan, .aiNutrition, .aiRecipe: false
         case .additionalPlan: true
         }
     }
@@ -75,6 +81,12 @@ public enum AccessPolicy {
         switch (point, tier) {
         case (.aiPlan, .free): 2
         case (.aiPlan, .plus): 60
+        // Enough on the free tier to see what it does for a whole plan and then some meals.
+        case (.aiNutrition, .free): 3
+        case (.aiNutrition, .plus): 100
+        // A taste of cooking with it; with Plus, a recipe for every meal there is time to cook.
+        case (.aiRecipe, .free): 2
+        case (.aiRecipe, .plus): 120
         case (.additionalPlan, _): nil
         }
     }

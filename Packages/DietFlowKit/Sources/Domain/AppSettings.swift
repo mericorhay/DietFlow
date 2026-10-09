@@ -24,6 +24,14 @@ public struct AppSettings: Codable, Hashable, Sendable {
     /// The person has agreed that what they give the assistant is sent to the AI company that
     /// reads it. Asked the first time, and again whenever this is switched back off.
     public var allowsAssistantSharing: Bool
+    /// A day that starts late moves its meals with it (`DayStart`). On unless switched off.
+    public var smartMealTimes: Bool
+    /// The person closed Today's offer to work out the plan's missing nutrition.
+    public var hasDismissedEstimateCard: Bool
+    /// The person closed Today's card about DietFlow Plus. It is not shown again.
+    public var hasDismissedPlusCard: Bool
+    /// The App Store's rating prompt has been asked for once, after a few good days.
+    public var hasAskedForReview: Bool
 
     public init(
         remindersEnabled: Bool = false,
@@ -40,7 +48,11 @@ public struct AppSettings: Codable, Hashable, Sendable {
         showDoneButtonOnWidget: Bool = false,
         widgetAccent: WidgetAccent = .terracotta,
         widgetBackground: WidgetBackgroundStyle = .system,
-        allowsAssistantSharing: Bool = false
+        allowsAssistantSharing: Bool = false,
+        smartMealTimes: Bool = true,
+        hasDismissedEstimateCard: Bool = false,
+        hasDismissedPlusCard: Bool = false,
+        hasAskedForReview: Bool = false
     ) {
         self.remindersEnabled = remindersEnabled
         self.defaultReminder = defaultReminder
@@ -57,6 +69,10 @@ public struct AppSettings: Codable, Hashable, Sendable {
         self.widgetAccent = widgetAccent
         self.widgetBackground = widgetBackground
         self.allowsAssistantSharing = allowsAssistantSharing
+        self.smartMealTimes = smartMealTimes
+        self.hasDismissedEstimateCard = hasDismissedEstimateCard
+        self.hasDismissedPlusCard = hasDismissedPlusCard
+        self.hasAskedForReview = hasAskedForReview
     }
 
     public init(from decoder: any Decoder) throws {
@@ -77,6 +93,10 @@ public struct AppSettings: Codable, Hashable, Sendable {
         widgetAccent = (try? container.decode(WidgetAccent.self, forKey: .widgetAccent)) ?? defaults.widgetAccent
         widgetBackground = (try? container.decode(WidgetBackgroundStyle.self, forKey: .widgetBackground)) ?? defaults.widgetBackground
         allowsAssistantSharing = (try? container.decode(Bool.self, forKey: .allowsAssistantSharing)) ?? defaults.allowsAssistantSharing
+        smartMealTimes = (try? container.decode(Bool.self, forKey: .smartMealTimes)) ?? defaults.smartMealTimes
+        hasDismissedEstimateCard = (try? container.decode(Bool.self, forKey: .hasDismissedEstimateCard)) ?? defaults.hasDismissedEstimateCard
+        hasDismissedPlusCard = (try? container.decode(Bool.self, forKey: .hasDismissedPlusCard)) ?? defaults.hasDismissedPlusCard
+        hasAskedForReview = (try? container.decode(Bool.self, forKey: .hasAskedForReview)) ?? defaults.hasAskedForReview
     }
 
     public var widgetPreferences: WidgetPreferences {

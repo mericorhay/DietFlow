@@ -107,7 +107,7 @@ public enum WidgetTimelineBuilder {
         guard snapshot.isReadable else { return .needsRefresh }
         guard let plan = snapshot.plan else { return .noPlan }
 
-        let schedule = MealSchedule(plan: plan, timeZone: timeZone, currentWindow: snapshot.preferences.mealWindow)
+        let schedule = MealSchedule(plan: plan, timeZone: timeZone, currentWindow: snapshot.preferences.mealWindow, dayStarts: snapshot.recordedDayStarts)
         let states = snapshot.occurrenceStates
         let today = CalendarDay(date, in: timeZone)
         let phase = schedule.phase(on: today)
@@ -184,7 +184,7 @@ public enum WidgetTimelineBuilder {
     /// each meal's time, the end of each meal's "now" window, and the countdown steps before a meal.
     public static func transitionDates(for snapshot: WidgetSnapshot?, from now: Date, timeZone: TimeZone = .current, horizon: TimeInterval = WidgetTimelineBuilder.horizon) -> [Date] {
         guard let snapshot, let plan = snapshot.plan, snapshot.isReadable else { return [] }
-        let schedule = MealSchedule(plan: plan, timeZone: timeZone, currentWindow: snapshot.preferences.mealWindow)
+        let schedule = MealSchedule(plan: plan, timeZone: timeZone, currentWindow: snapshot.preferences.mealWindow, dayStarts: snapshot.recordedDayStarts)
         let end = now.addingTimeInterval(horizon)
         let today = CalendarDay(now, in: timeZone)
         let days = Int(horizon / 86_400) + 2

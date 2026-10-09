@@ -100,19 +100,27 @@ public enum MealType: String, Codable, CaseIterable, Sendable {
 }
 
 /// Energy in kilocalories and macronutrients in grams, all optional: most plans list some of
-/// these for some meals, and nothing is ever invented to fill the gaps.
+/// these for some meals. Figures the plan gives are shown as they are. Figures the assistant worked
+/// out from the meal's description are marked `estimated` and always shown as estimates ("≈"), never
+/// passed off as the plan's own.
 public struct Nutrition: Codable, Hashable, Sendable {
     public var calories: Int?
     public var protein: Double?
     public var carbohydrates: Double?
     public var fat: Double?
+    /// True when these figures are the assistant's estimate rather than the plan's. Nil — as in
+    /// everything written before estimates existed — means stated.
+    public var estimated: Bool?
 
-    public init(calories: Int? = nil, protein: Double? = nil, carbohydrates: Double? = nil, fat: Double? = nil) {
+    public init(calories: Int? = nil, protein: Double? = nil, carbohydrates: Double? = nil, fat: Double? = nil, estimated: Bool? = nil) {
         self.calories = calories
         self.protein = protein
         self.carbohydrates = carbohydrates
         self.fat = fat
+        self.estimated = estimated == true ? true : nil
     }
+
+    public var isEstimated: Bool { estimated == true }
 
     public var isEmpty: Bool {
         calories == nil && protein == nil && carbohydrates == nil && fat == nil
@@ -272,7 +280,7 @@ public struct MealPlan: Codable, Hashable, Identifiable, Sendable {
                 lean.portion = nil
                 lean.notes = nil
                 lean.reminder = nil
-                lean.nutrition = Nutrition(calories: meal.nutrition.calories)
+                lean.nutrition = Nutrition(calories: meal.nutrition.calories, estimated: meal.nutrition.estimated)
                 return lean
             }
         return copy
