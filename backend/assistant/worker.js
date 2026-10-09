@@ -13,19 +13,24 @@
 //   OPENAI_API_KEY   which takes over when set, or
 //   LLM_API_KEY      with LLM_BASE_URL and LLM_MODEL, for any other OpenAI-compatible provider
 //
-// POST /v1/plan/organize  { text, language? }                          -> { plan, parts }
-// POST /v1/plan/create    { days, mealsPerDay, wishes?, language? }    -> { plan, parts }
-// GET  /health                                                         -> what is configured
+// POST /v1/plan/organize     { text, language? }                          -> { plan, parts }
+// POST /v1/plan/create       { days, mealsPerDay, wishes?, language? }    -> { plan, parts }
+// POST /v1/meals/nutrition   { meals: [{ id, title, details?, type?, portion? }], language? }
+//                                                                         -> { meals: [{ id, kcal, protein?, carbs?, fat?, portion?, confidence }] }
+// POST /v1/meals/recipe      { title, details?, type?, servings?, avoid?, language? } -> { recipe }
+// GET  /health                                                            -> what is configured
 //
 // Errors are { error: "<code>" } with a matching status; the app words them for the person.
 
+import { MEAL_LIMITS, estimateNutrition, writeRecipe } from "./meals.mjs";
 import { LIMITS, PlanError, create, organize } from "./plan.mjs";
 
 const GROQ_URL = "https://api.groq.com/openai/v1";
 const GROQ_MODELS = ["qwen/qwen3.8-27b", "openai/gpt-oss-120b", "openai/gpt-oss-20b"];
 const OPENAI_URL = "https://api.openai.com/v1";
 const OPENAI_MODEL = "gpt-6-luna";
-// Room for one part of a plan: about a week of meals.
+// Room for one part of a plan: about a week of meals. A call that asks the model to think first
+// says how much more room it needs (`maxTokens`), since the thinking is counted in the same budget.
 const MAX_ANSWER_TOKENS = 3500;
 // Requests a day from one install, when a KV namespace is bound as USAGE.
 const DAILY_REQUESTS = 40;
@@ -63,10 +68,24 @@ async function fetchUpstream(url, options, timeoutMilliseconds = 90_000) {
   }
 }
 
+/// How hard a model thinks before answering, in the words its provider understands. OpenAI's and
+/// gpt-oss models take an effort; Qwen thinks unless told not to and only hides it; a provider
+/// reached through LLM_BASE_URL is sent nothing it may not know, unless LLM_REASONING is "on".
+export function reasoningFor(env, url, model, effort) {
+  if (url === OPENAI_URL) return effort ? { reasoning_effort: effort } : {};
+  if (model.startsWith("openai/gpt-oss")) return { reasoning_effort: effort || "low" };
+  // Qwen thinks out loud unless told not to show it; only the JSON is wanted.
+  if (model.startsWith("qwen/")) return { reasoning_format: "hidden", temperature: 0.4, top_p: 0.95 };
+  if (env.LLM_REASONING === "on" && effort) return { reasoning_effort: effort };
+  return {};
+}
+
 /// One question to the model, one answer back as text. Tries each candidate in turn.
+/// `options.effort` ("low", "medium", "high") asks it to think first; `options.maxTokens` is the
+/// room for thinking and answer together.
 export function asker(env, send = fetchUpstream) {
   const models = candidates(env);
-  return async function ask(system, user) {
+  return async function ask(system, user, options = {}) {
     if (!models.length) throw new PlanError("not-configured", 503);
     let status = 502;
     for (const { url, key, model } of models) {
@@ -76,15 +95,13 @@ export function asker(env, send = fetchUpstream) {
           headers: { "content-type": "application/json", authorization: `Bearer ${key}` },
           body: JSON.stringify({
             model,
-            max_completion_tokens: MAX_ANSWER_TOKENS,
+            max_completion_tokens: options.maxTokens || MAX_ANSWER_TOKENS,
             messages: [
               { role: "system", content: system },
               { role: "user", content: user },
             ],
             ...(asJSON ? { response_format: { type: "json_object" } } : {}),
-            ...(model.startsWith("openai/gpt-oss") ? { reasoning_effort: "low" } : {}),
-            // Qwen thinks out loud unless told not to show it; only the JSON is wanted.
-            ...(model.startsWith("qwen/") ? { reasoning_format: "hidden", temperature: 0.4, top_p: 0.95 } : {}),
+            ...reasoningFor(env, url, model, options.effort),
           }),
         });
 
@@ -117,6 +134,23 @@ export function asker(env, send = fetchUpstream) {
     }
     throw new PlanError(status === 429 ? "busy" : "upstream", status === 429 ? 429 : 502);
   };
+}
+
+/// What each address does. A plan is written with a little thinking first, since its quality is
+/// what the person judges the assistant by; a pasted list is copied, which needs none.
+const HANDLERS = {
+  "/v1/plan/organize": organize,
+  "/v1/plan/create": (ask, body) => create((system, user) => ask(system, user, { effort: "medium", maxTokens: 9_000 }), body),
+  "/v1/meals/nutrition": estimateNutrition,
+  "/v1/meals/recipe": writeRecipe,
+};
+
+/// Counts for the log, never content.
+function sizeOf(result) {
+  if (result.plan) return `parts ${result.parts} days ${result.plan.days.length}`;
+  if (result.meals) return `calls ${result.calls} estimates ${result.meals.length}`;
+  if (result.recipe) return `steps ${result.recipe.steps.length} ingredients ${result.recipe.ingredients.length}`;
+  return "";
 }
 
 /// Counts today's requests from one install. Without a USAGE namespace nothing is counted.
@@ -159,8 +193,10 @@ export default {
       if (!success) return json({ error: "busy" }, 429);
     }
 
-    // The largest honest request is a full-length text and a little JSON around it.
-    const maxBody = LIMITS.textChars * 4 + 2_000;
+    // The largest honest request is a full-length text, or a full list of meals, and a little JSON
+    // around it.
+    const mealsChars = MEAL_LIMITS.nutritionMeals * (MEAL_LIMITS.title + MEAL_LIMITS.details + MEAL_LIMITS.portion + 120);
+    const maxBody = Math.max(LIMITS.textChars, mealsChars) * 4 + 2_000;
     if (Number(request.headers.get("content-length") || 0) > maxBody) return json({ error: "too-long" }, 413);
     let body;
     try {
@@ -172,7 +208,7 @@ export default {
     }
     if (!body || typeof body !== "object") return json({ error: "bad-json" }, 400);
 
-    const handler = path === "/v1/plan/organize" ? organize : path === "/v1/plan/create" ? create : null;
+    const handler = HANDLERS[path];
     if (!handler) return json({ error: "not-found" }, 404);
 
     const install = String(request.headers.get("x-dietflow-install") || "").replace(/[^A-Za-z0-9-]/g, "").slice(0, 64);
@@ -181,7 +217,7 @@ export default {
     const language = typeof body.language === "string" ? body.language.replace(/[^\p{L} ()-]/gu, "").slice(0, 40) : "";
     try {
       const result = await handler(asker(env), { ...body, language });
-      console.log(path, "ok", "parts", result.parts, "days", result.plan.days.length);
+      console.log(path, "ok", sizeOf(result));
       return json(result);
     } catch (error) {
       if (error instanceof PlanError) {

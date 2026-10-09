@@ -1,7 +1,8 @@
 # Assistant Worker
 
-The plan assistant's server side: it turns a pasted list, however untidy, into a plan, and writes
-new plans of up to 30 days from a few wishes.
+The assistant's server side: it turns a pasted list, however untidy, into a plan, writes new plans
+of up to 30 days from a few wishes, estimates what each meal holds, and writes how to cook a meal,
+with substitutes for its ingredients.
 
 The app posts text here; this Worker holds the provider key and the prompts, asks the model,
 checks and bounds the answer, and returns a plan in the app's interchange format
@@ -10,26 +11,49 @@ checks and bounds the answer, and returns a plan in the app's interchange format
 | File | Holds |
 |---|---|
 | `worker.js` | The HTTP side: the app token, rate limits, the provider calls and their fallbacks. |
-| `plan.mjs` | Everything else: prompts, cutting a long text into parts, reading and bounding answers. |
-| `plan.test.mjs` | Tests for both, with a model stood in for. `node --test backend/assistant/plan.test.mjs` |
+| `plan.mjs` | Plans: prompts, cutting a long text into parts, reading and bounding answers. |
+| `meals.mjs` | Single meals: nutrition estimates and recipes, their prompts, reading and bounding answers. |
+| `plan.test.mjs`, `meals.test.mjs` | Tests for all of it, with a model stood in for. `node --test backend/assistant/plan.test.mjs backend/assistant/meals.test.mjs` |
 
 Change a prompt in `plan.mjs` and deploy; no app release is needed.
 
 ## Endpoints
 
 ```
-POST /v1/plan/organize  { text, language? }                        -> { plan, parts }
-POST /v1/plan/create    { days, mealsPerDay, wishes?, language? }  -> { plan, parts }
+POST /v1/plan/organize    { text, language? }                        -> { plan, parts }
+POST /v1/plan/create      { days, mealsPerDay, wishes?, language? }  -> { plan, parts }
+POST /v1/meals/nutrition  { meals: [{ id, title, details?, type?, portion? }], language? }
+                          -> { meals: [{ id, kcal, protein?, carbs?, fat?, portion?, confidence }], calls }
+POST /v1/meals/recipe     { title, details?, type?, servings?, avoid?, language? }
+                          -> { recipe: { title, summary?, servings, minutes, difficulty,
+                                         ingredients: [{ name, amount?, substitutes: [{ name, amount?, note? }] }],
+                                         steps: [{ text, minutes?, kind }], tips } }
 GET  /health
 ```
 
 Requests carry `x-dietflow-app: <APP_TOKEN>` and `x-dietflow-install: <random id>`. Errors are
 `{ "error": "<code>" }`: `unauthorized` 401, `too-long` 413, `no-plan` 422 (the text held no
-meals), `busy` and `daily-limit` 429, `not-configured` 503, `upstream` 502.
+meals), `too-many` 413 (more meals than one
+request may carry), `busy` and `daily-limit` 429, `not-configured` 503, `upstream` 502.
 
 A long text is read in parts of about 5,000 characters, cut where a day begins, and each part is
 told which day the last one ended on. A new plan is written a week per model call, each call told
 which meals came before so the weeks differ. Either way it is one request from the app.
+
+**Thinking.** A new plan, a nutrition estimate and a recipe ask the model to think before it
+answers (`reasoning_effort: "medium"` for OpenAI's and gpt-oss models; Qwen thinks anyway and keeps
+it hidden), with room for it in the token budget. Organising a pasted list is copying, and does not.
+
+**Nutrition** is estimated for up to 60 meals per request, 15 per model call, all calls at once; a
+call whose answer cannot be read costs only its own meals. Each estimate is one serving as the meal
+describes it, with the portion assumed and a confidence (`high` when the amounts were given). An
+energy figure that disagrees with the macronutrients by more than a third is replaced by the one
+they add up to. The app shows every estimate as an estimate.
+
+**A recipe** uses exactly the foods and amounts the plan names, scaled to the servings, and adds only
+what cooking needs. Each step has a `kind` (`prep`, `chop`, `mix`, `heat`, `boil`, `fry`, `bake`,
+`grill`, `blend`, `rest`, `cool`, `season`, `plate`, `other`) that the app draws, and `minutes` when
+it involves waiting; each ingredient has up to three substitutes.
 
 ## What is kept
 
