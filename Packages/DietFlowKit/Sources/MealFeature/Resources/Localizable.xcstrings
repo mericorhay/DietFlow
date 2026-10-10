@@ -2,49 +2,73 @@
   "sourceLanguage" : "en",
   "strings" : {
     "meal.action.markDone" : {
-      "comment" : "Prominent button at the bottom of a meal's detail screen; marks it eaten. Two words.",
+      "comment" : "Prominent button at the bottom of a meal's screen that records the meal as eaten. An action, not the state. Short: shares a row with Skip.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mark Done"
+            "value" : "Mark as Eaten"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Marcar hecha"
+            "value" : "Marcar como hecha"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tamamlandı"
+            "value" : "Yedim"
+          }
+        }
+      }
+    },
+    "meal.action.markDoneLabel" : {
+      "comment" : "VoiceOver label of the button that records the meal as eaten.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark as eaten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcar como hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedim olarak işaretle"
           }
         }
       }
     },
     "meal.action.markNotDone" : {
-      "comment" : "Button on a meal already marked done; clears the mark. A few words.",
+      "comment" : "Button beside 'Done' at the bottom of a meal's screen that takes back marking the meal as eaten.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mark Not Done"
+            "value" : "Undo"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Marcar como no hecha"
+            "value" : "Deshacer"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İşareti Kaldır"
+            "value" : "Geri Al"
           }
         }
       }
@@ -93,6 +117,192 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Atlamayı Geri Al"
+          }
+        }
+      }
+    },
+    "meal.cook.plusBadge" : {
+      "comment" : "Small badge on 'How to Make It' when this month's free assistant uses are used up. Tapping explains DietFlow Plus.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free uses used up · More with Plus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usos gratis agotados · Más con Plus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz hakların bitti · Plus ile daha fazlası"
+          }
+        }
+      }
+    },
+    "meal.cook.ready" : {
+      "comment" : "Small badge on 'How to Make It' when the recipe is already written: opening it costs nothing.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready · Free to open"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista · Abrirla es gratis"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazır · Açmak ücretsiz"
+          }
+        }
+      }
+    },
+    "meal.cook.readySubtitle" : {
+      "comment" : "Line under 'How to Make It' once the recipe was written and kept on the phone.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your recipe is ready. Opening it again is free."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu receta está lista. Volver a abrirla es gratis."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarifin hazır. Yeniden açmak ücretsiz."
+          }
+        }
+      }
+    },
+    "meal.cook.subtitle" : {
+      "comment" : "Line under 'How to Make It' before the recipe is written.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step by step, with what can replace each ingredient."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paso a paso, con qué puede sustituir a cada ingrediente."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adım adım, her malzemenin yerine ne koyabileceğinle birlikte."
+          }
+        }
+      }
+    },
+    "meal.cook.title" : {
+      "comment" : "Title of the assistant card on a meal's screen that opens step-by-step cooking. Title Case.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to Make It"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo prepararla"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasıl Yapılır"
+          }
+        }
+      }
+    },
+    "meal.cook.usesLeft" : {
+      "comment" : "Small badge on 'How to Make It': how many assistant uses are left this month, before tapping.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld AI use left this month"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld AI uses left this month"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Te quedan %lld usos del asistente este mes"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Te queda %lld uso del asistente este mes"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Te quedan %lld usos del asistente este mes"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bu ay %lld asistan hakkın kaldı"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bu ay %lld asistan hakkın kaldı"
+                }
+              }
+            }
           }
         }
       }
@@ -337,6 +547,30 @@
         }
       }
     },
+    "meal.editor.estimatedFooter" : {
+      "comment" : "Footer under the nutrition fields of the meal editor while they hold the assistant's estimate.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated by the assistant. Change any number and yours are kept instead."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimado por el asistente. Si cambias algún número, se guardan los tuyos."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan tahmin etti. Bir sayıyı değiştirirsen seninkiler geçerli olur."
+          }
+        }
+      }
+    },
     "meal.editor.newTitle" : {
       "comment" : "Title of the form that adds a meal. Two words.",
       "extractionState" : "manual",
@@ -553,6 +787,174 @@
         }
       }
     },
+    "meal.estimate.failed.busy" : {
+      "comment" : "Shown under 'Estimate Nutrition' when the assistant had too many requests. The allowance was not used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant is busy right now. Nothing was counted; try again in a moment."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente está ocupado ahora mismo. No se ha descontado nada; vuelve a intentarlo en un momento."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan şu an çok yoğun. Hakkından bir şey düşülmedi; birazdan yeniden dene."
+          }
+        }
+      }
+    },
+    "meal.estimate.failed.dailyLimit" : {
+      "comment" : "Shown under 'Estimate Nutrition' when this phone reached the assistant's daily limit. The allowance was not used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That's all the assistant can do from this iPhone today. Nothing was counted; try again tomorrow."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente no puede hacer más desde este iPhone por hoy. No se ha descontado nada; vuelve a intentarlo mañana."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan bugün bu iPhone için daha fazlasını yapamıyor. Hakkından bir şey düşülmedi; yarın yeniden dene."
+          }
+        }
+      }
+    },
+    "meal.estimate.failed.offline" : {
+      "comment" : "Shown under 'Estimate Nutrition' when there was no connection. The allowance was not used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You seem to be offline. Nothing was counted; try again when you're connected."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parece que no tienes conexión. No se ha descontado nada; vuelve a intentarlo cuando tengas conexión."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnternete bağlı değilsin gibi görünüyor. Hakkından bir şey düşülmedi; bağlanınca yeniden dene."
+          }
+        }
+      }
+    },
+    "meal.estimate.failed.other" : {
+      "comment" : "Shown under 'Estimate Nutrition' when the assistant could not estimate the meal. The allowance was not used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant couldn't estimate this meal. Nothing was counted."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente no pudo estimar esta comida. No se ha descontado nada."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan bu öğünü tahmin edemedi. Hakkından bir şey düşülmedi."
+          }
+        }
+      }
+    },
+    "meal.header.moved" : {
+      "comment" : "Line under a meal's time on another day when that day started late and the meal moved. %@ is the time the plan gives, e.g. 08:00.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moved from %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movida · en el plan a las %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydırıldı · planda %@"
+          }
+        }
+      }
+    },
+    "meal.header.movedToday" : {
+      "comment" : "Line under a meal's time when the day started late and the meal moved. %@ is the time the plan gives, e.g. 08:00.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moved from %@ today"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movida hoy · en el plan a las %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün kaydırıldı · planda %@"
+          }
+        }
+      }
+    },
+    "meal.ingredients.safety" : {
+      "comment" : "Fixed safety line under a meal's ingredients.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check against your allergies and your dietitian's advice."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compruébalo con tus alergias y los consejos de tu dietista."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alerjilerini ve diyetisyeninin önerilerini göz önünde bulundur."
+          }
+        }
+      }
+    },
     "meal.meta" : {
       "comment" : "Line under a meal's name on its detail screen. %1$@ is the meal type, %2$@ the time, %3$@ the date. Example: 'Lunch · 14:00 · Monday, October 5'.",
       "extractionState" : "manual",
@@ -625,6 +1027,30 @@
         }
       }
     },
+    "meal.nutrition.barsFootnote" : {
+      "comment" : "Caption under the protein, carbohydrate and fat bars: what the length of each bar means.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bars show each one's share of the energy."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las barras muestran qué parte de la energía aporta cada uno."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çubuklar her birinin enerjideki payını gösterir."
+          }
+        }
+      }
+    },
     "meal.nutrition.carbohydrates" : {
       "comment" : "Row label: grams of carbohydrates. One word.",
       "extractionState" : "manual",
@@ -673,6 +1099,54 @@
         }
       }
     },
+    "meal.nutrition.estimate" : {
+      "comment" : "Assistant button in the nutrition card of a meal that has no figures: the assistant works out calories and macros. Title Case.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimate Nutrition"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimar nutrición"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Besin Değerlerini Tahmin Et"
+          }
+        }
+      }
+    },
+    "meal.nutrition.estimatedFootnote" : {
+      "comment" : "Footnote in the nutrition card when the figures are the assistant's estimate.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated by the assistant from this meal's description. Numbers from your plan always come first."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimado por el asistente a partir de la descripción de esta comida. Los números de tu plan siempre van primero."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan bu öğünün açıklamasından tahmin etti. Planındaki değerler her zaman önce gelir."
+          }
+        }
+      }
+    },
     "meal.nutrition.fat" : {
       "comment" : "Row label: grams of fat. One word.",
       "extractionState" : "manual",
@@ -693,6 +1167,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yağ"
+          }
+        }
+      }
+    },
+    "meal.nutrition.missing" : {
+      "comment" : "Line in the nutrition card above the 'Estimate Nutrition' button, when the plan gives no figures for the meal.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your plan doesn't list nutrition for this meal."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu plan no indica la nutrición de esta comida."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planında bu öğünün besin değerleri yok."
           }
         }
       }
@@ -817,6 +1315,54 @@
         }
       }
     },
+    "meal.section.description" : {
+      "comment" : "Heading over a meal's description when it reads as text rather than a list of foods.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descripción"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açıklama"
+          }
+        }
+      }
+    },
+    "meal.section.ingredients" : {
+      "comment" : "Heading over the foods a meal's description lists, one per row.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredients"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredientes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malzemeler"
+          }
+        }
+      }
+    },
     "meal.section.notes" : {
       "comment" : "Section heading for the free-text notes of a meal. One word.",
       "extractionState" : "manual",
@@ -885,6 +1431,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamamlandı"
+          }
+        }
+      }
+    },
+    "meal.status.later" : {
+      "comment" : "Status above a meal's name for a meal still ahead today, after the next one. Followed by '· in 3 hr'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later today"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más tarde hoy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün daha sonra"
+          }
+        }
+      }
+    },
+    "meal.status.missed" : {
+      "comment" : "Status above a meal's name when its time passed and it was neither marked eaten nor skipped.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not marked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin marcar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşaretlenmedi"
           }
         }
       }
