@@ -133,6 +133,9 @@ enum DebugLaunch {
         store.attempt { try store.createPlan(plan) }
         if let first = firstDay.first {
             store.attempt { try store.markMealCompleted(OccurrenceKey(mealID: first.id, day: .today())) }
+            // Marked three hours after its time, breakfast would move the day as a late start; this
+            // seed is a day on time, so it follows the plan.
+            store.attempt { try store.startDay(DayStart(firstMeal: at(offsets[0]), source: .morning)) }
         }
         return store
     }
