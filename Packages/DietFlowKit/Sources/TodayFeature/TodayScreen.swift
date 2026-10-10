@@ -1,3 +1,4 @@
+import Accessibility
 import Foundation
 import SwiftUI
 import AppCore
@@ -53,6 +54,8 @@ public struct TodayScreen: View {
     /// Nil until checked. Checked again whenever the app comes back, as the person may just have
     /// added the widget.
     @State private var isWidgetOnScreen: Bool?
+    /// The short word on screen after something worth one: a meal eaten, the day moved.
+    @State private var toast: TodayToast?
     private let actions: TodayActions
 
     public init(actions: TodayActions) {
@@ -92,11 +95,36 @@ public struct TodayScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 header(today: today, schedule: schedule)
                 DayPager(days: pagerDays(around: today), selection: $selectedDay) { day in
-                    DayPage(day: day, today: today, now: now, actions: actions, widgetTip: day == today ? widgetTip : nil)
+                    DayPage(
+                        day: day,
+                        today: today,
+                        now: now,
+                        actions: actions,
+                        widgetTip: day == today ? widgetTip : nil,
+                        onMoment: { kind in show(kind) }
+                    )
                 }
             }
-            .sensoryFeedback(trigger: completedCount(on: today)) { old, new in
-                new > old ? .success : nil
+            .overlay(alignment: .bottom) {
+                if let toast {
+                    TodayToastView(toast: toast)
+                        .padding(.horizontal, AppSpacing.screenMargin)
+                        .padding(.bottom, AppSpacing.medium)
+                        .transition(toastTransition)
+                        .id(toast.id)
+                }
+            }
+            .sensoryFeedback(trigger: toast) { _, new in
+                new?.kind.feedback
+            }
+            .sensoryFeedback(.selection, trigger: selectedDay)
+            .task(id: toast?.id) {
+                guard toast != nil else { return }
+                try? await Task.sleep(for: .seconds(2.2))
+                guard !Task.isCancelled else { return }
+                withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
+                    toast = nil
+                }
             }
             .onChange(of: today) { previous, current in
                 // At midnight, someone looking at today keeps looking at today.
@@ -108,6 +136,18 @@ public struct TodayScreen: View {
                     .padding(.top, AppSpacing.xLarge)
             }
         }
+    }
+
+    private var toastTransition: AnyTransition {
+        reduceMotion ? AnyTransition.opacity : AnyTransition.move(edge: .bottom).combined(with: .opacity)
+    }
+
+    /// Puts a moment on screen for a little while, says it to VoiceOver, and plays its haptic.
+    private func show(_ kind: TodayToast.Kind) {
+        withAppAnimation(AppMotion.settle, reduceMotion: reduceMotion) {
+            toast = TodayToast(kind: kind)
+        }
+        AccessibilityNotification.Announcement(kind.text).post()
     }
 
     private func header(today: CalendarDay, schedule: MealSchedule) -> some View {
@@ -123,6 +163,9 @@ public struct TodayScreen: View {
                 today: today,
                 isAvailable: { schedule.dayIndex(on: $0) != nil }
             )
+            // The strip caps its own text size too; capping it here as well keeps every size it
+            // reads, inside or out, within one row of seven days.
+            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         }
         .padding(.horizontal, AppSpacing.screenMargin)
         .padding(.bottom, AppSpacing.xxSmall)
@@ -161,10 +204,6 @@ public struct TodayScreen: View {
         let first = min(today.adding(days: -31), selectedDay)
         let last = max(today.adding(days: 62), selectedDay)
         return (0...first.days(to: last)).map { first.adding(days: $0) }
-    }
-
-    private func completedCount(on day: CalendarDay) -> Int {
-        store.states.filter { $0.key.day == day && $0.value == .completed }.count
     }
 }
 

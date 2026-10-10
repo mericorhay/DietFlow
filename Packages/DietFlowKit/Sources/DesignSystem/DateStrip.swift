@@ -1,9 +1,9 @@
 import SwiftUI
 import Domain
 
-/// A compact week of days: weekday initial over the date. The selected day sits in a brand-accent
-/// circle that glides between days; today is marked in the accent colour when not selected.
-/// Used on Today and on Plan.
+/// A compact week of days: the abbreviated weekday over the date. The selected day sits in a
+/// brand-accent circle that glides between days; today is marked in the accent colour when not
+/// selected. Used on Today and on Plan.
 public struct DateStrip: View {
     private let days: [CalendarDay]
     @Binding private var selection: CalendarDay
@@ -11,7 +11,6 @@ public struct DateStrip: View {
     private let isAvailable: (CalendarDay) -> Bool
 
     @Namespace private var selectionSpace
-    @ScaledMetric(relativeTo: .body) private var circleSize: CGFloat = 36
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     /// - Parameter isAvailable: days outside a plan can be shown dimmed; they stay selectable.
@@ -25,7 +24,17 @@ public struct DateStrip: View {
     public var body: some View {
         HStack(spacing: 0) {
             ForEach(days, id: \.self) { day in
-                dayButton(day)
+                DateStripDay(
+                    date: day.middayDate(),
+                    isSelected: day == selection,
+                    isToday: day == today,
+                    isAvailable: isAvailable(day),
+                    selectionSpace: selectionSpace
+                ) {
+                    withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
+                        selection = day
+                    }
+                }
             }
         }
         // Seven days must share one row, like a tab bar: past the largest standard size the
@@ -33,25 +42,38 @@ public struct DateStrip: View {
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .accessibilityElement(children: .contain)
     }
+}
 
-    private func dayButton(_ day: CalendarDay) -> some View {
-        let isSelected = day == selection
-        let isToday = day == today
-        let date = day.middayDate()
-        return Button {
-            withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
-                selection = day
-            }
-        } label: {
+/// One day of the strip. Its own view so that the circle's scaled size is read inside the strip's
+/// text-size cap: read outside it, the circle kept growing at accessibility sizes and pushed the
+/// week, and the whole page with it, past both edges of the screen.
+private struct DateStripDay: View {
+    let date: Date
+    let isSelected: Bool
+    let isToday: Bool
+    let isAvailable: Bool
+    let selectionSpace: Namespace.ID
+    let action: @MainActor () -> Void
+
+    @ScaledMetric(relativeTo: .body) private var circleSize: CGFloat = 36
+
+    /// Seven of these always fit across an iPhone inside the screen's margins.
+    private var circle: CGFloat { min(circleSize, AppSpacing.minimumHitTarget) }
+
+    var body: some View {
+        Button(action: action) {
             VStack(spacing: AppSpacing.xxSmall) {
-                Text(date, format: .dateTime.weekday(.narrow))
-                    .font(.footnote.weight(.semibold))
+                Text(date, format: .dateTime.weekday(.abbreviated))
+                    .font(.caption.weight(.semibold))
                     .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
                 Text(date, format: .dateTime.day())
                     .font(.body.weight(isSelected || isToday ? .semibold : .regular))
                     .monospacedDigit()
+                    .lineLimit(1)
                     .foregroundStyle(isSelected ? AppColors.onBrandAccent : (isToday ? AppColors.brandAccent : Color.primary))
-                    .frame(minWidth: circleSize, minHeight: circleSize)
+                    .frame(minWidth: circle, minHeight: circle)
                     .background {
                         if isSelected {
                             Circle()
@@ -60,7 +82,7 @@ public struct DateStrip: View {
                         }
                     }
             }
-            .opacity(isAvailable(day) || isSelected ? 1 : 0.45)
+            .opacity(isAvailable || isSelected ? 1 : 0.45)
             .frame(maxWidth: .infinity, minHeight: AppSpacing.minimumHitTarget)
             .contentShape(Rectangle())
         }
