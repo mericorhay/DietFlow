@@ -1,6 +1,19 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { MEAL_LIMITS, STEP_KINDS, cleanEstimate, cleanMealsIn, estimateNutrition, readRecipe, recipePrompt, writeRecipe } from "./meals.mjs";
+import {
+  MEAL_LIMITS,
+  STEP_KINDS,
+  avoidTerms,
+  cleanEstimate,
+  cleanMealsIn,
+  estimateNutrition,
+  namesAvoided,
+  readKcalDelta,
+  readRecipe,
+  recipePrompt,
+  withoutAvoided,
+  writeRecipe,
+} from "./meals.mjs";
 import { PlanError } from "./plan.mjs";
 import worker, { asker, reasoningFor } from "./worker.js";
 
@@ -142,6 +155,102 @@ test("writing a recipe keeps the plan's own amounts, thinks first, and refuses a
   assert.equal(result.recipe.servings, 1);
   await assert.rejects(writeRecipe(async () => assert.fail("not asked"), { title: "  " }), (error) => error.code === "empty");
   await assert.rejects(writeRecipe(async () => "{}", { title: "x" }), (error) => error.code === "unreadable-answer");
+});
+
+test("each swap says what it changes in energy, read forgivingly and bounded", () => {
+  assert.equal(readKcalDelta(-40), -40);
+  assert.equal(readKcalDelta("-40"), -40);
+  assert.equal(readKcalDelta("\u221240 kcal"), -40, "a typographic minus is still a minus");
+  assert.equal(readKcalDelta("+120 kcal"), 120);
+  assert.equal(readKcalDelta(-39.6), -40);
+  assert.equal(readKcalDelta("12,4"), 12);
+  assert.equal(readKcalDelta(0), 0);
+  assert.ok(Object.is(readKcalDelta(-0.2), 0), "no negative zero");
+  assert.equal(readKcalDelta(MEAL_LIMITS.kcalDelta), MEAL_LIMITS.kcalDelta);
+  assert.equal(readKcalDelta(-MEAL_LIMITS.kcalDelta - 1), undefined);
+  assert.equal(readKcalDelta("about the same"), undefined);
+  assert.equal(readKcalDelta(null), undefined);
+  assert.equal(readKcalDelta(Number.NaN), undefined);
+
+  const recipe = readRecipe(
+    JSON.stringify({
+      steps: [{ text: "Mix.", kind: "mix" }],
+      ingredients: [
+        {
+          name: "Yogurt",
+          amount: "200 g",
+          substitutes: [
+            { name: "Skyr", amount: "200 g", note: "more protein", kcalDelta: -20 },
+            { name: "Labneh", amount: "150 g", note: "  thicker,\n richer ", kcalDelta: "+95 kcal" },
+            { name: "Kefir", note: "n".repeat(200), kcalDelta: 9_000 },
+          ],
+        },
+      ],
+    }),
+    1
+  );
+  assert.deepEqual(recipe.ingredients[0].substitutes, [
+    { name: "Skyr", amount: "200 g", note: "more protein", kcalDelta: -20 },
+    { name: "Labneh", amount: "150 g", note: "thicker, richer", kcalDelta: 95 },
+    { name: "Kefir", note: "n".repeat(MEAL_LIMITS.note) },
+  ]);
+  const prompt = recipePrompt({ language: "English", servings: 1 });
+  assert.match(prompt, /"kcalDelta"/);
+  assert.match(prompt, /at most six words/);
+});
+
+test("what the person avoids is read as words, in Turkish and plain lowercase", () => {
+  const terms = avoidTerms("Fıstık ve SÜT, İncir; nuts and dairy / ab");
+  for (const term of ["fıstık", "fistik", "süt", "sut", "incir", "nuts", "dairy"]) assert.ok(terms.includes(term), term);
+  for (const joining of ["ve", "and", "ab"]) assert.ok(!terms.includes(joining), joining);
+  assert.deepEqual(avoidTerms(""), []);
+  assert.deepEqual(avoidTerms(undefined), []);
+
+  assert.ok(namesAvoided("FISTIK EZMESİ", terms), "Turkish capitals");
+  assert.ok(namesAvoided("Antep fıstığı içi", avoidTerms("antep")));
+  assert.ok(namesAvoided("İNCİR reçeli", terms));
+  assert.ok(namesAvoided("Badem sütü", terms), "a swap that only might hold it goes too");
+  assert.ok(namesAvoided("Peanuts", terms));
+  assert.ok(namesAvoided("ıspanak", avoidTerms("ISPANAK")));
+  assert.ok(namesAvoided("Ispanak", avoidTerms("ıspanak")));
+  assert.ok(!namesAvoided("Oat milk", terms));
+  assert.ok(!namesAvoided("Dairy-free yogurt", terms), "a food free of it is the swap that is needed");
+  assert.ok(!namesAvoided("Sütsüz krema", terms));
+  assert.ok(!namesAvoided("Pan sin gluten", avoidTerms("gluten")));
+  assert.ok(!namesAvoided("Glutensiz ekmek", avoidTerms("Gluten")));
+  assert.ok(namesAvoided("Gluten bread", avoidTerms("Gluten")));
+  assert.ok(!namesAvoided("Anything", []));
+});
+
+test("substitutes that name an avoided food are taken out; the plan's own ingredients stay", async () => {
+  const reply = JSON.stringify({
+    steps: [{ text: "Put it together.", kind: "plate" }],
+    ingredients: [
+      {
+        name: "Yoğurt",
+        amount: "200 g",
+        substitutes: [{ name: "Süzme yoğurt" }, { name: "Badem sütü yoğurdu", kcalDelta: -30 }, { name: "Hindistan cevizi yoğurdu", kcalDelta: 40 }],
+      },
+      { name: "Ceviz", amount: "3 adet", substitutes: [{ name: "FISTIK" }, { name: "Kabak çekirdeği", kcalDelta: -15 }] },
+    ],
+  });
+  const asked = [];
+  const result = await writeRecipe(
+    async (system, user) => {
+      asked.push({ system, user });
+      return reply;
+    },
+    { title: "Yoğurt ve ceviz", details: "200 g yoğurt, 3 ceviz", avoid: "fıstık, badem", language: "Turkish" }
+  );
+  assert.match(asked[0].system, /Never suggest as a substitute anything the person avoids/);
+  assert.deepEqual(result.recipe.ingredients, [
+    { name: "Yoğurt", amount: "200 g", substitutes: [{ name: "Süzme yoğurt" }, { name: "Hindistan cevizi yoğurdu", kcalDelta: 40 }] },
+    { name: "Ceviz", amount: "3 adet", substitutes: [{ name: "Kabak çekirdeği", kcalDelta: -15 }] },
+  ]);
+
+  // Nothing avoided, nothing taken out.
+  const kept = withoutAvoided(readRecipe(reply, 1), "");
+  assert.equal(kept.ingredients[1].substitutes.length, 2);
 });
 
 test("every step kind the app draws is named in the prompt", () => {

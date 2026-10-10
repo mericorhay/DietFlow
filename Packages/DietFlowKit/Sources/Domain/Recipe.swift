@@ -45,6 +45,16 @@ public struct Recipe: Codable, Hashable, Sendable {
             self.substitutes = substitutes
         }
 
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            name = try container.decode(String.self, forKey: .name)
+            amount = try? container.decodeIfPresent(String.self, forKey: .amount)
+            // No swaps, or a list that cannot be read, is an ingredient without swaps rather than a
+            // recipe that cannot be opened.
+            let swaps: [Substitute]? = try? container.decodeIfPresent([Substitute].self, forKey: .substitutes)
+            substitutes = swaps ?? []
+        }
+
         public var id: String { name + "|" + (amount ?? "") }
     }
 
@@ -53,14 +63,43 @@ public struct Recipe: Codable, Hashable, Sendable {
         public var name: String
         public var amount: String?
         public var note: String?
+        /// Kilocalories of the swap in its amount minus those of the ingredient it replaces: -40
+        /// when it is lighter. The assistant's estimate, shown as one; nil when it gave none.
+        public var kcalDelta: Int?
 
-        public init(name: String, amount: String? = nil, note: String? = nil) {
+        /// The largest difference a swap may make, either way (`backend/assistant/meals.mjs`,
+        /// `MEAL_LIMITS.kcalDelta`). Beyond it, it is not a swap but another meal.
+        public static let kcalDeltaLimit = 2_000
+
+        public init(name: String, amount: String? = nil, note: String? = nil, kcalDelta: Int? = nil) {
             self.name = name
             self.amount = amount
             self.note = note
+            self.kcalDelta = kcalDelta.flatMap(Self.bounded)
+        }
+
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            name = try container.decode(String.self, forKey: .name)
+            amount = try? container.decodeIfPresent(String.self, forKey: .amount)
+            note = try? container.decodeIfPresent(String.self, forKey: .note)
+            // A whole number as the server writes it; a fractional one is rounded; anything else
+            // (missing, null, words) is no difference given, never a recipe that cannot be opened.
+            if let whole = try? container.decodeIfPresent(Int.self, forKey: .kcalDelta) {
+                kcalDelta = Self.bounded(whole)
+            } else if let fraction = try? container.decodeIfPresent(Double.self, forKey: .kcalDelta),
+                      fraction.isFinite, abs(fraction) <= Double(Self.kcalDeltaLimit) {
+                kcalDelta = Self.bounded(Int(fraction.rounded()))
+            } else {
+                kcalDelta = nil
+            }
         }
 
         public var id: String { name }
+
+        private static func bounded(_ delta: Int) -> Int? {
+            (-kcalDeltaLimit...kcalDeltaLimit).contains(delta) ? delta : nil
+        }
     }
 
     public struct Step: Codable, Hashable, Sendable {
