@@ -114,13 +114,15 @@ nonisolated enum CookAlerts {
 // MARK: Reading aloud
 
 /// Reads steps aloud in the app's language, so hands busy with food need not touch the phone. Other
-/// audio is ducked while it speaks, and it is heard with the ring switch on silent, as a kitchen
-/// timer would be.
-final class CookVoice {
-    private let synthesizer = AVSpeechSynthesizer()
+/// audio is ducked while it speaks and comes back up when it stops, and it is heard with the ring
+/// switch on silent, as a kitchen timer would be.
+final class CookVoice: NSObject, AVSpeechSynthesizerDelegate {
+    /// Made on the first step read, so a screen that never reads aloud never starts speech.
+    private var synthesizer: AVSpeechSynthesizer?
     private var holdsAudio = false
 
     func speak(_ text: String) {
+        let synthesizer = self.synthesizer ?? makeSynthesizer()
         if synthesizer.isSpeaking {
             synthesizer.stopSpeaking(at: .immediate)
         }
@@ -136,12 +138,36 @@ final class CookVoice {
     }
 
     func stop() {
-        if synthesizer.isSpeaking {
+        if let synthesizer, synthesizer.isSpeaking {
             synthesizer.stopSpeaking(at: .immediate)
         }
-        if holdsAudio {
-            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-            holdsAudio = false
+        releaseAudio()
+    }
+
+    private func makeSynthesizer() -> AVSpeechSynthesizer {
+        let made = AVSpeechSynthesizer()
+        made.delegate = self
+        synthesizer = made
+        return made
+    }
+
+    /// Lets other audio come back up. Ducked audio stays down for as long as the session is active,
+    /// so it is given back after every step read, not only when cooking ends.
+    private func releaseAudio() {
+        guard holdsAudio else { return }
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        holdsAudio = false
+    }
+
+    private func finishedSpeaking() {
+        // A newer step may already be speaking; it gives the audio back when it ends.
+        guard synthesizer?.isSpeaking != true else { return }
+        releaseAudio()
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor [weak self] in
+            self?.finishedSpeaking()
         }
     }
 
