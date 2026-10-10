@@ -7,5 +7,7 @@ struct DietFlowWidgetBundle: WidgetBundle {
         NextMealWidget()
         TodayMealsWidget()
         DayProgressWidget()
+        StartDayControl()
+        MarkMealEatenControl()
     }
 }

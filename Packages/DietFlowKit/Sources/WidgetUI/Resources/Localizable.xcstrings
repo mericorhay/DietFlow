@@ -337,6 +337,54 @@
         }
       }
     },
+    "widget.cook" : {
+      "comment" : "Widget: VoiceOver label of the chip that opens step-by-step cooking for the meal in front.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to make it"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo se prepara"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasıl yapılır"
+          }
+        }
+      }
+    },
+    "widget.cook.short" : {
+      "comment" : "Widget: one-word chip beside a pan icon that opens step-by-step cooking for the meal in front. Keep it to one short word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recipe"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receta"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarif"
+          }
+        }
+      }
+    },
     "widget.dayComplete" : {
       "comment" : "Widget: shown when every meal of the day is done or skipped. Short sentence.",
       "extractionState" : "manual",
@@ -362,31 +410,31 @@
       }
     },
     "widget.done" : {
-      "comment" : "Widget button that marks the shown meal as eaten. One word.",
+      "comment" : "Widget: label of the round check button that marks the meal in front as eaten, read by VoiceOver; also the action on a row's status mark. The action, not the state.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Done"
+            "value" : "Eaten"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hecho"
+            "value" : "Comida hecha"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tamamlandı"
+            "value" : "Yedim"
           }
         }
       }
     },
     "widget.ended.message" : {
-      "comment" : "Widget: which plan ended and when. %1$@ is the plan's name, %2$@ a short date such as 'Oct 4'.",
+      "comment" : "Widget after a plan has ended. %1$@ is the plan's name, %2$@ the date of its last day, e.g. 'Oct 12'.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -404,7 +452,55 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@, %2$@ tarihinde bitti."
+            "value" : "%1$@ bitti. Bitiş: %2$@"
+          }
+        }
+      }
+    },
+    "widget.ended.newPlan" : {
+      "comment" : "Widget after a plan has ended: chip that opens adding a new plan, with the assistant or from a list.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan nuevo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Plan"
+          }
+        }
+      }
+    },
+    "widget.ended.startAgain" : {
+      "comment" : "Widget after a plan that does not repeat has ended: chip that opens the plan to start it again.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Again"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar de nuevo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden Başla"
           }
         }
       }
@@ -433,6 +529,30 @@
         }
       }
     },
+    "widget.energy.progress" : {
+      "comment" : "Widget, Today's Meals large: bottom line when calories are shown. %1$@ is the energy of the meals eaten so far (a number), %2$@ the energy of everything planned today with its unit, e.g. '820 of 1,640 kcal eaten'. Never phrase it as a budget or as 'left'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ of %2$@ eaten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comido: %1$@ de %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yenen: %1$@ / %2$@"
+          }
+        }
+      }
+    },
     "widget.following.then" : {
       "comment" : "Widget: label above the meal after the one shown first, later the same day. %@ is the meal type. Very short.",
       "extractionState" : "manual",
@@ -453,6 +573,150 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonra · %@"
+          }
+        }
+      }
+    },
+    "widget.gallery.breakfast" : {
+      "comment" : "Widget gallery example: a breakfast dish. Short, appetising, typical for the language.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menemen with feta"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huevos con tomate y feta"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peynirli menemen"
+          }
+        }
+      }
+    },
+    "widget.gallery.dinner" : {
+      "comment" : "Widget gallery example: a dinner dish.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salmon with roasted vegetables"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salmón con verduras asadas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırın sebzeli somon"
+          }
+        }
+      }
+    },
+    "widget.gallery.lunch" : {
+      "comment" : "Widget gallery example: the lunch dish shown as the meal on now. Short, appetising.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grilled chicken with Greek salad"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pollo a la plancha con ensalada griega"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Izgara tavuk ve çoban salata"
+          }
+        }
+      }
+    },
+    "widget.gallery.planName" : {
+      "comment" : "Widget gallery example: the name of the example meal plan, shown in the large widget's header.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mediterranean"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mediterráneo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akdeniz"
+          }
+        }
+      }
+    },
+    "widget.gallery.snack" : {
+      "comment" : "Widget gallery example: an afternoon snack.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Greek yogurt with walnuts"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yogur griego con nueces"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cevizli yoğurt"
+          }
+        }
+      }
+    },
+    "widget.header.planDay" : {
+      "comment" : "Widget, Today's Meals large: header line. %1$@ is the plan's name, %2$lld today's day of the plan, %3$lld the number of days in the plan, e.g. 'Keto · Day 3 of 14'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Day %2$lld of %3$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Día %2$lld de %3$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Gün %2$lld/%3$lld"
           }
         }
       }
@@ -673,6 +937,30 @@
         }
       }
     },
+    "widget.live.until" : {
+      "comment" : "Widget: under the bar that runs out while a meal is on now. %@ is the time the next meal takes its place, e.g. 15:00 or 3:00 PM.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "until %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hasta las %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitiş: %@"
+          }
+        }
+      }
+    },
     "widget.more" : {
       "comment" : "Large widget: how many more of today's meals did not fit. Example: '+2 more'.",
       "extractionState" : "manual",
@@ -763,50 +1051,74 @@
         }
       }
     },
-    "widget.noPlan.message" : {
-      "comment" : "Widget: what to do when there is no plan. %@ is the app's name.",
+    "widget.noPlan.action" : {
+      "comment" : "Widget with no meal plan yet: chip that opens adding a plan.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open %@ to add one."
+            "value" : "Add Plan"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abre %@ para añadir uno."
+            "value" : "Añadir plan"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eklemek için %@ uygulamasını aç."
+            "value" : "Plan Ekle"
+          }
+        }
+      }
+    },
+    "widget.noPlan.message" : {
+      "comment" : "Widget with no meal plan yet: line under the title. %@ is the app's name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a photo, PDF or text and %@ builds your plan."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade una foto, un PDF o un texto y %@ preparará tu plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf, PDF ya da metin ekle; planını %@ hazırlasın."
           }
         }
       }
     },
     "widget.noPlan.title" : {
-      "comment" : "Widget title when no meal plan has been set up. A few words.",
+      "comment" : "Widget with no meal plan yet: title inviting the person to photograph the list their dietitian gave them.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No meal plan"
+            "value" : "Snap your dietitian’s list"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sin plan de comidas"
+            "value" : "Fotografía la lista de tu dietista"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öğün planı yok"
+            "value" : "Diyetisyen listeni çek"
           }
         }
       }
@@ -855,6 +1167,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "bugün"
+          }
+        }
+      }
+    },
+    "widget.progress.soFar" : {
+      "comment" : "Widget, Day Progress: line under the ring. %1$lld is how many of today's meals are behind (eaten, skipped or past), %2$lld how many today has.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %2$lld · meals so far"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld de %2$lld · comidas hasta ahora"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld öğünden %1$lld · şu ana kadar"
           }
         }
       }
@@ -973,6 +1309,78 @@
         }
       }
     },
+    "widget.shift.accessibility" : {
+      "comment" : "Widget: VoiceOver label of the '+45 min' chip on a meal moved later because the day started late. %@ is a duration such as '45 minutes' or '1 hour, 30 minutes'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moved %@ later"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movida %@ más tarde"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sonraya kaydı"
+          }
+        }
+      }
+    },
+    "widget.startDay" : {
+      "comment" : "Widget: small capsule button shown in the morning until a meal is marked. Tapping it says the person just got up, so today's meals move later. Very short: fits beside a check button on the small widget.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I’m up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya me levanté"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyandım"
+          }
+        }
+      }
+    },
+    "widget.startDay.accessibility" : {
+      "comment" : "Widget: VoiceOver label of the morning 'I'm up' button, saying what it does.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I’m up: start today’s meals from now"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya me levanté: empezar las comidas de hoy desde ahora"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyandım: bugünün öğünlerini şimdiden başlat"
+          }
+        }
+      }
+    },
     "widget.then" : {
       "comment" : "Small widget: bottom line naming the meal after the current one. %1$@ is its time, %2$@ its meal type. Example: 'Then 16:30 · Snack'. One short line.",
       "extractionState" : "manual",
@@ -1021,6 +1429,30 @@
         }
       }
     },
+    "widget.today.earlier" : {
+      "comment" : "Widget, Today's Meals large: one line standing for the meals before the one in front when there is no room for them. %1$lld is how many, %2$lld how many of them were eaten.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld earlier · %2$lld eaten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antes: %1$lld · hechas: %2$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önceki: %1$lld · yenen: %2$lld"
+          }
+        }
+      }
+    },
     "widget.tomorrowMeal" : {
       "comment" : "Large widget: bottom line with tomorrow's first meal. %1$@ is its time, %2$@ the meal's name. Example: 'Tomorrow 10:00 · Feta salad'.",
       "extractionState" : "manual",
@@ -1041,6 +1473,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yarın %1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "widget.undo" : {
+      "comment" : "Widget, Today's Meals: VoiceOver label of a row's status mark when the meal is already marked; tapping it takes the mark back.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark as not eaten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcar como no hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yemedim olarak işaretle"
           }
         }
       }

@@ -124,6 +124,59 @@ struct MarkMealDoneIntent: AppIntent {
     }
 }
 
+/// Takes back what was marked for a meal — eaten or skipped — so it is open again: the undo of the
+/// widget's "Eaten" button, from a row of Today's Meals. Not offered in Shortcuts.
+struct UnmarkMealIntent: AppIntent {
+    nonisolated static let title: LocalizedStringResource = "intent.unmark.title"
+    nonisolated static var description: IntentDescription { IntentDescription("intent.unmark.description") }
+    nonisolated static var isDiscoverable: Bool { false }
+
+    @Parameter(title: "intent.parameter.meal")
+    var meal: MealOccurrenceEntity?
+
+    nonisolated init() {}
+
+    init(meal: MealOccurrenceEntity) {
+        self.meal = meal
+    }
+
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        let store = MealPlanStore.live()
+        guard let meal, let key = OccurrenceKey(meal.id), store.occurrence(for: key) != nil else {
+            return .result()
+        }
+        try store.clearMealState(key)
+        // A first meal marked late may have moved the day; taking the mark back moves it home, and
+        // its reminders with it, before this process is suspended.
+        await store.remindersSettled()
+        return .result()
+    }
+}
+
+/// "I'm up" on the widget and in Control Center: the day starts now, recorded as coming from the
+/// widget (`DayStart.Source.widget`). Quiet — the widget redraws with the new times, which says
+/// more than a dialog could — and not offered in Shortcuts, where `StartDayIntent` answers.
+struct WidgetStartDayIntent: AppIntent {
+    nonisolated static let title: LocalizedStringResource = "intent.widgetStartDay.title"
+    nonisolated static var description: IntentDescription { IntentDescription("intent.widgetStartDay.description") }
+    nonisolated static var isDiscoverable: Bool { false }
+
+    nonisolated init() {}
+
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        let store = MealPlanStore.live()
+        let today = CalendarDay.today()
+        guard store.activePlan != nil, store.settings.smartMealTimes, let schedule = store.schedule, !schedule.meals(on: today).isEmpty else {
+            return .result()
+        }
+        try store.startDay(.wokeUp(at: TimeOfDay(.now), source: .widget), on: today)
+        await store.remindersSettled()
+        return .result()
+    }
+}
+
 /// The day starts now: today's first meal half an hour from now and the rest laid out after it
 /// (`DayShift`). Made for a Shortcuts automation that runs when the morning alarm is stopped, so a
 /// late morning moves the day without opening the app.

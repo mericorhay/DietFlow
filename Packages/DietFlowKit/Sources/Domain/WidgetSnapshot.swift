@@ -18,7 +18,7 @@ public enum WidgetAccent: String, Codable, CaseIterable, Sendable {
 
 /// The tone of a Home Screen widget's background.
 public enum WidgetBackgroundStyle: String, Codable, CaseIterable, Sendable {
-    /// White in Light Mode, black in Dark Mode: what widgets look like by default.
+    /// White in Light Mode, a dark grey in Dark Mode: what widgets look like by default.
     case system
     /// A light wash of the chosen colour.
     case soft
@@ -26,6 +26,121 @@ public enum WidgetBackgroundStyle: String, Codable, CaseIterable, Sendable {
     case bold
     /// Dark at any time of day.
     case dark
+}
+
+/// An sRGB colour as plain numbers, so the widget's colours can be checked for contrast in tests
+/// that know nothing of SwiftUI.
+public struct WidgetRGB: Hashable, Sendable {
+    public let red: Double
+    public let green: Double
+    public let blue: Double
+
+    public init(red: Double, green: Double, blue: Double) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+    }
+
+    /// 0xRRGGBB.
+    public init(hex: UInt32) {
+        self.init(
+            red: Double((hex >> 16) & 0xFF) / 255,
+            green: Double((hex >> 8) & 0xFF) / 255,
+            blue: Double(hex & 0xFF) / 255
+        )
+    }
+
+    public static let white = WidgetRGB(hex: 0xFFFFFF)
+    public static let black = WidgetRGB(hex: 0x000000)
+
+    /// This colour drawn at `opacity` over `background`.
+    public func over(_ background: WidgetRGB, opacity: Double) -> WidgetRGB {
+        WidgetRGB(
+            red: red * opacity + background.red * (1 - opacity),
+            green: green * opacity + background.green * (1 - opacity),
+            blue: blue * opacity + background.blue * (1 - opacity)
+        )
+    }
+
+    /// WCAG relative luminance.
+    public var luminance: Double {
+        func linear(_ channel: Double) -> Double {
+            channel <= 0.04045 ? channel / 12.92 : pow((channel + 0.055) / 1.055, 2.4)
+        }
+        return 0.2126 * linear(red) + 0.7152 * linear(green) + 0.0722 * linear(blue)
+    }
+
+    /// WCAG contrast ratio, 1 to 21. Body text needs 4.5.
+    public func contrast(with other: WidgetRGB) -> Double {
+        let lighter = max(luminance, other.luminance)
+        let darker = min(luminance, other.luminance)
+        return (lighter + 0.05) / (darker + 0.05)
+    }
+}
+
+/// The colours one accent is drawn in. The system's own orange, teal or green are too light for
+/// small words on white, so words and marks use a deeper "ink" of the same hue, and the Bold
+/// background is a gradient deep enough for white text from top to bottom.
+public struct WidgetPalette: Hashable, Sendable {
+    /// The colour itself in Light and Dark Mode: swatches, washes, the Soft background.
+    public let light: WidgetRGB
+    public let dark: WidgetRGB
+    /// Words and small marks in the accent on System, Soft and Dark backgrounds.
+    public let inkLight: WidgetRGB
+    public let inkDark: WidgetRGB
+    /// The Bold background, top to bottom.
+    public let boldTop: WidgetRGB
+    public let boldBottom: WidgetRGB
+
+    /// How strongly the colour is laid over the background for Soft, and again for a chip or the
+    /// highlighted meal.
+    public static let washOpacity = 0.16
+    /// System in Light Mode, and in Dark Mode: not black, the grey iOS draws widgets on.
+    public static let lightBackground = WidgetRGB.white
+    public static let darkBackground = WidgetRGB(hex: 0x1C1C1E)
+    /// The Dark background, the same at any time of day.
+    public static let darkStyleBackground = WidgetRGB(hex: 0x121214)
+    /// How much white secondary words keep on Bold.
+    public static let boldSecondaryOpacity = 0.9
+    /// The chip and the highlighted meal on Bold: a shade, not a tint, so white stays readable.
+    public static let boldShadeOpacity = 0.2
+
+    public init(light: UInt32, dark: UInt32, inkLight: UInt32, inkDark: UInt32, boldTop: UInt32, boldBottom: UInt32) {
+        self.light = WidgetRGB(hex: light)
+        self.dark = WidgetRGB(hex: dark)
+        self.inkLight = WidgetRGB(hex: inkLight)
+        self.inkDark = WidgetRGB(hex: inkDark)
+        self.boldTop = WidgetRGB(hex: boldTop)
+        self.boldBottom = WidgetRGB(hex: boldBottom)
+    }
+}
+
+extension WidgetAccent {
+    /// Checked in `WidgetPaletteTests`: every word drawn in these reaches 4.5:1 on every background.
+    public var palette: WidgetPalette {
+        switch self {
+        case .terracotta:
+            WidgetPalette(light: 0xB94634, dark: 0xE06A55, inkLight: 0x983726, inkDark: 0xF59A86, boldTop: 0xB94634, boldBottom: 0x8E3426)
+        case .orange:
+            WidgetPalette(light: 0xFF9500, dark: 0xFF9F0A, inkLight: 0x9F3E09, inkDark: 0xFFA94D, boldTop: 0xAE480A, boldBottom: 0x7F3305)
+        case .red:
+            WidgetPalette(light: 0xFF3B30, dark: 0xFF453A, inkLight: 0xB01D17, inkDark: 0xFF7A70, boldTop: 0xC8221B, boldBottom: 0x931510)
+        case .pink:
+            WidgetPalette(light: 0xFF2D55, dark: 0xFF375F, inkLight: 0xA81450, inkDark: 0xFF7A9C, boldTop: 0xC2185B, boldBottom: 0x8C0F40)
+        case .purple:
+            WidgetPalette(light: 0xAF52DE, dark: 0xBF5AF2, inkLight: 0x82339F, inkDark: 0xD59BFF, boldTop: 0x8E3BB8, boldBottom: 0x62257F)
+        case .indigo:
+            WidgetPalette(light: 0x5856D6, dark: 0x5E5CE6, inkLight: 0x4542B8, inkDark: 0x9D9BFF, boldTop: 0x4B48C8, boldBottom: 0x312EA0)
+        case .blue:
+            WidgetPalette(light: 0x007AFF, dark: 0x0A84FF, inkLight: 0x0956B5, inkDark: 0x66AFFF, boldTop: 0x0A5DC2, boldBottom: 0x073F87)
+        case .teal:
+            WidgetPalette(light: 0x30B0C7, dark: 0x40C8E0, inkLight: 0x0A6676, inkDark: 0x5FD4EA, boldTop: 0x0B6F80, boldBottom: 0x064B57)
+        case .green:
+            WidgetPalette(light: 0x34C759, dark: 0x30D158, inkLight: 0x166A2C, inkDark: 0x4FD97A, boldTop: 0x1B7A35, boldBottom: 0x0F5222)
+        case .graphite:
+            WidgetPalette(light: 0x3A3A3C, dark: 0xAEAEB2, inkLight: 0x1C1C1E, inkDark: 0xF2F2F7, boldTop: 0x3D3D40, boldBottom: 0x1F1F21)
+        }
+    }
 }
 
 /// What the person chose on the Widgets tab. Applies to every widget.
@@ -40,11 +155,17 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
     public var energyUnit: EnergyUnit
     /// How long a meal stays in front after its time before the next one takes its place.
     public var mealWindowMinutes: Int
-    /// Whether the medium and large widgets carry a Done button. Off by default: meals move on
-    /// by themselves, and ticking them off is for those who like to.
+    /// Whether the widgets carry an "Eaten" button. On by default, as in `AppSettings`: ticking a
+    /// meal off where it is shown is the quickest way to move on, and meals still move on by
+    /// themselves for those who never tap it.
     public var showDoneButton: Bool
     public var accent: WidgetAccent
     public var background: WidgetBackgroundStyle
+    /// Whether a late start can move the day (`AppSettings.smartMealTimes`): the widget offers
+    /// "I'm up" only then.
+    public var smartMealTimes: Bool
+    /// Lock Screen widgets keep meal names out of sight until the iPhone is unlocked.
+    public var hidesMealNamesWhenLocked: Bool
 
     public init(
         showCalories: Bool = false,
@@ -52,9 +173,11 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
         showCompletedMeals: Bool = true,
         energyUnit: EnergyUnit = .kilocalories,
         mealWindowMinutes: Int = WidgetPreferences.defaultWindowMinutes,
-        showDoneButton: Bool = false,
+        showDoneButton: Bool = true,
         accent: WidgetAccent = .terracotta,
-        background: WidgetBackgroundStyle = .system
+        background: WidgetBackgroundStyle = .system,
+        smartMealTimes: Bool = true,
+        hidesMealNamesWhenLocked: Bool = false
     ) {
         self.showCalories = showCalories
         self.showFollowingMeal = showFollowingMeal
@@ -64,6 +187,8 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
         self.showDoneButton = showDoneButton
         self.accent = accent
         self.background = background
+        self.smartMealTimes = smartMealTimes
+        self.hidesMealNamesWhenLocked = hidesMealNamesWhenLocked
     }
 
     /// Between a quarter of an hour and four hours, whatever was stored.
@@ -88,6 +213,8 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
         // A colour or tone this version does not know — written by a newer one — falls back to the default.
         accent = (try? container.decodeIfPresent(WidgetAccent.self, forKey: .accent)) ?? defaults.accent
         background = (try? container.decodeIfPresent(WidgetBackgroundStyle.self, forKey: .background)) ?? defaults.background
+        smartMealTimes = (try? container.decodeIfPresent(Bool.self, forKey: .smartMealTimes)) ?? defaults.smartMealTimes
+        hidesMealNamesWhenLocked = (try? container.decodeIfPresent(Bool.self, forKey: .hidesMealNamesWhenLocked)) ?? defaults.hidesMealNamesWhenLocked
     }
 }
 

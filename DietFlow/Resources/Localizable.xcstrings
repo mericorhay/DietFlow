@@ -961,6 +961,102 @@
         }
       }
     },
+    "intent.unmark.description" : {
+      "comment" : "App Intent description (Shortcuts) for taking back the mark on a meal.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takes back a meal marked eaten or skipped, so it’s open again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quita la marca de una comida hecha u omitida para que vuelva a estar pendiente."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedim ya da atlandı olarak işaretlenen bir öğünü geri alır; öğün yeniden açık olur."
+          }
+        }
+      }
+    },
+    "intent.unmark.title" : {
+      "comment" : "App Intent title (Shortcuts): takes back the mark on a meal so it is open again.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark Meal Not Eaten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcar comida como no hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğünü Yemedim Olarak İşaretle"
+          }
+        }
+      }
+    },
+    "intent.widgetStartDay.description" : {
+      "comment" : "App Intent description of the widget's 'I'm up' button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts today from now: the first meal in half an hour, the rest of the day after it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empieza el día desde ahora: la primera comida en media hora y el resto detrás."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünü şimdiden başlatır: ilk öğün yarım saat sonra, günün geri kalanı arkasından."
+          }
+        }
+      }
+    },
+    "intent.widgetStartDay.title" : {
+      "comment" : "App Intent title of the widget's and Control Center's 'I'm up' button: the day starts now and today's meals move later.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I’m Up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya me levanté"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyandım"
+          }
+        }
+      }
+    },
     "plus.allowance.message" : {
       "comment" : "Alert message under that title. %@ is the date the allowance comes back (\"16 November\").",
       "extractionState" : "manual",

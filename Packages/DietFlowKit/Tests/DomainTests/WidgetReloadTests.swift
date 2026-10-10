@@ -38,8 +38,10 @@ struct WidgetReloadTests {
 
     @Test func whenTheMomentsRunOutBeforeTheReloadItIsAskedForSooner() {
         let now = TimeOfDay(hour: 7, minute: 0).date(on: start, in: zone)
-        // A cap low enough to be reached within the morning.
-        let limit = 20
+        // A cap low enough to be reached within the morning. A meal brings four moments at most
+        // (soon, a quarter of an hour before, its time, the end of its window), so this is lower
+        // than when the countdown took one every five minutes.
+        let limit = 10
         let moments = WidgetTimelineBuilder.moments(for: snapshot(mealsPerDay: 5, generatedAt: now), from: now, timeZone: zone, limit: limit)
         let reload = WidgetTimelineBuilder.reloadDate(after: moments, from: now, limit: limit)
 

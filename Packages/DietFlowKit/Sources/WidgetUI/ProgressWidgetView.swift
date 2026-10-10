@@ -15,7 +15,7 @@ public enum MealWidgetKind: String, CaseIterable, Sendable {
 
     public var families: [WidgetFamily] {
         switch self {
-        case .nextMeal: [.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline]
+        case .nextMeal: [.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline, .accessoryCircular]
         case .today: [.systemMedium, .systemLarge]
         case .progress: [.systemSmall, .accessoryCircular]
         }
@@ -34,39 +34,75 @@ extension WidgetDayContent {
     }
 }
 
-/// A ring that fills as the day's meals go by.
-struct WidgetProgressRing: View {
-    let done: Int
-    let total: Int
+/// How each meal of the day colours its part of a ring or bar: eaten in full colour, skipped or
+/// missed faded, the one on now half way, and what is still ahead as the track.
+struct WidgetSegmentStyle {
+    let theme: WidgetTheme
+
+    func color(_ role: MealRole) -> Color {
+        switch role {
+        case .done: theme.tint
+        case .skipped, .past: theme.tint.opacity(0.4)
+        case .current: theme.tint.opacity(0.65)
+        case .next, .upcoming: Color.primary.opacity(0.12)
+        }
+    }
+}
+
+/// A ring with one segment per meal of the day, filling as the meals go by.
+struct WidgetSegmentedRing<Center: View>: View {
+    let schedule: [WidgetMealItem]
     var lineWidth: CGFloat = 6
+    @ViewBuilder let center: Center
     @Environment(\.widgetTheme) private var theme
 
-    private var fraction: Double {
-        total > 0 ? min(Double(done) / Double(total), 1) : 0
-    }
-
     var body: some View {
+        let count = schedule.count
+        // Room between segments for their round ends, less as there are more of them.
+        let gap = count > 1 ? min(0.03, 0.25 / Double(count)) : 0
+        let style = WidgetSegmentStyle(theme: theme)
         ZStack {
-            Circle()
-                .stroke(theme.tint.opacity(0.22), lineWidth: lineWidth)
-            Circle()
-                .trim(from: 0, to: fraction)
-                .stroke(theme.tint, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
-                .rotationEffect(.degrees(-90))
-                .widgetAccentable()
-            Image(systemName: fraction >= 1 ? "checkmark" : "fork.knife")
-                .font(.footnote.weight(.bold))
-                .foregroundStyle(theme.tint)
-                .widgetAccentable()
+            if schedule.isEmpty {
+                Circle()
+                    .stroke(Color.primary.opacity(0.12), lineWidth: lineWidth)
+            }
+            ForEach(Array(schedule.enumerated()), id: \.offset) { index, item in
+                Circle()
+                    .trim(from: Double(index) / Double(count) + gap, to: Double(index + 1) / Double(count) - gap)
+                    .stroke(style.color(item.role), style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                    .widgetAccentable(item.role == .done)
+            }
+            center
         }
         .padding(lineWidth / 2)
+    }
+}
+
+/// The same day as a bar of segments, for a bottom line.
+struct WidgetMealBar: View {
+    let schedule: [WidgetMealItem]
+    @Environment(\.widgetTheme) private var theme
+
+    var body: some View {
+        let style = WidgetSegmentStyle(theme: theme)
+        HStack(spacing: 3) {
+            ForEach(schedule) { item in
+                Capsule()
+                    .fill(style.color(item.role))
+                    .widgetAccentable(item.role == .done)
+            }
+        }
         .accessibilityHidden(true)
     }
 }
 
-/// Day Progress, small: how many of today's meals are behind, and the one in front.
-struct ProgressWidgetView: View {
+/// Day Progress, small: the day's meals as a ring that fills as they go by, how many are behind,
+/// and the one in front on a line of its own.
+struct ProgressWidgetView<Action: View>: View {
     let entry: MealWidgetEntry
+    let actions: WidgetActions<Action>
+    @Environment(\.widgetTheme) private var theme
 
     var body: some View {
         if let message = WidgetMessageView.view(for: entry.content) {
@@ -74,7 +110,7 @@ struct ProgressWidgetView: View {
         } else if case .active(let day) = entry.content {
             if day.schedule.isEmpty {
                 // Nothing today: the meal the plan has next says more than an empty ring.
-                SmallMealWidgetView(entry: entry)
+                SmallMealWidgetView(entry: entry, actions: actions)
             } else {
                 progress(day)
             }
@@ -82,33 +118,38 @@ struct ProgressWidgetView: View {
     }
 
     private func progress(_ day: WidgetDayContent) -> some View {
-        VStack(alignment: .leading, spacing: AppSpacing.xxSmall) {
-            HStack(spacing: AppSpacing.small) {
-                WidgetProgressRing(done: day.mealsBehind, total: day.schedule.count)
-                    .frame(width: 46, height: 46)
-                VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 4) {
+            WidgetSegmentedRing(schedule: day.schedule, lineWidth: 7) {
+                if day.isDayComplete {
+                    Image(systemName: "checkmark")
+                        .font(.title3.weight(.bold))
+                        .foregroundStyle(theme.success)
+                        .widgetAccentable()
+                } else {
                     Text(verbatim: "\(day.mealsBehind.formatted())/\(day.schedule.count.formatted())")
-                        .font(.title2.weight(.bold))
+                        .font(.system(.title3, design: .rounded).weight(.bold))
                         .monospacedDigit()
                         .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                    Text("widget.progress.caption", bundle: .module)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
                 }
             }
+            .frame(width: 62, height: 62)
+            Text(WidgetText.mealsSoFar(day.mealsBehind, of: day.schedule.count))
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
             Spacer(minLength: 0)
             if let primary = day.primary, let lead = day.lead {
-                WidgetLeadLabel(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
-                Text(verbatim: WidgetText.inline(primary))
+                WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
+                Text(primary.title)
                     .font(.footnote.weight(.semibold))
                     .lineLimit(1)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(accessibilityLabel(day))
+        .accessibilityLabel(Text(verbatim: accessibilityLabel(day)))
     }
 
     private func accessibilityLabel(_ day: WidgetDayContent) -> String {
