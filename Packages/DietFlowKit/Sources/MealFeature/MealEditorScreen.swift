@@ -90,9 +90,20 @@ public struct MealEditorScreen: View {
                 numberRow(label: "meal.nutrition.carbohydrates", unit: UnitMass.grams.symbol, value: $draft.carbohydrates, decimals: true)
                 numberRow(label: "meal.nutrition.fat", unit: UnitMass.grams.symbol, value: $draft.fat, decimals: true)
             } header: {
-                Text("meal.section.nutrition", bundle: .module)
+                HStack(alignment: .firstTextBaseline) {
+                    Text("meal.section.nutrition", bundle: .module)
+                    Spacer(minLength: AppSpacing.xSmall)
+                    if keepsEstimate {
+                        AssistantMark(.estimated)
+                            .textCase(nil)
+                    }
+                }
             } footer: {
-                Text("meal.editor.nutritionFooter", bundle: .module)
+                if keepsEstimate {
+                    Text("meal.editor.estimatedFooter", bundle: .module)
+                } else {
+                    Text("meal.editor.nutritionFooter", bundle: .module)
+                }
             }
 
             Section {
@@ -180,6 +191,17 @@ public struct MealEditorScreen: View {
         return false
     }
 
+    /// The meal as it was before this edit; nil for a new one.
+    private var original: Meal? {
+        if case .edit(let meal) = mode { return meal }
+        return nil
+    }
+
+    /// The figures on screen are still the assistant's estimate, untouched.
+    private var keepsEstimate: Bool {
+        draft.keepsEstimate(of: original)
+    }
+
     private func numberRow(label: LocalizedStringKey, unit: String, value: Binding<Double?>, decimals: Bool) -> some View {
         LabeledContent {
             HStack(spacing: AppSpacing.xxSmall) {
@@ -230,8 +252,6 @@ public struct MealEditorScreen: View {
     }
 
     private func save() {
-        var original: Meal?
-        if case .edit(let meal) = mode { original = meal }
         let meal = draft.meal(replacing: original)
         withAppAnimation(AppMotion.settle, reduceMotion: reduceMotion) {
             if isNew {
@@ -290,23 +310,58 @@ struct MealDraft {
         reminder = meal.reminder
     }
 
-    func meal(replacing original: Meal?) -> Meal {
-        let clock = Calendar.current.dateComponents([.hour, .minute], from: time)
+    /// The four numbers as typed, with grams outside what a meal can hold left out.
+    private var typedNutrition: Nutrition {
         func grams(_ value: Double?) -> Double? {
             value.flatMap { Nutrition.gramRange.contains($0) ? $0 : nil }
         }
-        return Meal(
-            id: original?.id ?? UUID(),
-            dayIndex: dayIndex,
-            type: type,
-            customTypeName: type == .other ? customTypeName.trimmedNonEmpty : nil,
-            time: TimeOfDay(hour: clock.hour ?? 12, minute: clock.minute ?? 0),
-            title: title.trimmingCharacters(in: .whitespacesAndNewlines),
-            details: details.trimmedNonEmpty,
-            portion: portion.trimmedNonEmpty,
-            nutrition: Nutrition(calories: calories, protein: grams(protein), carbohydrates: grams(carbohydrates), fat: grams(fat)),
-            notes: notes.trimmedNonEmpty,
-            reminder: reminder
-        )
+        return Nutrition(calories: calories, protein: grams(protein), carbohydrates: grams(carbohydrates), fat: grams(fat))
+    }
+
+    /// Whether `original`'s figures are the assistant's estimate and the person left all four
+    /// numbers as they were. Changing any of them makes the figures theirs: what the person types
+    /// wins over an estimate.
+    func keepsEstimate(of original: Meal?) -> Bool {
+        guard let original, original.nutrition.isEstimated else { return false }
+        let typed = typedNutrition
+        let stated = original.nutrition
+        return typed.calories == stated.calories
+            && Self.same(typed.protein, stated.protein)
+            && Self.same(typed.carbohydrates, stated.carbohydrates)
+            && Self.same(typed.fat, stated.fat)
+    }
+
+    /// Grams the field shows to one decimal can come back a hair different without anyone typing.
+    private static func same(_ lhs: Double?, _ rhs: Double?) -> Bool {
+        switch (lhs, rhs) {
+        case (nil, nil): true
+        case let (left?, right?): abs(left - right) < 0.06
+        default: false
+        }
+    }
+
+    /// The meal to store. An edit starts from `original`, so whatever the form does not show stays
+    /// as it was; the form's fields replace theirs.
+    func meal(replacing original: Meal?) -> Meal {
+        let clock = Calendar.current.dateComponents([.hour, .minute], from: time)
+        let clockTime = TimeOfDay(hour: clock.hour ?? 12, minute: clock.minute ?? 0)
+        let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        var meal = original ?? Meal(dayIndex: dayIndex, type: type, time: clockTime, title: trimmedTitle)
+        meal.dayIndex = max(0, dayIndex)
+        meal.type = type
+        meal.customTypeName = type == .other ? customTypeName.trimmedNonEmpty : nil
+        meal.time = clockTime
+        meal.title = trimmedTitle
+        meal.details = details.trimmedNonEmpty
+        meal.portion = portion.trimmedNonEmpty
+        if let original, keepsEstimate(of: original) {
+            // Untouched, the estimate stays exactly as it came, still marked as one.
+            meal.nutrition = original.nutrition
+        } else {
+            meal.nutrition = typedNutrition
+        }
+        meal.notes = notes.trimmedNonEmpty
+        meal.reminder = reminder
+        return meal
     }
 }

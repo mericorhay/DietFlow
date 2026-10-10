@@ -97,6 +97,30 @@
         }
       }
     },
+    "plan.day.today" : {
+      "comment" : "Header of today's day on the Plan tab. %@ is the day's usual header, e.g. 'Day 3 · Tuesday, October 6'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today · %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy · %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün · %@"
+          }
+        }
+      }
+    },
     "plan.delete.confirm" : {
       "comment" : "Destructive button confirming plan deletion. Two words.",
       "extractionState" : "manual",
@@ -241,6 +265,534 @@
         }
       }
     },
+    "plan.estimate.costLeft" : {
+      "comment" : "Badge on 'Add Nutrition to N Meals': the whole plan costs one assistant use; %lld uses are left this month.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 AI use for the whole plan · %lld left this month"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 AI use for the whole plan · %lld left this month"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 uso del asistente para todo el plan · te quedan %lld este mes"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 uso del asistente para todo el plan · te queda %lld este mes"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 uso del asistente para todo el plan · te quedan %lld este mes"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Tüm plan için 1 asistan hakkı · bu ay %lld hakkın kaldı"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Tüm plan için 1 asistan hakkı · bu ay %lld hakkın kaldı"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "plan.estimate.costOne" : {
+      "comment" : "Badge on 'Add Nutrition to N Meals' when plenty of uses are left: the whole plan costs one assistant use.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 AI use for the whole plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 uso del asistente para todo el plan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm plan için 1 asistan hakkı"
+          }
+        }
+      }
+    },
+    "plan.estimate.costPlus" : {
+      "comment" : "Badge on 'Add Nutrition to N Meals' when this month's free assistant uses are used up. Tapping explains DietFlow Plus.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free uses used up · More with Plus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usos gratis agotados · Más con Plus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz hakların bitti · Plus ile daha fazlası"
+          }
+        }
+      }
+    },
+    "plan.estimate.dismiss" : {
+      "comment" : "VoiceOver label of the close button on the nutrition estimate's result on the Plan tab.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        }
+      }
+    },
+    "plan.estimate.failed.busy" : {
+      "comment" : "Shown on the Plan tab when the assistant had too many requests. The allowance was not used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant is busy right now. Nothing was counted."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente está ocupado ahora mismo. No se ha descontado nada."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan şu an çok yoğun. Hakkından bir şey düşülmedi."
+          }
+        }
+      }
+    },
+    "plan.estimate.failed.dailyLimit" : {
+      "comment" : "Shown on the Plan tab when this phone reached the assistant's daily limit. The allowance was not used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That's all the assistant can do from this iPhone today. Nothing was counted."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente no puede hacer más desde este iPhone por hoy. No se ha descontado nada."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan bugün bu iPhone için daha fazlasını yapamıyor. Hakkından bir şey düşülmedi."
+          }
+        }
+      }
+    },
+    "plan.estimate.failed.offline" : {
+      "comment" : "Shown on the Plan tab when the plan's estimate failed for lack of a connection. The allowance was not used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You seem to be offline. Nothing was counted."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parece que no tienes conexión. No se ha descontado nada."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnternete bağlı değilsin gibi görünüyor. Hakkından bir şey düşülmedi."
+          }
+        }
+      }
+    },
+    "plan.estimate.failed.other" : {
+      "comment" : "Shown on the Plan tab when the assistant could not estimate the plan. The allowance was not used.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant couldn't estimate this plan. Nothing was counted."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente no pudo estimar este plan. No se ha descontado nada."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan bu planı tahmin edemedi. Hakkından bir şey düşülmedi."
+          }
+        }
+      }
+    },
+    "plan.estimate.finished" : {
+      "comment" : "Shown on the Plan tab when the assistant has filled in nutrition. %lld is the number of meals.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Added nutrition to %lld meal."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Added nutrition to %lld meals."
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Se añadió la nutrición a %lld comidas."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Se añadió la nutrición a %lld comida."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Se añadió la nutrición a %lld comidas."
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld öğüne besin değerleri eklendi."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld öğüne besin değerleri eklendi."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "plan.estimate.finishedDetail" : {
+      "comment" : "Line under 'Added nutrition to N meals.'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimates are marked ≈. Tap a meal to see them."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las estimaciones llevan ≈. Toca una comida para verlas."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tahminler ≈ ile işaretli. Görmek için bir öğüne dokun."
+          }
+        }
+      }
+    },
+    "plan.estimate.retry" : {
+      "comment" : "Button under a failed nutrition estimate on the Plan tab. Title Case.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Again"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden Dene"
+          }
+        }
+      }
+    },
+    "plan.estimate.running" : {
+      "comment" : "Shown on the Plan tab while the assistant estimates the plan's nutrition. %lld is the number of distinct dishes.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "The assistant is reading %lld dish…"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "The assistant is reading %lld dishes…"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "El asistente está leyendo %lld platos…"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "El asistente está leyendo %lld plato…"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "El asistente está leyendo %lld platos…"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Asistan %lld yemeği inceliyor…"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Asistan %lld yemeği inceliyor…"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "plan.estimate.runningDetail" : {
+      "comment" : "Line under 'The assistant is reading N dishes…'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each meal fills in when it's ready, marked ≈."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada comida se completa cuando está lista, marcada con ≈."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her öğün hazır olunca ≈ işaretiyle dolar."
+          }
+        }
+      }
+    },
+    "plan.estimate.subtitle" : {
+      "comment" : "Line under 'Add Nutrition to N Meals' on the Plan tab.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant works out calories and macros from each meal's description. Your plan's own numbers stay as they are."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente calcula las calorías y los macros a partir de la descripción de cada comida. Los números de tu plan no cambian."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan her öğünün açıklamasından kalori ve makroları hesaplar. Planındaki değerlere dokunulmaz."
+          }
+        }
+      }
+    },
+    "plan.estimate.title" : {
+      "comment" : "Title of the assistant card on the Plan tab: the assistant works out calories and macros for every meal without them. Title Case.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Add Nutrition to %lld Meal"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Add Nutrition to %lld Meals"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Añadir nutrición a %lld comidas"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Añadir nutrición a %lld comida"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Añadir nutrición a %lld comidas"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Öğüne Besin Değerlerini Ekle"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Öğüne Besin Değerlerini Ekle"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "plan.meal.delete" : {
       "comment" : "Swipe action that deletes a meal from the plan. One word.",
       "extractionState" : "manual",
@@ -285,6 +837,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamamlandı"
+          }
+        }
+      }
+    },
+    "plan.meal.meta" : {
+      "comment" : "Line above a meal's name on the Plan tab: %1$@ is the time, %2$@ the sitting (Breakfast).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "plan.meal.moved" : {
+      "comment" : "Line under a meal on the Plan tab when the day started late and the meal moved. %@ is the time the plan gives.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moved from %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movida · en el plan a las %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydırıldı · planda %@"
           }
         }
       }
@@ -626,7 +1226,7 @@
       }
     },
     "plan.summary.ended" : {
-      "comment" : "Under the plan's name after a plan that does not repeat has finished. %@ is a date such as 'October 4'.",
+      "comment" : "Under the plan's name on the Plan tab, after the plan's last day. %@ is a date like 'October 20'.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -644,7 +1244,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ tarihinde bitti"
+            "value" : "Bitiş: %@"
           }
         }
       }
@@ -722,7 +1322,7 @@
       }
     },
     "plan.summary.starts" : {
-      "comment" : "Under the plan's name before it begins. %@ is a date such as 'Monday, October 12'.",
+      "comment" : "Under the plan's name on the Plan tab, before the plan starts. %@ is a date like 'Monday, October 12'.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -740,7 +1340,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ başlıyor"
+            "value" : "Başlangıç: %@"
           }
         }
       }
