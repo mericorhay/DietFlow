@@ -40,21 +40,34 @@ struct NextMealSection: View {
     @State private var isRecipeKept = false
 
     var body: some View {
+        ZStack(alignment: .topLeading) {
+            // A hidden link makes the hero open the meal, the way timeline rows do: inside a List a
+            // visible link would take over the whole row and add a second chevron. The buttons
+            // below keep their own taps.
+            NavigationLink(value: MealRoute.occurrence(occurrence.key)) { EmptyView() }
+                .opacity(0)
+                .accessibilityHidden(true)
+            content
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .id(occurrence.key)
+        .transition(.asymmetric(insertion: .opacity.combined(with: .offset(y: 8)), removal: .opacity))
+        .task(id: occurrence.key) { checkRecipe() }
+    }
+
+    private var content: some View {
         VStack(alignment: .leading, spacing: AppSpacing.small) {
-            NavigationLink(value: MealRoute.occurrence(occurrence.key)) {
-                summary
-                    .accessibilityElement(children: .combine)
-            }
-            .buttonStyle(.plain)
-            .accessibilityAddTraits(.isHeader)
-            .accessibilityActions {
-                if let onDone {
-                    Button(action: onDone) { Text("today.hero.markDone", bundle: .module) }
+            summary
+                .accessibilityElement(children: .combine)
+                .accessibilityAddTraits([.isHeader, .isButton])
+                .accessibilityActions {
+                    if let onDone {
+                        Button(action: onDone) { Text("today.hero.markDone", bundle: .module) }
+                    }
+                    if let onSkip {
+                        Button(action: onSkip) { Text("today.hero.skip", bundle: .module) }
+                    }
                 }
-                if let onSkip {
-                    Button(action: onSkip) { Text("today.hero.skip", bundle: .module) }
-                }
-            }
 
             if onDone != nil || onSkip != nil {
                 markButtons
@@ -67,10 +80,6 @@ struct NextMealSection: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .id(occurrence.key)
-        .transition(.asymmetric(insertion: .opacity.combined(with: .offset(y: 8)), removal: .opacity))
-        .task(id: occurrence.key) { checkRecipe() }
-        .onAppear { checkRecipe() }
     }
 
     // MARK: Summary
@@ -198,7 +207,7 @@ struct NextMealSection: View {
                     GeometryReader { proxy in
                         Capsule()
                             .fill(AppColors.brandAccent)
-                            .frame(width: max(6, proxy.size.width * fraction))
+                            .frame(width: max(6, proxy.size.width * CGFloat(fraction)))
                     }
                 }
                 .frame(maxWidth: 140)

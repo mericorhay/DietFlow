@@ -214,7 +214,7 @@ struct PlannedTodayCard: View {
             Circle()
                 .stroke(AppColors.brandAccent.opacity(0.18), lineWidth: 8)
             Circle()
-                .trim(from: 0, to: fraction)
+                .trim(from: 0, to: CGFloat(fraction))
                 .stroke(AppColors.brandAccent, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                 .rotationEffect(.degrees(-90))
             Image(systemName: "fork.knife")
@@ -273,7 +273,7 @@ struct PlannedTodayCard: View {
                     GeometryReader { proxy in
                         Capsule()
                             .fill(AppColors.brandAccent)
-                            .frame(width: proxy.size.width * figure.fraction)
+                            .frame(width: proxy.size.width * CGFloat(figure.fraction))
                     }
                 }
                 .accessibilityHidden(true)
@@ -444,8 +444,11 @@ struct EstimateCard: View {
                 .buttonBorderShape(.capsule)
                 .tint(AppColors.brandAccent)
                 Button {
+                    // "Not now" here means the offer too: without this the card would turn
+                    // straight back into the offer it just failed on.
                     withAppAnimation(AppMotion.snappy, reduceMotion: reduceMotion) {
                         assistant.dismissPlanEstimate()
+                        store.updateSettings { $0.hasDismissedEstimateCard = true }
                     }
                 } label: {
                     Text("today.estimate.notNow", bundle: .module)
@@ -554,7 +557,12 @@ struct TomorrowCard: View {
     let today: CalendarDay
 
     var body: some View {
-        NavigationLink(value: MealRoute.occurrence(occurrence.key)) {
+        ZStack {
+            // Hidden, as on the timeline: a visible link in a List row would add the system's
+            // chevron next to the card's own.
+            NavigationLink(value: MealRoute.occurrence(occurrence.key)) { EmptyView() }
+                .opacity(0)
+                .accessibilityHidden(true)
             HStack(spacing: AppSpacing.small) {
                 Image(systemName: "moon.stars.fill")
                     .font(.title2)
@@ -587,8 +595,8 @@ struct TomorrowCard: View {
             .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
             .contentShape(RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
             .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isButton)
         }
-        .buttonStyle(.plain)
     }
 
     private var dayName: String {
