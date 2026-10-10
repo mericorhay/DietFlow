@@ -42,6 +42,7 @@ public struct CookModeScreen: View {
     @State private var hasAppliedStartingStep = false
     @State private var didEat = false
     @State private var ateCount = 0
+    @State private var hasClosed = false
     @AppStorage("cook.readsAloud.v1") private var readsAloud = false
 
     /// - Parameters:
@@ -79,7 +80,9 @@ public struct CookModeScreen: View {
             UIApplication.shared.isIdleTimerDisabled = true
         }
         .onDisappear {
+            // However the screen went away, no timer may ring for a meal no longer being cooked.
             UIApplication.shared.isIdleTimerDisabled = false
+            timers.stopAll()
             voice.stop()
         }
         .onChange(of: page) { _, _ in
@@ -584,6 +587,9 @@ public struct CookModeScreen: View {
     }
 
     private func close() {
+        // "I Ate It" closes on its own a moment later; a tap on Close in between must not close twice.
+        guard !hasClosed else { return }
+        hasClosed = true
         timers.stopAll()
         voice.stop()
         onClose()
