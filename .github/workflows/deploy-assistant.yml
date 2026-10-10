@@ -1,0 +1,41 @@
+name: Deploy assistant
+
+# Puts backend/assistant on Cloudflare Workers. Run by hand after a change to the Worker: the app
+# talks to whatever is deployed, so a new endpoint does nothing until this has run.
+#
+# Needs two repository secrets, set once:
+#   CLOUDFLARE_API_TOKEN   a token from dash.cloudflare.com › My Profile › API Tokens, made from the
+#                          "Edit Cloudflare Workers" template
+#   CLOUDFLARE_ACCOUNT_ID  the account id shown on the Workers & Pages overview
+# The Worker's own secrets (APP_TOKEN, OPENAI_API_KEY …) stay in Cloudflare and are not touched.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-assistant
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Test and deploy the Worker
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      # Nothing that fails its tests goes live.
+      - run: node --test backend/assistant/plan.test.mjs backend/assistant/meals.test.mjs
+      - name: Deploy
+        working-directory: backend/assistant
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Set the CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets first."
+            exit 1
+          fi
+          npx --yes wrangler@4 deploy
