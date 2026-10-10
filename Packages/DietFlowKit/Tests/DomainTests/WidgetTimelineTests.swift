@@ -18,12 +18,16 @@ struct WidgetTimelineTests {
         return day
     }
 
-    @Test func changesAtMealTimesWindowEndsCountdownsAndMidnight() {
+    @Test func changesAtMealTimesWindowEndsTheHourBeforeAndMidnight() {
         let dates = Set(WidgetTimelineBuilder.transitionDates(for: snapshot(), from: at(monday, 9), timeZone: utc))
         #expect(dates.contains(at(monday, 10)))
         #expect(dates.contains(at(monday, 11)))
+        // An hour before lunch it is "soon"; a quarter of an hour before, it rises in a Smart Stack.
         #expect(dates.contains(at(monday, 13)))
-        #expect(dates.contains(at(monday, 13, 55)))
+        #expect(dates.contains(at(monday, 13, 45)))
+        // The countdown in between is drawn live by the widget, not one entry every five minutes.
+        #expect(!dates.contains(at(monday, 13, 55)))
+        #expect(!dates.contains(at(monday, 13, 30)))
         #expect(dates.contains(at(monday, 14)))
         #expect(dates.contains(at(monday, 15)))
         #expect(dates.contains(at(monday, 19)))

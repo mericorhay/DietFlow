@@ -1,6 +1,150 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "control.markEaten.description" : {
+      "comment" : "Control Center control: description in the controls gallery.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marks the meal that’s on now, or the next one, as eaten."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca como hecha la comida de ahora o la siguiente."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu anki ya da sıradaki öğünü yedim olarak işaretler."
+          }
+        }
+      }
+    },
+    "control.markEaten.label" : {
+      "comment" : "Control Center control: the label on the button itself. The action of marking a meal eaten.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eaten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comida hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedim"
+          }
+        }
+      }
+    },
+    "control.markEaten.name" : {
+      "comment" : "Control Center control: name in the controls gallery. Marks the meal on now, or the next one, as eaten.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meal Eaten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comida hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedim"
+          }
+        }
+      }
+    },
+    "control.startDay.description" : {
+      "comment" : "Control Center control: description in the controls gallery.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For mornings that start late: today’s meals move to start from now."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para mañanas que empiezan tarde: las comidas de hoy empiezan desde ahora."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geç başlayan sabahlar için: bugünün öğünleri şimdiden başlar."
+          }
+        }
+      }
+    },
+    "control.startDay.label" : {
+      "comment" : "Control Center control: the label on the button itself.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I’m Up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya me levanté"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyandım"
+          }
+        }
+      }
+    },
+    "control.startDay.name" : {
+      "comment" : "Control Center control: name in the controls gallery. Says the person just got up, so today's meals move later.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I’m Up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya me levanté"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyandım"
+          }
+        }
+      }
+    },
     "intent.addMeal.description" : {
       "comment" : "Description of the Add Meal action. One sentence.",
       "extractionState" : "manual",
@@ -817,38 +961,134 @@
         }
       }
     },
-    "widget.nextMeal.description" : {
-      "comment" : "One sentence under the widget's name in the widget gallery, saying what it shows.",
+    "intent.unmark.description" : {
+      "comment" : "App Intent description (Shortcuts) for taking back the mark on a meal.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Shows what to eat now and next, and when."
+            "value" : "Takes back a meal marked eaten or skipped, so it’s open again."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muestra qué comer ahora y a continuación, y a qué hora."
+            "value" : "Quita la marca de una comida hecha u omitida para que vuelva a estar pendiente."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Şimdi ve sırada ne yiyeceğini, saatiyle gösterir."
+            "value" : "Yedim ya da atlandı olarak işaretlenen bir öğünü geri alır; öğün yeniden açık olur."
           }
         }
       }
     },
-    "widget.nextMeal.name" : {
-      "comment" : "Name of the widget in the system's widget gallery. Two or three words.",
+    "intent.unmark.title" : {
+      "comment" : "App Intent title (Shortcuts): takes back the mark on a meal so it is open again.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Next meal"
+            "value" : "Mark Meal Not Eaten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcar comida como no hecha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğünü Yemedim Olarak İşaretle"
+          }
+        }
+      }
+    },
+    "intent.widgetStartDay.description" : {
+      "comment" : "App Intent description of the widget's 'I'm up' button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts today from now: the first meal in half an hour, the rest of the day after it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empieza el día desde ahora: la primera comida en media hora y el resto detrás."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünü şimdiden başlatır: ilk öğün yarım saat sonra, günün geri kalanı arkasından."
+          }
+        }
+      }
+    },
+    "intent.widgetStartDay.title" : {
+      "comment" : "App Intent title of the widget's and Control Center's 'I'm up' button: the day starts now and today's meals move later.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I’m Up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya me levanté"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyandım"
+          }
+        }
+      }
+    },
+    "widget.nextMeal.description" : {
+      "comment" : "Widget gallery: description of the Next Meal widget, under its name. One or two short sentences that make people want it.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your next meal and its time, always in sight. Mark it eaten right from your Home Screen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu próxima comida y su hora, siempre a la vista. Márcala como hecha desde la pantalla de inicio."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıradaki öğünün ve saati hep gözünün önünde. Ana Ekran'dan tek dokunuşla Yedim de."
+          }
+        }
+      }
+    },
+    "widget.nextMeal.name" : {
+      "comment" : "Widget gallery: name of the widget showing the next meal. Same words as the Widgets tab uses for it.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Meal"
           }
         },
         "es" : {
@@ -860,43 +1100,43 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıradaki öğün"
+            "value" : "Sıradaki Öğün"
           }
         }
       }
     },
     "widget.progress.description" : {
-      "comment" : "Description of the Day Progress widget in the widget gallery. One sentence.",
+      "comment" : "Widget gallery: description of the Day Progress widget.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "How far through today’s meals you are, and what comes next."
+            "value" : "A ring that fills as your meals go by, with the next one right underneath."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cuánto llevas de las comidas de hoy y qué viene después."
+            "value" : "Un anillo que se llena con cada comida, con la siguiente justo debajo."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bugünkü öğünlerin neresinde olduğunu ve sırada ne olduğunu gösterir."
+            "value" : "Öğünlerin geçtikçe dolan bir halka; hemen altında sıradaki öğün."
           }
         }
       }
     },
     "widget.progress.name" : {
-      "comment" : "Name of the widget that shows how many of today's meals are behind, in the widget gallery. Two words.",
+      "comment" : "Widget gallery: name of the widget with a ring for the day's meals. Same words as the Widgets tab uses for it.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Day progress"
+            "value" : "Day Progress"
           }
         },
         "es" : {
@@ -908,43 +1148,43 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Günün durumu"
+            "value" : "Günün Durumu"
           }
         }
       }
     },
     "widget.today.description" : {
-      "comment" : "Description of the Today's Meals widget in the widget gallery. One sentence.",
+      "comment" : "Widget gallery: description of the Today's Meals widget.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Every meal of the day in order, with the one that is next marked."
+            "value" : "Your whole day at a glance: what’s on now, what’s next, and how the day is going."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Todas las comidas del día en orden, con la siguiente marcada."
+            "value" : "Todo tu día de un vistazo: lo de ahora, lo siguiente y cómo va el día."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Günün bütün öğünleri sırayla, sıradaki işaretli."
+            "value" : "Bütün günün tek bakışta: şimdi ne var, sırada ne var, gün nasıl gidiyor."
           }
         }
       }
     },
     "widget.today.name" : {
-      "comment" : "Name of the widget that lists the whole day's meals, in the widget gallery. Two or three words.",
+      "comment" : "Widget gallery: name of the widget listing all of today's meals. Same words as the Widgets tab uses for it.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Today’s meals"
+            "value" : "Today’s Meals"
           }
         },
         "es" : {
@@ -956,7 +1196,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bugünün öğünleri"
+            "value" : "Bugünün Öğünleri"
           }
         }
       }

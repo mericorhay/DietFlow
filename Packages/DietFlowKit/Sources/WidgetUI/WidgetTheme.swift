@@ -4,28 +4,40 @@ import WidgetKit
 import DesignSystem
 import Domain
 
-extension WidgetAccent {
-    /// The colour itself, for words and symbols. System colours, so each has a light and a dark
-    /// form and keeps its contrast in both.
-    public var color: Color {
-        switch self {
-        case .terracotta: AppColors.brandAccent
-        case .orange: .orange
-        case .red: .red
-        case .pink: .pink
-        case .purple: .purple
-        case .indigo: .indigo
-        case .blue: .blue
-        case .teal: .teal
-        case .green: .green
-        case .graphite: .primary
-        }
+extension Color {
+    /// One fixed sRGB colour.
+    init(_ rgb: WidgetRGB) {
+        self.init(red: rgb.red, green: rgb.green, blue: rgb.blue)
     }
 
-    /// The colour as a surface: a swatch, or the Bold background. Graphite has to be a fixed grey
-    /// here, since "primary" is white in a dark setting and would vanish under white text.
+    /// One colour in Light Mode and another in Dark Mode, resolved wherever it is drawn — including
+    /// inside a widget forced into Dark Mode by its Bold or Dark background.
+    init(light: WidgetRGB, dark: WidgetRGB) {
+        self.init(uiColor: UIColor { traits in
+            let rgb = traits.userInterfaceStyle == .dark ? dark : light
+            return UIColor(red: rgb.red, green: rgb.green, blue: rgb.blue, alpha: 1)
+        })
+    }
+}
+
+extension WidgetAccent {
+    /// The colour itself, for swatches, washes and the Soft background. Each has a light and a
+    /// dark form (`WidgetPalette`).
+    public var color: Color {
+        Color(light: palette.light, dark: palette.dark)
+    }
+
+    /// The colour as a surface: a swatch, or the Bold background. Graphite is a fixed grey here, so
+    /// white on it reads in any setting.
     public var fill: Color {
-        self == .graphite ? Color(white: 0.24) : color
+        self == .graphite ? Color(palette.boldTop) : color
+    }
+
+    /// Words and small marks in the accent on System, Soft and Dark backgrounds: a deeper form of
+    /// the colour that reaches 4.5:1 there (`WidgetPaletteTests`), where the system's own orange or
+    /// green on white would not.
+    public var ink: Color {
+        Color(light: palette.inkLight, dark: palette.inkDark)
     }
 }
 
@@ -48,15 +60,20 @@ public struct WidgetTheme: Hashable, Sendable {
     /// The app's own look, and what Lock Screen widgets always use.
     public static let standard = WidgetTheme(accent: .terracotta, background: .system)
 
-    /// The line above a meal, the Done button, the status marks: on a Bold background these are
-    /// white, because the colour is already the background.
-    public var tint: Color {
-        background == .bold ? .white : accent.color
+    /// Words and marks in the accent: the lead chip, the time, the status marks, the buttons. On a
+    /// Bold background these are white, because the colour is already the background.
+    public var ink: Color {
+        background == .bold ? .white : accent.ink
     }
 
-    /// The soft patch behind the meal in front.
+    /// The accent for marks that are not words: rings, bars, the check. The same as `ink`, so a
+    /// ring reads as clearly as the words beside it.
+    public var tint: Color { ink }
+
+    /// The patch behind the chip, the meal tile and the meal in front: a wash of the colour, or on
+    /// Bold a shade, which keeps white text readable where a white wash would not.
     public var wash: Color {
-        background == .bold ? Color.white.opacity(0.2) : accent.color.opacity(0.14)
+        background == .bold ? Color.black.opacity(WidgetPalette.boldShadeOpacity) : accent.color.opacity(WidgetPalette.washOpacity)
     }
 
     /// The "day complete" checkmark.
@@ -85,8 +102,36 @@ extension EnvironmentValues {
     }
 }
 
+/// Where a widget view is being drawn, which decides what in it may move or be tapped.
+public enum WidgetRendering: Hashable, Sendable {
+    /// A picture of the widget at one moment of an example day (onboarding): countdowns are worked
+    /// out once, from the entry's own time, and nothing opens anything.
+    case preview
+    /// The widget at the real time, inside the app (the Widgets tab): countdowns run, but taps are
+    /// left to the screen around it.
+    case livePreview
+    /// The real widget, in the widget extension: countdowns run and rows open their meal.
+    case widget
+
+    var usesLiveTime: Bool { self != .preview }
+    var opensLinks: Bool { self == .widget }
+}
+
+private struct WidgetRenderingKey: EnvironmentKey {
+    static let defaultValue = WidgetRendering.preview
+}
+
+extension EnvironmentValues {
+    /// Set to `.widget` by the widget extension and `.livePreview` by the Widgets tab.
+    public var widgetRendering: WidgetRendering {
+        get { self[WidgetRenderingKey.self] }
+        set { self[WidgetRenderingKey.self] = newValue }
+    }
+}
+
 /// Hands the theme to everything inside a Home Screen widget. On a Bold background the text is
-/// white and a little softer white, since the system's greys are tuned for neutral backgrounds.
+/// white, and secondary text a slightly softer white, since the system's greys are tuned for
+/// neutral backgrounds.
 struct WidgetThemed: ViewModifier {
     let theme: WidgetTheme
     let family: WidgetFamily
@@ -109,7 +154,7 @@ struct WidgetThemed: ViewModifier {
             content
                 .environment(\.widgetTheme, theme)
                 .environment(\.colorScheme, .dark)
-                .foregroundStyle(Color.white, Color.white.opacity(0.8))
+                .foregroundStyle(Color.white, Color.white.opacity(WidgetPalette.boldSecondaryOpacity))
         } else if let scheme = theme.colorScheme {
             content
                 .environment(\.widgetTheme, theme)
@@ -129,24 +174,30 @@ public struct WidgetThemeBackground: View {
         theme = WidgetTheme(preferences)
     }
 
+    /// White in Light Mode and, in Dark Mode, the grey iOS draws its own widgets on: pure black
+    /// makes a widget look like a hole in the Home Screen.
+    private var automatic: Color {
+        Color(light: WidgetPalette.lightBackground, dark: WidgetPalette.darkBackground)
+    }
+
     public var body: some View {
         switch theme.background {
         case .system:
-            Color(.systemBackground)
+            automatic
         case .soft:
             ZStack {
-                Color(.systemBackground)
-                theme.accent.color.opacity(0.16)
+                automatic
+                theme.accent.color.opacity(WidgetPalette.washOpacity)
             }
         case .bold:
-            ZStack {
-                theme.accent.fill
-                // Deepens the colour towards the bottom, and enough overall for white text to
-                // read on the lighter ones: orange, teal, green.
-                LinearGradient(colors: [.black.opacity(0.1), .black.opacity(0.3)], startPoint: .top, endPoint: .bottom)
-            }
+            // Deep enough at the top for white words, deeper still towards the bottom.
+            LinearGradient(
+                colors: [Color(theme.accent.palette.boldTop), Color(theme.accent.palette.boldBottom)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
         case .dark:
-            Color(red: 0.07, green: 0.07, blue: 0.08)
+            Color(WidgetPalette.darkStyleBackground)
         }
     }
 }

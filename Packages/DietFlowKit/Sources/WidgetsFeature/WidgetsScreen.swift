@@ -12,6 +12,7 @@ import WidgetUI
 public struct WidgetsScreen: View {
     @Environment(MealPlanStore.self) private var store
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
     @State private var preview: WidgetPreview.ID?
     @State private var isInstalled: Bool?
     private let previews: [WidgetPreview]
@@ -31,6 +32,10 @@ public struct WidgetsScreen: View {
         previews.first { $0.id == preview } ?? previews[0]
     }
 
+    private var selectedIndex: Int {
+        previews.firstIndex { $0.id == selected.id } ?? 0
+    }
+
     /// The large widget is given more room, so it can be read; the others leave the choices
     /// under them in sight.
     private var stageHeight: CGFloat {
@@ -41,6 +46,15 @@ public struct WidgetsScreen: View {
         List {
             Section {
                 VStack(spacing: AppSpacing.small) {
+                    Picker(selection: sizeSelection) {
+                        ForEach(PreviewSize.allCases) { size in
+                            Text(verbatim: size.name).tag(size)
+                        }
+                    } label: {
+                        Text("widgets.size", bundle: .module)
+                    }
+                    .pickerStyle(.segmented)
+
                     // Every widget there is, side by side: swipe to see the next.
                     TimelineView(.everyMinute) { context in
                         let shown = entry(at: context.date)
@@ -59,22 +73,50 @@ public struct WidgetsScreen: View {
                         .frame(height: stageHeight)
                         .clipShape(RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
                     }
-                    VStack(spacing: AppSpacing.xxSmall) {
-                        Text(verbatim: selected.caption)
-                            .font(.subheadline.weight(.semibold))
-                        HStack(spacing: 6) {
-                            ForEach(previews) { preview in
-                                Circle()
-                                    .fill(preview.id == selected.id ? Color.primary : Color.secondary.opacity(0.3))
-                                    .frame(width: 6, height: 6)
-                            }
+                    // One element for VoiceOver: what is shown, which of how many, and a swipe up
+                    // or down to the next or previous one, in place of page dots.
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(Text(verbatim: selected.caption))
+                    .accessibilityValue(Text(verbatim: String(localized: "widgets.preview.position", defaultValue: "\(selectedIndex + 1) of \(previews.count)", bundle: .module)))
+                    .accessibilityAdjustableAction { direction in
+                        switch direction {
+                        case .increment: show(offset: 1)
+                        case .decrement: show(offset: -1)
+                        @unknown default: break
                         }
-                        .accessibilityHidden(true)
                     }
+
+                    Text(verbatim: selected.caption)
+                        .font(.subheadline.weight(.semibold))
+                        .accessibilityHidden(true)
                 }
                 .animationAware(AppMotion.settle, reduceMotion: reduceMotion, value: stageHeight)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: AppSpacing.xxSmall, trailing: 0))
+            }
+
+            // How to add it, straight under the picture of it.
+            if isInstalled == true {
+                Section {
+                    Label {
+                        Text("widgets.installed", bundle: .module)
+                    } icon: {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundStyle(AppColors.success)
+                    }
+                } footer: {
+                    Text(smartStackNote)
+                }
+            } else {
+                Section {
+                    step(1, Text("widgets.add.step1", bundle: .module))
+                    step(2, Text("widgets.add.step2", bundle: .module))
+                    step(3, Text(String(localized: "widgets.add.step3", defaultValue: "Search for \(AppBrand.displayName) and pick a size.", bundle: .module)))
+                } header: {
+                    Text(selected.family.isLockScreen ? "widgets.add.lockHeader" : "widgets.add.header", bundle: .module)
+                } footer: {
+                    Text(smartStackNote)
+                }
             }
 
             Section {
@@ -125,38 +167,55 @@ public struct WidgetsScreen: View {
             } footer: {
                 Text(String(localized: "widgets.show.footer", defaultValue: "Applies to every \(AppBrand.displayName) widget.", bundle: .module))
             }
-
-            if isInstalled == true {
-                Section {
-                    Label {
-                        Text("widgets.installed", bundle: .module)
-                    } icon: {
-                        Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(AppColors.success)
-                    }
-                }
-            } else {
-                Section {
-                    step(1, Text("widgets.add.step1", bundle: .module))
-                    step(2, Text("widgets.add.step2", bundle: .module))
-                    step(3, Text(String(localized: "widgets.add.step3", defaultValue: "Search for \(AppBrand.displayName) and pick a size.", bundle: .module)))
-                } header: {
-                    Text(selected.family.isLockScreen ? "widgets.add.lockHeader" : "widgets.add.header", bundle: .module)
-                }
-            }
         }
         .listStyle(.insetGrouped)
         .navigationTitle(Text("widgets.title", bundle: .module))
-        .task {
-            isInstalled = await store.isWidgetOnScreen()
+        // Asked again whenever the app comes back, so the steps give way to "on your Home Screen"
+        // as soon as the widget has been added there.
+        .task(id: scenePhase) {
+            guard scenePhase == .active else { return }
+            let installed = await store.isWidgetOnScreen()
+            withAppAnimation(AppMotion.settle, reduceMotion: reduceMotion) {
+                isInstalled = installed
+            }
         }
     }
 
-    private func entry(at now: Date) -> MealWidgetEntry {
-        guard let plan = store.activePlan else {
-            return MealWidgetEntry.sample(now: now, preferences: store.settings.widgetPreferences)
+    /// Smart Stack relevance (`WidgetTimelineBuilder.Relevance`), said where people add the widget.
+    private var smartStackNote: String {
+        String(localized: "widgets.add.smartStack", defaultValue: "In a Smart Stack, \(AppBrand.displayName) comes to the top by itself at mealtimes.", bundle: .module)
+    }
+
+    /// The size the picture shows, as the segmented control above it chooses it: choosing a size
+    /// pages to its first widget.
+    private var sizeSelection: Binding<PreviewSize> {
+        Binding(
+            get: { selected.family.previewSize },
+            set: { size in
+                guard let first = previews.first(where: { $0.family.previewSize == size }) else { return }
+                withAppAnimation(AppMotion.settle, reduceMotion: reduceMotion) {
+                    preview = first.id
+                }
+            }
+        )
+    }
+
+    private func show(offset: Int) {
+        let index = min(max(selectedIndex + offset, 0), previews.count - 1)
+        withAppAnimation(AppMotion.settle, reduceMotion: reduceMotion) {
+            preview = previews[index].id
         }
-        let snapshot = WidgetSnapshot(plan: plan, states: store.states, preferences: store.settings.widgetPreferences, generatedAt: now)
+    }
+
+    /// The person's own day as the widget will show it — late start included — or, before there
+    /// is a plan, the example the widget gallery shows, in their colour.
+    private func entry(at now: Date) -> MealWidgetEntry {
+        var preferences = store.settings.widgetPreferences
+        preferences.smartMealTimes = store.settings.smartMealTimes
+        guard let plan = store.activePlan else {
+            return MealWidgetEntry.gallery(preferences: preferences, now: now)
+        }
+        let snapshot = WidgetSnapshot(plan: plan, states: store.states, preferences: preferences, generatedAt: now, dayStarts: store.dayStarts)
         return MealWidgetEntry.current(for: snapshot, now: now)
     }
 
@@ -250,14 +309,15 @@ struct WidgetPreview: Identifiable, Hashable {
         String(localized: "widgets.preview.caption", defaultValue: "\(kind.name) · \(family.name)", bundle: .module)
     }
 
-    /// The one most people add comes first.
+    /// By size, in the order of the size picker, Next Meal first in each.
     static let all: [WidgetPreview] = [
-        WidgetPreview(kind: .nextMeal, family: .medium),
         WidgetPreview(kind: .nextMeal, family: .small),
-        WidgetPreview(kind: .today, family: .large),
-        WidgetPreview(kind: .today, family: .medium),
         WidgetPreview(kind: .progress, family: .small),
+        WidgetPreview(kind: .nextMeal, family: .medium),
+        WidgetPreview(kind: .today, family: .medium),
+        WidgetPreview(kind: .today, family: .large),
         WidgetPreview(kind: .nextMeal, family: .lockScreen),
+        WidgetPreview(kind: .nextMeal, family: .lockCircle),
         WidgetPreview(kind: .progress, family: .lockCircle),
     ]
 }
@@ -268,6 +328,25 @@ extension MealWidgetKind {
         case .nextMeal: "nextMeal"
         case .today: "today"
         case .progress: "progress"
+        }
+    }
+}
+
+/// The sizes the picker above the previews offers.
+enum PreviewSize: String, CaseIterable, Identifiable {
+    case small
+    case medium
+    case large
+    case lockScreen
+
+    var id: Self { self }
+
+    var name: String {
+        switch self {
+        case .small: String(localized: "widgets.size.small", bundle: .module)
+        case .medium: String(localized: "widgets.size.medium", bundle: .module)
+        case .large: String(localized: "widgets.size.large", bundle: .module)
+        case .lockScreen: String(localized: "widgets.size.lockScreen", bundle: .module)
         }
     }
 }
@@ -290,6 +369,15 @@ enum PreviewFamily: String {
 
     var isLockScreen: Bool {
         self == .lockScreen || self == .lockCircle
+    }
+
+    var previewSize: PreviewSize {
+        switch self {
+        case .small: .small
+        case .medium: .medium
+        case .large: .large
+        case .lockScreen, .lockCircle: .lockScreen
+        }
     }
 
     var widgetFamily: WidgetFamily {
@@ -332,6 +420,8 @@ struct PreviewStage: View {
                 homeScreen
             }
         }
+        // The real time, so the countdowns run; taps stay with the screen around it.
+        .environment(\.widgetRendering, .livePreview)
         .accessibilityElement(children: .contain)
     }
 

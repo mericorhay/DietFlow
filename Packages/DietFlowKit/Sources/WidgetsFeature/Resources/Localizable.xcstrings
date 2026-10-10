@@ -49,6 +49,30 @@
         }
       }
     },
+    "widgets.add.smartStack" : {
+      "comment" : "Widgets tab: footer under the steps for adding the widget. %@ is the app's name. A Smart Stack is the iOS stack of widgets that turns by itself.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In a Smart Stack, %@ comes to the top by itself at mealtimes."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En una pila inteligente, %@ sube sola arriba a la hora de comer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akıllı Yığın’da %@, öğün saatlerinde kendiliğinden en üste çıkar."
+          }
+        }
+      }
+    },
     "widgets.add.step1" : {
       "comment" : "Step 1 of adding the widget. One sentence.",
       "extractionState" : "manual",
@@ -141,6 +165,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widget'ın Ana Ekran'da."
+          }
+        }
+      }
+    },
+    "widgets.lock.hideNames" : {
+      "comment" : "Widgets tab: switch that keeps meal names out of sight on Lock Screen widgets until the iPhone is unlocked.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Meal Names When Locked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar comidas con el iPhone bloqueado"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilitliyken Öğün Adlarını Gizle"
           }
         }
       }
@@ -261,6 +309,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "widgets.preview.position" : {
+      "comment" : "Widgets tab: VoiceOver value of the widget previews, which preview of how many is shown. %1$lld is its position, %2$lld how many there are.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld de %2$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld / %2$lld"
           }
         }
       }
@@ -434,7 +506,7 @@
       }
     },
     "widgets.size.lockScreen" : {
-      "comment" : "Segment: the Lock Screen widget. Two words at most; the segment is narrow.",
+      "comment" : "Widgets tab: segment of the size picker, and the size in a preview's caption, for widgets on the Lock Screen.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -446,7 +518,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bloqueo"
+            "value" : "Pantalla de bloqueo"
           }
         },
         "tr" : {
@@ -506,49 +578,49 @@
       }
     },
     "widgets.timing.done" : {
-      "comment" : "Switch that adds a Done button to the medium and large widgets. Off by default. Two words.",
+      "comment" : "Widgets tab: switch that shows the round 'Eaten' button on the widgets.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Done Button"
+            "value" : "Eaten Button"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Botón Hecho"
+            "value" : "Botón Comida hecha"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tamamlandı Düğmesi"
+            "value" : "Yedim Düğmesi"
           }
         }
       }
     },
     "widgets.timing.footer" : {
-      "comment" : "Footer under the timing choices: the widget moves on by itself, and what the Done button is for. Two or three short sentences.",
+      "comment" : "Widgets tab: footer under the timing settings.",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "When a meal's time comes it stays on the widget for this long, then the next one takes its place. Nothing needs tapping. The Done button is for moving on sooner."
+            "value" : "When a meal's time comes it stays on the widget for this long, then the next one takes its place. Nothing needs tapping. The Eaten button is for moving on sooner."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cuando llega la hora de una comida, se queda en el widget este tiempo y luego da paso a la siguiente. No hace falta tocar nada. El botón Hecho sirve para pasar antes."
+            "value" : "Cuando llega la hora de una comida, se queda en el widget este tiempo y luego da paso a la siguiente. No hace falta tocar nada. El botón Comida hecha sirve para pasar antes."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öğünün saati geldiğinde widget'ta bu süre boyunca kalır, sonra yerini sıradaki öğün alır. Hiçbir şeye dokunman gerekmez. Tamamlandı düğmesi daha erken geçmek içindir."
+            "value" : "Öğünün saati geldiğinde widget'ta bu süre boyunca kalır, sonra yerini sıradaki öğün alır. Hiçbir şeye dokunman gerekmez. Yedim düğmesi daha erken geçmek içindir."
           }
         }
       }
