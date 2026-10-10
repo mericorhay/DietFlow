@@ -88,17 +88,28 @@ struct WidgetMealTimeRow: View {
     var energy: String?
 
     var body: some View {
+        // The time is never cut short: where the row is narrow, the energy goes first, then the chip.
+        ViewThatFits(in: .horizontal) {
+            row(showsShift: true, showsEnergy: true)
+            row(showsShift: true, showsEnergy: false)
+            row(showsShift: false, showsEnergy: false)
+        }
+    }
+
+    private func row(showsShift: Bool, showsEnergy: Bool) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 6) {
             WidgetTimeText(date: item.date, font: font)
-            if item.isMoved {
+                .fixedSize()
+            if showsShift, item.isMoved {
                 WidgetShiftChip(minutes: item.shiftMinutes)
+                    .fixedSize()
             }
-            if let energy {
+            if showsEnergy, let energy {
                 Text(verbatim: energy)
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.8)
+                    .fixedSize()
             }
         }
     }
