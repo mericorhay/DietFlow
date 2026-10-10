@@ -649,6 +649,174 @@
         }
       }
     },
+    "intent.startDay.description" : {
+      "comment" : "Description of the I Just Woke Up action in Shortcuts. One or two sentences.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts today from now: the first meal in half an hour and the rest of the day's meals moved after it. Good as an automation that runs when your alarm stops."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empieza el día desde ahora: la primera comida en media hora y las demás detrás. Ideal como automatización que se ejecuta al apagar la alarma."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünü şimdiden başlatır: ilk öğün yarım saat sonra, günün diğer öğünleri de arkasından kayar. Alarm kapanınca çalışan bir otomasyon için ideal."
+          }
+        }
+      }
+    },
+    "intent.startDay.noPlan" : {
+      "comment" : "Siri reply to I Just Woke Up when there is no active meal plan.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's no meal plan to move yet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todavía no hay ningún plan de comidas que mover."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz kaydırılacak bir öğün planı yok."
+          }
+        }
+      }
+    },
+    "intent.startDay.nothingToday" : {
+      "comment" : "Siri reply to I Just Woke Up when the plan has no meals today.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your plan has no meals today."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu plan no tiene comidas hoy."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planında bugün öğün yok."
+          }
+        }
+      }
+    },
+    "intent.startDay.off" : {
+      "comment" : "Siri reply to I Just Woke Up when the person has switched smart meal times off in Settings.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart meal times are off. You can turn them on in DietFlow's Settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los horarios inteligentes están desactivados. Puedes activarlos en los Ajustes de DietFlow."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akıllı öğün saatleri kapalı. DietFlow Ayarlar'ından açabilirsin."
+          }
+        }
+      }
+    },
+    "intent.startDay.onTime" : {
+      "comment" : "Siri reply to I Just Woke Up when the person got up early enough that nothing needs to move.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right on time: today follows your plan."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Justo a tiempo: hoy sigue tu plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam zamanında: bugün planına göre devam ediyor."
+          }
+        }
+      }
+    },
+    "intent.startDay.result" : {
+      "comment" : "Siri reply after I Just Woke Up moved today's meals later. %1$@ is the first meal's new time, %2$@ the meal's name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good morning! First meal at %1$@: %2$@. The rest of today moved with it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Buenos días! Primera comida a las %1$@: %2$@. El resto del día se movió con ella."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günaydın! İlk öğün saat %1$@: %2$@. Günün geri kalanı da buna göre kaydı."
+          }
+        }
+      }
+    },
+    "intent.startDay.title" : {
+      "comment" : "Name of the action in Shortcuts that moves today's meals later because the person just got up. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I Just Woke Up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Me acabo de despertar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Kalktım"
+          }
+        }
+      }
+    },
     "widget.nextMeal.description" : {
       "comment" : "One sentence under the widget's name in the widget gallery, saying what it shows.",
       "extractionState" : "manual",

@@ -35,10 +35,15 @@ nonisolated final class ReminderResponder: NSObject, UNUserNotificationCenterDel
                 if exists { store.attempt { try store.markMealCompleted(key) } }
             case MealReminderAction.skip.rawValue:
                 if exists { store.attempt { try store.markMealSkipped(key) } }
+            case MealReminderAction.wokeUp.rawValue:
+                // The day starts now: its first meal half an hour from now, the rest after it.
+                if exists { store.attempt { try store.startDay(.wokeUp(at: TimeOfDay(.now), source: .reminder), on: key.day) } }
             default:
                 open(.meal(key))
             }
         }
+        // The day's reminders just moved; the app may be suspended as soon as this returns.
+        await store.remindersSettled()
     }
 
     /// A reminder that arrives while the app is open still shows.

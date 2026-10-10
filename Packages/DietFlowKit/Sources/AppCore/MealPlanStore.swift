@@ -37,6 +37,9 @@ public final class MealPlanStore {
     public private(set) var schedule: MealSchedule?
     /// What happened to the active plan's meals, by occurrence.
     public private(set) var states: OccurrenceStates = [:]
+    /// Days of the active plan that started late, and where their first meal went. Empty while
+    /// smart meal times are off.
+    public private(set) var dayStarts: DayStarts = [:]
     public private(set) var settings: AppSettings
     /// Changes with every stored change, for views that animate on it.
     public private(set) var revision = 0
@@ -44,6 +47,7 @@ public final class MealPlanStore {
     public private(set) var failure: StoreFailure?
 
     @ObservationIgnored private let persistence: PlanStore
+    @ObservationIgnored private let dayStartStore: DayStartStore
     /// Off for previews and seeded test states, which must neither read nor change the person's
     /// real settings.
     @ObservationIgnored private let persistsSettings: Bool
@@ -59,6 +63,7 @@ public final class MealPlanStore {
 
     public init(
         persistence: PlanStore,
+        dayStartStore: DayStartStore = DayStartStore(),
         snapshotWriter: WidgetSnapshotWriter?,
         reminders: MealReminderScheduler = MealReminderScheduler(),
         settings: AppSettings,
@@ -67,6 +72,7 @@ public final class MealPlanStore {
         reloadWidgets: @escaping @MainActor () -> Void
     ) {
         self.persistence = persistence
+        self.dayStartStore = dayStartStore
         self.reschedulesReminders = reschedulesReminders
         self.persistsSettings = persistsSettings
         self.snapshotWriter = snapshotWriter
@@ -94,6 +100,7 @@ public final class MealPlanStore {
     public static func preview(withSample: Bool = true, settings: AppSettings = AppSettings(hasCompletedOnboarding: true)) -> MealPlanStore {
         let store = MealPlanStore(
             persistence: PlanStore(container: PlanStore.makeContainer(inMemory: true)),
+            dayStartStore: DayStartStore(inMemory: true),
             snapshotWriter: nil,
             settings: settings,
             persistsSettings: false,
@@ -147,6 +154,16 @@ public final class MealPlanStore {
         activePlan?.meals.first { $0.id == id }
     }
 
+    /// Where `day` started, when it started late.
+    public func dayStart(on day: CalendarDay) -> DayStart? {
+        dayStarts[day]
+    }
+
+    /// How many minutes later than planned `day`'s meals are: 0 when it follows the plan.
+    public func delay(on day: CalendarDay) -> Int {
+        schedule?.delay(on: day) ?? 0
+    }
+
     public func getActivePlan() -> MealPlan? {
         activePlan
     }
@@ -182,6 +199,7 @@ public final class MealPlanStore {
 
     public func deletePlan(id: UUID) throws {
         try persistence.deletePlan(id: id)
+        dayStartStore.removePlan(id)
         didChange("deletePlan")
     }
 
@@ -212,6 +230,87 @@ public final class MealPlanStore {
         didChange("deleteMeal")
     }
 
+    /// Fills in the assistant's estimates for meals of the active plan that have no nutrition of
+    /// their own, in one change. Meals that were edited meanwhile to have figures, or deleted, are
+    /// left alone; what the plan or the person wrote is never overwritten.
+    /// Returns how many meals were filled in.
+    @discardableResult
+    public func applyNutritionEstimates(_ estimates: [UUID: NutritionEstimate]) throws -> Int {
+        guard var plan = activePlan else { throw MealPlanStoreError.noActivePlan }
+        var filled = 0
+        plan.meals = plan.meals.map { meal in
+            guard let estimate = estimates[meal.id], meal.lacksNutrition else { return meal }
+            filled += 1
+            return meal.filling(estimate)
+        }
+        guard filled > 0 else { return 0 }
+        try persistence.replace(plan.sanitized())
+        didChange("applyNutritionEstimates")
+        return filled
+    }
+
+    /// The active plan's meals that have no nutrition of their own, one per dish: what an estimate
+    /// for the whole plan would be asked about.
+    public func mealsNeedingEstimates() -> [Meal] {
+        var seen = Set<String>()
+        return (activePlan?.meals ?? [])
+            .filter(\.lacksNutrition)
+            .sorted { ($0.dayIndex, $0.time) < ($1.dayIndex, $1.time) }
+            .filter { seen.insert($0.dishKey).inserted }
+    }
+
+    // MARK: - Late starts
+
+    /// `day` started late: its meals move after `start.firstMeal` (`DayShift`). Today by default.
+    public func startDay(_ start: DayStart, on day: CalendarDay = .today()) throws {
+        guard let plan = activePlan else { throw MealPlanStoreError.noActivePlan }
+        dayStartStore.set(start, on: day, planID: plan.id)
+        didChange("startDay")
+        moveRemindersInThisProcess()
+    }
+
+    /// `day` follows the plan again.
+    public func clearDayStart(on day: CalendarDay = .today()) throws {
+        guard let plan = activePlan else { throw MealPlanStoreError.noActivePlan }
+        dayStartStore.set(nil, on: day, planID: plan.id)
+        didChange("clearDayStart")
+        moveRemindersInThisProcess()
+    }
+
+    /// How late the first meal has to be marked eaten for the rest of the day to follow it, and how
+    /// late is more likely "marked afterwards" than "eaten then".
+    static let inferredLateness: ClosedRange<TimeInterval> = (45 * 60)...(4 * 3600)
+
+    /// The day's first meal was just marked eaten well after its time: unless the person already said
+    /// when the day started, it started then, and the rest of the day follows (`DayStart.Source
+    /// .firstMeal`). Marking it again as not eaten takes that back.
+    private func followFirstMeal(_ state: OccurrenceState, for key: OccurrenceKey, planID: UUID, now: Date) {
+        let today = CalendarDay.today(now: now)
+        guard settings.smartMealTimes, key.day == today, let schedule else { return }
+        let recorded = dayStartStore.starts(planID: planID)[today]
+        if state == .pending {
+            if recorded?.source == .firstMeal, schedule.meals(on: today).first?.id == key.mealID {
+                dayStartStore.set(nil, on: today, planID: planID)
+            }
+            return
+        }
+        guard state == .completed, recorded == nil,
+              let first = schedule.occurrences(on: today).first, first.meal.id == key.mealID,
+              Self.inferredLateness.contains(now.timeIntervalSince(first.date))
+        else { return }
+        dayStartStore.set(DayStart(firstMeal: TimeOfDay(now), source: .firstMeal), on: today, planID: planID)
+    }
+
+    /// In the widget's process the reminders are not rescheduled on every change (see `publish`),
+    /// but a day whose meals just moved would otherwise be reminded at the old times, or, with its
+    /// reminders taken back, not at all. So that one change reschedules them here too; callers
+    /// await `remindersSettled()`. If this process may not add notifications, the old ones stay.
+    private func moveRemindersInThisProcess() {
+        // As in `publish`: what an unreadable store shows is no reason to touch the reminders.
+        guard !reschedulesReminders, !persistence.isTemporary, !lastLoadFailed else { return }
+        scheduleReminders(now: .now)
+    }
+
     // MARK: - What happened
 
     public func markMealCompleted(_ key: OccurrenceKey) throws {
@@ -228,6 +327,10 @@ public final class MealPlanStore {
     }
 
     public func setState(_ state: OccurrenceState, for key: OccurrenceKey) throws {
+        try setState(state, for: key, now: .now)
+    }
+
+    func setState(_ state: OccurrenceState, for key: OccurrenceKey, now: Date) throws {
         guard let plan = activePlan else { throw MealPlanStoreError.noActivePlan }
         // A reminder or a link can outlive the meal it names. Recording a state for a meal the
         // plan no longer has would leave a row nothing ever reads or removes.
@@ -235,7 +338,10 @@ public final class MealPlanStore {
         try persistence.setState(state, for: key, planID: plan.id)
         // At once and in this process: a meal marked done must not then be announced.
         if state != .pending { reminders.cancelReminder(for: key) }
+        let startedBefore = dayStarts[key.day]
+        followFirstMeal(state, for: key, planID: plan.id, now: now)
         didChange("setState")
+        if dayStarts[key.day] != startedBefore { moveRemindersInThisProcess() }
     }
 
     // MARK: - Settings
@@ -246,6 +352,7 @@ public final class MealPlanStore {
         guard updated != settings else { return }
         settings = updated
         if persistsSettings { AppSettingsStore.save(updated) }
+        dayStarts = effectiveDayStarts(for: activePlan)
         schedule = activePlan.map(makeSchedule)
         publish()
     }
@@ -267,6 +374,12 @@ public final class MealPlanStore {
 
     public func reminderAuthorization() async -> ReminderAuthorization {
         await reminders.authorization()
+    }
+
+    /// Waits until the reminders asked for by the last change are scheduled. A notification button
+    /// that changes the plan awaits this, because the app may be suspended as soon as it returns.
+    public func remindersSettled() async {
+        await reminderTask?.value
     }
 
     /// True when the person has turned this app's notifications off in the Settings app.
@@ -292,6 +405,7 @@ public final class MealPlanStore {
     /// scheduled for a meal that no longer exists.
     public func deleteAllData() throws {
         try persistence.deleteAll()
+        dayStartStore.removeAll()
         didChange("deleteAllData")
     }
 
@@ -308,7 +422,14 @@ public final class MealPlanStore {
     /// The schedule Today and the intents ask, with the same "how long a meal stays in front" the
     /// widget uses, so the app and the widget never disagree about which meal is on now.
     private func makeSchedule(_ plan: MealPlan) -> MealSchedule {
-        MealSchedule(plan: plan, timeZone: .current, currentWindow: settings.widgetPreferences.mealWindow)
+        MealSchedule(plan: plan, timeZone: .current, currentWindow: settings.widgetPreferences.mealWindow, dayStarts: dayStarts)
+    }
+
+    /// The late starts recorded for `plan`, or none while smart meal times are off: then every day
+    /// follows the plan, and the recorded ones come back if they are switched on again.
+    private func effectiveDayStarts(for plan: MealPlan?) -> DayStarts {
+        guard settings.smartMealTimes, let plan else { return [:] }
+        return dayStartStore.starts(planID: plan.id)
     }
 
     private func load() {
@@ -318,6 +439,7 @@ public final class MealPlanStore {
             plans = try persistence.planSummaries()
             let plan = try persistence.activePlan()
             activePlan = plan
+            dayStarts = effectiveDayStarts(for: plan)
             schedule = plan.map(makeSchedule)
             states = try plan.map { try persistence.states(planID: $0.id) } ?? [:]
             lastLoadFailed = false
@@ -344,7 +466,7 @@ public final class MealPlanStore {
             return
         }
         if let snapshotWriter {
-            let snapshot = WidgetSnapshot(plan: activePlan, states: states, preferences: settings.widgetPreferences, generatedAt: now)
+            let snapshot = WidgetSnapshot(plan: activePlan, states: states, preferences: settings.widgetPreferences, generatedAt: now, dayStarts: dayStarts)
             do {
                 try snapshotWriter.write(snapshot)
             } catch {
@@ -354,11 +476,16 @@ public final class MealPlanStore {
         reloadWidgets()
 
         // The widget extension is suspended as soon as its button's work returns, and may not be
-        // allowed what the app is. It only cancels the one reminder it made redundant (`setState`);
-        // the app brings the rest up to date the next time it comes forward.
+        // allowed what the app is. It only cancels the one reminder it made redundant (`setState`),
+        // or moves a day's that just moved (`moveRemindersInThisProcess`); the app brings the rest
+        // up to date the next time it comes forward.
         guard reschedulesReminders else { return }
+        scheduleReminders(now: now)
+    }
+
+    private func scheduleReminders(now: Date) {
         let requests = settings.remindersEnabled
-            ? ReminderPlanner.requests(plan: activePlan, states: states, defaultOffset: settings.defaultReminder, now: now)
+            ? ReminderPlanner.requests(plan: activePlan, states: states, defaultOffset: settings.defaultReminder, now: now, dayStarts: dayStarts)
             : []
         // One reschedule at a time, newest last. Run side by side, an older one could still be
         // adding reminders after a newer one had cleared them, and bring back the reminder for a

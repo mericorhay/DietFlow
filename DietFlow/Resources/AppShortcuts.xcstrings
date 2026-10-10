@@ -49,6 +49,30 @@
         }
       }
     },
+    "I just woke up in ${applicationName}" : {
+      "comment" : "Siri phrase that moves today's meals later because the person just got up. Keep ${applicationName} exactly.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I just woke up in ${applicationName}"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Me acabo de despertar en ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} yeni kalktım"
+          }
+        }
+      }
+    },
     "Mark my meal done in ${applicationName}" : {
       "comment" : "Siri phrase that marks the current or next meal done. Keep ${applicationName} exactly.",
       "extractionState" : "manual",
@@ -93,6 +117,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "${applicationName} sıradaki öğünümü göster"
+          }
+        }
+      }
+    },
+    "Start my day in ${applicationName}" : {
+      "comment" : "Siri phrase that starts today's meals from now. Keep ${applicationName} exactly.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start my day in ${applicationName}"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empieza mi día en ${applicationName}"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "${applicationName} günümü başlat"
           }
         }
       }

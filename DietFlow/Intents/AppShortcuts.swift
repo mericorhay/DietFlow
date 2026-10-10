@@ -43,6 +43,15 @@ nonisolated struct DietFlowShortcuts: AppShortcutsProvider {
             systemImageName: "checkmark.circle"
         )
         AppShortcut(
+            intent: StartDayIntent(),
+            phrases: [
+                "I just woke up in \(.applicationName)",
+                "Start my day in \(.applicationName)",
+            ],
+            shortTitle: "shortcut.startDay",
+            systemImageName: "sun.horizon"
+        )
+        AppShortcut(
             intent: AddMealIntent(),
             phrases: [
                 "Add a meal in \(.applicationName)",

@@ -34,6 +34,12 @@ public struct TimeOfDay: Codable, Hashable, Comparable, Sendable {
         ) ?? start.addingTimeInterval(TimeInterval(minutesSinceMidnight * 60))
     }
 
+    /// The wall-clock time of `date` in `timeZone`: 09:41 for a moment at 09:41 there.
+    public init(_ date: Date, in timeZone: TimeZone = .current) {
+        let parts = CalendarDay.gregorian(in: timeZone).dateComponents([.hour, .minute], from: date)
+        self.init(hour: parts.hour ?? 0, minute: parts.minute ?? 0)
+    }
+
     /// "14:05": the stored and imported form. Never shown; display goes through a `Date` so the
     /// person's 12- or 24-hour preference applies.
     public var isoString: String {

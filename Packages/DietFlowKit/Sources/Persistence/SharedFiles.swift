@@ -82,6 +82,75 @@ public enum AppSettingsStore {
     }
 }
 
+/// Days that started late (`DayStart`), by plan and day, in the App Group's defaults: the widget's
+/// process can record one — a first meal marked done late from the widget — and both processes read
+/// the same. Small and short-lived, so a day is kept only a couple of weeks.
+@MainActor
+public final class DayStartStore {
+    private static let key = "dayStarts.v1"
+    /// Days before today that are still kept: the Today screen pages back a little.
+    public static let keptDays = 14
+
+    private let defaults: UserDefaults?
+    /// Plan id → day → start, when nothing is to be stored (previews and seeded test states).
+    private var memory: [String: [String: DayStart]] = [:]
+
+    /// `inMemory` keeps everything in this object and touches nothing on disk.
+    public init(inMemory: Bool = false) {
+        defaults = inMemory ? nil : (UserDefaults(suiteName: AppGroup.identifier) ?? .standard)
+    }
+
+    public func starts(planID: UUID) -> DayStarts {
+        var result: DayStarts = [:]
+        for (text, start) in read()[planID.uuidString] ?? [:] {
+            if let day = CalendarDay(text) { result[day] = start }
+        }
+        return result
+    }
+
+    /// Records where `day` started, or forgets it when `start` is nil. Days older than `keptDays`
+    /// are dropped on the way.
+    public func set(_ start: DayStart?, on day: CalendarDay, planID: UUID, today: CalendarDay = .today()) {
+        var all = read()
+        var days = all[planID.uuidString] ?? [:]
+        days[day.description] = start
+        let earliest = today.adding(days: -Self.keptDays)
+        days = days.filter { CalendarDay($0.key).map { $0 >= earliest } ?? false }
+        all[planID.uuidString] = days.isEmpty ? nil : days
+        write(all)
+    }
+
+    public func removePlan(_ planID: UUID) {
+        var all = read()
+        all[planID.uuidString] = nil
+        write(all)
+    }
+
+    public func removeAll() {
+        write([:])
+    }
+
+    private func read() -> [String: [String: DayStart]] {
+        guard let defaults else { return memory }
+        guard let data = defaults.data(forKey: Self.key), let all = try? JSONDecoder().decode([String: [String: DayStart]].self, from: data) else {
+            return [:]
+        }
+        return all
+    }
+
+    private func write(_ all: [String: [String: DayStart]]) {
+        guard let defaults else {
+            memory = all
+            return
+        }
+        if all.isEmpty {
+            defaults.removeObject(forKey: Self.key)
+        } else if let data = try? JSONEncoder().encode(all) {
+            defaults.set(data, forKey: Self.key)
+        }
+    }
+}
+
 public enum PendingImportError: Error, Sendable {
     case tooLong
 }

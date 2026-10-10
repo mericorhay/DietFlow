@@ -116,8 +116,44 @@ struct MarkMealDoneIntent: AppIntent {
             return .result(dialog: IntentDialog("intent.markDone.nothing"))
         }
         try store.markMealCompleted(occurrence.key)
+        // Marked well after its time, a first meal moves the rest of the day; its reminders move
+        // before this process is suspended.
+        await store.remindersSettled()
         let title = occurrence.meal.title
         return .result(dialog: IntentDialog(LocalizedStringResource("intent.markDone.result", defaultValue: "\(title) marked done.")))
+    }
+}
+
+/// The day starts now: today's first meal half an hour from now and the rest laid out after it
+/// (`DayShift`). Made for a Shortcuts automation that runs when the morning alarm is stopped, so a
+/// late morning moves the day without opening the app.
+struct StartDayIntent: AppIntent {
+    nonisolated static let title: LocalizedStringResource = "intent.startDay.title"
+    nonisolated static var description: IntentDescription { IntentDescription("intent.startDay.description") }
+
+    nonisolated init() {}
+
+    @MainActor
+    func perform() async throws -> some IntentResult & ProvidesDialog {
+        let store = MealPlanStore.live()
+        guard store.activePlan != nil, let schedule = store.schedule else {
+            return .result(dialog: IntentDialog("intent.startDay.noPlan"))
+        }
+        guard store.settings.smartMealTimes else {
+            return .result(dialog: IntentDialog("intent.startDay.off"))
+        }
+        let today = CalendarDay.today()
+        guard !schedule.meals(on: today).isEmpty else {
+            return .result(dialog: IntentDialog("intent.startDay.nothingToday"))
+        }
+        try store.startDay(.wokeUp(at: TimeOfDay(.now), source: .shortcut), on: today)
+        await store.remindersSettled()
+        guard store.delay(on: today) > 0, let first = store.schedule?.occurrences(on: today).first else {
+            return .result(dialog: IntentDialog("intent.startDay.onTime"))
+        }
+        let time = first.date.formatted(date: .omitted, time: .shortened)
+        let title = first.meal.title
+        return .result(dialog: IntentDialog(LocalizedStringResource("intent.startDay.result", defaultValue: "Good morning! First meal at \(time): \(title). The rest of today moved with it.")))
     }
 }
 

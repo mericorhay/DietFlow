@@ -49,6 +49,9 @@ final class MealRecord {
     var protein: Double?
     var carbohydrates: Double?
     var fat: Double?
+    /// True when the figures above are the assistant's estimate. Optional, and nil for every meal
+    /// stored before estimates existed, so the store opens as it was (a lightweight migration).
+    var nutritionEstimated: Bool?
     var notes: String?
     /// `ReminderOffset` raw value; nil follows the app-wide default.
     var reminderRaw: Int?
@@ -127,7 +130,7 @@ extension MealRecord {
             title: title,
             details: details,
             portion: portion,
-            nutrition: Nutrition(calories: calories, protein: protein, carbohydrates: carbohydrates, fat: fat),
+            nutrition: Nutrition(calories: calories, protein: protein, carbohydrates: carbohydrates, fat: fat, estimated: nutritionEstimated),
             notes: notes,
             reminder: reminderRaw.flatMap(ReminderOffset.init(rawValue:))
         )
@@ -146,6 +149,7 @@ extension MealRecord {
         protein = meal.nutrition.protein
         carbohydrates = meal.nutrition.carbohydrates
         fat = meal.nutrition.fat
+        nutritionEstimated = meal.nutrition.isEstimated ? true : nil
         notes = meal.notes?.trimmedNonEmpty
         reminderRaw = meal.reminder?.rawValue
     }

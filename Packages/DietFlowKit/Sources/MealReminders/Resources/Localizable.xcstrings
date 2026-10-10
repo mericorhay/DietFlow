@@ -49,6 +49,30 @@
         }
       }
     },
+    "notification.action.wokeUp" : {
+      "comment" : "Button on the day's first meal reminder notification. Says the person just got up, so the day's meal times move later to start from now. Works without opening the app. Short.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Just Woke Up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Me acabo de despertar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Kalktım"
+          }
+        }
+      }
+    },
     "notification.title.now" : {
       "comment" : "Title of a meal reminder notification sent at the meal's time. %@ is the meal type, such as 'Lunch'. Example: 'Lunch now'. The meal's name is the body.",
       "extractionState" : "manual",

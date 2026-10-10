@@ -9,10 +9,12 @@ public enum ReminderAuthorization: Sendable {
     case allowed
 }
 
-/// The buttons a meal reminder carries. Both work from the notification itself.
+/// The buttons a meal reminder carries. All of them work from the notification itself.
 public enum MealReminderAction: String, Sendable {
     case done = "meal.done"
     case skip = "meal.skip"
+    /// Only on the day's first meal: the person just got up, so the day's meals move with them.
+    case wokeUp = "meal.wokeUp"
 }
 
 /// Local notifications at meal times. Secondary to the widget, off until the person turns them on,
@@ -21,12 +23,14 @@ public struct MealReminderScheduler: Sendable {
     private static let logger = Logger(subsystem: "com.orhay.dietflow", category: "Reminders")
     private static let identifierPrefix = "meal."
     public static let categoryIdentifier = "meal.reminder"
+    /// The day's first meal: the same buttons, led by "Just Woke Up".
+    public static let firstMealCategoryIdentifier = "meal.reminder.first"
     private static let occurrenceInfoKey = "occurrence"
 
     public init() {}
 
-    /// Registers the Done and Skip buttons every meal reminder carries. Called at launch, so the
-    /// titles are in the language the app is using.
+    /// Registers the Done and Skip buttons every meal reminder carries, and "Just Woke Up" on the
+    /// day's first. Called at launch, so the titles are in the language the app is using.
     public func registerActions() {
         let done = UNNotificationAction(
             identifier: MealReminderAction.done.rawValue,
@@ -40,8 +44,16 @@ public struct MealReminderScheduler: Sendable {
             options: [],
             icon: UNNotificationActionIcon(systemImageName: "forward.end")
         )
+        let wokeUp = UNNotificationAction(
+            identifier: MealReminderAction.wokeUp.rawValue,
+            title: String(localized: "notification.action.wokeUp", bundle: .module),
+            options: [],
+            icon: UNNotificationActionIcon(systemImageName: "sun.horizon")
+        )
         let category = UNNotificationCategory(identifier: Self.categoryIdentifier, actions: [done, skip], intentIdentifiers: [], options: [])
-        UNUserNotificationCenter.current().setNotificationCategories([category])
+        let first = UNNotificationCategory(identifier: Self.firstMealCategoryIdentifier, actions: [wokeUp, done, skip], intentIdentifiers: [], options: [])
+        // One call with every category: each call replaces all of them.
+        UNUserNotificationCenter.current().setNotificationCategories([category, first])
     }
 
     /// The meal a delivered reminder is about.
@@ -104,7 +116,7 @@ public struct MealReminderScheduler: Sendable {
             content.body = request.occurrence.meal.title
             content.sound = .default
             content.threadIdentifier = "meals"
-            content.categoryIdentifier = Self.categoryIdentifier
+            content.categoryIdentifier = request.isFirstOfDay ? Self.firstMealCategoryIdentifier : Self.categoryIdentifier
             content.userInfo = [Self.occurrenceInfoKey: request.occurrence.key.description]
 
             // Wall-clock components: if the person changes time zone, the reminder follows the
