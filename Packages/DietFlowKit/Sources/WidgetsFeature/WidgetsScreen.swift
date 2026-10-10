@@ -162,6 +162,9 @@ public struct WidgetsScreen: View {
                 Toggle(isOn: setting(\.showCompletedMealsOnWidget)) {
                     Text("widgets.show.completed", bundle: .module)
                 }
+                Toggle(isOn: setting(\.hidesMealNamesOnLockScreen)) {
+                    Text("widgets.lock.hideNames", bundle: .module)
+                }
             } header: {
                 Text("widgets.show.header", bundle: .module)
             } footer: {

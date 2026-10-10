@@ -35,6 +35,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
     /// What the person does not eat, in their own words ("no pork, lactose"). Sent with a recipe
     /// request so its steps and substitutes leave those out. Empty when nothing was said.
     public var foodsToAvoid: String
+    /// The Lock Screen widgets show that a meal is due but not what it is, while the phone is locked.
+    public var hidesMealNamesOnLockScreen: Bool
 
     public init(
         remindersEnabled: Bool = false,
@@ -56,7 +58,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
         hasDismissedEstimateCard: Bool = false,
         hasDismissedPlusCard: Bool = false,
         hasAskedForReview: Bool = false,
-        foodsToAvoid: String = ""
+        foodsToAvoid: String = "",
+        hidesMealNamesOnLockScreen: Bool = false
     ) {
         self.remindersEnabled = remindersEnabled
         self.defaultReminder = defaultReminder
@@ -78,6 +81,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         self.hasDismissedPlusCard = hasDismissedPlusCard
         self.hasAskedForReview = hasAskedForReview
         self.foodsToAvoid = String(foodsToAvoid.prefix(Self.foodsToAvoidLimit))
+        self.hidesMealNamesOnLockScreen = hidesMealNamesOnLockScreen
     }
 
     /// Characters kept of `foodsToAvoid`: what the assistant's server reads of it.
@@ -106,6 +110,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         hasDismissedPlusCard = (try? container.decode(Bool.self, forKey: .hasDismissedPlusCard)) ?? defaults.hasDismissedPlusCard
         hasAskedForReview = (try? container.decode(Bool.self, forKey: .hasAskedForReview)) ?? defaults.hasAskedForReview
         foodsToAvoid = String(((try? container.decode(String.self, forKey: .foodsToAvoid)) ?? defaults.foodsToAvoid).prefix(Self.foodsToAvoidLimit))
+        hidesMealNamesOnLockScreen = (try? container.decode(Bool.self, forKey: .hidesMealNamesOnLockScreen)) ?? defaults.hidesMealNamesOnLockScreen
     }
 
     public var widgetPreferences: WidgetPreferences {
@@ -117,7 +122,9 @@ public struct AppSettings: Codable, Hashable, Sendable {
             mealWindowMinutes: mealWindowMinutes,
             showDoneButton: showDoneButtonOnWidget,
             accent: widgetAccent,
-            background: widgetBackground
+            background: widgetBackground,
+            smartMealTimes: smartMealTimes,
+            hidesMealNamesWhenLocked: hidesMealNamesOnLockScreen
         )
     }
 }

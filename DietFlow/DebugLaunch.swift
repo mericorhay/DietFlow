@@ -9,7 +9,7 @@ import Purchases
 /// language, in dark mode, at large text sizes — without tapping through. Debug builds only; CI
 /// uses them for screenshots (scripts/ci-screenshots.sh).
 ///
-///     -DebugSeed sample|now|empty|onboarding
+///     -DebugSeed sample|now|empty|onboarding|late|shifted|missed
 ///                                          in-memory data: the sample plan; a day built around the
 ///                                          current time (one meal done, one on now, one next); nothing;
 ///                                          or first run
@@ -84,6 +84,17 @@ enum DebugLaunch {
             store = .preview(withSample: true, settings: AppSettings(hasCompletedOnboarding: true))
         case "now":
             store = storeAroundNow()
+        case "late":
+            // The plan's breakfast passed two and a half hours ago and nothing is marked: the late-start card.
+            store = storeAroundNow(offsets: [-150, 30, 150, 330], markFirst: false)
+        case "shifted":
+            // Up forty minutes ago, the day moved after it: the banner and the struck-through times.
+            store = storeAroundNow(offsets: [-150, 30, 150, 330], markFirst: false)
+            store.attempt { try store.startDay(DayStart.wokeUp(at: TimeOfDay(Date.now.addingTimeInterval(-40 * 60)), source: .morning)) }
+        case "missed":
+            // Three meals gone by unmarked, with smart times off so no late-start card sits on top.
+            store = storeAroundNow(offsets: [-300, -240, -180, 60], markFirst: false)
+            store.updateSettings { $0.smartMealTimes = false }
         case "empty":
             store = .preview(withSample: false, settings: AppSettings(hasCompletedOnboarding: true))
         case "onboarding":
@@ -115,14 +126,13 @@ enum DebugLaunch {
 
     /// Today's meals placed around the current time, so the screens show every state at once:
     /// breakfast done, lunch on now, a snack next, dinner later.
-    private static func storeAroundNow(now: Date = .now) -> MealPlanStore {
+    private static func storeAroundNow(now: Date = .now, offsets: [Int] = [-180, -20, 40, 240], markFirst: Bool = true) -> MealPlanStore {
         let store = MealPlanStore.preview(withSample: false, settings: AppSettings(hasCompletedOnboarding: true))
         let minutes = Calendar.current.dateComponents([.hour, .minute], from: now)
         let current = (minutes.hour ?? 12) * 60 + (minutes.minute ?? 0)
         func at(_ offset: Int) -> TimeOfDay { TimeOfDay(minutesSinceMidnight: current + offset) }
         let sample = SamplePlan.keto(startingOn: .today())
         let firstDay = sample.meals.filter { $0.dayIndex == 0 }.sorted { $0.time < $1.time }
-        let offsets = [-180, -20, 40, 240]
         var plan = sample
         plan.meals = sample.meals.filter { $0.dayIndex != 0 }
         for (meal, offset) in zip(firstDay, offsets) {
@@ -131,7 +141,7 @@ enum DebugLaunch {
             plan.meals.append(moved)
         }
         store.attempt { try store.createPlan(plan) }
-        if let first = firstDay.first {
+        if markFirst, let first = firstDay.first {
             store.attempt { try store.markMealCompleted(OccurrenceKey(mealID: first.id, day: .today())) }
             // Marked three hours after its time, breakfast would move the day as a late start; this
             // seed is a day on time, so it follows the plan.

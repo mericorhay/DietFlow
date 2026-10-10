@@ -86,6 +86,8 @@ if [ "$SET" = "onboarding" ]; then
 fi
 
 shot today-now-en "${EN[@]}" "${NOW[@]}"
+shot today-late-en "${EN[@]}" -DebugSeed late
+shot today-shifted-tr "${TR[@]}" -DebugSeed shifted
 shot plan-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
 shot meal-now-tr "${TR[@]}" "${NOW[@]}" -DebugMeal next
 # Cook mode on the canned recipe: the overview, the grill step with its timer, the closing page.
@@ -95,6 +97,8 @@ shot cook-done-es "${ES[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 7
 shot widgets-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab widgets
 shot widgets-today-large-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.large
 shot widgets-today-medium-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.medium
+shot widgets-medium-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.medium
+shot widgets-lock-rect-es "${ES[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.lockScreen
 shot widgets-progress-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget progress.small -DebugWidgetLook blue.bold
 shot widgets-lock-circle-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget progress.lockCircle
 shot settings-tr "${TR[@]}" "${SAMPLE[@]}" -DebugSheet settings
@@ -121,6 +125,9 @@ shot empty-plan-es "${ES[@]}" -DebugSeed empty -DebugTab plan
 shot write-tr "${TR[@]}" -DebugSeed empty -DebugSheet write
 shot organize-en "${EN[@]}" -DebugSeed empty -DebugSheet organize
 shot privacy-links-en "${EN[@]}" "${SAMPLE[@]}" -DebugSheet settings
+shot today-missed-es "${ES[@]}" -DebugSeed missed
+shot widgets-lock-next-circle-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.lockCircle
+shot widgets-gallery-tr "${TR[@]}" -DebugSeed empty -DebugTab widgets -DebugWidget today.large
 shot cook-consent-en "${EN[@]}" "${NOW[@]}" -DebugCook next -DebugCookConsent ask
 # Room for longer languages and right-to-left scripts: Xcode's pseudolanguages.
 shot today-long "${EN[@]}" "${SAMPLE[@]}" -NSDoubleLocalizedStrings YES
@@ -138,5 +145,6 @@ sleep 3
 shot today-large-text "${EN[@]}" "${NOW[@]}"
 shot plan-large-text "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
 shot meal-large-text "${EN[@]}" "${NOW[@]}" -DebugMeal next
+shot today-late-large-text "${EN[@]}" -DebugSeed late
 shot cook-step-large-text "${EN[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 3
 textSize large
