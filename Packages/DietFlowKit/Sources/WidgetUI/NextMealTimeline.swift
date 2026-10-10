@@ -66,7 +66,7 @@ enum WidgetGallery {
     static func plan(today: CalendarDay) -> MealPlan {
         // Day 3 of a week: the header reads like one in use.
         let start = today.adding(days: -2)
-        let meals = (0..<7).flatMap { day in
+        let meals: [Meal] = (0..<7).flatMap { day -> [Meal] in
             [
                 Meal(dayIndex: day, type: .breakfast, time: TimeOfDay(hour: 8, minute: 30), title: String(localized: "widget.gallery.breakfast", bundle: .module), nutrition: Nutrition(calories: 380)),
                 Meal(dayIndex: day, type: .lunch, time: TimeOfDay(hour: 12, minute: 30), title: String(localized: "widget.gallery.lunch", bundle: .module), nutrition: Nutrition(calories: 520)),

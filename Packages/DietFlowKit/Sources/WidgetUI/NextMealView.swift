@@ -211,6 +211,8 @@ struct SmallMealWidgetView<Action: View>: View {
 struct WidgetDayCompleteView: View {
     let day: WidgetDayContent
     let tomorrow: WidgetMealItem
+    /// Medium draws tomorrow's first meal in its own column beside this, so it is not said twice.
+    var showsTomorrow = true
     @Environment(\.widgetTheme) private var theme
 
     var body: some View {
@@ -227,14 +229,16 @@ struct WidgetDayCompleteView: View {
                 .lineLimit(2)
                 .minimumScaleFactor(0.85)
             Spacer(minLength: 0)
-            Text(WidgetText.thenLine(tomorrow, isLaterDay: day.followingDay != nil || isTomorrow))
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
-            Text(tomorrow.title)
-                .font(.footnote.weight(.semibold))
-                .lineLimit(2)
+            if showsTomorrow {
+                Text(WidgetText.thenLine(tomorrow, isLaterDay: day.followingDay != nil || isTomorrow))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+                Text(tomorrow.title)
+                    .font(.footnote.weight(.semibold))
+                    .lineLimit(2)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .accessibilityElement(children: .combine)
@@ -264,7 +268,7 @@ struct MediumMealWidgetView<Action: View>: View {
                 let main = showsSide ? (proxy.size.width - gap * 2 - 1) * 0.62 : proxy.size.width
                 HStack(alignment: .top, spacing: gap) {
                     if day.isDayComplete, case .laterDay = lead {
-                        WidgetDayCompleteView(day: day, tomorrow: primary)
+                        WidgetDayCompleteView(day: day, tomorrow: primary, showsTomorrow: false)
                             .frame(width: main)
                         Divider()
                         sideColumn(primary, label: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))

@@ -222,16 +222,15 @@ struct WidgetTimeText: View {
     static func parts(of date: Date) -> (figures: String, period: String?, periodFirst: Bool) {
         let full = date.formatted(.dateTime.hour().minute())
         let figures = date.formatted(.dateTime.hour(.defaultDigits(amPM: .omitted)).minute())
-        guard full != figures else { return (full, nil, false) }
+        guard full != figures else { return (figures: full, period: nil, periodFirst: false) }
         if full.hasPrefix(figures) {
-            let period = full.dropFirst(figures.count).trimmingCharacters(in: .whitespaces)
-            return period.isEmpty ? (full, nil, false) : (figures, period, false)
+            let period = String(full.dropFirst(figures.count)).trimmingCharacters(in: .whitespaces)
+            if !period.isEmpty { return (figures: figures, period: period, periodFirst: false) }
+        } else if full.hasSuffix(figures) {
+            let period = String(full.dropLast(figures.count)).trimmingCharacters(in: .whitespaces)
+            if !period.isEmpty { return (figures: figures, period: period, periodFirst: true) }
         }
-        if full.hasSuffix(figures) {
-            let period = full.dropLast(figures.count).trimmingCharacters(in: .whitespaces)
-            return period.isEmpty ? (full, nil, false) : (figures, period, true)
-        }
-        return (full, nil, false)
+        return (figures: full, period: nil, periodFirst: false)
     }
 }
 
