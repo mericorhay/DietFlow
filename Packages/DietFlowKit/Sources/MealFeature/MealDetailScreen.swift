@@ -4,6 +4,19 @@ import AppCore
 import DesignSystem
 import Domain
 
+/// What the meal screen asks the app to do. The app decides where it leads.
+public struct MealActions {
+    /// Opens cook mode for the meal on that day; nil in a build without the assistant.
+    public var cook: ((OccurrenceKey) -> Void)?
+    /// Opens the DietFlow Plus screen, from an offer on this screen.
+    public var showPlus: () -> Void
+
+    public init(cook: ((OccurrenceKey) -> Void)? = nil, showPlus: @escaping () -> Void = {}) {
+        self.cook = cook
+        self.showPlus = showPlus
+    }
+}
+
 /// One meal on one day: what it is, when, what is in it, and what happened to it. Only fields the
 /// plan actually gives are shown. One action is prominent at a time.
 public struct MealDetailScreen: View {
@@ -12,12 +25,14 @@ public struct MealDetailScreen: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var isEditing = false
     private let key: OccurrenceKey
+    private let actions: MealActions
 
-    public init(route: MealRoute) {
+    public init(route: MealRoute, actions: MealActions = MealActions()) {
         switch route {
         case .occurrence(let key):
             self.key = key
         }
+        self.actions = actions
     }
 
     public var body: some View {

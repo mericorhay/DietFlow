@@ -17,7 +17,7 @@ let widgetModules: [String] = ["Domain", "Persistence", "MealReminders", "AppCor
 
 let appModules: [String] = widgetModules + [
     "AIServices", "PlanImport", "PlanSync", "Purchases", "Analytics",
-    "OnboardingFeature", "TodayFeature", "PlanFeature", "MealFeature", "ImportFeature", "WidgetsFeature",
+    "OnboardingFeature", "TodayFeature", "PlanFeature", "MealFeature", "CookFeature", "ImportFeature", "WidgetsFeature",
     "AssistantFeature", "SettingsFeature", "PaywallFeature",
 ]
 
@@ -76,6 +76,8 @@ let package = Package(
         feature("TodayFeature"),
         feature("PlanFeature"),
         feature("MealFeature"),
+        // Cooking a meal step by step. Reaches the assistant through AppCore's MealAssistantModel.
+        feature("CookFeature"),
         feature("ImportFeature", ["Domain", "DesignSystem", "AppCore", "PlanImport", "AIServices", "Analytics"]),
         feature("WidgetsFeature", ["Domain", "DesignSystem", "AppCore", "WidgetUI"]),
         feature("SettingsFeature", ["Domain", "DesignSystem", "AppCore", "Purchases", "Analytics"]),

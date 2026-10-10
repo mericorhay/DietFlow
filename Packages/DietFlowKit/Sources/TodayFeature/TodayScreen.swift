@@ -15,6 +15,10 @@ public struct TodayActions {
     /// The assistant writing a plan, and putting a pasted list in order; nil without the assistant.
     public var writePlan: (() -> Void)?
     public var organizeList: (() -> Void)?
+    /// Opens cook mode for a meal on a day; nil without the assistant.
+    public var cook: ((OccurrenceKey) -> Void)?
+    /// Opens the DietFlow Plus screen, from an offer on Today.
+    public var showPlus: () -> Void
 
     public init(
         openSettings: @escaping () -> Void,
@@ -23,7 +27,9 @@ public struct TodayActions {
         addMeal: @escaping (CalendarDay) -> Void,
         showWidgets: @escaping () -> Void,
         writePlan: (() -> Void)? = nil,
-        organizeList: (() -> Void)? = nil
+        organizeList: (() -> Void)? = nil,
+        cook: ((OccurrenceKey) -> Void)? = nil,
+        showPlus: @escaping () -> Void = {}
     ) {
         self.openSettings = openSettings
         self.createPlan = createPlan
@@ -32,6 +38,8 @@ public struct TodayActions {
         self.showWidgets = showWidgets
         self.writePlan = writePlan
         self.organizeList = organizeList
+        self.cook = cook
+        self.showPlus = showPlus
     }
 }
 

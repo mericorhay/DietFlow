@@ -1,8 +1,10 @@
 import Combine
 import SwiftUI
 import UIKit
+import StoreKit
 import Analytics
 import AppCore
+import CookFeature
 import Domain
 import ImportFeature
 import MealFeature
@@ -59,6 +61,12 @@ enum AppSheet: Identifiable {
     }
 }
 
+/// A meal being cooked, shown over everything (`CookModeScreen`).
+struct CookRequest: Identifiable, Hashable {
+    let key: OccurrenceKey
+    var id: String { key.description }
+}
+
 /// Routes between features: three tabs, the sheets over them, first-run onboarding, and the links
 /// that open the app — the widget, a shared plan file, the Import Plan shortcut.
 /// Features never import each other; whatever leads from one to another is decided here.
@@ -68,27 +76,31 @@ struct RootView: View {
     @Environment(AccessModel.self) private var access
     @Environment(PlusStore.self) private var plus
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.requestReview) private var requestReview
     @State private var tab: AppTab = .today
     @State private var todayPath: [MealRoute] = []
     @State private var planPath: [MealRoute] = []
     @State private var sheet: AppSheet?
     @State private var showsOnboarding = false
-    /// The first thing a new person sees: what the app does and what Plus adds, before anything else.
+    /// What Plus adds, offered once: right after the first plan is saved, when the person has seen
+    /// what the app does for them, or on a later launch if that never happened.
     @State private var showsPlusIntro = false
     @State private var plansSaved = 0
+    /// Cook mode, over everything.
+    @State private var cooking: CookRequest?
 
     var body: some View {
         TabView(selection: $tab) {
             Tab("tab.today", systemImage: "sun.max", value: AppTab.today) {
                 NavigationStack(path: $todayPath) {
                     TodayScreen(actions: todayActions)
-                        .mealDestinations()
+                        .mealDestinations(mealActions)
                 }
             }
             Tab("tab.plan", systemImage: "calendar", value: AppTab.plan) {
                 NavigationStack(path: $planPath) {
                     PlanScreen(actions: planActions)
-                        .mealDestinations()
+                        .mealDestinations(mealActions)
                 }
             }
             Tab("tab.widgets", systemImage: "rectangle.3.group", value: AppTab.widgets) {
@@ -101,7 +113,11 @@ struct RootView: View {
             sheetContent(sheet)
                 .modifier(PlusPresenter(isFrontmost: true))
         }
-        .modifier(PlusPresenter(isFrontmost: sheet == nil && !showsOnboarding && !showsPlusIntro))
+        .modifier(PlusPresenter(isFrontmost: sheet == nil && !showsOnboarding && !showsPlusIntro && cooking == nil))
+        .fullScreenCover(item: $cooking) { request in
+            CookModeScreen(occurrence: request.key) { cooking = nil }
+                .modifier(PlusPresenter(isFrontmost: true))
+        }
         .fullScreenCover(isPresented: $showsPlusIntro, onDismiss: plusIntroClosed) {
             PaywallScreen(reason: .intro, showsAssistant: dependencies.assistant != nil)
         }
@@ -124,12 +140,11 @@ struct RootView: View {
             Text("error.save.message")
         }
         .onAppear {
-            // Once, on first launch, and never to someone who already holds Plus.
-            if dependencies.showsPlusOnFirstLaunch, !store.settings.hasSeenPlusIntro, access.tier == .free {
-                Analytics.track("paywall_shown", ["reason": "intro"])
+            // What the app does comes first; Plus is offered once the person has seen it.
+            showsOnboarding = needsOnboarding
+            if !showsOnboarding, offersPlusIntro {
+                Analytics.track("paywall_shown", ["reason": "intro", "moment": "launch"])
                 showsPlusIntro = true
-            } else {
-                showsOnboarding = needsOnboarding
             }
             takePendingImport()
             #if DEBUG
@@ -157,6 +172,18 @@ struct RootView: View {
             takePendingImport()
             // A subscription may have renewed, lapsed or been bought on another device meanwhile.
             Task { await plus.refresh() }
+            askForReviewIfEarned()
+        }
+        .onChange(of: plansSaved) { _, _ in
+            // The first plan is in: the moment the app has shown what it does, and the one time
+            // Plus is offered without being asked for.
+            guard offersPlusIntro else { return }
+            Task {
+                try? await Task.sleep(for: .milliseconds(900))
+                guard sheet == nil, cooking == nil, !showsOnboarding, offersPlusIntro else { return }
+                Analytics.track("paywall_shown", ["reason": "intro", "moment": "first_plan"])
+                showsPlusIntro = true
+            }
         }
         .onChange(of: access.request) { _, request in
             // Something only Plus does was asked for, or an allowance ran out: say so.
@@ -185,8 +212,29 @@ struct RootView: View {
             addMeal: { day in present(.newMeal(dayIndex: store.schedule?.dayIndex(on: day) ?? 0)) },
             showWidgets: { tab = .widgets },
             writePlan: hasAssistant ? { present(.assistant(.create)) } : nil,
-            organizeList: hasAssistant ? { present(.assistant(.organize)) } : nil
+            organizeList: hasAssistant ? { present(.assistant(.organize)) } : nil,
+            cook: hasAssistant ? { key in cook(key) } : nil,
+            showPlus: { showPlus(from: "today") }
         )
+    }
+
+    private var mealActions: MealActions {
+        MealActions(
+            cook: hasAssistant ? { key in cook(key) } : nil,
+            showPlus: { showPlus(from: "meal") }
+        )
+    }
+
+    /// Opens cook mode for a meal. Nothing is asked of the assistant until the screen is open.
+    private func cook(_ key: OccurrenceKey) {
+        guard sheet == nil else { return }
+        cooking = CookRequest(key: key)
+    }
+
+    /// The Plus screen, opened from an offer somewhere in the app; `source` says which, for analytics.
+    private func showPlus(from source: String) {
+        Analytics.track("paywall_shown", ["reason": .text(source)])
+        dependencies.paywall = PaywallRequest(.upgrade)
     }
 
     private var planActions: PlanActions {
@@ -275,11 +323,32 @@ struct RootView: View {
         !store.hasPlans && !store.settings.hasCompletedOnboarding
     }
 
-    /// The introduction was closed, with or without a purchase: it is not shown again, and the
-    /// rest of the first launch carries on.
+    /// Plus is offered on its own once, never to someone who holds it, and never in a seeded state.
+    private var offersPlusIntro: Bool {
+        dependencies.showsPlusOnFirstLaunch && !store.settings.hasSeenPlusIntro && access.tier == .free
+    }
+
+    /// The introduction was closed, with or without a purchase: it is not shown again.
     private func plusIntroClosed() {
         store.updateSettings { $0.hasSeenPlusIntro = true }
-        if sheet == nil { showsOnboarding = needsOnboarding }
+    }
+
+    /// Asks the App Store for a rating once, after the app has proved itself: meals marked eaten on
+    /// at least three different days. Never after a refusal or an error, never twice.
+    private func askForReviewIfEarned() {
+        guard dependencies.showsPlusOnFirstLaunch, !store.settings.hasAskedForReview,
+              sheet == nil, cooking == nil, !showsOnboarding, !showsPlusIntro,
+              dependencies.paywall == nil, store.failure == nil
+        else { return }
+        let eaten = store.states.filter { $0.value == .completed }
+        guard eaten.count >= 8, Set(eaten.keys.map(\.day)).count >= 3 else { return }
+        store.updateSettings { $0.hasAskedForReview = true }
+        Analytics.track("review_requested", ["meals_eaten": .int(eaten.count)])
+        Task {
+            // Once the app is settled on screen, not as it comes forward.
+            try? await Task.sleep(for: .seconds(2))
+            requestReview()
+        }
     }
 
     private func finishOnboarding(then next: AppSheet) {
@@ -351,6 +420,7 @@ struct RootView: View {
 
     private func dismissSheet() {
         sheet = nil
+        cooking = nil
         showsOnboarding = false
     }
 
@@ -406,14 +476,18 @@ struct RootView: View {
             tab = .today
             todayPath = [.occurrence(focus.occurrence.key)]
         }
+        if DebugLaunch.value("DebugCook") == "next", let focus = store.focus() {
+            tab = .today
+            cooking = CookRequest(key: focus.occurrence.key)
+        }
     }
     #endif
 }
 
 private extension View {
-    func mealDestinations() -> some View {
+    func mealDestinations(_ actions: MealActions) -> some View {
         navigationDestination(for: MealRoute.self) { route in
-            MealDetailScreen(route: route)
+            MealDetailScreen(route: route, actions: actions)
         }
     }
 }

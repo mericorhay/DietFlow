@@ -16,6 +16,7 @@ import Purchases
 ///     -DebugTab today|plan|widgets
 ///     -DebugSheet settings|import|write|organize|newMeal|newPlan|plus|plusIntro
 ///     -DebugMeal next                      opens the meal in front on Today
+///     -DebugCook next                      opens cook mode on the meal in front (canned recipe)
 ///     -DebugOnboardingPage 0…3
 ///     -DebugOnboardingTime <seconds>       stops the last page's animation at that moment
 ///     -DebugPlus monthly|trial|yearly|lifetime
