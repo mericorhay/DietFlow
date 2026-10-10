@@ -913,6 +913,30 @@
         }
       }
     },
+    "paywall.subtitle.cookLimit" : {
+      "comment" : "Subtitle of the DietFlow Plus screen when the free month's AI recipes (step-by-step cooking) are used up. %1$lld is the free number, %2$@ the date they come back (for example 1 November), %3$lld the number Plus includes a month.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have used the %1$lld recipes the free plan includes this month. They come back on %2$@; Plus has %3$lld a month, with substitutes for every ingredient."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Has usado las %1$lld recetas que incluye el plan gratuito este mes. Vuelven el %2$@; Plus tiene %3$lld al mes, con sustitutos para cada ingrediente."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz planın bu ay içerdiği %1$lld tarifi kullandın. %2$@ tarihinde yenilenir; Plus'ta ayda %3$lld tarif ve her malzeme için alternatifler var."
+          }
+        }
+      }
+    },
     "paywall.subtitle.limit" : {
       "comment" : "Under the title on the Plus screen when the free monthly allowance of assistant plans is used up. %1$lld is that allowance (a small number), %2$@ the date it comes back (\"1 November\"), %3$lld what Plus includes a month.",
       "extractionState" : "manual",
@@ -933,6 +957,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bu ayın ücretsiz asistan planları (%1$lld) bitti. %2$@ tarihinde yenilenir. Plus ayda %3$lld plan içerir."
+          }
+        }
+      }
+    },
+    "paywall.subtitle.nutritionLimit" : {
+      "comment" : "Subtitle of the DietFlow Plus screen when the free month's AI nutrition estimates are used up. %1$lld is the free number, %2$@ the date they come back (for example 1 November), %3$lld the number Plus includes a month.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have used the %1$lld nutrition estimates the free plan includes this month. They come back on %2$@; Plus has %3$lld a month."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Has usado las %1$lld estimaciones de nutrientes que incluye el plan gratuito este mes. Vuelven el %2$@; Plus tiene %3$lld al mes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz planın bu ay içerdiği %1$lld besin değeri tahminini kullandın. %2$@ tarihinde yenilenir; Plus'ta ayda %3$lld tane var."
           }
         }
       }

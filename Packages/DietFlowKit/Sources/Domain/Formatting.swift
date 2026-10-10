@@ -23,6 +23,16 @@ public enum EnergyUnit: String, Codable, CaseIterable, Sendable {
     }
 }
 
+extension EnergyUnit {
+    /// "≈ 510 kcal" for energy the assistant estimated, "510 kcal" for energy the plan gave, nil
+    /// for none: an estimate is never shown as if someone had written it.
+    public func format(_ nutrition: Nutrition, locale: Locale = .current) -> String? {
+        guard let calories = nutrition.calories else { return nil }
+        let text = format(kilocalories: calories, locale: locale)
+        return nutrition.isEstimated ? "≈\u{2009}" + text : text
+    }
+}
+
 public enum NutritionFormat {
     /// "42 g", with at most one decimal.
     public static func grams(_ value: Double, locale: Locale = .current) -> String {

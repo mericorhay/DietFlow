@@ -24,6 +24,10 @@ public struct PaywallScreen: View {
         case assistantLimit(limit: Int, resetsAt: Date)
         /// A second plan was asked for on the free tier.
         case additionalPlan
+        /// The free tier's nutrition estimates for the month are used up.
+        case nutritionLimit(limit: Int, resetsAt: Date)
+        /// The free tier's recipes (cook mode) for the month are used up.
+        case cookLimit(limit: Int, resetsAt: Date)
     }
 
     @Environment(PlusStore.self) private var plus
@@ -89,7 +93,7 @@ public struct PaywallScreen: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: AppSpacing.small) {
-            Image(systemName: "sparkles")
+            Image(systemName: headerSymbol)
                 .font(.title)
                 .foregroundStyle(AppColors.onBrandAccent)
                 .frame(width: 48, height: 48)
@@ -117,6 +121,24 @@ public struct PaywallScreen: View {
             return String(localized: "paywall.subtitle.limit", defaultValue: "You have used the \(limit) assistant plans the free plan includes this month. They come back on \(date); Plus has \(plusLimit) a month.", bundle: .module)
         case .additionalPlan:
             return String(localized: "paywall.subtitle.additionalPlan", bundle: .module)
+        case .nutritionLimit(let limit, let resetsAt):
+            let date = resetsAt.formatted(.dateTime.day().month(.wide))
+            let plusLimit = AccessPolicy.limit(.aiNutrition, tier: .plus) ?? limit
+            return String(localized: "paywall.subtitle.nutritionLimit", defaultValue: "You have used the \(limit) nutrition estimates the free plan includes this month. They come back on \(date); Plus has \(plusLimit) a month.", bundle: .module)
+        case .cookLimit(let limit, let resetsAt):
+            let date = resetsAt.formatted(.dateTime.day().month(.wide))
+            let plusLimit = AccessPolicy.limit(.aiRecipe, tier: .plus) ?? limit
+            return String(localized: "paywall.subtitle.cookLimit", defaultValue: "You have used the \(limit) recipes the free plan includes this month. They come back on \(date); Plus has \(plusLimit) a month, with substitutes for every ingredient.", bundle: .module)
+        }
+    }
+
+    /// What the screen is about, as its header symbol.
+    private var headerSymbol: String {
+        switch reason {
+        case .cookLimit: "frying.pan"
+        case .nutritionLimit: "chart.pie"
+        case .additionalPlan: "square.stack"
+        case .intro, .upgrade, .assistantLimit: "sparkles"
         }
     }
 

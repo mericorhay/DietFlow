@@ -1,6 +1,288 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "assistant.consent.allow" : {
+      "comment" : "Button in the permission alert that allows sending meals to the AI company.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin Ver"
+          }
+        }
+      }
+    },
+    "assistant.consent.decline" : {
+      "comment" : "Button in the permission alert that declines sending meals to the AI company, for now.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Now"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora no"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdi Değil"
+          }
+        }
+      }
+    },
+    "assistant.consent.message" : {
+      "comment" : "Alert message asking permission before meals are sent to the AI company. %1$@ is the company's name (for example OpenAI), %2$@ the app's name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To do this, the meal's name, description and portion, and any foods you said you avoid, are sent through our server to %1$@, whose AI reads them. %2$@ does not keep them. Nothing else about you or your plan is sent."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para ello, el nombre, la descripción y la ración de la comida, y los alimentos que dijiste evitar, se envían a través de nuestro servidor a %1$@, cuya IA los lee. %2$@ no los guarda. No se envía nada más sobre ti ni sobre tu plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bunun için öğünün adı, açıklaması ve porsiyonu ile yemediğini söylediğin yiyecekler sunucumuz üzerinden %1$@ yapay zekâsına gönderilir. %2$@ bunları saklamaz. Seninle ya da planınla ilgili başka hiçbir şey gönderilmez."
+          }
+        }
+      }
+    },
+    "assistant.consent.title" : {
+      "comment" : "Alert title asking permission before a meal is sent to the AI company. %@ is the company's name (for example OpenAI).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share meals with %@?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Compartir las comidas con %@?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğünlerin %@ ile paylaşılsın mı?"
+          }
+        }
+      }
+    },
+    "assistant.cost.left" : {
+      "comment" : "Caption under an assistant button (or its VoiceOver hint): how many uses of this assistant feature are left in the current month. %lld is the number.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld use left this month"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld uses left this month"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Te quedan %lld usos este mes"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Te queda %lld uso este mes"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Te quedan %lld usos este mes"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bu ay %lld hakkın kaldı"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bu ay %lld hakkın kaldı"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "assistant.cost.plusChip" : {
+      "comment" : "Tiny capsule label on an assistant button meaning 'part of DietFlow Plus'. The product name; keep it short.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        }
+      }
+    },
+    "assistant.cost.plusHint" : {
+      "comment" : "VoiceOver hint on an assistant button whose free uses are used up: tapping it explains DietFlow Plus.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Included with Plus. Opens what Plus adds."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incluido en Plus. Abre lo que añade Plus."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus'a dahil. Plus'ın neler eklediğini açar."
+          }
+        }
+      }
+    },
+    "assistant.mark.estimated" : {
+      "comment" : "Small label with a sparkles symbol beside nutrition figures the AI assistant estimated (not given by the person's plan). One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimado"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tahmini"
+          }
+        }
+      }
+    },
+    "assistant.mark.written" : {
+      "comment" : "Small label with a sparkles symbol over a recipe the AI assistant wrote. A few words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Written by the assistant"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escrito por el asistente"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan yazdı"
+          }
+        }
+      }
+    },
+    "assistant.working" : {
+      "comment" : "VoiceOver label for a placeholder the AI assistant is still filling in.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The assistant is working on it"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El asistente está en ello"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asistan üzerinde çalışıyor"
+          }
+        }
+      }
+    },
     "dateStrip.today" : {
       "comment" : "VoiceOver value read after a date in the week strip when that date is today. One word.",
       "extractionState" : "manual",

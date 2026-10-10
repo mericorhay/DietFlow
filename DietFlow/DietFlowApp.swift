@@ -12,6 +12,7 @@ struct DietFlowApp: App {
                 .environment(dependencies.store)
                 .environment(dependencies.access)
                 .environment(dependencies.plus)
+                .environment(dependencies.mealAssistant)
         }
     }
 }

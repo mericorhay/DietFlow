@@ -32,6 +32,9 @@ public struct AppSettings: Codable, Hashable, Sendable {
     public var hasDismissedPlusCard: Bool
     /// The App Store's rating prompt has been asked for once, after a few good days.
     public var hasAskedForReview: Bool
+    /// What the person does not eat, in their own words ("no pork, lactose"). Sent with a recipe
+    /// request so its steps and substitutes leave those out. Empty when nothing was said.
+    public var foodsToAvoid: String
 
     public init(
         remindersEnabled: Bool = false,
@@ -52,7 +55,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
         smartMealTimes: Bool = true,
         hasDismissedEstimateCard: Bool = false,
         hasDismissedPlusCard: Bool = false,
-        hasAskedForReview: Bool = false
+        hasAskedForReview: Bool = false,
+        foodsToAvoid: String = ""
     ) {
         self.remindersEnabled = remindersEnabled
         self.defaultReminder = defaultReminder
@@ -73,7 +77,11 @@ public struct AppSettings: Codable, Hashable, Sendable {
         self.hasDismissedEstimateCard = hasDismissedEstimateCard
         self.hasDismissedPlusCard = hasDismissedPlusCard
         self.hasAskedForReview = hasAskedForReview
+        self.foodsToAvoid = String(foodsToAvoid.prefix(Self.foodsToAvoidLimit))
     }
+
+    /// Characters kept of `foodsToAvoid`: what the assistant's server reads of it.
+    public static let foodsToAvoidLimit = 200
 
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -97,6 +105,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         hasDismissedEstimateCard = (try? container.decode(Bool.self, forKey: .hasDismissedEstimateCard)) ?? defaults.hasDismissedEstimateCard
         hasDismissedPlusCard = (try? container.decode(Bool.self, forKey: .hasDismissedPlusCard)) ?? defaults.hasDismissedPlusCard
         hasAskedForReview = (try? container.decode(Bool.self, forKey: .hasAskedForReview)) ?? defaults.hasAskedForReview
+        foodsToAvoid = String(((try? container.decode(String.self, forKey: .foodsToAvoid)) ?? defaults.foodsToAvoid).prefix(Self.foodsToAvoidLimit))
     }
 
     public var widgetPreferences: WidgetPreferences {

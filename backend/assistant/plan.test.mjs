@@ -150,6 +150,26 @@ test("a thirty-day plan is written a week at a time, each call told what came be
   assert.deepEqual(result.plan.repeatCycle, { lengthInDays: 30, repeats: false });
   assert.equal(result.plan.name, "Thirty days");
   assert.equal(result.plan.days[29].meals[0].calories, 400);
+  // Figures in a written plan are estimates, and say so.
+  assert.equal(result.plan.days[29].meals[0].estimated, true);
+  assert.match(calls[0].system, /portion/);
+  assert.match(calls[0].system, /4 × protein/);
+});
+
+test("a written meal without figures is not marked as an estimate, and a portion is kept", async () => {
+  const result = await create(async () => answer([{ day: 1, meals: [meal("Soup", { portion: "1 bowl" }), meal("Bread")] }]), { days: 1, mealsPerDay: 2 });
+  const [soup, bread] = result.plan.days[0].meals;
+  assert.equal(soup.portion, "1 bowl");
+  assert.equal(soup.estimated, undefined);
+  assert.equal(bread.estimated, undefined);
+});
+
+test("organising copies a stated portion and never marks anything as estimated", async () => {
+  const result = await organize(async () => answer([{ day: 1, meals: [meal("Oats", { portion: "50 g", kcal: 190 })] }]), { text: "Day 1: oats 50 g, 190 kcal" });
+  const [oats] = result.plan.days[0].meals;
+  assert.equal(oats.portion, "50 g");
+  assert.equal(oats.calories, 190);
+  assert.equal(oats.estimated, undefined);
 });
 
 test("days a model numbers wrongly are put back where they were asked for", async () => {

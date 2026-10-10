@@ -45,20 +45,20 @@ public struct NoPlanView: View {
             if hasAssistant {
                 VStack(spacing: AppSpacing.xSmall) {
                     if let onWritePlan {
-                        AssistantChoice(
+                        AssistantCard(
                             symbol: "sparkles",
-                            title: "noPlan.write.title",
-                            subtitle: "noPlan.write.subtitle",
-                            isProminent: true,
+                            title: Text("noPlan.write.title", bundle: .module),
+                            subtitle: Text("noPlan.write.subtitle", bundle: .module),
+                            style: .prominent,
                             action: onWritePlan
                         )
                     }
                     if let onOrganizeList {
-                        AssistantChoice(
+                        AssistantCard(
                             symbol: "wand.and.stars",
-                            title: "noPlan.organize.title",
-                            subtitle: "noPlan.organize.subtitle",
-                            isProminent: false,
+                            title: Text("noPlan.organize.title", bundle: .module),
+                            subtitle: Text("noPlan.organize.subtitle", bundle: .module),
+                            style: .quiet,
                             action: onOrganizeList
                         )
                     }
@@ -98,49 +98,5 @@ public struct NoPlanView: View {
         }
         .buttonStyle(.bordered)
         .controlSize(.large)
-    }
-}
-
-/// One thing the assistant does, as a wide button: a symbol, what it is, and a line on how.
-private struct AssistantChoice: View {
-    let symbol: String
-    let title: LocalizedStringKey
-    let subtitle: LocalizedStringKey
-    let isProminent: Bool
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: AppSpacing.small) {
-                Image(systemName: symbol)
-                    .font(.title2)
-                    .frame(width: 32)
-                    .accessibilityHidden(true)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title, bundle: .module)
-                        .font(.headline)
-                    Text(subtitle, bundle: .module)
-                        .font(.subheadline)
-                        .opacity(0.85)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                Spacer(minLength: 0)
-                Image(systemName: "chevron.forward")
-                    .font(.footnote.weight(.semibold))
-                    .opacity(0.6)
-                    .accessibilityHidden(true)
-            }
-            .padding(AppSpacing.medium)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .foregroundStyle(isProminent ? Color.white : Color.primary)
-            .background(
-                isProminent ? AnyShapeStyle(AppColors.brandAccent) : AnyShapeStyle(Color(.secondarySystemBackground)),
-                in: RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous)
-            )
-            .contentShape(RoundedRectangle(cornerRadius: AppRadius.large, style: .continuous))
-        }
-        .buttonStyle(.plain)
-        .accessibilityElement(children: .combine)
     }
 }

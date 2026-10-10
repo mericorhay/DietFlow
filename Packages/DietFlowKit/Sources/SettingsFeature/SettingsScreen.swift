@@ -10,6 +10,7 @@ import Domain
 /// is no setting for it.
 public struct SettingsScreen: View {
     @Environment(MealPlanStore.self) private var store
+    @Environment(MealAssistantModel.self) private var mealAssistant
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
     @State private var notificationsDenied = false
@@ -54,6 +55,7 @@ public struct SettingsScreen: View {
             .confirmationDialog(Text("settings.deleteAll.title", bundle: .module), isPresented: $confirmsDeleteAll, titleVisibility: .visible) {
                 Button(role: .destructive) {
                     store.attempt { try store.deleteAllData() }
+                    mealAssistant.forgetRecipes()
                 } label: {
                     Text("settings.deleteAll.confirm", bundle: .module)
                 }

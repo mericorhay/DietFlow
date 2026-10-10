@@ -6,6 +6,7 @@ import Analytics
 import AppCore
 import Domain
 import MealReminders
+import Persistence
 import Purchases
 
 /// The composition root. Modules never reach for each other; whatever a screen needs is built here
@@ -31,6 +32,11 @@ final class AppDependencies {
     var paywall: PaywallRequest? = nil
     /// Set when someone on Plus has used a period's allowance: the day it comes back.
     var allowanceResetsAt: Date? = nil
+    /// Which allowance that was, for the alert's wording.
+    var allowanceUsedUp: AccessPoint? = nil
+    /// The assistant's help with single meals: estimates and recipes. Unavailable (but present) in
+    /// a build without the assistant.
+    let mealAssistant: MealAssistantModel
     @ObservationIgnored private var reminderResponder: ReminderResponder? = nil
 
     init(store: MealPlanStore? = nil) {
@@ -40,7 +46,8 @@ final class AppDependencies {
         #else
         seeded = store
         #endif
-        self.store = seeded ?? .live()
+        let planStore = seeded ?? .live()
+        self.store = planStore
         showsPlusOnFirstLaunch = seeded == nil
 
         let access: AccessModel
@@ -68,6 +75,14 @@ final class AppDependencies {
         }
         self.access = access
         self.plus = plus
+        #if DEBUG
+        let mealClient: (any MealAssistant)? = seeded == nil ? assistant : DebugLaunch.standInMealAssistant()
+        let recipes = RecipeCache(inMemory: seeded != nil)
+        #else
+        let mealClient: (any MealAssistant)? = assistant
+        let recipes = RecipeCache()
+        #endif
+        mealAssistant = MealAssistantModel(client: mealClient, store: planStore, access: access, recipes: recipes, report: Self.track)
         // Asks the App Store what is held, and follows it from here on. A stand-in store ignores this.
         plus.start()
 

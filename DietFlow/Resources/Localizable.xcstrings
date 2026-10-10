@@ -985,6 +985,30 @@
         }
       }
     },
+    "plus.allowance.nutrition" : {
+      "comment" : "Alert message for someone on DietFlow Plus who has used this billing period's AI nutrition estimates. %@ is the date they come back (for example 12 November).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This period's nutrition estimates are used up. They come back on %@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las estimaciones de nutrientes de este periodo se han agotado. Vuelven el %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dönemin besin değeri tahminleri bitti. %@ tarihinde yenilenir."
+          }
+        }
+      }
+    },
     "plus.allowance.ok" : {
       "comment" : "Button that closes that alert. One word.",
       "extractionState" : "manual",
@@ -1005,6 +1029,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "plus.allowance.recipes" : {
+      "comment" : "Alert message for someone on DietFlow Plus who has used this billing period's new AI recipes. Recipes already opened stay available. %@ is the date more come back (for example 12 November).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This period's new recipes are used up; the ones you opened stay. More come back on %@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las recetas nuevas de este periodo se han agotado; las que abriste siguen ahí. Vuelven más el %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dönemin yeni tarifleri bitti; açtıkların duruyor. %@ tarihinde yenilenir."
           }
         }
       }
