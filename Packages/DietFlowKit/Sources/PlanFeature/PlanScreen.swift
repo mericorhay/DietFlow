@@ -530,6 +530,13 @@ private struct PlanMealRow: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ScaledMetric(relativeTo: .body) private var glyphSize: CGFloat = 34
 
+    init(occurrence: MealOccurrence, energy: String?, isEstimating: Bool, movedFrom: String?) {
+        self.occurrence = occurrence
+        self.energy = energy
+        self.isEstimating = isEstimating
+        self.movedFrom = movedFrom
+    }
+
     var body: some View {
         let isLarge = dynamicTypeSize.isAccessibilitySize
         HStack(alignment: .center, spacing: AppSpacing.small) {

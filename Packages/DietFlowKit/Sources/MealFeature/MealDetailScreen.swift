@@ -295,7 +295,10 @@ public struct MealDetailScreen: View {
 
     private func nutritionCard(_ meal: Meal) -> some View {
         let nutrition = meal.nutrition
+        // Its own estimate, or the whole plan's while this meal still has nothing: either way the
+        // figures are on their way, and asking again would spend a second use.
         let isEstimating = assistant.estimatingMeals.contains(meal.id)
+            || (meal.lacksNutrition && assistant.planEstimate?.isRunning == true)
         return VStack(alignment: .leading, spacing: AppSpacing.medium) {
             HStack(alignment: .firstTextBaseline, spacing: AppSpacing.xSmall) {
                 Text("meal.section.nutrition", bundle: .module)
@@ -565,7 +568,7 @@ public struct MealDetailScreen: View {
 
     private func reminderBinding(_ meal: Meal) -> Binding<ReminderOffset?> {
         Binding(
-            get: { store.meal(id: meal.id)?.reminder ?? meal.reminder },
+            get: { (store.meal(id: meal.id) ?? meal).reminder },
             set: { newValue in
                 guard var updated = store.meal(id: meal.id) else { return }
                 updated.reminder = newValue
@@ -804,11 +807,16 @@ private struct Macro: Identifiable {
 
 /// The big energy figure and the three macronutrients as bars with their grams printed.
 private struct NutritionFigures: View {
-    let energy: String?
-    let macros: [Macro]
+    private let energy: String?
+    private let macros: [Macro]
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     /// The bars grow from nothing once, when the card first shows.
     @State private var isRevealed = false
+
+    init(energy: String?, macros: [Macro]) {
+        self.energy = energy
+        self.macros = macros
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.medium) {
