@@ -3,14 +3,21 @@ name: Deploy assistant
 # Puts backend/assistant on Cloudflare Workers. Run by hand after a change to the Worker: the app
 # talks to whatever is deployed, so a new endpoint does nothing until this has run.
 #
-# Needs two repository secrets, set once:
+# Needs one repository secret, set once (a second is optional):
 #   CLOUDFLARE_API_TOKEN   a token from dash.cloudflare.com › My Profile › API Tokens, made from the
 #                          "Edit Cloudflare Workers" template
-#   CLOUDFLARE_ACCOUNT_ID  the account id shown on the Workers & Pages overview
+#   CLOUDFLARE_ACCOUNT_ID  only when the token can reach more than one account: the account id shown
+#                          on the Workers & Pages overview
 # The Worker's own secrets (APP_TOKEN, OPENAI_API_KEY …) stay in Cloudflare and are not touched.
 
 on:
   workflow_dispatch:
+  # Also on every push that changes the Worker, so a branch with a new endpoint can be deployed
+  # without first reaching the default branch.
+  push:
+    paths:
+      - "backend/assistant/**"
+      - ".github/workflows/deploy-assistant.yml"
 
 concurrency:
   group: deploy-assistant
@@ -34,8 +41,12 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
-            echo "::error::Set the CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets first."
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::Set the CLOUDFLARE_API_TOKEN repository secret first."
             exit 1
           fi
+          [ -n "$CLOUDFLARE_ACCOUNT_ID" ] || unset CLOUDFLARE_ACCOUNT_ID
           npx --yes wrangler@4 deploy
+          # What is configured now (no secrets are printed): the models and whether the token is set.
+          url=$(npx --yes wrangler@4 deployments list 2>/dev/null | grep -o 'https://[^ ]*workers.dev' | head -1 || true)
+          [ -n "$url" ] && curl -fsS "$url/health" || true
