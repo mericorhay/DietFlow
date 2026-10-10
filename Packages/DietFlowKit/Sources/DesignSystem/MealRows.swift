@@ -55,7 +55,10 @@ public struct MealStatusSymbol: View {
         case .skipped: "minus.circle"
         case .current: "circle.inset.filled"
         case .next: "circle.circle"
-        case .pending, .missed: "circle"
+        case .pending: "circle"
+        // Broken, not just greyer: a meal whose time went by unmarked reads differently from one
+        // still ahead, by shape and not only by shade.
+        case .missed: "circle.dashed"
         }
     }
 
@@ -92,6 +95,9 @@ public struct MealSummaryRow<Accessory: View>: View {
     }
 
     public var body: some View {
+        // Orange only when there is a warning to read: a time drawn in orange with nothing saying
+        // why is an alarm without a reason.
+        let isWarning = note != nil && noteIsWarning
         let layout = dynamicTypeSize.isAccessibilitySize
             ? AnyLayout(VStackLayout(alignment: .leading, spacing: AppSpacing.xxSmall))
             : AnyLayout(HStackLayout(alignment: .firstTextBaseline, spacing: AppSpacing.small))
@@ -100,7 +106,7 @@ public struct MealSummaryRow<Accessory: View>: View {
                 Text(time, format: .dateTime.hour().minute())
                     .font(.body)
                     .monospacedDigit()
-                    .foregroundStyle(noteIsWarning ? Color.orange : Color.primary)
+                    .foregroundStyle(isWarning ? Color.orange : Color.primary)
                     .frame(minWidth: dynamicTypeSize.isAccessibilitySize ? nil : timeColumn, alignment: .leading)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(typeLabel)
@@ -111,9 +117,9 @@ public struct MealSummaryRow<Accessory: View>: View {
                         .foregroundStyle(.primary)
                         .multilineTextAlignment(.leading)
                     if let note {
-                        Label(note, systemImage: noteIsWarning ? "exclamationmark.triangle.fill" : "info.circle")
+                        Label(note, systemImage: isWarning ? "exclamationmark.triangle.fill" : "info.circle")
                             .font(.footnote)
-                            .foregroundStyle(noteIsWarning ? Color.orange : Color.secondary)
+                            .foregroundStyle(isWarning ? Color.orange : Color.secondary)
                             .labelStyle(.titleAndIcon)
                     }
                 }
