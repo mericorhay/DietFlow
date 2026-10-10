@@ -69,9 +69,11 @@ struct WidgetLiveContentTests {
     // MARK: Smart Stack
 
     @Test func relevanceRisesAQuarterOfAnHourBeforeAMealUntilItGivesWay() throws {
+        // One plan throughout: every call of twoDayPlan() makes meals with new ids.
+        let plan = twoDayPlan()
         func score(_ hour: Int, _ minute: Int = 0, states: OccurrenceStates = [:]) -> Double {
             let date = at(monday, hour, minute)
-            return WidgetTimelineBuilder.relevance(of: WidgetTimelineBuilder.content(for: snapshot(states: states), at: date, timeZone: utc), at: date)
+            return WidgetTimelineBuilder.relevance(of: WidgetTimelineBuilder.content(for: snapshot(plan, states: states), at: date, timeZone: utc), at: date)
         }
         #expect(score(13, 30) == WidgetTimelineBuilder.Relevance.ordinary)
         #expect(score(13, 45) == WidgetTimelineBuilder.Relevance.mealtime)
@@ -79,7 +81,7 @@ struct WidgetLiveContentTests {
         #expect(score(15, 1) == WidgetTimelineBuilder.Relevance.ordinary)
 
         var all: OccurrenceStates = [:]
-        for occurrence in MealSchedule(plan: twoDayPlan(), timeZone: utc).occurrences(on: monday) {
+        for occurrence in MealSchedule(plan: plan, timeZone: utc).occurrences(on: monday) {
             all[occurrence.key] = .completed
         }
         #expect(score(20, states: all) == WidgetTimelineBuilder.Relevance.dayComplete)
@@ -107,8 +109,9 @@ struct WidgetLiveContentTests {
     }
 
     @Test func imUpGivesWayOnceTheDayHasBegun() throws {
-        let breakfast = MealSchedule(plan: twoDayPlan(), timeZone: utc).occurrences(on: monday)[0].key
-        #expect(try active(snapshot(states: [breakfast: .completed]), at: at(monday, 8)).offersStartDay == false, "a meal is marked")
+        let plan = twoDayPlan()
+        let breakfast = MealSchedule(plan: plan, timeZone: utc).occurrences(on: monday)[0].key
+        #expect(try active(snapshot(plan, states: [breakfast: .completed]), at: at(monday, 8)).offersStartDay == false, "a meal is marked")
         let started = snapshot(dayStarts: [monday: .wokeUp(at: clockTime(7), source: .widget)])
         #expect(try active(started, at: at(monday, 8)).offersStartDay == false, "the day was started")
         let off = snapshot(preferences: WidgetPreferences(smartMealTimes: false))
