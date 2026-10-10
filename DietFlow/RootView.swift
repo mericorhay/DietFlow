@@ -56,6 +56,8 @@ enum AppSheet: Identifiable {
 /// A meal being cooked, shown over everything (`CookModeScreen`).
 struct CookRequest: Identifiable, Hashable {
     let key: OccurrenceKey
+    /// A step to open on once the recipe is in; nil for the overview. Screenshots only.
+    var startingStep: Int? = nil
     var id: String { key.description }
 }
 
@@ -107,8 +109,13 @@ struct RootView: View {
         }
         .modifier(PlusPresenter(isFrontmost: sheet == nil && !showsOnboarding && !showsPlusIntro && cooking == nil))
         .fullScreenCover(item: $cooking) { request in
-            CookModeScreen(occurrence: request.key) { cooking = nil }
-                .modifier(PlusPresenter(isFrontmost: true))
+            CookModeScreen(
+                occurrence: request.key,
+                onClose: { cooking = nil },
+                showPlus: { showPlus(from: "cook") },
+                startingStep: request.startingStep
+            )
+            .modifier(PlusPresenter(isFrontmost: true))
         }
         .fullScreenCover(isPresented: $showsPlusIntro, onDismiss: plusIntroClosed) {
             PaywallScreen(reason: .intro, showsAssistant: dependencies.assistant != nil)
@@ -477,7 +484,12 @@ struct RootView: View {
         }
         if DebugLaunch.value("DebugCook") == "next", let focus = store.focus() {
             tab = .today
-            cooking = CookRequest(key: focus.occurrence.key)
+            cooking = CookRequest(key: focus.occurrence.key, startingStep: DebugLaunch.value("DebugCookStep").flatMap { Int($0) })
+        }
+        if DebugLaunch.value("DebugMeal") == "estimate",
+           let meal = store.agenda(on: .today())?.items.first(where: { $0.occurrence.meal.lacksNutrition }) {
+            tab = .today
+            todayPath = [.occurrence(meal.occurrence.key)]
         }
     }
     #endif

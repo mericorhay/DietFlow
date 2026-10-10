@@ -88,6 +88,10 @@ fi
 shot today-now-en "${EN[@]}" "${NOW[@]}"
 shot plan-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
 shot meal-now-tr "${TR[@]}" "${NOW[@]}" -DebugMeal next
+# Cook mode on the canned recipe: the overview, the grill step with its timer, the closing page.
+shot cook-overview-tr "${TR[@]}" "${NOW[@]}" -DebugCook next
+shot cook-step-en "${EN[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 3
+shot cook-done-es "${ES[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 7
 shot widgets-en "${EN[@]}" "${SAMPLE[@]}" -DebugTab widgets
 shot widgets-today-large-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.large
 shot widgets-today-medium-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.medium
@@ -117,6 +121,7 @@ shot empty-plan-es "${ES[@]}" -DebugSeed empty -DebugTab plan
 shot write-tr "${TR[@]}" -DebugSeed empty -DebugSheet write
 shot organize-en "${EN[@]}" -DebugSeed empty -DebugSheet organize
 shot privacy-links-en "${EN[@]}" "${SAMPLE[@]}" -DebugSheet settings
+shot cook-consent-en "${EN[@]}" "${NOW[@]}" -DebugCook next -DebugCookConsent ask
 # Room for longer languages and right-to-left scripts: Xcode's pseudolanguages.
 shot today-long "${EN[@]}" "${SAMPLE[@]}" -NSDoubleLocalizedStrings YES
 shot today-rtl "${EN[@]}" "${SAMPLE[@]}" -AppleTextDirection YES -NSForceRightToLeftWritingDirection YES
@@ -124,6 +129,8 @@ shot today-rtl "${EN[@]}" "${SAMPLE[@]}" -AppleTextDirection YES -NSForceRightTo
 appearance dark
 shot today-now-tr-dark "${TR[@]}" "${NOW[@]}"
 shot widgets-now-es-dark "${ES[@]}" "${NOW[@]}" -DebugTab widgets
+shot cook-step-tr-dark "${TR[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 2
+shot meal-now-tr-dark "${TR[@]}" "${NOW[@]}" -DebugMeal next
 appearance light
 
 textSize accessibility-large
@@ -131,4 +138,5 @@ sleep 3
 shot today-large-text "${EN[@]}" "${NOW[@]}"
 shot plan-large-text "${EN[@]}" "${SAMPLE[@]}" -DebugTab plan
 shot meal-large-text "${EN[@]}" "${NOW[@]}" -DebugMeal next
+shot cook-step-large-text "${EN[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 3
 textSize large

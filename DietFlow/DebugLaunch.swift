@@ -17,6 +17,10 @@ import Purchases
 ///     -DebugSheet settings|import|write|organize|newMeal|newPlan|plus|plusIntro
 ///     -DebugMeal next                      opens the meal in front on Today
 ///     -DebugCook next                      opens cook mode on the meal in front (canned recipe)
+///     -DebugCookStep <n>                   with -DebugCook: opens on step n (7 is the closing page)
+///     -DebugCookConsent ask                with -DebugCook: shows the consent card instead of the recipe
+///     -DebugMeal estimate                  opens today's first meal without nutrition
+///     -DebugConsent yes                    as if the assistant had been allowed (estimates, recipes)
 ///     -DebugOnboardingPage 0…3
 ///     -DebugOnboardingTime <seconds>       stops the last page's animation at that moment
 ///     -DebugPlus monthly|trial|yearly|lifetime
@@ -86,6 +90,19 @@ enum DebugLaunch {
             store = .preview(withSample: false, settings: AppSettings())
         default:
             return nil
+        }
+        // Seeded stores start without consent; a screen showing the assistant's work needs it.
+        if (value("DebugCook") != nil && value("DebugCookConsent") != "ask") || value("DebugConsent") == "yes" {
+            store.updateSettings { $0.allowsAssistantSharing = true }
+        }
+        if value("DebugCook") != nil {
+            // What a person who avoids something would have written, in the screenshot's language.
+            let avoided = switch AppLanguage.currentCode() {
+            case "tr": "fıstık"
+            case "es": "cacahuetes"
+            default: "peanuts"
+            }
+            store.updateSettings { $0.foodsToAvoid = avoided }
         }
         if let look = value("DebugWidgetLook")?.split(separator: ".").map(String.init), look.count == 2 {
             store.updateSettings { settings in
@@ -178,12 +195,12 @@ nonisolated struct CannedMealAssistant: MealAssistant {
                     minutes: 25,
                     difficulty: .easy,
                     ingredients: [
-                        I(name: "Tavuk göğsü", amount: "150 g", substitutes: [S(name: "Tavuk but", amount: "150 g", note: "Daha sulu, biraz daha yağlı"), S(name: "Hindi göğsü", amount: "150 g", note: "Daha yağsız")]),
-                        I(name: "Göbek marul", amount: "1 küçük baş", substitutes: [S(name: "Roka", amount: "2 avuç", note: "Daha keskin bir tat")]),
-                        I(name: "Parmesan", amount: "20 g", substitutes: [S(name: "Eski kaşar", amount: "20 g"), S(name: "Besin mayası", amount: "1 yemek kaşığı", note: "Süt ürünü yemeyenler için")]),
+                        I(name: "Tavuk göğsü", amount: "150 g", substitutes: [S(name: "Tavuk but", amount: "150 g", note: "Daha sulu, biraz daha yağlı", kcalDelta: 45), S(name: "Hindi göğsü", amount: "150 g", note: "Daha yağsız", kcalDelta: -15)]),
+                        I(name: "Göbek marul", amount: "1 küçük baş", substitutes: [S(name: "Roka", amount: "2 avuç", note: "Daha keskin bir tat", kcalDelta: -20)]),
+                        I(name: "Parmesan", amount: "20 g", substitutes: [S(name: "Eski kaşar", amount: "20 g", kcalDelta: -5), S(name: "Besin mayası", amount: "1 yemek kaşığı", note: "Süt ürünü yemeyenler için", kcalDelta: -60)]),
                         I(name: "Zeytinyağı", amount: "1 yemek kaşığı"),
-                        I(name: "Limon suyu", amount: "1 yemek kaşığı", substitutes: [S(name: "Elma sirkesi", amount: "1 tatlı kaşığı")]),
-                        I(name: "Yoğurt", amount: "2 yemek kaşığı", substitutes: [S(name: "Mayonez", amount: "1 yemek kaşığı", note: "Daha kremamsı, daha kalorili")]),
+                        I(name: "Limon suyu", amount: "1 yemek kaşığı", substitutes: [S(name: "Elma sirkesi", amount: "1 tatlı kaşığı", kcalDelta: 0)]),
+                        I(name: "Yoğurt", amount: "2 yemek kaşığı", substitutes: [S(name: "Mayonez", amount: "1 yemek kaşığı", note: "Daha kremamsı, daha kalorili", kcalDelta: 75)]),
                         I(name: "Sarımsak", amount: "1 diş"),
                         I(name: "Tuz ve karabiber", amount: "Damak zevkine göre"),
                     ],
@@ -205,12 +222,12 @@ nonisolated struct CannedMealAssistant: MealAssistant {
                     minutes: 25,
                     difficulty: .easy,
                     ingredients: [
-                        I(name: "Pechuga de pollo", amount: "150 g", substitutes: [S(name: "Muslo de pollo", amount: "150 g", note: "Más jugoso, algo más graso"), S(name: "Pechuga de pavo", amount: "150 g", note: "Más magra")]),
-                        I(name: "Lechuga romana", amount: "1 cogollo", substitutes: [S(name: "Rúcula", amount: "2 puñados", note: "Sabor más intenso")]),
-                        I(name: "Parmesano", amount: "20 g", substitutes: [S(name: "Levadura nutricional", amount: "1 cucharada", note: "Sin lácteos")]),
+                        I(name: "Pechuga de pollo", amount: "150 g", substitutes: [S(name: "Muslo de pollo", amount: "150 g", note: "Más jugoso, algo más graso", kcalDelta: 45), S(name: "Pechuga de pavo", amount: "150 g", note: "Más magra", kcalDelta: -15)]),
+                        I(name: "Lechuga romana", amount: "1 cogollo", substitutes: [S(name: "Rúcula", amount: "2 puñados", note: "Sabor más intenso", kcalDelta: -20)]),
+                        I(name: "Parmesano", amount: "20 g", substitutes: [S(name: "Levadura nutricional", amount: "1 cucharada", note: "Sin lácteos", kcalDelta: -60)]),
                         I(name: "Aceite de oliva", amount: "1 cucharada"),
-                        I(name: "Zumo de limón", amount: "1 cucharada", substitutes: [S(name: "Vinagre de manzana", amount: "1 cucharadita")]),
-                        I(name: "Yogur natural", amount: "2 cucharadas", substitutes: [S(name: "Mayonesa", amount: "1 cucharada", note: "Más cremosa y calórica")]),
+                        I(name: "Zumo de limón", amount: "1 cucharada", substitutes: [S(name: "Vinagre de manzana", amount: "1 cucharadita", kcalDelta: 0)]),
+                        I(name: "Yogur natural", amount: "2 cucharadas", substitutes: [S(name: "Mayonesa", amount: "1 cucharada", note: "Más cremosa y calórica", kcalDelta: 75)]),
                         I(name: "Ajo", amount: "1 diente"),
                         I(name: "Sal y pimienta", amount: "Al gusto"),
                     ],
@@ -232,12 +249,12 @@ nonisolated struct CannedMealAssistant: MealAssistant {
                     minutes: 25,
                     difficulty: .easy,
                     ingredients: [
-                        I(name: "Chicken breast", amount: "150 g", substitutes: [S(name: "Chicken thigh", amount: "150 g", note: "Juicier, a little more fat"), S(name: "Turkey breast", amount: "150 g", note: "Leaner")]),
-                        I(name: "Romaine lettuce", amount: "1 small head", substitutes: [S(name: "Rocket", amount: "2 handfuls", note: "Peppery")]),
-                        I(name: "Parmesan", amount: "20 g", substitutes: [S(name: "Nutritional yeast", amount: "1 tbsp", note: "Dairy-free")]),
+                        I(name: "Chicken breast", amount: "150 g", substitutes: [S(name: "Chicken thigh", amount: "150 g", note: "Juicier, a little more fat", kcalDelta: 45), S(name: "Turkey breast", amount: "150 g", note: "Leaner", kcalDelta: -15)]),
+                        I(name: "Romaine lettuce", amount: "1 small head", substitutes: [S(name: "Rocket", amount: "2 handfuls", note: "Peppery", kcalDelta: -20)]),
+                        I(name: "Parmesan", amount: "20 g", substitutes: [S(name: "Nutritional yeast", amount: "1 tbsp", note: "Dairy-free", kcalDelta: -60)]),
                         I(name: "Olive oil", amount: "1 tbsp"),
-                        I(name: "Lemon juice", amount: "1 tbsp", substitutes: [S(name: "Cider vinegar", amount: "1 tsp")]),
-                        I(name: "Plain yogurt", amount: "2 tbsp", substitutes: [S(name: "Mayonnaise", amount: "1 tbsp", note: "Creamier, more calories")]),
+                        I(name: "Lemon juice", amount: "1 tbsp", substitutes: [S(name: "Cider vinegar", amount: "1 tsp", kcalDelta: 0)]),
+                        I(name: "Plain yogurt", amount: "2 tbsp", substitutes: [S(name: "Mayonnaise", amount: "1 tbsp", note: "Creamier, more calories", kcalDelta: 75)]),
                         I(name: "Garlic", amount: "1 clove"),
                         I(name: "Salt and pepper", amount: "To taste"),
                     ],
