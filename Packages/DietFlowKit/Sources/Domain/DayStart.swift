@@ -18,6 +18,8 @@ public struct DayStart: Codable, Hashable, Sendable {
         case shortcut
         /// The first meal was marked eaten well after its time; the rest of the day followed it.
         case firstMeal
+        /// From the widget's "I'm up" button.
+        case widget
     }
 
     /// Where the day's first meal goes. Every other meal of the day is laid out after it.

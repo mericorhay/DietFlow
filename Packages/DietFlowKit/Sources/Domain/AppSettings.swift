@@ -48,7 +48,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         hasDismissedWidgetTip: Bool = false,
         hasSeenPlusIntro: Bool = false,
         mealWindowMinutes: Int = WidgetPreferences.defaultWindowMinutes,
-        showDoneButtonOnWidget: Bool = false,
+        showDoneButtonOnWidget: Bool = true,
         widgetAccent: WidgetAccent = .terracotta,
         widgetBackground: WidgetBackgroundStyle = .system,
         allowsAssistantSharing: Bool = false,

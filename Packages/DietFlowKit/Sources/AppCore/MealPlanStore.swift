@@ -192,6 +192,28 @@ public final class MealPlanStore {
         didChange("replacePlan")
     }
 
+    /// Puts `plan` in the place of the active plan: the new one is saved and made active, then the
+    /// old one is deleted with what happened to its meals. What the free tier offers instead of
+    /// keeping a second plan. Without an active plan it is `createPlan`.
+    @discardableResult
+    public func replaceActivePlan(with plan: MealPlan) throws -> MealPlan {
+        let previous = activePlan?.id
+        let plan = plan.sanitized()
+        try persistence.insert(plan, activate: true)
+        do {
+            if let previous, previous != plan.id {
+                try persistence.deletePlan(id: previous)
+                dayStartStore.removePlan(previous)
+            }
+        } catch {
+            // The new plan is in and active; the old one stays beside it rather than nothing changing.
+            didChange("replaceActivePlan")
+            throw error
+        }
+        didChange("replaceActivePlan")
+        return plan
+    }
+
     public func activatePlan(id: UUID) throws {
         try persistence.activate(planID: id)
         didChange("activatePlan")

@@ -44,14 +44,6 @@ enum AppSheet: Identifiable {
         }
     }
 
-    /// Whether this sheet ends in a new plan beside whatever exists.
-    var startsAnotherPlan: Bool {
-        switch self {
-        case .newPlan, .importPlan, .assistant: true
-        case .settings, .newMeal, .editPlan: false
-        }
-    }
-
     /// Whether closing this sheet could lose something the person typed.
     var holdsUnsavedWork: Bool {
         switch self {
@@ -297,9 +289,11 @@ struct RootView: View {
 
     /// Presents `next`, first letting whatever is on screen finish closing.
     private func present(_ next: AppSheet, afterClosing isClosing: Bool = false) {
-        // The free plan keeps one plan. Asking for a second records the refusal, and the Plus
-        // screen that follows says the current plan can be deleted instead.
-        if next.startsAnotherPlan, store.hasPlans, !access.check(.additionalPlan) {
+        // The free plan keeps one plan. A plan made by hand is refused up front, and the Plus
+        // screen says the current plan can be deleted instead. An import or the assistant runs
+        // first: its review offers to replace the current plan, or to keep both with Plus, once
+        // there is something worth keeping.
+        if case .newPlan = next, store.hasPlans, !access.check(.additionalPlan) {
             if isClosing { sheet = nil }
             return
         }
@@ -392,6 +386,11 @@ struct RootView: View {
             dismissSheet()
             tab = .today
             todayPath = [.occurrence(key)]
+        case .cook(let key):
+            dismissSheet()
+            tab = .today
+            todayPath = [.occurrence(key)]
+            if hasAssistant { cooking = CookRequest(key: key) }
         case .plan:
             dismissSheet()
             tab = .plan

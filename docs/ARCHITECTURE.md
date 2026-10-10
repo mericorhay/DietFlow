@@ -35,7 +35,7 @@ Dependencies point one way: down this list.
 | Layer | Modules | May import |
 |---|---|---|
 | App | `DietFlow/`, `DietFlowWidget/`, `Shared/` | anything |
-| Features | `TodayFeature`, `PlanFeature`, `MealFeature`, `ImportFeature`, `WidgetsFeature`, `SettingsFeature`, `OnboardingFeature`, `PaywallFeature` (and the unused `AssistantFeature`) | `Domain`, `DesignSystem`, `AppCore`, the engines they need |
+| Features | `TodayFeature`, `PlanFeature`, `MealFeature`, `CookFeature`, `ImportFeature`, `WidgetsFeature`, `SettingsFeature`, `OnboardingFeature`, `PaywallFeature` | `Domain`, `DesignSystem`, `AppCore`, the engines they need |
 | Shared UI | `DesignSystem`, `WidgetUI` | `Domain` |
 | App core | `AppCore` | `Domain`, `Persistence`, `MealReminders` |
 | Engines | `Persistence`, `MealReminders`, `PlanImport`, `PlanSync`, `AIServices`, `Purchases`, `Analytics` | `Domain` (and what `Package.swift` lists) |

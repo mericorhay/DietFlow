@@ -18,7 +18,7 @@ let widgetModules: [String] = ["Domain", "Persistence", "MealReminders", "AppCor
 let appModules: [String] = widgetModules + [
     "AIServices", "PlanImport", "PlanSync", "Purchases", "Analytics",
     "OnboardingFeature", "TodayFeature", "PlanFeature", "MealFeature", "CookFeature", "ImportFeature", "WidgetsFeature",
-    "AssistantFeature", "SettingsFeature", "PaywallFeature",
+    "SettingsFeature", "PaywallFeature",
 ]
 
 func engine(_ name: String, _ dependencies: [Target.Dependency] = ["Domain"], resources: [Resource]? = nil) -> Target {
@@ -81,7 +81,6 @@ let package = Package(
         feature("ImportFeature", ["Domain", "DesignSystem", "AppCore", "PlanImport", "AIServices", "Analytics"]),
         feature("WidgetsFeature", ["Domain", "DesignSystem", "AppCore", "WidgetUI"]),
         feature("SettingsFeature", ["Domain", "DesignSystem", "AppCore", "Purchases", "Analytics"]),
-        feature("AssistantFeature", ["Domain", "DesignSystem"]),
         feature("PaywallFeature", ["Domain", "DesignSystem", "Purchases", "Analytics"]),
 
         .testTarget(name: "DomainTests", dependencies: ["Domain"], swiftSettings: concurrency),

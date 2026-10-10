@@ -5,6 +5,8 @@ import Foundation
 public enum AppLink: Hashable, Sendable {
     case today
     case meal(OccurrenceKey)
+    /// Cook mode for that meal on that day: the widget's "How to make it".
+    case cook(OccurrenceKey)
     case plan
     case widgets
     case importPlan
@@ -21,6 +23,9 @@ public enum AppLink: Hashable, Sendable {
         case .meal(let key):
             components.host = "meal"
             components.path = "/\(key.description)"
+        case .cook(let key):
+            components.host = "cook"
+            components.path = "/\(key.description)"
         case .plan:
             components.host = "plan"
         case .widgets:
@@ -36,10 +41,10 @@ public enum AppLink: Hashable, Sendable {
         switch host {
         case "today":
             self = .today
-        case "meal":
+        case "meal", "cook":
             let text = url.path(percentEncoded: false).trimmingCharacters(in: CharacterSet(charactersIn: "/"))
             guard let key = OccurrenceKey(text) else { return nil }
-            self = .meal(key)
+            self = host == "cook" ? .cook(key) : .meal(key)
         case "plan":
             self = .plan
         case "widgets":

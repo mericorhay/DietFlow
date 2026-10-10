@@ -19,6 +19,14 @@ public struct PlanWishes: Hashable, Sendable {
     }
 }
 
+/// A plan the assistant wrote.
+public struct WrittenPlan: Sendable {
+    public var plan: MealPlanPayload
+    /// The wishes asked for something unsafe, such as very low energy, so a moderate plan was
+    /// written in their spirit instead. The review says so.
+    public var wasModerated: Bool
+}
+
 /// The plan assistant's errors are the assistant's errors (`AssistantError`, in Domain, so the
 /// screens that cannot see this module can word them too).
 public typealias PlanAssistantError = AssistantError
@@ -42,9 +50,9 @@ public struct PlanAssistantClient: MealAssistant {
         self.endpoint = endpoint
         self.installID = installID
         let configuration = URLSessionConfiguration.ephemeral
-        // A 30-day plan is written in several model calls on the server; give it the time.
+        // A 30-day plan is written in several careful model calls on the server; give it the time.
         configuration.timeoutIntervalForRequest = 240
-        configuration.timeoutIntervalForResource = 300
+        configuration.timeoutIntervalForResource = 420
         configuration.waitsForConnectivity = false
         session = URLSession(configuration: configuration)
     }
@@ -52,18 +60,24 @@ public struct PlanAssistantClient: MealAssistant {
     /// Finds the plan in `text` and puts it in order.
     public func organize(text: String) async throws -> MealPlanPayload {
         guard text.count <= Self.textLimit else { throw AssistantError.tooLong }
-        return try await planPost("v1/plan/organize", OrganizeBody(text: text, language: Self.languageName()))
+        return try await planAnswer("v1/plan/organize", OrganizeBody(text: text, language: Self.languageName())).plan
     }
 
     /// Writes a new plan.
     public func create(_ wishes: PlanWishes) async throws -> MealPlanPayload {
+        try await write(wishes).plan
+    }
+
+    /// Writes a new plan, and says whether the wishes were moderated.
+    public func write(_ wishes: PlanWishes) async throws -> WrittenPlan {
         let body = CreateBody(
             days: min(max(wishes.days, PlanWishes.dayRange.lowerBound), PlanWishes.dayRange.upperBound),
             mealsPerDay: min(max(wishes.mealsPerDay, PlanWishes.mealRange.lowerBound), PlanWishes.mealRange.upperBound),
             wishes: String(wishes.wishes.trimmingCharacters(in: .whitespacesAndNewlines).prefix(PlanWishes.wishesLimit)),
             language: Self.languageName()
         )
-        return try await planPost("v1/plan/create", body)
+        let answer = try await planAnswer("v1/plan/create", body)
+        return WrittenPlan(plan: answer.plan, wasModerated: answer.notice == "moderated")
     }
 
     /// The language the phone is set to, in English ("Turkish"): what the prompt is told to write in.
@@ -129,6 +143,8 @@ public struct PlanAssistantClient: MealAssistant {
 
     private struct Answer: Decodable {
         let plan: MealPlanPayload
+        /// "moderated" when unsafe wishes were written as a moderate plan instead.
+        let notice: String?
     }
 
     private struct NutritionBody: Encodable {
@@ -176,10 +192,10 @@ public struct PlanAssistantClient: MealAssistant {
     }
 
     /// A plan request: an answer holding no meals is no plan.
-    private func planPost(_ path: String, _ body: some Encodable) async throws -> MealPlanPayload {
+    private func planAnswer(_ path: String, _ body: some Encodable) async throws -> Answer {
         let answer: Answer = try await post(path, body)
         guard answer.plan.days.contains(where: { !$0.meals.isEmpty }) else { throw AssistantError.unavailable }
-        return answer.plan
+        return answer
     }
 
     private func post<Response: Decodable>(_ path: String, _ body: some Encodable) async throws -> Response {
@@ -198,6 +214,12 @@ public struct PlanAssistantClient: MealAssistant {
             throw AssistantError.offline
         }
         guard let http = response as? HTTPURLResponse else { throw AssistantError.unavailable }
+        // What the person agreed to is that this company's AI reads it. A server that says it used
+        // another one is treated as down; the request is not counted.
+        if let provider = http.value(forHTTPHeaderField: "x-dietflow-provider"),
+           provider.lowercased() != AssistantProvider.name.lowercased() {
+            throw AssistantError.unavailable
+        }
 
         guard (200..<300).contains(http.statusCode) else {
             let code = (try? JSONDecoder().decode(Refusal.self, from: data))?.error ?? ""

@@ -5,7 +5,7 @@ import Domain
 struct AppLinkTests {
     @Test func everyLinkReadsBackAsItself() throws {
         let key = OccurrenceKey(mealID: UUID(), day: day(2026, 10, 5))
-        for link in [AppLink.today, .meal(key), .plan, .widgets, .importPlan] {
+        for link in [AppLink.today, .meal(key), .cook(key), .plan, .widgets, .importPlan] {
             #expect(AppLink(url: link.url) == link)
         }
     }
