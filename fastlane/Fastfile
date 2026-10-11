@@ -120,6 +120,9 @@ platform :ios do
       api_key: api_key,
       skip_waiting_for_build_processing: false,
       distribute_external: false,
+      # Pilot otherwise requests Beta App Review whenever groups are supplied,
+      # even for internal groups. Internal builds do not need external review.
+      submit_beta_review: false,
       notify_external_testers: false,
       groups: groups.empty? ? nil : groups,
     )
