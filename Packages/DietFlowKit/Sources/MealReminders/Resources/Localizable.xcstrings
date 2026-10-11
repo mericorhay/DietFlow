@@ -5,6 +5,12 @@
       "comment" : "Button on a meal reminder notification. Marks the meal as eaten without opening the app. One word, as on the Today screen's swipe action.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erledigt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Button on a meal reminder notification. Records that the meal was not eaten, without opening the app. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Button on the day's first meal reminder notification. Says the person just got up, so the day's meal times move later to start from now. Works without opening the app. Short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerade aufgewacht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Title of a meal reminder notification sent at the meal's time. %@ is the meal type, such as 'Lunch'. Example: 'Lunch now'. The meal's name is the body.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ jetzt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Title of a meal reminder notification sent before a meal. %1$@ is the meal type, such as 'Lunch'; %2$@ is a duration such as '10 minutes' or '1 hour'. Example: 'Lunch in 10 minutes'. The meal's name is the body.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ in %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

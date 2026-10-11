@@ -5,6 +5,12 @@
       "comment" : "Control Center control: description in the controls gallery.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markiert die aktuelle oder nächste Mahlzeit als gegessen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Control Center control: the label on the button itself. The action of marking a meal eaten.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Control Center control: name in the controls gallery. Marks the meal on now, or the next one, as eaten.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Control Center control: description in the controls gallery.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für späte Morgen: Die heutigen Mahlzeiten starten ab jetzt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Control Center control: the label on the button itself.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin wach"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Control Center control: name in the controls gallery. Says the person just got up, so today's meals move later.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin wach"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Description of the Add Meal action. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fügt deinem aktiven Plan am gewählten Tag eine Mahlzeit hinzu."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "Siri reply when there is no plan to add a meal to. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstelle zuerst einen Plan."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "Siri reply when the chosen day is before or after the plan. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Tag liegt außerhalb deines Plans."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,12 @@
       "comment" : "Siri reply after adding a meal. %@ is the meal's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ hinzugefügt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +305,12 @@
       "comment" : "Name of the action in Shortcuts that adds a meal to the plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +335,12 @@
       "comment" : "Name Shortcuts and Siri use for a meal on a given day. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,6 +365,12 @@
       "comment" : "Name Shortcuts uses for the type of a meal. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeitentyp"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -317,6 +395,12 @@
       "comment" : "Description of the Mark Meal Done action in Shortcuts. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markiert eine Mahlzeit als gegessen. Ohne Auswahl wird die aktuelle oder nächste Mahlzeit markiert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -341,6 +425,12 @@
       "comment" : "Siri reply when there is no meal to mark. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Moment gibt es keine Mahlzeit zum Markieren."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -365,6 +455,12 @@
       "comment" : "Siri reply after marking a meal done. %@ is the meal's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ als erledigt markiert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -389,6 +485,12 @@
       "comment" : "Name of the action in Shortcuts that marks a meal eaten. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit als erledigt markieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +515,12 @@
       "comment" : "Shortcuts option: breakfast. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frühstück"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -437,6 +545,12 @@
       "comment" : "Shortcuts option: dinner. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abendessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -461,6 +575,12 @@
       "comment" : "Shortcuts option: lunch. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mittagessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +605,12 @@
       "comment" : "Shortcuts option: any other meal. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonstiges"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -509,6 +635,12 @@
       "comment" : "Shortcuts option: a snack. One or two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snack"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -533,6 +665,12 @@
       "comment" : "Shortcuts parameter: which day. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -557,6 +695,12 @@
       "comment" : "Shortcuts parameter: which meal. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -581,6 +725,12 @@
       "comment" : "Shortcuts parameter: the meal's name. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -605,6 +755,12 @@
       "comment" : "Shortcuts parameter: the meal's type. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,6 +785,12 @@
       "comment" : "Shortcuts parameter: the meal's time. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uhrzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -653,6 +815,12 @@
       "comment" : "Description of the Show Next Meal action. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sagt dir, was es als Nächstes zu essen gibt und wann."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -677,6 +845,12 @@
       "comment" : "Siri reply for a meal on a later day. %1$@ is the meal type, %2$@ a weekday, %3$@ the time, %4$@ the meal's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ am %2$@ um %3$@: %4$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -701,6 +875,12 @@
       "comment" : "Siri reply for the next meal today. %1$@ is the meal type, %2$@ the time, %3$@ the meal's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ um %2$@: %3$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -725,6 +905,12 @@
       "comment" : "Siri reply when there is no meal ahead. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In deinem Plan stehen keine weiteren Mahlzeiten an."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -749,6 +935,12 @@
       "comment" : "Siri reply for a meal that is on now. %1$@ is the meal type, %2$@ the meal's name. Example: 'Lunch now: Chicken Caesar'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ jetzt: %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -773,6 +965,12 @@
       "comment" : "Name of the action in Shortcuts that says the next meal. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächste Mahlzeit zeigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -797,6 +995,12 @@
       "comment" : "Description of the I Just Woke Up action in Shortcuts. One or two sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet den Tag ab jetzt: die erste Mahlzeit in einer halben Stunde, die übrigen Mahlzeiten des Tages danach. Praktisch als Automation, die läuft, wenn dein Wecker aus ist."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -821,6 +1025,12 @@
       "comment" : "Siri reply to I Just Woke Up when there is no active meal plan.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es gibt noch keinen Plan zum Verschieben."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -845,6 +1055,12 @@
       "comment" : "Siri reply to I Just Woke Up when the plan has no meals today.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Plan hat heute keine Mahlzeiten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -869,6 +1085,12 @@
       "comment" : "Siri reply to I Just Woke Up when the person has switched smart meal times off in Settings.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smarte Essenszeiten sind aus. Du kannst sie in den Einstellungen von DietFlow einschalten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -893,6 +1115,12 @@
       "comment" : "Siri reply to I Just Woke Up when the person got up early enough that nothing needs to move.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pünktlich: Heute folgt alles deinem Plan."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -917,6 +1145,12 @@
       "comment" : "Siri reply after I Just Woke Up moved today's meals later. %1$@ is the first meal's new time, %2$@ the meal's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guten Morgen! Erste Mahlzeit um %1$@: %2$@. Der Rest des Tages wurde mitverschoben."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -941,6 +1175,12 @@
       "comment" : "Name of the action in Shortcuts that moves today's meals later because the person just got up. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin gerade aufgewacht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -965,6 +1205,12 @@
       "comment" : "App Intent description (Shortcuts) for taking back the mark on a meal.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nimmt die Markierung „gegessen“ oder „übersprungen“ von einer Mahlzeit zurück, sodass sie wieder offen ist."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -989,6 +1235,12 @@
       "comment" : "App Intent title (Shortcuts): takes back the mark on a meal so it is open again.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit als nicht gegessen markieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1013,6 +1265,12 @@
       "comment" : "App Intent description of the widget's 'I'm up' button.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet den Tag ab jetzt: die erste Mahlzeit in einer halben Stunde, der Rest des Tages danach."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1037,6 +1295,12 @@
       "comment" : "App Intent title of the widget's and Control Center's 'I'm up' button: the day starts now and today's meals move later.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin wach"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1061,6 +1325,12 @@
       "comment" : "Widget gallery: description of the Next Meal widget, under its name. One or two short sentences that make people want it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine nächste Mahlzeit und ihre Uhrzeit, immer im Blick. Markiere sie direkt auf deinem Home-Bildschirm als gegessen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1085,6 +1355,12 @@
       "comment" : "Widget gallery: name of the widget showing the next meal. Same words as the Widgets tab uses for it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächste Mahlzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1109,6 +1385,12 @@
       "comment" : "Widget gallery: description of the Day Progress widget.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Ring, der sich füllt, während deine Mahlzeiten vergehen, mit der nächsten direkt darunter."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1133,6 +1415,12 @@
       "comment" : "Widget gallery: name of the widget with a ring for the day's meals. Same words as the Widgets tab uses for it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tagesfortschritt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1157,6 +1445,12 @@
       "comment" : "Widget gallery: description of the Today's Meals widget.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein ganzer Tag auf einen Blick: was gerade dran ist, was als Nächstes kommt und wie der Tag läuft."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1181,6 +1475,12 @@
       "comment" : "Widget gallery: name of the widget listing all of today's meals. Same words as the Widgets tab uses for it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heutige Mahlzeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

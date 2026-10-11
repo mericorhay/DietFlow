@@ -5,6 +5,12 @@
       "comment" : "Button in an empty day of the plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "VoiceOver label of the plus button on each day of the Plan list. %@ is that day's heading, for example 'Day 3 · Wednesday, 7 October'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit zu %@ hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Row in a day of the plan that has no meals. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Mahlzeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Section heading for one day of the plan. %1$lld is the day of the plan, %2$@ its date. Example: 'Day 6 · Monday, October 5'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag %1$lld · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Header of today's day on the Plan tab. %@ is the day's usual header, e.g. 'Day 3 · Tuesday, October 6'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute · %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Destructive button confirming plan deletion. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Explains what deleting a plan removes. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seine Mahlzeiten und alles, was du als erledigt markiert hast, werden gelöscht."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "Title of the confirmation before deleting a plan. A short question.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diesen Plan löschen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "Destructive button confirming meal deletion. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,12 @@
       "comment" : "Explains that deleting a meal affects every repeat of the plan. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie wird aus jeder Wiederholung des Plans entfernt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +305,12 @@
       "comment" : "Title of the confirmation before deleting a meal from the plan. A short question.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Mahlzeit löschen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +335,24 @@
       "comment" : "Badge on 'Add Nutrition to N Meals': the whole plan costs one assistant use; %lld uses are left this month.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 KI-Nutzung für den ganzen Plan · noch %lld in diesem Monat"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 KI-Nutzung für den ganzen Plan · noch %lld in diesem Monat"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -335,6 +419,12 @@
       "comment" : "Badge on 'Add Nutrition to N Meals' when plenty of uses are left: the whole plan costs one assistant use.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 KI-Nutzung für den ganzen Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -359,6 +449,12 @@
       "comment" : "Badge on 'Add Nutrition to N Meals' when this month's free assistant uses are used up. Tapping explains DietFlow Plus.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratisnutzungen aufgebraucht · Mehr mit Plus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -383,6 +479,12 @@
       "comment" : "VoiceOver label of the close button on the nutrition estimate's result on the Plan tab.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausblenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -407,6 +509,12 @@
       "comment" : "Shown on the Plan tab when the assistant had too many requests. The allowance was not used.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent ist gerade beschäftigt. Es wurde nichts angerechnet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -431,6 +539,12 @@
       "comment" : "Shown on the Plan tab when this phone reached the assistant's daily limit. The allowance was not used.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr kann der Assistent heute von diesem iPhone aus nicht tun. Es wurde nichts angerechnet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -455,6 +569,12 @@
       "comment" : "Shown on the Plan tab when the plan's estimate failed for lack of a connection. The allowance was not used.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du scheinst offline zu sein. Es wurde nichts angerechnet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -479,6 +599,12 @@
       "comment" : "Shown on the Plan tab when the assistant could not estimate the plan. The allowance was not used.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent konnte diesen Plan nicht schätzen. Es wurde nichts angerechnet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -503,6 +629,24 @@
       "comment" : "Shown on the Plan tab when the assistant has filled in nutrition. %lld is the number of meals.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nährwerte zu %lld Mahlzeit hinzugefügt."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nährwerte zu %lld Mahlzeiten hinzugefügt."
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -569,6 +713,12 @@
       "comment" : "Line under 'Added nutrition to N meals.'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schätzwerte sind mit ≈ markiert. Tippe auf eine Mahlzeit, um sie zu sehen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -593,6 +743,12 @@
       "comment" : "Button under a failed nutrition estimate on the Plan tab. Title Case.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut versuchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -617,6 +773,24 @@
       "comment" : "Shown on the Plan tab while the assistant estimates the plan's nutrition. %lld is the number of distinct dishes.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Der Assistent liest %lld Gericht…"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Der Assistent liest %lld Gerichte…"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -683,6 +857,12 @@
       "comment" : "Line under 'The assistant is reading N dishes…'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jede Mahlzeit füllt sich, sobald sie fertig ist, mit ≈ markiert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -707,6 +887,12 @@
       "comment" : "Line under 'Add Nutrition to N Meals' on the Plan tab.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent berechnet Kalorien und Makros anhand der Beschreibung jeder Mahlzeit. Die Zahlen aus deinem Plan bleiben unverändert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -731,6 +917,24 @@
       "comment" : "Title of the assistant card on the Plan tab: the assistant works out calories and macros for every meal without them. Title Case.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nährwerte zu %lld Mahlzeit hinzufügen"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nährwerte zu %lld Mahlzeiten hinzufügen"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -797,6 +1001,12 @@
       "comment" : "Swipe action that deletes a meal from the plan. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -821,6 +1031,12 @@
       "comment" : "VoiceOver label of the checkmark next to a meal marked done. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erledigt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -845,6 +1061,12 @@
       "comment" : "Line above a meal's name on the Plan tab: %1$@ is the time, %2$@ the sitting (Breakfast).",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -869,6 +1091,12 @@
       "comment" : "Line under a meal on the Plan tab when the day started late and the meal moved. %@ is the time the plan gives.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschoben von %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -893,6 +1121,12 @@
       "comment" : "VoiceOver label of the mark next to a skipped meal. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersprungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -917,6 +1151,12 @@
       "comment" : "VoiceOver label of the + menu on the Plan screen. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -941,6 +1181,12 @@
       "comment" : "Menu item that adds a meal to the selected day. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -965,6 +1211,12 @@
       "comment" : "Destructive menu item that deletes the active plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -989,6 +1241,12 @@
       "comment" : "Menu item that edits the plan's name, start date and length. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan bearbeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1013,6 +1271,12 @@
       "comment" : "Menu item that shares the plan as a file. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan exportieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1037,6 +1301,12 @@
       "comment" : "Menu item that opens Import Plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan importieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1061,6 +1331,12 @@
       "comment" : "VoiceOver label of the … menu on the Plan screen. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1085,6 +1361,12 @@
       "comment" : "Menu item that starts a new, empty plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1109,6 +1391,12 @@
       "comment" : "Item in the Add menu on the Plan tab. Asks the AI assistant to put a pasted list in order. The same words as on Import Plan.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beliebige Liste ordnen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1133,6 +1421,12 @@
       "comment" : "Menu item that opens Settings. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1157,6 +1451,12 @@
       "comment" : "Submenu listing other plans to make active. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan wechseln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1181,6 +1481,12 @@
       "comment" : "Item in the Add menu on the Plan tab. Asks the AI assistant to write a new plan. The same words as on Import Plan.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan für mich schreiben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1205,6 +1511,12 @@
       "comment" : "Under the name of a one-day plan that repeats: every day is the same. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeden Tag gleich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1229,6 +1541,12 @@
       "comment" : "Under the plan's name on the Plan tab, after the plan's last day. %@ is a date like 'October 20'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beendet am %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1253,6 +1571,12 @@
       "comment" : "Under the name of a plan with fixed dates: its first and last day. %1$@ and %2$@ are short dates such as 'Oct 6'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ – %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1277,6 +1601,12 @@
       "comment" : "Under the plan's name for a plan that does not repeat. %1$lld is today's day of the plan, %2$lld its length. Example: 'Day 6 of 14'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag %1$lld von %2$lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1301,6 +1631,12 @@
       "comment" : "Under the plan's name. %1$lld is today's day of the plan, %2$lld the plan's length. Example: 'Day 6 of 14 · Repeats'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag %1$lld von %2$lld · Wiederholt sich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1325,6 +1661,12 @@
       "comment" : "Under the plan's name on the Plan tab, before the plan starts. %@ is a date like 'Monday, October 12'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginnt am %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1349,6 +1691,12 @@
       "comment" : "Navigation title of the Plan screen when there is no plan yet. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1373,6 +1721,12 @@
       "comment" : "Button that closes the plan form without saving. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1397,6 +1751,12 @@
       "comment" : "Name given to a new plan when the person leaves the name empty. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mein Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1421,6 +1781,12 @@
       "comment" : "Title of the form that edits a plan's settings. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan bearbeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1445,6 +1811,12 @@
       "comment" : "Footer for a fixed-date plan. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeder Tag des Plans ist ein Datum im Kalender, beginnend mit dem Startdatum."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1469,6 +1841,12 @@
       "comment" : "Footer when a cycle does not repeat. %lld is the plan's length in days.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Plan endet nach Tag %lld."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1493,6 +1871,12 @@
       "comment" : "Footer when a cycle repeats. %lld is the plan's length in days.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Tag %lld beginnt der Plan wieder bei Tag 1."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1517,6 +1901,12 @@
       "comment" : "Label of the choice between a repeating cycle and fixed dates. Read by VoiceOver. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plantyp"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1541,6 +1931,12 @@
       "comment" : "Segment: a plan of Day 1, Day 2, … that can repeat. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zyklus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1565,6 +1961,12 @@
       "comment" : "Segment: a plan where each day is a calendar date. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feste Daten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1589,6 +1991,12 @@
       "comment" : "Label of the stepper for how many days the plan has. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Länge"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1613,6 +2021,24 @@
       "comment" : "The plan's length next to its stepper.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tag"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tage"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -1679,6 +2105,12 @@
       "comment" : "Placeholder of the plan name field. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1703,6 +2135,12 @@
       "comment" : "Title of the form that creates a plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1727,6 +2165,12 @@
       "comment" : "Toggle: start again from day 1 after the last day. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederholen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1751,6 +2195,12 @@
       "comment" : "Button that saves the plan form. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1775,6 +2225,12 @@
       "comment" : "Destructive button confirming the shorter plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan kürzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1799,6 +2255,12 @@
       "comment" : "Explains which meals are deleted when shortening. %lld is the new length in days.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeiten nach Tag %lld werden gelöscht."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1823,6 +2285,12 @@
       "comment" : "Title of the confirmation when shortening a plan would delete meals. A short question.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan kürzen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1847,6 +2315,12 @@
       "comment" : "Label of the start date picker. One or two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginn"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

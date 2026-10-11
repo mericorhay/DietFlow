@@ -3,10 +3,10 @@
   "locales": [
     "en",
     "tr",
-    "es"
+    "es",
+    "de"
   ],
   "plannedLocales": [
-    "de",
     "fr",
     "it",
     "pt-BR",
@@ -40,7 +40,8 @@
   "localeNames": {
     "en": "English",
     "tr": "Turkish",
-    "es": "Spanish"
+    "es": "Spanish",
+    "de": "German"
   },
   "protectedTerms": [
     "DietFlow",

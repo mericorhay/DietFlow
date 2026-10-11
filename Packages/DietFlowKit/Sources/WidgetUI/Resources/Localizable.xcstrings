@@ -5,6 +5,12 @@
       "comment" : "Widget background option: the chosen colour itself, with white text. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kräftig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Widget background option: dark at any time of day. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Widget background option: a light wash of the chosen colour. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sanft"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Widget background option: white in Light Mode, black in Dark Mode. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blau"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver: a dark neutral grey.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graphit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grün"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver: a deep blue-violet.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indigo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pink"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +305,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Violett"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +335,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rot"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,6 +365,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver: a blue-green.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Petrol"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -317,6 +395,12 @@
       "comment" : "Name of a widget colour, read by VoiceOver: the app's own warm brick red.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terrakotta"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -341,6 +425,12 @@
       "comment" : "Widget: VoiceOver label of the chip that opens step-by-step cooking for the meal in front.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So gelingt's"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -365,6 +455,12 @@
       "comment" : "Widget: one-word chip beside a pan icon that opens step-by-step cooking for the meal in front. Keep it to one short word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rezept"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -389,6 +485,12 @@
       "comment" : "Widget: shown when every meal of the day is done or skipped. Short sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Plan für heute ist erledigt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +515,12 @@
       "comment" : "Widget: label of the round check button that marks the meal in front as eaten, read by VoiceOver; also the action on a row's status mark. The action, not the state.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -437,6 +545,12 @@
       "comment" : "Widget after a plan has ended. %1$@ is the plan's name, %2$@ the date of its last day, e.g. 'Oct 12'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ endete am %2$@."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -461,6 +575,12 @@
       "comment" : "Widget after a plan has ended: chip that opens adding a new plan, with the assistant or from a list.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +605,12 @@
       "comment" : "Widget after a plan that does not repeat has ended: chip that opens the plan to start it again.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu starten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -509,6 +635,12 @@
       "comment" : "Widget title when a plan that does not repeat has finished. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan beendet"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -533,6 +665,12 @@
       "comment" : "Widget, Today's Meals large: bottom line when calories are shown. %1$@ is the energy of the meals eaten so far (a number), %2$@ the energy of everything planned today with its unit, e.g. '820 of 1,640 kcal eaten'. Never phrase it as a budget or as 'left'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ von %2$@ gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -557,6 +695,12 @@
       "comment" : "Widget: label above the meal after the one shown first, later the same day. %@ is the meal type. Very short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danach · %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -581,6 +725,12 @@
       "comment" : "Widget gallery example: a breakfast dish. Short, appetising, typical for the language.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menemen mit Feta"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -605,6 +755,12 @@
       "comment" : "Widget gallery example: a dinner dish.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lachs mit geröstetem Gemüse"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,6 +785,12 @@
       "comment" : "Widget gallery example: the lunch dish shown as the meal on now. Short, appetising.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegrilltes Hähnchen mit griechischem Salat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -653,6 +815,12 @@
       "comment" : "Widget gallery example: the name of the example meal plan, shown in the large widget's header.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mediterran"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -677,6 +845,12 @@
       "comment" : "Widget gallery example: an afternoon snack.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Griechischer Joghurt mit Walnüssen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -701,6 +875,12 @@
       "comment" : "Widget, Today's Meals large: header line. %1$@ is the plan's name, %2$lld today's day of the plan, %3$lld the number of days in the plan, e.g. 'Keto · Day 3 of 14'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Tag %2$lld von %3$lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -725,6 +905,12 @@
       "comment" : "Name of a widget, where the app names its widgets. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächste Mahlzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -749,6 +935,12 @@
       "comment" : "Name of the widget that shows how many of today's meals are behind, where the app names its widgets. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tagesfortschritt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -773,6 +965,12 @@
       "comment" : "Name of the widget that lists the whole day's meals, where the app names its widgets. Two or three words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heutige Mahlzeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -797,6 +995,12 @@
       "comment" : "Widget: line above a meal on a later day. %1$@ is a weekday name such as 'Friday', %2$@ the meal type. Very short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -821,6 +1025,12 @@
       "comment" : "Widget: small accent line above the next meal today. %@ is the meal type, such as 'Lunch'. Very short; one line on the smallest widget.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächste · %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -845,6 +1055,12 @@
       "comment" : "Widget: small accent line above the meal whose time has come. %@ is the meal type, such as 'Lunch'. Very short; one line on the smallest widget.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt · %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -869,6 +1085,12 @@
       "comment" : "Widget: line above the first meal of a plan that starts on a later date. %@ is a short date such as 'Oct 12'. Very short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ab %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -893,6 +1115,12 @@
       "comment" : "Widget: line above the first meal of a plan that starts tomorrow. Two or three words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginnt morgen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -917,6 +1145,12 @@
       "comment" : "Widget: line above a meal that is tomorrow. %@ is the meal type, such as 'Breakfast'. Very short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morgen · %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -941,6 +1175,12 @@
       "comment" : "Widget: under the bar that runs out while a meal is on now. %@ is the time the next meal takes its place, e.g. 15:00 or 3:00 PM.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bis %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -965,6 +1205,24 @@
       "comment" : "Large widget: how many more of today's meals did not fit. Example: '+2 more'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+%lld weitere"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+%lld weitere"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -1031,6 +1289,12 @@
       "comment" : "Widget title when the plan has no meals ahead. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Mahlzeiten geplant"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1055,6 +1319,12 @@
       "comment" : "Widget with no meal plan yet: chip that opens adding a plan.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1079,6 +1349,12 @@
       "comment" : "Widget with no meal plan yet: line under the title. %@ is the app's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge ein Foto, PDF oder Text hinzu, und %@ erstellt deinen Plan."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1103,6 +1379,12 @@
       "comment" : "Widget with no meal plan yet: title inviting the person to photograph the list their dietitian gave them.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotografiere die Liste deiner Ernährungsberatung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1127,6 +1409,12 @@
       "comment" : "VoiceOver label of the Day Progress widget. %1$lld is how many of today's meals are behind, %2$lld how many there are today.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeiten heute: %1$lld von %2$lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1151,6 +1439,12 @@
       "comment" : "Small grey word under a count like 2/4 on the Day Progress widget: the count is of today's meals. One short word, lowercase.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "heute"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1175,6 +1469,12 @@
       "comment" : "Widget, Day Progress: line under the ring. %1$lld is how many of today's meals are behind (eaten, skipped or past), %2$lld how many today has.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld von %2$lld · Mahlzeiten bisher"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1199,6 +1499,12 @@
       "comment" : "Widget: what to do when the saved plan could not be read. %@ is the app's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne %@ zum Aktualisieren."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1223,6 +1529,12 @@
       "comment" : "Widget title when the saved plan could not be read. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan kann nicht angezeigt werden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1247,6 +1559,24 @@
       "comment" : "Large widget header: how many of today's meals are still ahead. Very short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld übrig"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld übrig"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -1313,6 +1643,12 @@
       "comment" : "Widget: VoiceOver label of the '+45 min' chip on a meal moved later because the day started late. %@ is a duration such as '45 minutes' or '1 hour, 30 minutes'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ nach hinten verschoben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1337,6 +1673,12 @@
       "comment" : "Widget: small capsule button shown in the morning until a meal is marked. Tapping it says the person just got up, so today's meals move later. Very short: fits beside a check button on the small widget.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin wach"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1361,6 +1703,12 @@
       "comment" : "Widget: VoiceOver label of the morning 'I'm up' button, saying what it does.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin wach: heutige Mahlzeiten ab jetzt starten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1385,6 +1733,12 @@
       "comment" : "Small widget: bottom line naming the meal after the current one. %1$@ is its time, %2$@ its meal type. Example: 'Then 16:30 · Snack'. One short line.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danach %1$@ · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1409,6 +1763,12 @@
       "comment" : "Widget: line naming tomorrow's first meal. %1$@ is its time, %2$@ its meal type. Example: 'Tomorrow 10:00 · Breakfast'. One short line.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morgen %1$@ · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1433,6 +1793,12 @@
       "comment" : "Widget, Today's Meals large: one line standing for the meals before the one in front when there is no room for them. %1$lld is how many, %2$lld how many of them were eaten.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld früher · %2$lld gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1457,6 +1823,12 @@
       "comment" : "Large widget: bottom line with tomorrow's first meal. %1$@ is its time, %2$@ the meal's name. Example: 'Tomorrow 10:00 · Feta salad'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morgen %1$@ · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1481,6 +1853,12 @@
       "comment" : "Widget, Today's Meals: VoiceOver label of a row's status mark when the meal is already marked; tapping it takes the mark back.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als nicht gegessen markieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

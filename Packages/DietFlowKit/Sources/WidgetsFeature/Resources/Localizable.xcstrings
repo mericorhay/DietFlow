@@ -5,6 +5,12 @@
       "comment" : "Section heading over the three steps that add the widget. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Home-Bildschirm hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Section heading over the steps, while the Lock Screen preview is selected. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Widgets tab: footer under the steps for adding the widget. %@ is the app's name. A Smart Stack is the iOS stack of widgets that turns by itself.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In einem Smart-Stapel kommt %@ zu den Essenszeiten von selbst nach oben."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Step 1 of adding the widget. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berühre einen leeren Bereich deines Home-Bildschirms oder Sperrbildschirms und halte ihn gedrückt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Step 2 of adding the widget. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf „Bearbeiten“ und dann auf „Widget hinzufügen“."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Step 3 of adding the widget. %@ is the app's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suche nach %@ und wähle eine Größe."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Shown instead of the setup steps once a widget has been added. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Widget ist auf deinem Home-Bildschirm."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "Widgets tab: switch that keeps meal names out of sight on Lock Screen widgets until the iPhone is unlocked.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeitnamen bei Sperre ausblenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "Label of the picker for the tone of the widget's background. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hintergrund"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,12 @@
       "comment" : "VoiceOver name for the row of colour swatches on the Widgets tab. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farbe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +305,12 @@
       "comment" : "Footer under the colour and background choices: where they do not apply. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf dem Sperrbildschirm und auf einem Home-Bildschirm mit getönten Symbolen wählt iOS die Farben."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +335,12 @@
       "comment" : "Header of the Widgets tab section where the widget's colour and background are chosen. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aussehen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,6 +365,12 @@
       "comment" : "Caption under a widget preview on the Widgets tab. %1$@ is the widget's name, %2$@ its size, such as Medium or Lock Screen.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -317,6 +395,12 @@
       "comment" : "Widgets tab: VoiceOver value of the widget previews, which preview of how many is shown. %1$lld is its position, %2$lld how many there are.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld von %2$lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -341,6 +425,12 @@
       "comment" : "Toggle: show each meal's calories on the widgets. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalorien"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -365,6 +455,12 @@
       "comment" : "Toggle: keep meals already done in the large widget's list. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erledigte Mahlzeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -389,6 +485,12 @@
       "comment" : "Toggle: show the meal after the next one on the widgets. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folgende Mahlzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +515,12 @@
       "comment" : "Footer under the widget display options. %@ is the app's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gilt für jedes %@-Widget."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -437,6 +545,12 @@
       "comment" : "Section heading over the widget display options. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzeigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -461,6 +575,12 @@
       "comment" : "VoiceOver label of the size picker on the Widgets tab. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Größe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +605,12 @@
       "comment" : "Segment: the large widget. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Groß"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -509,6 +635,12 @@
       "comment" : "Widgets tab: segment of the size picker, and the size in a preview's caption, for widgets on the Lock Screen.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sperrbildschirm"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -533,6 +665,12 @@
       "comment" : "Segment: the medium widget. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mittel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -557,6 +695,12 @@
       "comment" : "Segment: the small widget. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -581,6 +725,12 @@
       "comment" : "Widgets tab: switch that shows the round 'Eaten' button on the widgets.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schaltfläche „Gegessen“"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -605,6 +755,12 @@
       "comment" : "Widgets tab: footer under the timing settings.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn die Zeit einer Mahlzeit gekommen ist, bleibt sie so lange im Widget, dann übernimmt die nächste. Du musst nichts antippen. Mit „Gegessen“ geht es früher weiter."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,6 +785,12 @@
       "comment" : "Header of the Widgets tab section about when the widget moves from one meal to the next. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitablauf"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -653,6 +815,12 @@
       "comment" : "Label of the picker for how long a meal stays on the widget after its time; the value beside it is a length of time (\"1 hour\"). A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit im Vordergrund halten für"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -677,6 +845,12 @@
       "comment" : "Navigation title of the Widgets tab. One word. Apple leaves 'widget' untranslated in Turkish and Spanish.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

@@ -5,6 +5,12 @@
       "comment" : "Cook mode: chip showing the foods the person said they avoid (from Settings), as they typed them. %@ is their text, e.g. 'Avoiding: peanuts, milk'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meiden: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Cook mode: a short chip with a clock symbol giving minutes, for the whole recipe or one step. %lld is the number of minutes, e.g. '25 min'. Keep the abbreviation short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Min."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Cook mode: closes the screen. VoiceOver label of the X button at the top, and a button on the last page and in the error states.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Cook mode, under the consent card's title: exactly what is sent to the assistant. Must stay accurate: name, description, portion, and the foods the person avoids; nothing else.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um die Schritte zu schreiben, werden Name, Beschreibung und Portion der Mahlzeit sowie Lebensmittel, die du meidest, an den Assistenten gesendet. Sonst wird nichts über dich oder deinen Plan gesendet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Cook mode, before anything is sent: title of the card that asks to share this meal with the assistant so it can write the recipe. Tapping it opens the consent alert.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit teilen, um das Rezept zu erhalten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Cook mode: chip saying how hard the recipe is. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einfach"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Cook mode: chip saying how hard the recipe is: takes some skill. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anspruchsvoll"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "Cook mode: chip saying how hard the recipe is: in between. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mittel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "Cook mode failure reason: too many requests just now.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent ist gerade beschäftigt. Versuche es in einer Minute erneut."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,12 @@
       "comment" : "Cook mode failure reason: this phone reached the server's daily request limit.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr Anfragen sind an einem Tag nicht möglich. Versuche es morgen erneut."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +305,12 @@
       "comment" : "Cook mode failure reason: the assistant found nothing it could cook in the meal's name and description.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent konnte in dieser Mahlzeit kein Gericht zum Kochen finden."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +335,12 @@
       "comment" : "Cook mode failure reason: the assistant could not be reached.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,6 +365,12 @@
       "comment" : "Cook mode failure reason: the meal's description is longer than the assistant reads at once.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Beschreibung dieser Mahlzeit ist länger, als der Assistent auf einmal lesen kann. Kürze sie und versuche es erneut."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -317,6 +395,12 @@
       "comment" : "Cook mode failure reason: the service is down or answered with something unreadable.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent ist gerade nicht verfügbar."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -341,6 +425,12 @@
       "comment" : "Cook mode, under a failure reason: reassures that the failed attempt did not use one of the month's assistant uses.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es wurde nichts von deinen KI-Nutzungen abgezogen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -365,6 +455,12 @@
       "comment" : "Cook mode: title when the recipe could not be written (no connection, service busy…). A reason and a Try Again button follow.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Rezept konnte nicht geschrieben werden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -389,6 +485,12 @@
       "comment" : "Cook mode, last page: this meal is already marked as eaten today.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits als gegessen markiert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +515,12 @@
       "comment" : "Cook mode, last page: marks this meal as eaten for the day and closes cook mode. Turkish must be 'Yedim'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich habe gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -437,6 +545,12 @@
       "comment" : "Cook mode, last page, when cooking a later day's meal ahead: it can be marked as eaten on its day.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst sie an ihrem Tag als gegessen markieren."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -461,6 +575,12 @@
       "comment" : "Cook mode, last page, under 'Enjoy!'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Mahlzeit ist fertig."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +605,12 @@
       "comment" : "Cook mode, last page: a warm word when the cooking is done, as people say before eating. Turkish 'Afiyet olsun!', Spanish '¡Buen provecho!'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guten Appetit!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -509,6 +635,12 @@
       "comment" : "Cook mode: VoiceOver value of an ingredient the person has ticked off as ready.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -533,6 +665,24 @@
       "comment" : "Cook mode: small button beside an ingredient that opens what could replace it. %lld is how many swaps, 1 to 3.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Alternative"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Alternativen"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -599,6 +749,12 @@
       "comment" : "Cook mode: VoiceOver label of the swaps button. %@ is the ingredient's name as the recipe wrote it, e.g. 'Swaps for chicken breast'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternativen für %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -623,6 +779,12 @@
       "comment" : "Cook mode, beside the Ingredients heading: how many ingredients the person has ticked off. %1$lld ticked, %2$lld in all, e.g. '3 of 8 ready'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld von %2$lld bereit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -647,6 +809,12 @@
       "comment" : "Cook mode: heading of the ingredient checklist.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutaten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -671,6 +839,12 @@
       "comment" : "Cook mode: one word above a step: baking in the oven.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -695,6 +869,12 @@
       "comment" : "Cook mode: one word above a step: blending in a blender.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -719,6 +899,12 @@
       "comment" : "Cook mode: one word above a step: boiling or simmering in water.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kochen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -743,6 +929,12 @@
       "comment" : "Cook mode: one word above a step: cutting or chopping.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schneiden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -767,6 +959,12 @@
       "comment" : "Cook mode: one word above a step: cooling or chilling.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abkühlen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -791,6 +989,12 @@
       "comment" : "Cook mode: one word above a step: frying or sautéing in a pan.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Braten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -815,6 +1019,12 @@
       "comment" : "Cook mode: one word above a step: grilling.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grillen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -839,6 +1049,12 @@
       "comment" : "Cook mode: one word above a step: heating a pan or oven.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erhitzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -863,6 +1079,12 @@
       "comment" : "Cook mode: one word above a step: mixing or stirring.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verrühren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -887,6 +1109,12 @@
       "comment" : "Cook mode: one word above a step: putting it on the plate and serving.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anrichten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -911,6 +1139,12 @@
       "comment" : "Cook mode: one word above a step saying what kind of step it is: getting things ready.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorbereiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -935,6 +1169,12 @@
       "comment" : "Cook mode: one word above a step: letting food rest or stand.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruhen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -959,6 +1199,12 @@
       "comment" : "Cook mode: one word above a step: seasoning with salt, spices or herbs.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Würzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -983,6 +1229,12 @@
       "comment" : "Cook mode, while the assistant writes the recipe: a rotating line shown only when the person listed foods they avoid in Settings.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich lasse weg, was du meidest…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1007,6 +1259,12 @@
       "comment" : "Cook mode, while the assistant writes the recipe: one of a few lines that rotate every few seconds under the meal's name. Says honestly what is happening. Ends with an ellipsis.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Mahlzeit aus deinem Plan wird gelesen…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1031,6 +1289,12 @@
       "comment" : "Cook mode, while the assistant writes the recipe: a rotating line. The assistant is writing short, simple steps.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einfache Schritte werden geschrieben…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1055,6 +1319,12 @@
       "comment" : "Cook mode, while the assistant writes the recipe: a rotating line. The assistant picks what could replace each ingredient.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternativen für jede Zutat werden ausgewählt…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1079,6 +1349,12 @@
       "comment" : "Cook mode: message when the meal is no longer in the plan.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Mahlzeit ist nicht mehr in deinem Plan."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1103,6 +1379,12 @@
       "comment" : "Cook mode: title when the meal is no longer in the plan.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit nicht gefunden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1127,6 +1409,12 @@
       "comment" : "Cook mode: toolbar toggle (a speaker symbol) that reads each step aloud when it appears.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorlesen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1151,6 +1439,12 @@
       "comment" : "Cook mode, under the 'recipes are used up' title: recipes opened before still open without using anything.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rezepte, die du schon geöffnet hast, öffnen sich weiterhin kostenlos."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1175,6 +1469,12 @@
       "comment" : "Cook mode, 'recipes are used up' state, free tier only: button that opens the DietFlow Plus screen. 'Plus' is the product name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus ansehen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1199,6 +1499,12 @@
       "comment" : "Cook mode: title when this month's recipe allowance is used up. The Plus screen is shown separately; this is the calm state behind it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Rezepte für diesen Monat sind aufgebraucht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1223,6 +1529,12 @@
       "comment" : "Cook mode, failure state: asks the assistant for the recipe again.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut versuchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1247,6 +1559,12 @@
       "comment" : "Cook mode: fixed line under the ingredients and in the swaps sheet. The assistant does not know the person's allergies or their dietitian's advice. Must stay a plain safety reminder, not a health claim.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe Zutaten und Alternativen im Hinblick auf deine Allergien und den Rat deiner Ernährungsberatung."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1271,6 +1589,12 @@
       "comment" : "Cook mode: keeps the recipe for the current number of servings instead of asking for a new one.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1295,6 +1619,24 @@
       "comment" : "Cook mode: the number of servings in the stepper between − and +. %lld is the number, 1 to 8.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Portion"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Portionen"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -1361,6 +1703,12 @@
       "comment" : "Cook mode: VoiceOver name of the servings stepper (swipe up or down to change it).",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portionen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1385,6 +1733,12 @@
       "comment" : "Cook mode, card shown after changing the number of servings to one not written yet: explains that this needs a new recipe from the assistant.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine andere Portionszahl ist ein neues Rezept."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1409,6 +1763,24 @@
       "comment" : "Cook mode: assistant button that asks for the recipe again for a new number of servings. Its cost is shown under it. %lld is the number of servings.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Für %lld Portion schreiben"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Für %lld Portionen schreiben"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -1475,6 +1847,12 @@
       "comment" : "Cook mode: what is spoken when reading a step aloud. %1$lld is the step number, %2$@ the step's text as the assistant wrote it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schritt %1$lld. %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1499,6 +1877,12 @@
       "comment" : "Cook mode: the main button on the overview; moves to the first step.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kochen starten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1523,6 +1907,12 @@
       "comment" : "Cook mode: large button at the bottom that goes to the previous step.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurück"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1547,6 +1937,12 @@
       "comment" : "Cook mode: the Next button on the last step; goes to the closing page.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1571,6 +1967,12 @@
       "comment" : "Cook mode: large button at the bottom that goes to the next step.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1595,6 +1997,12 @@
       "comment" : "Cook mode, above each step: where the person is. %1$lld is this step, %2$lld the number of steps, e.g. 'Step 3 of 6'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schritt %1$lld von %2$lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1619,6 +2027,12 @@
       "comment" : "Cook mode: closes the swaps sheet.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1643,6 +2057,12 @@
       "comment" : "Cook mode, swaps sheet footer, next to an 'Estimated' mark: the kcal differences are the assistant's estimates.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energiedifferenzen sind Schätzwerte für die angezeigten Mengen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1667,6 +2087,12 @@
       "comment" : "Cook mode, swaps sheet: section header naming the ingredient being replaced. %@ is its name and amount as written, e.g. 'Instead of Chicken breast · 150 g'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statt %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1691,6 +2117,12 @@
       "comment" : "Cook mode, swaps sheet: VoiceOver reading of a badge like '−40 kcal'. %@ is the energy with its unit, e.g. '40 kcal'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etwa %@ weniger"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1715,6 +2147,12 @@
       "comment" : "Cook mode, swaps sheet: VoiceOver reading of a badge like '+120 kcal'. %@ is the energy with its unit, e.g. '120 kcal'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etwa %@ mehr"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1739,6 +2177,12 @@
       "comment" : "Cook mode, swaps sheet: VoiceOver reading of the '≈ Same' badge.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etwa gleich viel Energie"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1763,6 +2207,12 @@
       "comment" : "Cook mode, swaps sheet: small badge when a swap has about the same energy as the original. Very short; '≈' means about.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≈ Gleich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1787,6 +2237,12 @@
       "comment" : "Cook mode: title of the half-height sheet listing what could replace one ingredient.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternativen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1811,6 +2267,12 @@
       "comment" : "Notification body when a cook-mode timer ends. %1$lld is the step number, %2$@ the step's text as the assistant wrote it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schritt %1$lld: %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1835,6 +2297,12 @@
       "comment" : "Notification title when a cook-mode timer ends (only if notifications are already allowed).",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Zeit ist um"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1859,6 +2327,12 @@
       "comment" : "Cook mode: what a step's timer chip says when the countdown has ended. Short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit ist um"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1883,6 +2357,12 @@
       "comment" : "Cook mode: VoiceOver hint of the 'Time's Up' chip: tapping it clears it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löscht den Timer."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1907,6 +2387,12 @@
       "comment" : "Cook mode: button on a step that involves waiting; starts a countdown. %lld is minutes, e.g. 'Start Timer · 12 min'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer starten · %lld Min."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1931,6 +2417,24 @@
       "comment" : "Cook mode: VoiceOver label of the Start Timer button. %lld is minutes.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Timer für %lld Minute starten"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Timer für %lld Minuten starten"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -1997,6 +2501,12 @@
       "comment" : "Cook mode: VoiceOver label of the X beside a running countdown; stops it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer stoppen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2021,6 +2531,12 @@
       "comment" : "Cook mode: heading of the assistant's short cooking tips.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipps"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

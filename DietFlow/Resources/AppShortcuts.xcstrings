@@ -5,6 +5,12 @@
       "comment" : "Siri phrase that adds a meal to the plan. Keep ${applicationName} exactly.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit in ${applicationName} hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Informal Siri phrase that marks the current or next meal done. Keep ${applicationName} exactly.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich habe in ${applicationName} gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Siri phrase that moves today's meals later because the person just got up. Keep ${applicationName} exactly.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin gerade in ${applicationName} aufgewacht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Siri phrase that marks the current or next meal done. Keep ${applicationName} exactly.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meine Mahlzeit in ${applicationName} als erledigt markieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Siri phrase that shows the next meal. Keep ${applicationName} exactly.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meine nächste Mahlzeit in ${applicationName} zeigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Siri phrase that starts today's meals from now. Keep ${applicationName} exactly.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meinen Tag in ${applicationName} starten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Siri phrase that asks for the next meal. Keep ${applicationName} exactly; it is the app's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist meine nächste Mahlzeit in ${applicationName}"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

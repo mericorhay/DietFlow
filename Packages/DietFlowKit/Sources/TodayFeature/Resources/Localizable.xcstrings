@@ -5,6 +5,12 @@
       "comment" : "VoiceOver label of a timeline row's status circle, which records the meal as eaten. %@ is the meal's name, e.g. 'Caesar salad'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ als erledigt markieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "VoiceOver label of the circle next to a meal already done. %@ is the meal's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ als nicht erledigt markieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "VoiceOver label of a timeline meal that moved because the day started late. %1$@ is the usual description ('Lunch, 3:30 PM, Caesar salad, next meal'), %2$@ the plan's time, %3$@ the new time.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, verschoben von %2$@ auf %3$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Today timeline: swipe and context-menu action that records a meal as eaten. One or two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erledigt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Swipe and menu action that marks a meal skipped. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Swipe and menu action that clears a meal's done or skipped mark. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rückgängig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Shown at the bottom of Today once every meal of the day is done or skipped. Short sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Plan für heute ist erledigt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "VoiceOver value of the folded 'Earlier today' row while its meals are hidden.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingeklappt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "VoiceOver value of the 'Earlier today' row while its meals are shown.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgeklappt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,24 @@
       "comment" : "Today, one folded row standing for the meals earlier today whose time went by unmarked; tapping shows them. %lld is how many meals it holds (3 or more).",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Früher heute · %lld Mahlzeit"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Früher heute · %lld Mahlzeiten"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -287,6 +359,12 @@
       "comment" : "Under 'Plan finished'. %1$@ is the plan's name, %2$@ a date such as 'October 4'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ endete am %2$@."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -311,6 +389,12 @@
       "comment" : "Button that restarts a finished plan from today. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu starten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -335,6 +419,12 @@
       "comment" : "Shown for days after a plan that does not repeat has finished. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan beendet"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -359,6 +449,24 @@
       "comment" : "Today, capsule on the assistant card: what tapping costs before tapping. %lld is how many AI uses are left this month.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Eine KI-Nutzung · noch %lld in diesem Monat"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Eine KI-Nutzung · noch %lld in diesem Monat"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -425,6 +533,12 @@
       "comment" : "Today, assistant card when the estimate failed: nothing was counted against the allowance.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent war nicht erreichbar. Es wurde nichts angerechnet; versuche es gleich noch einmal."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -449,6 +563,12 @@
       "comment" : "Today, assistant card when the estimate could not be done.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nährwerte konnten nicht hinzugefügt werden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -473,6 +593,24 @@
       "comment" : "Today, assistant card when the estimate is done. %lld is the number of meals that got figures.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nährwerte zu %lld Mahlzeit hinzugefügt"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nährwerte zu %lld Mahlzeiten hinzugefügt"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -539,6 +677,12 @@
       "comment" : "Today, small button under the assistant card (and on its failed state) that hides it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht jetzt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -563,6 +707,12 @@
       "comment" : "Today, button that closes the 'Nutrition added' card.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -587,6 +737,12 @@
       "comment" : "Today, capsule on the assistant card when this month's free uses are used up: tapping explains DietFlow Plus.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Plus enthalten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -611,6 +767,12 @@
       "comment" : "Today, button on the failed assistant card that tries the estimate again.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut versuchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -635,6 +797,24 @@
       "comment" : "Today, assistant card while it works out nutrition. %lld is the number of distinct dishes being estimated.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Gericht wird berechnet…"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Gerichte werden berechnet…"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -701,6 +881,12 @@
       "comment" : "Today, assistant card subtitle: what the estimate does and how it is shown. Must keep the ≈ sign.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent schätzt Kalorien, Eiweiß, Kohlenhydrate und Fett anhand des Namens jeder Mahlzeit. Angezeigt mit ≈; die Werte deiner Ernährungsberatung werden nie geändert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -725,6 +911,24 @@
       "comment" : "Today, assistant card title: offers to work out the nutrition the plan does not give. %lld is the number of distinct meals without figures.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nährwerte zu deiner %lld Mahlzeit hinzufügen"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nährwerte zu deinen %lld Mahlzeiten hinzufügen"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -791,6 +995,12 @@
       "comment" : "Today, under the meal in front: small assistant button that opens step-by-step cooking for the meal. Title Case, short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So gelingt's"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -815,6 +1025,12 @@
       "comment" : "Accent label above the first meal of a later day being viewed. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erste Mahlzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -839,6 +1055,12 @@
       "comment" : "Today, the meal on now: the prominent button that records the meal as eaten. An action, not a state. Short, fits beside Skip.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erledigt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -863,6 +1085,12 @@
       "comment" : "Today, under the meal in front, when the day started late and the meal moved: the time the plan gives it. %@ is a clock time, e.g. '08:00'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschoben von %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -887,6 +1115,12 @@
       "comment" : "Accent label above the next meal today. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als Nächstes"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -911,6 +1145,12 @@
       "comment" : "Accent label above the meal whose time has come. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -935,6 +1175,12 @@
       "comment" : "Button next to Mark Done; records that the meal was skipped. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -959,6 +1205,12 @@
       "comment" : "Today, last line under the meal in front: the meal after it. %1$@ is its time (with a weekday when it is on another day), %2$@ its name, e.g. 'Then 16:30 · Apple and almonds'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danach %1$@ · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -983,6 +1235,12 @@
       "comment" : "Today, beside a small progress bar under the meal on now: how long it stays in front. %@ is a duration, e.g. '40 min' or '1 hr, 5 min'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "noch %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1007,6 +1265,12 @@
       "comment" : "Accent label above tomorrow's first meal, shown when nothing is left today. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morgen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1031,6 +1295,12 @@
       "comment" : "Toolbar button shown when another day is selected; goes back to today. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1055,6 +1325,24 @@
       "comment" : "Next to the Schedule heading for a day other than today: how many meals it has.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Mahlzeit"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Mahlzeiten"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -1121,6 +1409,12 @@
       "comment" : "Today, late-start card: second button that keeps the plan's times and stops the question for today. Title Case.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeiten des Plans beibehalten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1145,6 +1439,12 @@
       "comment" : "Today, late-start card, under the title: what shifting the day does. Calm, no promises about health.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Mahlzeiten können sich an den Rest des heutigen Tages anpassen. Das Abendessen bleibt nah an seiner Zeit."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1169,6 +1469,12 @@
       "comment" : "Today, late-start card: main button that moves today's meals to after the person got up (now). Title Case, short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meinen Tag verschieben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1193,6 +1499,12 @@
       "comment" : "Today, card at the top when the first meal's time passed long ago and nothing is marked. %1$@ is the first meal's type ('Breakfast'), %2$@ its planned time ('08:00').",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Später Start? %1$@ war um %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1217,6 +1529,12 @@
       "comment" : "Today, late-start card: link that opens a picker to say when the person actually got up. Ends with an ellipsis because it opens a sheet.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin aufgewacht um…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1241,6 +1559,12 @@
       "comment" : "Today morning row: button the person taps when they are up; the day's meals follow their wake time. Title Case, very short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich bin wach"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1265,6 +1589,12 @@
       "comment" : "Today morning row: link that opens a time picker to say the person got up earlier than now. Ends with an ellipsis because it opens a sheet.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Früher aufgewacht…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1289,6 +1619,12 @@
       "comment" : "Today, under 'Good morning — up already?'. %1$@ is the first meal's type ('Breakfast'), %2$@ its time ('08:00'). Explains that a late wake moves the day's meals.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ist um %2$@. Später auf? Deine Mahlzeiten verschieben sich mit dir."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1313,6 +1649,12 @@
       "comment" : "Today, a light row at the top in the morning before the first meal: asks whether the person is up. Friendly, short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guten Morgen – schon wach?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1337,6 +1679,12 @@
       "comment" : "Button under 'No meals scheduled' that adds a meal to that day. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1361,6 +1709,12 @@
       "comment" : "Shown for a day of the plan that has no meals. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Mahlzeiten geplant"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1385,6 +1739,12 @@
       "comment" : "Shown for days before the plan begins. %@ is a date such as 'Monday, October 12'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Plan beginnt am %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1409,6 +1769,12 @@
       "comment" : "Planned-today card: label over the carbohydrates bar. One short word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kohlenh."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1433,6 +1799,12 @@
       "comment" : "Planned-today card, under the day's total: how much of it the meals marked eaten add up to. %@ is an energy amount, e.g. '640 kcal' or '≈ 640 kcal'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ bisher gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1457,6 +1829,12 @@
       "comment" : "Planned-today card: label over the fat bar. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fett"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1481,6 +1859,12 @@
       "comment" : "Planned-today card, under a macro bar: grams eaten so far out of grams planned. %1$@ and %2$@ are amounts like '42 g' and '118 g'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ von %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1505,6 +1889,12 @@
       "comment" : "Planned-today card footnote when only some meals have nutrition figures. %1$lld meals with figures out of %2$lld meals, the second always 2 or more.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von %1$lld von %2$lld Mahlzeiten; die anderen haben keine Werte."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1529,6 +1919,12 @@
       "comment" : "Planned-today card: label over the protein bar. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eiweiß"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1553,6 +1949,12 @@
       "comment" : "Today, heading of the card that adds up today's meals (energy and macros). Describes the plan, never a remaining budget.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute geplant"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1577,6 +1979,12 @@
       "comment" : "Heading of the card that adds up a day's meals, on a day other than today.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für den Tag geplant"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1601,6 +2009,12 @@
       "comment" : "VoiceOver label of the close button on Today's Plus card. Closed once, it does not come back.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus-Vorschlag ausblenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1625,6 +2039,12 @@
       "comment" : "Today, card about the paid tier, for free users: what it adds and that the rest stays free. No price. %1$lld recipes, %2$lld nutrition estimates, %3$lld written plans a month (all large numbers, e.g. 120, 100, 60).",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeden Monat mehr vom Assistenten: %1$lld Rezepte, %2$lld Nährwertschätzungen und %3$lld geschriebene Pläne, dazu Platz für mehr als einen Plan. Dein Plan, deine Widgets und Erinnerungen bleiben in jedem Fall kostenlos."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1649,6 +2069,12 @@
       "comment" : "Today, button on the Plus card that opens the screen describing Plus and its prices. Title Case.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das bietet Plus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1673,6 +2099,12 @@
       "comment" : "Today, title of the card about the paid tier. %@ is the app's name; reads 'DietFlow Plus'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Plus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1697,6 +2129,24 @@
       "comment" : "Next to the Schedule heading: how many of today's meals are still ahead.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld übrig"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld übrig"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -1763,6 +2213,12 @@
       "comment" : "Small accent tag at the end of the row of the next meal. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als Nächstes"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1787,6 +2243,12 @@
       "comment" : "Small accent tag at the end of the row of the meal that is on now. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1811,6 +2273,12 @@
       "comment" : "Shown under a meal's name when it was skipped. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersprungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1835,6 +2303,12 @@
       "comment" : "Heading above a day's timeline of meals, on a day other than today.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeiten des Tages"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1859,6 +2333,12 @@
       "comment" : "Heading above today's timeline of meals.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heutige Mahlzeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1883,6 +2363,12 @@
       "comment" : "Toolbar button on Today that opens Settings. Read by VoiceOver; the button shows a gear.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1907,6 +2393,12 @@
       "comment" : "Today, banner under the meals heading, and a short confirmation, when today's meals moved because the day started late. %@ is a duration, e.g. '1 hr, 30 min'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag um %@ nach hinten verschoben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1931,6 +2423,12 @@
       "comment" : "VoiceOver label of a row in the preview of a moved day. %1$@ is the meal type ('Lunch'), %2$@ the plan's time, %3$@ the new time.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, verschiebt sich von %2$@ auf %3$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1955,6 +2453,12 @@
       "comment" : "VoiceOver label of a row in the preview of a moved day, for a meal that keeps its time. %1$@ is the meal type ('Dinner'), %2$@ its time.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, bleibt um %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1979,6 +2483,12 @@
       "comment" : "Today, second line of the 'Day moved' banner, when the day moved because the first meal was marked eaten late.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das richtet sich danach, wann du deine erste Mahlzeit hattest."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2003,6 +2513,12 @@
       "comment" : "Today, second line of the 'Day moved' banner: when the person said they got up. %@ is a clock time ('09:40').",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du warst um %@ wach."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2027,6 +2543,12 @@
       "comment" : "Today, 'Day moved' banner: button that puts today's meals back at the plan's times. Title Case, one or two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rückgängig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2051,6 +2573,12 @@
       "comment" : "VoiceOver hint of the Undo button in the 'Day moved' banner.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setzt die heutigen Mahlzeiten wieder auf die Zeiten des Plans."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2075,6 +2603,12 @@
       "comment" : "Navigation title of the Today screen. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2099,6 +2633,12 @@
       "comment" : "Short toast after a meal is marked eaten, like a friendly 'enjoy your meal'. Two or three words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guten Appetit!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2123,6 +2663,12 @@
       "comment" : "Short toast after choosing to keep the plan's times on a late start.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeiten des Plans bleiben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2147,6 +2693,12 @@
       "comment" : "Short toast after 'I'm Up' when the person is on time and nothing moves.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guten Morgen! Deine Mahlzeiten bleiben pünktlich."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2171,6 +2723,12 @@
       "comment" : "Short toast after undoing a moved day: the meals are back at the plan's times.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurück zu den Zeiten des Plans"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2195,6 +2753,12 @@
       "comment" : "Today, small line on the calm card that shows tomorrow's first meal once today's meals are over.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das war's für heute."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2219,6 +2783,12 @@
       "comment" : "Wake-up sheet: button that closes it without changing anything.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2243,6 +2813,12 @@
       "comment" : "Footer under the wake-up time picker: how the day's meals are laid out from the wake time.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine erste Mahlzeit gibt es eine halbe Stunde nach dem Aufstehen. Der Rest des Tages folgt, und das Abendessen bleibt nah an seiner Zeit."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2267,6 +2843,12 @@
       "comment" : "Label of the time picker in the wake-up sheet (read by VoiceOver).",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufgewacht um"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2291,6 +2873,12 @@
       "comment" : "Section header in the wake-up sheet, above the day's meals with their old and new times.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Mahlzeiten heute"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2315,6 +2903,12 @@
       "comment" : "Wake-up sheet: confirm button that records the wake time and moves the day. Title Case, short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2339,6 +2933,12 @@
       "comment" : "Title of the small sheet where the person picks when they got up today. Title Case.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wann bist du aufgewacht?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2363,6 +2963,12 @@
       "comment" : "VoiceOver label of the close button on the widget suggestion on Today.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorschlag ausblenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2387,6 +2993,12 @@
       "comment" : "Second line of the widget suggestion on Today: the widget changes on its own through the day. One short sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Widget rückt im Laufe des Tages von selbst weiter."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2411,6 +3023,12 @@
       "comment" : "Button in the widget suggestion on Today. Opens the Widgets tab, which explains how to add the widget. Three words at most.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeig mir, wie"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2435,6 +3053,12 @@
       "comment" : "Bold first line of a suggestion under today's meals, shown until the person adds the Home Screen widget. One short sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lege deine nächste Mahlzeit auf den Home-Bildschirm"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

@@ -5,6 +5,12 @@
       "comment" : "Section heading for privacy and version. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Row that opens the privacy note; also its title. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutz"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Row in Settings, About. Opens the full privacy policy on the web. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzerklärung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Row in Settings, About. Opens the help page on the web. Three words at most.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hilfe und Support"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Row in Settings, About. Opens the terms of use on the web. Three words at most.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzungsbedingungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Row label for the app version. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Row label: which plan the widget and Today follow. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiver Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "Value of Active Plan when there is no plan. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keiner"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "Destructive button at the bottom of Settings that deletes every plan and everything recorded. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Daten löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,12 @@
       "comment" : "Button that shares the active plan as a file. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan exportieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +305,12 @@
       "comment" : "Section heading for importing, exporting and resetting. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +335,12 @@
       "comment" : "Button that opens Import Plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan importieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,6 +365,12 @@
       "comment" : "Destructive button confirming that all data is deleted. One or two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -317,6 +395,12 @@
       "comment" : "Under the confirmation title: what is deleted, and that it cannot be undone. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Pläne und alles, was du markiert hast, werden gelöscht. Das kann nicht rückgängig gemacht werden."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -341,6 +425,12 @@
       "comment" : "Title of the confirmation before deleting all data. A short question.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle deine Daten löschen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -365,6 +455,12 @@
       "comment" : "Button that closes Settings. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -389,6 +485,12 @@
       "comment" : "Footer under the Language & Region section. %@ is the app's name. Explains that the language is chosen in Apple's Settings app and that dates, times and numbers follow the phone's region.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle die Sprache, die %@ verwendet, in der Einstellungen-App. Datum, Uhrzeit und Zahlen folgen der Region deines iPhone."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +515,12 @@
       "comment" : "Section heading in Settings for the app language, the first day of the week and the energy unit. Three words at most.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprache & Region"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -437,6 +545,12 @@
       "comment" : "VoiceOver hint for the App Language row: what tapping it does. Short phrase.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet die Einstellungen-App"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -461,6 +575,12 @@
       "comment" : "Row label in Settings; its value is the language the app is shown in (for example 'Türkçe'). Tapping it opens the Settings app. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Sprache"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +605,12 @@
       "comment" : "Section heading for the active plan. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -509,6 +635,12 @@
       "comment" : "Footer of the Plus section: how many assistant plans are left in this period and when the count starts again. %1$lld is what is left, %2$lld the allowance, %3$@ a date (\"16 November 2026\").",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übrige Assistenten-Pläne: %1$lld von %2$lld. Am %3$@ sind sie wieder da."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -533,6 +665,12 @@
       "comment" : "Footer of the Plus section for someone on the free version, in a build without the assistant. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du nutzt die kostenlose Version: ein Plan, alle Widgets und Erinnerungen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -557,6 +695,12 @@
       "comment" : "Row at the top of Settings for someone on the free version; opens the Plus screen. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus holen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -581,6 +725,12 @@
       "comment" : "Under 'Get DietFlow Plus': what it adds, in a build with the assistant. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Assistent, der beliebige Listen ordnet und Pläne für dich schreibt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -605,6 +755,12 @@
       "comment" : "Under 'Get DietFlow Plus' in a build without the assistant. One short sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr als einen Plan behalten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,6 +785,12 @@
       "comment" : "Header of the Settings section about the paid tier. The product's name; stays as is.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -653,6 +815,12 @@
       "comment" : "Value beside 'Purchase': the one-time purchase. One or two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lebenslang"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -677,6 +845,12 @@
       "comment" : "Value beside 'Purchase': the monthly subscription. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatlich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -701,6 +875,12 @@
       "comment" : "Value beside 'Purchase': the yearly subscription. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jährlich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -725,6 +905,12 @@
       "comment" : "Row that opens Apple's sheet for changing or cancelling the subscription. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abo verwalten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -749,6 +935,12 @@
       "comment" : "Alert message under 'Nothing to restore'. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für diesen Apple-Account wurde kein Kauf von DietFlow Plus gefunden."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -773,6 +965,12 @@
       "comment" : "Alert title after Restore Purchases in Settings found nothing. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nichts wiederherzustellen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -797,6 +995,12 @@
       "comment" : "Button that closes the alert after Restore Purchases. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -821,6 +1025,12 @@
       "comment" : "Label of the row showing which Plus product is held: Monthly, Yearly or Lifetime. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kauf"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -845,6 +1055,12 @@
       "comment" : "Settings row that opens Apple's sheet for entering an offer code. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code einlösen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -869,6 +1085,12 @@
       "comment" : "Settings row that brings back an earlier purchase. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Käufe wiederherstellen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -893,6 +1115,12 @@
       "comment" : "Alert message under 'Purchases restored'. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus ist auf diesem iPhone aktiv."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -917,6 +1145,12 @@
       "comment" : "Alert title after Restore Purchases in Settings found Plus. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Käufe wiederhergestellt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -941,6 +1175,12 @@
       "comment" : "Footer of the Plus section for a cancelled subscription still in its paid period. %@ is the date it ends.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endet am %@. Es wird nicht verlängert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -965,6 +1205,12 @@
       "comment" : "Footer of the Plus section for someone who bought Plus once. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für immer deins. Nichts verlängert sich und nichts endet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -989,6 +1235,12 @@
       "comment" : "Footer of the Plus section for an active subscription. %@ is the date of the next charge.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlängert sich am %@."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1013,6 +1265,12 @@
       "comment" : "Footer of the Plus section during a free trial that will turn into a paid subscription. %@ is the date the trial ends.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kostenlos testen bis %@. Danach verlängert es sich, wenn du nicht mindestens einen Tag vorher kündigst."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1037,6 +1295,12 @@
       "comment" : "Footer of the Plus section during a free trial that has been cancelled. %@ is the date the trial ends.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kostenlos testen bis %@. Es wird nicht verlängert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1061,6 +1325,12 @@
       "comment" : "Paragraph on the Privacy screen, in builds with the assistant. %@ is the company whose AI reads the text, such as OpenAI.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn du den Assistenten nutzt, wird der Text, den du ihm gibst, über unseren Server an %@ gesendet, dessen KI ihn liest und deinen Plan schreibt. Wir speichern ihn nicht. Nichts anderes, was du eingibst, verlässt dein iPhone."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1085,6 +1355,12 @@
       "comment" : "Switch on the Privacy screen. On means the person has agreed that the assistant's text is sent to the company whose AI reads it. %@ is that company, such as OpenAI.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistenten-Text an %@ senden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1109,6 +1385,12 @@
       "comment" : "Footer under the switch that allows the assistant's text to be sent. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn dies aus ist, fragt der Assistent nach, bevor er etwas sendet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1133,6 +1415,12 @@
       "comment" : "First paragraph of the Privacy screen. %@ is the app's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Plan bleibt auf diesem iPhone. %@ hat kein Konto und keine Werbung."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1157,6 +1445,12 @@
       "comment" : "Paragraph on the Privacy screen about importing a plan without the assistant. Names Apple's on-device model, which reads the text where the iPhone has it.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotos, PDFs und Text, die du importierst, werden auf diesem iPhone gelesen, mit dem Modell von Apple auf dem Gerät, sofern dein iPhone es hat."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1181,6 +1475,12 @@
       "comment" : "Paragraph of the Privacy screen in a build without the assistant: what is typed into the app is not sent. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was du in die App eingibst, wird nirgendwohin gesendet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1205,6 +1505,12 @@
       "comment" : "Paragraph of the Privacy screen about anonymous usage data. Says what is sent, what never is, that it is not tied to the person, and where to turn it off. Plain and exact.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um die App zu verbessern, teilt sie anonyme Nutzungsdaten: welche Funktionen genutzt werden, wo eine Grenze erreicht wird und ob ein Kauf erfolgt ist. Sie sind an eine Zufallszahl gebunden, die auf diesem iPhone erzeugt wird, nicht an dich oder deinen Apple-Account, und enthalten nie deine Mahlzeiten, deinen Plan oder etwas, das du eingibst. Du kannst das in den Einstellungen ausschalten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1229,6 +1535,12 @@
       "comment" : "Privacy note, third paragraph: what the widget can see.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets zeigen deine nächsten Mahlzeiten auf dem Home-Bildschirm und dem Sperrbildschirm, wo jeder sie sehen kann, der dein iPhone in der Hand hält."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1253,6 +1565,12 @@
       "comment" : "Picker: when reminders arrive, unless a meal says otherwise. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standarderinnerung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1277,6 +1595,12 @@
       "comment" : "Footer when notifications are turned off for the app in iOS. %@ is the app's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mitteilungen sind für %@ in der Einstellungen-App ausgeschaltet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1301,6 +1625,12 @@
       "comment" : "Footer under the reminder settings. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Widget aktualisiert sich auch ohne Erinnerungen weiter."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1325,6 +1655,12 @@
       "comment" : "Section heading for meal reminders. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1349,6 +1685,12 @@
       "comment" : "Button that opens the app's page in the iOS Settings app. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen-App öffnen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1373,6 +1715,12 @@
       "comment" : "Toggle that turns meal reminder notifications on. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit-Erinnerungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1397,6 +1745,12 @@
       "comment" : "Title of the Settings sheet. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1421,6 +1775,12 @@
       "comment" : "Picker: kilocalories or kilojoules. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energie"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1445,6 +1805,12 @@
       "comment" : "Picker: which weekday starts the week strip. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erster Wochentag"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1469,6 +1835,12 @@
       "comment" : "Option: follow the phone's region setting for the first day of the week. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1493,6 +1865,12 @@
       "comment" : "Under the 'Share Anonymous Usage Data' switch: what is shared and what never is. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welche Funktionen genutzt werden und wo etwas schiefgeht, um die App zu verbessern. Nie deine Mahlzeiten, dein Plan oder etwas, das du eingibst."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1517,6 +1895,12 @@
       "comment" : "Switch in Settings, on by default: sends anonymous usage data to help improve the app. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anonyme Nutzungsdaten teilen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

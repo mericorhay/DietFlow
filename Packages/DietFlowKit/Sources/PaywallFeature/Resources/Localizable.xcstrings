@@ -5,6 +5,12 @@
       "comment" : "Small print under the price for the two subscriptions; App Review requires it. The path names Apple's own Settings screens.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abonnements verlängern sich automatisch, bis sie gekündigt werden. Kündige mindestens einen Tag vor der Verlängerung unter Einstellungen › Apple-Account › Abonnements."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Small badge beside 'Yearly': how much less it costs than twelve months. %@ is a percentage (\"48%\").",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sparen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Small badge beside a product that starts with a free trial. %@ is its length (\"7 days\").",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ gratis"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Under 'A plan written for you'. One sentence. 30 is the most days it writes.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sag, wie du dich ernährst und was du meidest, und erhalte Mahlzeiten für bis zu 30 Tage."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Heading of a benefit row on the Plus screen: the assistant writes a new plan. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Plan, für dich geschrieben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Under 'Free, for good'. Lists what the free version includes. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Plan, alle Widgets und Mahlzeit-Erinnerungen brauchen nie Plus."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Heading of the last, quieter row on the Plus screen: what never needs paying for. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dauerhaft kostenlos"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "Under 'Any list, put in order'. What the person does and what they get. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge die Nachricht deiner Ernährungsberatung oder deine eigenen Notizen ein, egal wie unordentlich. Der Assistent sortiert sie in Tage und Mahlzeiten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "Heading of a benefit row on the Plus screen: the assistant tidies up a pasted list. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jede Liste, in Ordnung gebracht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,12 @@
       "comment" : "Under 'More than one plan'. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Behalte den Plan dieses Monats und den nächsten nebeneinander und wechsle, wann du willst."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +305,12 @@
       "comment" : "Heading of a benefit row on the Plus screen: keeping several meal plans. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr als ein Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +335,12 @@
       "comment" : "Accessibility label of the X button that closes the Plus screen. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,6 +365,12 @@
       "comment" : "Text button under the price on first launch: carries on without buying. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit der kostenlosen Version fortfahren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -317,6 +395,12 @@
       "comment" : "The main button on the Plus screen when there is no free trial; it opens Apple's purchase sheet. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -341,6 +425,12 @@
       "comment" : "The main button on the Plus screen when the chosen product starts with a free trial. Three words at most.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratis testen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -365,6 +455,12 @@
       "comment" : "Alert message under 'The purchase did not go through'. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es wurde nichts berechnet. Bitte versuche es erneut."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -389,6 +485,12 @@
       "comment" : "Alert title when a purchase failed. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Kauf ist nicht zustande gekommen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +515,12 @@
       "comment" : "Alert message under 'Nothing to restore'. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für diesen Apple-Account wurde kein Kauf von DietFlow Plus gefunden."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -437,6 +545,12 @@
       "comment" : "Alert title after Restore Purchases found nothing. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nichts wiederherzustellen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -461,6 +575,12 @@
       "comment" : "Button that closes an alert on the Plus screen. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -485,6 +605,12 @@
       "comment" : "Alert message under 'Waiting for approval'. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Kauf muss genehmigt werden. Plus öffnet sich, sobald er genehmigt ist."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -509,6 +635,12 @@
       "comment" : "Alert title when a purchase waits for someone's approval (Ask to Buy, a bank). A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warten auf Genehmigung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -533,6 +665,12 @@
       "comment" : "Alert message under 'Purchases restored'. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus ist auf diesem iPhone aktiv."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -557,6 +695,12 @@
       "comment" : "Alert title after Restore Purchases found Plus. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Käufe wiederhergestellt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -581,6 +725,12 @@
       "comment" : "Link at the bottom of the Plus screen to the privacy policy. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzerklärung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -605,6 +755,12 @@
       "comment" : "Name of the one-time purchase in the list of ways to buy Plus. One or two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lebenslang"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,6 +785,12 @@
       "comment" : "Under 'Lifetime' in the list of ways to buy. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einmal zahlen, für immer behalten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -653,6 +815,12 @@
       "comment" : "Name of the monthly subscription in the list of ways to buy Plus. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatlich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -677,6 +845,12 @@
       "comment" : "Under 'Monthly' in the list of ways to buy. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatliche Abrechnung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -701,6 +875,12 @@
       "comment" : "Name of the yearly subscription in the list of ways to buy Plus. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jährlich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -725,6 +905,12 @@
       "comment" : "Under 'Yearly' when the monthly equivalent is not known. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einmal im Jahr abgerechnet"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -749,6 +935,12 @@
       "comment" : "Under 'Yearly': what a year comes to per month. %@ is a price (\"$2.08\").",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ im Monat"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -773,6 +965,12 @@
       "comment" : "On the Plus screen when prices could not be fetched. Two short sentences; a Try Again button follows.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der App Store ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -797,6 +995,12 @@
       "comment" : "Beside a spinner on the Plus screen while prices are fetched. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store wird gefragt…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -821,6 +1025,12 @@
       "comment" : "Button that fetches the prices again. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut versuchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -845,6 +1055,12 @@
       "comment" : "Link at the bottom of the Plus screen that brings back an earlier purchase. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Käufe wiederherstellen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -869,6 +1085,12 @@
       "comment" : "Under the title on the Plus screen when someone on the free version asks for a second meal plan. Says they can delete the current one instead. Two sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die kostenlose Version enthält jeweils einen Plan. Lösche deinen aktuellen Plan, um einen weiteren anzulegen, oder behalte alle mit Plus."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -893,6 +1115,12 @@
       "comment" : "Under the title on the Plus screen, on first launch and when opened from Settings. Says the app stays free and what Plus adds. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles, was DietFlow kann, bleibt kostenlos. Plus ergänzt einen Assistenten, der den Plan für dich erstellt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -917,6 +1145,12 @@
       "comment" : "Subtitle of the DietFlow Plus screen when the free month's AI recipes (step-by-step cooking) are used up. %1$lld is the free number, %2$@ the date they come back (for example 1 November), %3$lld the number Plus includes a month.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast die %1$lld Rezepte genutzt, die der kostenlose Plan in diesem Monat enthält. Am %2$@ sind sie wieder da; Plus bietet %3$lld im Monat, mit Alternativen für jede Zutat."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -941,6 +1175,12 @@
       "comment" : "Under the title on the Plus screen when the free monthly allowance of assistant plans is used up. %1$lld is that allowance (a small number), %2$@ the date it comes back (\"1 November\"), %3$lld what Plus includes a month.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die kostenlosen Assistenten-Pläne dieses Monats (%1$lld) sind aufgebraucht. Am %2$@ sind sie wieder da. Plus enthält %3$lld im Monat."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -965,6 +1205,12 @@
       "comment" : "Subtitle of the DietFlow Plus screen when the free month's AI nutrition estimates are used up. %1$lld is the free number, %2$@ the date they come back (for example 1 November), %3$lld the number Plus includes a month.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast die %1$lld Nährwertschätzungen genutzt, die der kostenlose Plan in diesem Monat enthält. Am %2$@ sind sie wieder da; Plus bietet %3$lld im Monat."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -989,6 +1235,12 @@
       "comment" : "Under the title on the Plus screen in a build without the assistant. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles, was DietFlow kann, bleibt kostenlos. Mit Plus kannst du mehr als einen Plan behalten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1013,6 +1265,12 @@
       "comment" : "Link at the bottom of the Plus screen to the terms of use. Two or three words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzungsbedingungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1037,6 +1295,12 @@
       "comment" : "Under the main button for the one-time purchase. %@ is the price.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ einmalig. Kein Abo, nichts zu kündigen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1061,6 +1325,12 @@
       "comment" : "Under the main button for the monthly subscription without a trial. %@ is the price.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ im Monat. Jederzeit kündbar."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1085,6 +1355,12 @@
       "comment" : "Under the main button for the monthly subscription with a free trial. %1$@ is the trial's length (\"7 days\"), %2$@ the price (\"$3.99\"), %3$@ the date of the first charge (\"13 October\").",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ gratis, danach %2$@ im Monat. Vor dem %3$@ wird nichts berechnet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1109,6 +1385,12 @@
       "comment" : "Under the main button for the yearly subscription with a free trial. %1$@ is the trial's length, %2$@ the price, %3$@ the date of the first charge.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ gratis, danach %2$@ im Jahr. Vor dem %3$@ wird nichts berechnet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1133,6 +1415,12 @@
       "comment" : "Under the main button for the yearly subscription without a trial. %@ is the price.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ im Jahr. Jederzeit kündbar."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1157,6 +1445,12 @@
       "comment" : "Large title of the screen that sells the paid tier. The product's name; stays as is.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

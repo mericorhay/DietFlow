@@ -5,6 +5,12 @@
       "comment" : "Prominent button at the bottom of a meal's screen that records the meal as eaten. An action, not the state. Short: shares a row with Skip.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegessen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "VoiceOver label of the button that records the meal as eaten.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als gegessen markieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Button beside 'Done' at the bottom of a meal's screen that takes back marking the meal as eaten.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rückgängig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Button next to Mark Done; records the meal as skipped. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,12 @@
       "comment" : "Button on a skipped meal; clears the skip. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen rückgängig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +155,12 @@
       "comment" : "Small badge on 'How to Make It' when this month's free assistant uses are used up. Tapping explains DietFlow Plus.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratisnutzungen aufgebraucht · Mehr mit Plus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +185,12 @@
       "comment" : "Small badge on 'How to Make It' when the recipe is already written: opening it costs nothing.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereit · Kostenlos zu öffnen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +215,12 @@
       "comment" : "Line under 'How to Make It' once the recipe was written and kept on the phone.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Rezept ist fertig. Es erneut zu öffnen ist kostenlos."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +245,12 @@
       "comment" : "Line under 'How to Make It' before the recipe is written.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schritt für Schritt, mit Alternativen für jede Zutat."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -221,6 +275,12 @@
       "comment" : "Title of the assistant card on a meal's screen that opens step-by-step cooking. Title Case.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So gelingt's"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,6 +305,24 @@
       "comment" : "Small badge on 'How to Make It': how many assistant uses are left this month, before tapping.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Noch %lld KI-Nutzung in diesem Monat"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Noch %lld KI-Nutzungen in diesem Monat"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -311,6 +389,12 @@
       "comment" : "Toolbar button on a meal's detail screen that opens the editor. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -335,6 +419,12 @@
       "comment" : "Button that closes the meal form without saving. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -359,6 +449,12 @@
       "comment" : "Placeholder of the field naming a meal of type Other, such as 'Pre-workout'. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name für diese Mahlzeit (optional)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -383,6 +479,12 @@
       "comment" : "Label of the picker choosing which day of the plan the meal is on. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -407,6 +509,12 @@
       "comment" : "A day of a repeating plan in the day picker. %1$lld is the day number, %2$@ the next date it falls on. Example: 'Day 3 · Wed, Oct 7'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag %1$lld · %2$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -431,6 +539,12 @@
       "comment" : "Destructive button that deletes the meal from the plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -455,6 +569,12 @@
       "comment" : "Explains what deleting a meal does in a repeating plan. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie wird aus jeder Wiederholung des Plans entfernt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -479,6 +599,12 @@
       "comment" : "Title of the confirmation before deleting a meal. A short question.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Mahlzeit löschen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -503,6 +629,12 @@
       "comment" : "Placeholder of the field for ingredients or a short description. One or two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -527,6 +659,12 @@
       "comment" : "Title of the form that edits a meal. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit bearbeiten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -551,6 +689,12 @@
       "comment" : "Footer under the nutrition fields of the meal editor while they hold the assistant's estimate.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vom Assistenten geschätzt. Ändere eine Zahl, und deine Werte bleiben stattdessen erhalten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -575,6 +719,12 @@
       "comment" : "Title of the form that adds a meal. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Mahlzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -599,6 +749,12 @@
       "comment" : "Placeholder of the notes field. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notizen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -623,6 +779,12 @@
       "comment" : "Footer under the nutrition fields. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leer lassen, wenn dein Plan es nicht angibt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -647,6 +809,12 @@
       "comment" : "Placeholder of an empty number field in the nutrition section. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -671,6 +839,12 @@
       "comment" : "Placeholder of the portion field, such as '1 large bowl'. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portion"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -695,6 +869,12 @@
       "comment" : "Button that saves the meal form. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -719,6 +899,12 @@
       "comment" : "Label of the time picker. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uhrzeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -743,6 +929,12 @@
       "comment" : "Placeholder of the meal name field. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -767,6 +959,12 @@
       "comment" : "Picker label: breakfast, snack, lunch, dinner or other. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -791,6 +989,12 @@
       "comment" : "Shown under 'Estimate Nutrition' when the assistant had too many requests. The allowance was not used.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent ist gerade beschäftigt. Es wurde nichts angerechnet; versuche es gleich noch einmal."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -815,6 +1019,12 @@
       "comment" : "Shown under 'Estimate Nutrition' when this phone reached the assistant's daily limit. The allowance was not used.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr kann der Assistent heute von diesem iPhone aus nicht tun. Es wurde nichts angerechnet; versuche es morgen erneut."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -839,6 +1049,12 @@
       "comment" : "Shown under 'Estimate Nutrition' when there was no connection. The allowance was not used.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du scheinst offline zu sein. Es wurde nichts angerechnet; versuche es erneut, wenn du verbunden bist."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -863,6 +1079,12 @@
       "comment" : "Shown under 'Estimate Nutrition' when the assistant could not estimate the meal. The allowance was not used.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent konnte diese Mahlzeit nicht schätzen. Es wurde nichts angerechnet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -887,6 +1109,12 @@
       "comment" : "Line under a meal's time on another day when that day started late and the meal moved. %@ is the time the plan gives, e.g. 08:00.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschoben von %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -911,6 +1139,12 @@
       "comment" : "Line under a meal's time when the day started late and the meal moved. %@ is the time the plan gives, e.g. 08:00.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute verschoben von %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -935,6 +1169,12 @@
       "comment" : "Fixed safety line under a meal's ingredients.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe sie im Hinblick auf deine Allergien und den Rat deiner Ernährungsberatung."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -959,6 +1199,12 @@
       "comment" : "Line under a meal's name on its detail screen. %1$@ is the meal type, %2$@ the time, %3$@ the date. Example: 'Lunch · 14:00 · Monday, October 5'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@ · %3$@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -983,6 +1229,12 @@
       "comment" : "Under 'Meal not found'. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Mahlzeit ist nicht mehr in deinem Plan."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1007,6 +1259,12 @@
       "comment" : "Shown when a meal that was open has been deleted. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit nicht gefunden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1031,6 +1289,12 @@
       "comment" : "Caption under the protein, carbohydrate and fat bars: what the length of each bar means.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Balken zeigen den jeweiligen Energieanteil."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1055,6 +1319,12 @@
       "comment" : "Row label: grams of carbohydrates. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kohlenhydrate"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1079,6 +1349,12 @@
       "comment" : "Row label: the meal's energy in kcal or kJ. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalorien"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1103,6 +1379,12 @@
       "comment" : "Assistant button in the nutrition card of a meal that has no figures: the assistant works out calories and macros. Title Case.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nährwerte schätzen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1127,6 +1409,12 @@
       "comment" : "Footnote in the nutrition card when the figures are the assistant's estimate.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vom Assistenten anhand der Beschreibung dieser Mahlzeit geschätzt. Zahlen aus deinem Plan haben immer Vorrang."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1151,6 +1439,12 @@
       "comment" : "Row label: grams of fat. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fett"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1175,6 +1469,12 @@
       "comment" : "Line in the nutrition card above the 'Estimate Nutrition' button, when the plan gives no figures for the meal.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Plan enthält keine Nährwerte für diese Mahlzeit."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1199,6 +1499,12 @@
       "comment" : "Row label: how much of the meal, as the plan says it. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portion"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1223,6 +1529,12 @@
       "comment" : "Row label: grams of protein. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eiweiß"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1247,6 +1559,12 @@
       "comment" : "Reminder option that follows the app-wide setting. %@ is that setting, such as '10 min before'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard (%@)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1271,6 +1589,12 @@
       "comment" : "Footer under a meal's reminder picker when meal reminders are turned off in Settings. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeit-Erinnerungen sind aus. Du kannst sie in den Einstellungen einschalten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1295,6 +1619,12 @@
       "comment" : "Picker label: when this meal's reminder arrives. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1319,6 +1649,12 @@
       "comment" : "Heading over a meal's description when it reads as text rather than a list of foods.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1343,6 +1679,12 @@
       "comment" : "Heading over the foods a meal's description lists, one per row.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zutaten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1367,6 +1709,12 @@
       "comment" : "Section heading for the free-text notes of a meal. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notizen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1391,6 +1739,12 @@
       "comment" : "Section heading for a meal's portion, energy and macronutrients. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nährwerte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1415,6 +1769,12 @@
       "comment" : "Label above a meal that was marked done. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erledigt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1439,6 +1799,12 @@
       "comment" : "Status above a meal's name for a meal still ahead today, after the next one. Followed by '· in 3 hr'.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Später heute"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1463,6 +1829,12 @@
       "comment" : "Status above a meal's name when its time passed and it was neither marked eaten nor skipped.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht markiert"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1487,6 +1859,12 @@
       "comment" : "Accent label above a meal on its detail screen when it is the next meal. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als Nächstes"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1511,6 +1889,12 @@
       "comment" : "Accent label above a meal on its detail screen when its time has come. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1535,6 +1919,12 @@
       "comment" : "Label above a meal that was skipped. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersprungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

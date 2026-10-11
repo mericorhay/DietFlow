@@ -5,6 +5,12 @@
       "comment" : "Button in the permission alert that allows sending meals to the AI company.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +35,12 @@
       "comment" : "Button in the permission alert that declines sending meals to the AI company, for now.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht jetzt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +65,12 @@
       "comment" : "Alert message asking permission before meals are sent to the AI company. %1$@ is the company's name (for example OpenAI), %2$@ the app's name.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dafür werden Name, Beschreibung und Portion der Mahlzeit sowie Lebensmittel, die du meidest, über unseren Server an %1$@ gesendet, dessen KI sie liest. %2$@ speichert sie nicht. Sonst wird nichts über dich oder deinen Plan gesendet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
       "comment" : "Alert title asking permission before a meal is sent to the AI company. %@ is the company's name (for example OpenAI).",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahlzeiten mit %@ teilen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,6 +125,24 @@
       "comment" : "Caption under an assistant button (or its VoiceOver hint): how many uses of this assistant feature are left in the current month. %lld is the number.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Noch %lld Nutzung in diesem Monat"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Noch %lld Nutzungen in diesem Monat"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -167,6 +209,12 @@
       "comment" : "Tiny capsule label on an assistant button meaning 'part of DietFlow Plus'. The product name; keep it short.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -191,6 +239,12 @@
       "comment" : "VoiceOver hint on an assistant button whose free uses are used up: tapping it explains DietFlow Plus.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Plus enthalten. Zeigt, was Plus bietet."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -215,6 +269,12 @@
       "comment" : "Small label with a sparkles symbol beside nutrition figures the AI assistant estimated (not given by the person's plan). One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschätzt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -239,6 +299,12 @@
       "comment" : "Small label with a sparkles symbol over a recipe the AI assistant wrote. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vom Assistenten geschrieben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -263,6 +329,12 @@
       "comment" : "VoiceOver label for a placeholder the AI assistant is still filling in.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Assistent arbeitet daran"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -287,6 +359,12 @@
       "comment" : "VoiceOver value read after a date in the week strip when that date is today. One word.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -311,6 +389,12 @@
       "comment" : "Primary button that starts making a new meal plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan erstellen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -335,6 +419,12 @@
       "comment" : "Secondary button that opens Import Plan. Two words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan importieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -359,6 +449,12 @@
       "comment" : "Under 'No meal plan yet': what the app does once a plan exists. One sentence.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lege einmal einen Zeitplan an und überlasse den Rest dem Widget."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -383,6 +479,12 @@
       "comment" : "Line under the Organize Any List button on the screen shown before any plan exists. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge deine Liste ein. Die KI bringt sie in Ordnung."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -407,6 +509,12 @@
       "comment" : "Title of the second button on the screen shown before any plan exists. Asks the AI assistant to put a pasted list in order. The same words as on Import Plan. Four words at most.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beliebige Liste ordnen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -431,6 +539,12 @@
       "comment" : "Title shown on Today and Plan before any meal plan exists. A few words.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch kein Plan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -455,6 +569,12 @@
       "comment" : "Line under the Write Me a Plan button on the screen shown before any plan exists. Says what to do and that AI does the writing. Two short sentences.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sag, wie du essen willst. Die KI schreibt bis zu 30 Tage."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -479,6 +599,12 @@
       "comment" : "Title of the first, most prominent button on the screen shown before any plan exists. Asks the AI assistant to write a plan. The same words as on Import Plan. Four words at most.",
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan für mich schreiben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
