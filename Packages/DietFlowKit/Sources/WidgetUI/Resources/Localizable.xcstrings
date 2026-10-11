@@ -23,6 +23,12 @@
             "value" : "Intenso"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vif"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oscuro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sombre"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Suave"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doux"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Automático"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatique"
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Azul"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bleu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Grafito"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graphite"
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "Verde"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vert"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Índigo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indigo"
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "Naranja"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rosa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rose"
           }
         },
         "tr" : {
@@ -323,6 +383,12 @@
             "value" : "Morado"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Violet"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,6 +417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rojo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rouge"
           }
         },
         "tr" : {
@@ -383,6 +455,12 @@
             "value" : "Verde azulado"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sarcelle"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terracota"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terre cuite"
           }
         },
         "tr" : {
@@ -443,6 +527,12 @@
             "value" : "Cómo se prepara"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment le préparer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -471,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Receta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recette"
           }
         },
         "tr" : {
@@ -503,6 +599,12 @@
             "value" : "El plan de hoy está completo."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le plan du jour est terminé."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -531,6 +633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comida hecha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangé"
           }
         },
         "tr" : {
@@ -563,6 +671,12 @@
             "value" : "%1$@ terminó el %2$@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ s’est terminé le %2$@."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -591,6 +705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan nuevo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau plan"
           }
         },
         "tr" : {
@@ -623,6 +743,12 @@
             "value" : "Empezar de nuevo"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recommencer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan terminado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan terminé"
           }
         },
         "tr" : {
@@ -683,6 +815,12 @@
             "value" : "Comido: %1$@ de %2$@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ sur %2$@ mangés"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -711,6 +849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Después · %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puis · %@"
           }
         },
         "tr" : {
@@ -743,6 +887,12 @@
             "value" : "Huevos con tomate y feta"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tartine à l’avocat"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -771,6 +921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Salmón con verduras asadas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saumon et légumes rôtis"
           }
         },
         "tr" : {
@@ -803,6 +959,12 @@
             "value" : "Pollo a la plancha con ensalada griega"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poulet grillé et salade grecque"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -831,6 +993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mediterráneo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Méditerranéen"
           }
         },
         "tr" : {
@@ -863,6 +1031,12 @@
             "value" : "Yogur griego con nueces"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaourt grec aux noix"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -891,6 +1065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · Día %2$lld de %3$lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Jour %2$lld sur %3$lld"
           }
         },
         "tr" : {
@@ -923,6 +1103,12 @@
             "value" : "Próxima comida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prochain repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -951,6 +1137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Progreso del día"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progression du jour"
           }
         },
         "tr" : {
@@ -983,6 +1175,12 @@
             "value" : "Comidas de hoy"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas d’aujourd’hui"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1008,6 +1206,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · %2$@"
@@ -1043,6 +1247,12 @@
             "value" : "Siguiente · %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant · %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1071,6 +1281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ahora · %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenant · %@"
           }
         },
         "tr" : {
@@ -1103,6 +1319,12 @@
             "value" : "Empieza el %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Début le %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1131,6 +1353,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Empieza mañana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commence demain"
           }
         },
         "tr" : {
@@ -1163,6 +1391,12 @@
             "value" : "Mañana · %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demain · %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1191,6 +1425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "hasta las %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jusqu’à %@"
           }
         },
         "tr" : {
@@ -1265,6 +1505,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+%lld de plus"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+%lld de plus"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+%lld de plus"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -1307,6 +1571,12 @@
             "value" : "No hay comidas previstas"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun repas prévu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1335,6 +1605,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añadir plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un plan"
           }
         },
         "tr" : {
@@ -1367,6 +1643,12 @@
             "value" : "Añade una foto, un PDF o un texto y %@ preparará tu plan."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez une photo, un PDF ou du texte et %@ crée votre plan."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1395,6 +1677,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fotografía la lista de tu dietista"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photographiez la liste de votre diététicien(ne)"
           }
         },
         "tr" : {
@@ -1427,6 +1715,12 @@
             "value" : "Comidas de hoy: %1$lld de %2$lld"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas du jour : %1$lld sur %2$lld"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1455,6 +1749,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "hoy"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "du jour"
           }
         },
         "tr" : {
@@ -1487,6 +1787,12 @@
             "value" : "%1$lld de %2$lld · comidas hasta ahora"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld sur %2$lld · repas passés"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1517,6 +1823,12 @@
             "value" : "Abre %@ para actualizar."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrez %@ pour mettre à jour."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1545,6 +1857,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se puede mostrar tu plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d’afficher votre plan"
           }
         },
         "tr" : {
@@ -1619,6 +1937,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld restants"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld restant"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld restants"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -1661,6 +2003,12 @@
             "value" : "Movida %@ más tarde"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Décalé de %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1689,6 +2037,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ya me levanté"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debout"
           }
         },
         "tr" : {
@@ -1721,6 +2075,12 @@
             "value" : "Ya me levanté: empezar las comidas de hoy desde ahora"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debout : démarrer les repas du jour dès maintenant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1749,6 +2109,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Después %1$@ · %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puis %1$@ · %2$@"
           }
         },
         "tr" : {
@@ -1781,6 +2147,12 @@
             "value" : "Mañana %1$@ · %2$@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demain %1$@ · %2$@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1809,6 +2181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Antes: %1$lld · hechas: %2$lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld plus tôt · %2$lld mangés"
           }
         },
         "tr" : {
@@ -1841,6 +2219,12 @@
             "value" : "Mañana %1$@ · %2$@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demain %1$@ · %2$@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1869,6 +2253,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marcar como no hecha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marquer comme non mangé"
           }
         },
         "tr" : {

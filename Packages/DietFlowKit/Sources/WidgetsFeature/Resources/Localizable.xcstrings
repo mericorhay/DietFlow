@@ -23,6 +23,12 @@
             "value" : "Añadir a la pantalla de inicio"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter à l’écran d’accueil"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añadir un widget"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un widget"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "En una pila inteligente, %@ sube sola arriba a la hora de comer."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans une pile intelligente, %@ passe au premier plan tout seul aux heures des repas."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mantén pulsada una zona vacía de la pantalla de inicio o de bloqueo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenez le doigt sur une zone vide de votre écran d’accueil ou de verrouillage."
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Toca Editar y luego Añadir widget."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez Modifier, puis Ajouter un widget."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Busca %@ y elige un tamaño."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cherchez %@ et choisissez une taille."
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "Tu widget está en la pantalla de inicio."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre widget est sur votre écran d’accueil."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ocultar comidas con el iPhone bloqueado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masquer les noms des repas quand verrouillé"
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "Fondo"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrière-plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Color"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couleur"
           }
         },
         "tr" : {
@@ -323,6 +383,12 @@
             "value" : "En la pantalla de bloqueo, y en una pantalla de inicio con iconos teñidos, iOS elige los colores."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sur l’écran de verrouillage, et sur un écran d’accueil réglé sur des icônes teintées, iOS choisit les couleurs."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -353,6 +419,12 @@
             "value" : "Aspecto"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparence"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -378,6 +450,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · %2$@"
@@ -413,6 +491,12 @@
             "value" : "%1$lld de %2$lld"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld sur %2$lld"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -441,6 +525,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Calorías"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
           }
         },
         "tr" : {
@@ -473,6 +563,12 @@
             "value" : "Comidas hechas"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas terminés"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -501,6 +597,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comida siguiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas suivant"
           }
         },
         "tr" : {
@@ -533,6 +635,12 @@
             "value" : "Se aplica a todos los widgets de %@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S’applique à chaque widget %@."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -561,6 +669,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostrar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher"
           }
         },
         "tr" : {
@@ -593,6 +707,12 @@
             "value" : "Tamaño"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -621,6 +741,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Grande"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grand"
           }
         },
         "tr" : {
@@ -653,6 +779,12 @@
             "value" : "Pantalla de bloqueo"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Écran de verrouillage"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -681,6 +813,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mediano"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moyen"
           }
         },
         "tr" : {
@@ -713,6 +851,12 @@
             "value" : "Pequeño"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Petit"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -741,6 +885,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Botón Comida hecha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bouton Mangé"
           }
         },
         "tr" : {
@@ -773,6 +923,12 @@
             "value" : "Cuando llega la hora de una comida, se queda en el widget este tiempo y luego da paso a la siguiente. No hace falta tocar nada. El botón Comida hecha sirve para pasar antes."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand l’heure d’un repas arrive, il reste sur le widget pendant cette durée, puis le suivant prend sa place. Rien à toucher. Le bouton Mangé sert à passer plus tôt au suivant."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -801,6 +957,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tiempos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minutage"
           }
         },
         "tr" : {
@@ -833,6 +995,12 @@
             "value" : "Mantener la comida visible"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garder un repas au premier plan pendant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -858,6 +1026,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widgets"

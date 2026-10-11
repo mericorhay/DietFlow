@@ -23,6 +23,12 @@
             "value" : "Las suscripciones se renuevan automáticamente hasta que se cancelan. Cancela al menos un día antes de la renovación en Ajustes › Cuenta de Apple › Suscripciones."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les abonnements se renouvellent automatiquement jusqu’à leur résiliation. Résiliez au moins un jour avant le renouvellement dans Réglages › Compte Apple › Abonnements."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ahorra %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Économisez %@"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "%@ gratis"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ gratuits"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Di cómo comes y qué evitas, y recibe hasta 30 días de comidas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dites comment vous mangez et ce que vous évitez, et obtenez jusqu’à 30 jours de repas."
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Un plan escrito para ti"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un plan rédigé pour vous"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Un plan, todos los widgets y los recordatorios de comidas no necesitan Plus."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un plan, tous les widgets et les rappels de repas ne nécessitent jamais Plus."
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "Gratis para siempre"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratuit, pour toujours"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pega el mensaje de tu dietista o tus notas, por desordenadas que estén. El asistente lo ordena en días y comidas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collez le message d’un(e) diététicien(ne) ou vos propres notes, même en désordre. L’assistant les range par jours et par repas."
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "Cualquier lista, en orden"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N’importe quelle liste, mise en ordre"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guarda el plan de este mes y el siguiente, y cambia cuando quieras."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gardez le plan de ce mois-ci et le suivant côte à côte, et changez quand vous voulez."
           }
         },
         "tr" : {
@@ -323,6 +383,12 @@
             "value" : "Más de un plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus d’un plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,6 +417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cerrar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
           }
         },
         "tr" : {
@@ -383,6 +455,12 @@
             "value" : "Seguir con la versión gratuita"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer avec la version gratuite"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continuar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
           }
         },
         "tr" : {
@@ -443,6 +527,12 @@
             "value" : "Empezar prueba gratis"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarrer l’essai gratuit"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -471,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se cobró nada. Inténtalo de nuevo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien n’a été facturé. Veuillez réessayer."
           }
         },
         "tr" : {
@@ -503,6 +599,12 @@
             "value" : "No se pudo completar la compra"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’achat n’a pas abouti"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -531,6 +633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se encontró ninguna compra de DietFlow Plus para esta cuenta de Apple."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun achat DietFlow Plus n’a été trouvé pour ce compte Apple."
           }
         },
         "tr" : {
@@ -563,6 +671,12 @@
             "value" : "Nada que restaurar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien à restaurer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -591,6 +705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aceptar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
         "tr" : {
@@ -623,6 +743,12 @@
             "value" : "La compra debe aprobarse. Plus se activará en cuanto se apruebe."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’achat doit être approuvé. Plus s’ouvre dès qu’il l’est."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esperando aprobación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente d’approbation"
           }
         },
         "tr" : {
@@ -683,6 +815,12 @@
             "value" : "DietFlow Plus está activo en este iPhone."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus est actif sur cet iPhone."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -711,6 +849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compras restauradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achats restaurés"
           }
         },
         "tr" : {
@@ -743,6 +887,12 @@
             "value" : "Política de privacidad"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politique de confidentialité"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -771,6 +921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "De por vida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À vie"
           }
         },
         "tr" : {
@@ -803,6 +959,12 @@
             "value" : "Paga una vez, es tuyo para siempre"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payez une fois, gardez-le pour toujours"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -831,6 +993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mensual"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensuel"
           }
         },
         "tr" : {
@@ -863,6 +1031,12 @@
             "value" : "Se cobra cada mes"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturé chaque mois"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -891,6 +1065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anual"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuel"
           }
         },
         "tr" : {
@@ -923,6 +1103,12 @@
             "value" : "Se cobra una vez al año"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturé une fois par an"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -951,6 +1137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ al mes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ par mois"
           }
         },
         "tr" : {
@@ -983,6 +1175,12 @@
             "value" : "No se pudo conectar con el App Store. Revisa tu conexión e inténtalo de nuevo."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de joindre l’App Store. Vérifiez votre connexion et réessayez."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1011,6 +1209,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consultando el App Store…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact de l’App Store…"
           }
         },
         "tr" : {
@@ -1043,6 +1247,12 @@
             "value" : "Reintentar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessayer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1071,6 +1281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restaurar compras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurer les achats"
           }
         },
         "tr" : {
@@ -1103,6 +1319,12 @@
             "value" : "La versión gratuita guarda un solo plan a la vez. Borra tu plan actual para empezar otro, o consérvalos todos con Plus."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La version gratuite garde un seul plan à la fois. Supprimez votre plan actuel pour en commencer un autre, ou gardez-les tous avec Plus."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1131,6 +1353,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Todo lo que hace DietFlow sigue siendo gratis. Plus añade un asistente que crea el plan por ti."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout ce que fait DietFlow reste gratuit. Plus ajoute un assistant qui élabore le plan pour vous."
           }
         },
         "tr" : {
@@ -1163,6 +1391,12 @@
             "value" : "Has usado las %1$lld recetas que incluye el plan gratuito este mes. Vuelven el %2$@; Plus tiene %3$lld al mes, con sustitutos para cada ingrediente."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez utilisé les %1$lld recettes incluses ce mois-ci dans la version gratuite. Elles reviennent le %2$@ ; Plus en offre %3$lld par mois, avec des substituts pour chaque ingrédient."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1191,6 +1425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ya usaste los planes gratuitos del asistente de este mes (%1$lld). Vuelven el %2$@. Plus incluye %3$lld al mes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les plans gratuits de l’assistant de ce mois-ci (%1$lld) sont épuisés. Ils reviennent le %2$@. Plus en inclut %3$lld par mois."
           }
         },
         "tr" : {
@@ -1223,6 +1463,12 @@
             "value" : "Has usado las %1$lld estimaciones de nutrientes que incluye el plan gratuito este mes. Vuelven el %2$@; Plus tiene %3$lld al mes."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez utilisé les %1$lld estimations nutritionnelles incluses ce mois-ci dans la version gratuite. Elles reviennent le %2$@ ; Plus en offre %3$lld par mois."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1251,6 +1497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Todo lo que hace DietFlow sigue siendo gratis. Con Plus puedes tener más de un plan."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout ce que fait DietFlow reste gratuit. Plus vous permet de garder plus d’un plan."
           }
         },
         "tr" : {
@@ -1283,6 +1535,12 @@
             "value" : "Términos de uso"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions d’utilisation"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1311,6 +1569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ una sola vez. Sin suscripción, nada que cancelar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ une fois. Sans abonnement, rien à résilier."
           }
         },
         "tr" : {
@@ -1343,6 +1607,12 @@
             "value" : "%@ al mes. Cancela cuando quieras."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ par mois. Résiliable à tout moment."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1371,6 +1641,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ gratis, luego %2$@ al mes. No se cobra nada antes del %3$@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ gratuits, puis %2$@ par mois. Rien n’est débité avant le %3$@."
           }
         },
         "tr" : {
@@ -1403,6 +1679,12 @@
             "value" : "%1$@ gratis, luego %2$@ al año. No se cobra nada antes del %3$@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ gratuits, puis %2$@ par an. Rien n’est débité avant le %3$@."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1433,6 +1715,12 @@
             "value" : "%@ al año. Cancela cuando quieras."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ par an. Résiliable à tout moment."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1458,6 +1746,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DietFlow Plus"

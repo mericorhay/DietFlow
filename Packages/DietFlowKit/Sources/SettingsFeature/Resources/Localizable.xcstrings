@@ -23,6 +23,12 @@
             "value" : "Información"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Privacidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confidentialité"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Política de privacidad"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politique de confidentialité"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ayuda y soporte"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aide et assistance"
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Términos de uso"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions d’utilisation"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "Plan activo"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan actif"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ninguno"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun"
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "Borrar todos los datos"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer toutes les données"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exportar plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporter le plan"
           }
         },
         "tr" : {
@@ -323,6 +383,12 @@
             "value" : "Datos"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,6 +417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer un plan"
           }
         },
         "tr" : {
@@ -383,6 +455,12 @@
             "value" : "Borrar todo"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout supprimer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se eliminarán tus planes y todo lo que marcaste. Esta acción no se puede deshacer."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos plans et tout ce que vous avez marqué seront supprimés. Cette action est irréversible."
           }
         },
         "tr" : {
@@ -443,6 +527,12 @@
             "value" : "¿Borrar todos tus datos?"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer toutes vos données ?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -471,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
           }
         },
         "tr" : {
@@ -503,6 +599,12 @@
             "value" : "Elige el idioma de %@ en la app Ajustes. Las fechas, las horas y los números siguen la región de tu iPhone."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez la langue qu’utilise %@ dans l’app Réglages. Les dates, heures et nombres suivent la région de votre iPhone."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -531,6 +633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Idioma y región"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue et région"
           }
         },
         "tr" : {
@@ -563,6 +671,12 @@
             "value" : "Abre la app Ajustes"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvre l’app Réglages"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -593,6 +707,12 @@
             "value" : "Idioma de la app"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue de l’app"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -618,6 +738,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan"
@@ -653,6 +779,12 @@
             "value" : "Planes del asistente restantes: %1$lld de %2$lld. Vuelven el %3$@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plans de l’assistant restants : %1$lld sur %2$lld. Ils reviennent le %3$@."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -681,6 +813,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estás en la versión gratuita: un plan, todos los widgets y recordatorios."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous utilisez la version gratuite : un plan, tous les widgets et les rappels."
           }
         },
         "tr" : {
@@ -713,6 +851,12 @@
             "value" : "Obtener DietFlow Plus"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenir DietFlow Plus"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -741,6 +885,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Un asistente que ordena cualquier lista y escribe planes para ti."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un assistant qui organise n’importe quelle liste et rédige des plans pour vous."
           }
         },
         "tr" : {
@@ -773,6 +923,12 @@
             "value" : "Ten más de un plan."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gardez plus d’un plan."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -798,6 +954,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DietFlow Plus"
@@ -833,6 +995,12 @@
             "value" : "De por vida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À vie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -861,6 +1029,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mensual"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensuel"
           }
         },
         "tr" : {
@@ -893,6 +1067,12 @@
             "value" : "Anual"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuel"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -921,6 +1101,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gestionar suscripción"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gérer l’abonnement"
           }
         },
         "tr" : {
@@ -953,6 +1139,12 @@
             "value" : "No se encontró ninguna compra de DietFlow Plus para esta cuenta de Apple."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun achat DietFlow Plus n’a été trouvé pour ce compte Apple."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -981,6 +1173,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nada que restaurar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien à restaurer"
           }
         },
         "tr" : {
@@ -1013,6 +1211,12 @@
             "value" : "Aceptar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1041,6 +1245,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compra"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achat"
           }
         },
         "tr" : {
@@ -1073,6 +1283,12 @@
             "value" : "Canjear código"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser un code"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1101,6 +1317,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restaurar compras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurer les achats"
           }
         },
         "tr" : {
@@ -1133,6 +1355,12 @@
             "value" : "DietFlow Plus está activo en este iPhone."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow Plus est actif sur cet iPhone."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1161,6 +1389,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compras restauradas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achats restaurés"
           }
         },
         "tr" : {
@@ -1193,6 +1427,12 @@
             "value" : "Termina el %@. No se renovará."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se termine le %@. Il ne sera pas renouvelé."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1221,6 +1461,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Es tuyo para siempre. No se renueva ni caduca."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C’est à vous pour toujours. Rien ne se renouvelle, rien ne se termine."
           }
         },
         "tr" : {
@@ -1253,6 +1499,12 @@
             "value" : "Se renueva el %@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renouvellement le %@."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1281,6 +1533,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prueba gratis hasta el %@. Después se renueva, salvo que la canceles al menos un día antes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essai gratuit jusqu’au %@. Il se renouvelle ensuite, sauf résiliation au moins un jour avant."
           }
         },
         "tr" : {
@@ -1313,6 +1571,12 @@
             "value" : "Prueba gratis hasta el %@. No se renovará."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essai gratuit jusqu’au %@. Il ne sera pas renouvelé."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1341,6 +1605,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuando usas el asistente, el texto que le das se envía a través de nuestro servidor a %@, cuya IA lo lee y escribe tu plan. Nosotros no lo guardamos. Nada más de lo que escribes sale de tu iPhone."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand vous utilisez l’assistant, le texte que vous lui donnez est envoyé via notre serveur à %@, dont l’IA le lit et rédige votre plan. Nous ne le conservons pas. Rien d’autre de ce que vous saisissez ne quitte votre iPhone."
           }
         },
         "tr" : {
@@ -1373,6 +1643,12 @@
             "value" : "Enviar el texto del asistente a %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer le texte de l’assistant à %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1401,6 +1677,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Si está desactivado, el asistente pregunta antes de enviar nada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand ce réglage est désactivé, l’assistant demande avant d’envoyer quoi que ce soit."
           }
         },
         "tr" : {
@@ -1433,6 +1715,12 @@
             "value" : "Tu plan se queda en este iPhone. %@ no tiene cuenta ni publicidad."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre plan reste sur cet iPhone. %@ n’a ni compte ni publicité."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1461,6 +1749,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Las fotos, los PDF y el texto que importas se leen en este iPhone, con el modelo en el dispositivo de Apple si el iPhone lo tiene."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les photos, PDF et textes que vous importez sont lus sur cet iPhone, par le modèle sur l’appareil d’Apple lorsque l’iPhone en dispose."
           }
         },
         "tr" : {
@@ -1493,6 +1787,12 @@
             "value" : "Lo que escribes en la app no se envía a ningún sitio."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce que vous saisissez dans l’app n’est envoyé nulle part."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1521,6 +1821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Para mejorar la app, se comparten datos de uso anónimos: qué funciones se usan, dónde se alcanza un límite y si se hizo una compra. Están asociados a un número aleatorio creado en este iPhone, no a ti ni a tu cuenta de Apple, y nunca incluyen tus comidas, tu plan ni nada de lo que escribes. Puedes desactivarlo en Ajustes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour aider à améliorer l’app, elle partage des données d’utilisation anonymes : les fonctionnalités utilisées, où une limite est atteinte et si un achat a été effectué. Elles sont liées à un numéro aléatoire créé sur cet iPhone, et non à vous ni à votre compte Apple, et n’incluent jamais vos repas, votre plan ni ce que vous saisissez. Vous pouvez les désactiver dans Réglages."
           }
         },
         "tr" : {
@@ -1553,6 +1859,12 @@
             "value" : "Los widgets muestran tus próximas comidas en la pantalla de inicio y de bloqueo, donde cualquiera con tu teléfono puede verlas."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les widgets affichent vos prochains repas sur l’écran d’accueil et l’écran de verrouillage, où toute personne tenant votre téléphone peut les voir."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1581,6 +1893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recordatorio predeterminado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappel par défaut"
           }
         },
         "tr" : {
@@ -1613,6 +1931,12 @@
             "value" : "Las notificaciones de %@ están desactivadas en la app Ajustes."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les notifications sont désactivées pour %@ dans l’app Réglages."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1641,6 +1965,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El widget sigue actualizándose con los recordatorios desactivados."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget continue de se mettre à jour même sans rappels."
           }
         },
         "tr" : {
@@ -1673,6 +2003,12 @@
             "value" : "Recordatorios"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappels"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1701,6 +2037,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abrir la app Ajustes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir l’app Réglages"
           }
         },
         "tr" : {
@@ -1733,6 +2075,12 @@
             "value" : "Recordatorios de comidas"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappels de repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1761,6 +2109,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages"
           }
         },
         "tr" : {
@@ -1793,6 +2147,12 @@
             "value" : "Energía"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Énergie"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1821,6 +2181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Primer día de la semana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premier jour de la semaine"
           }
         },
         "tr" : {
@@ -1853,6 +2219,12 @@
             "value" : "Sistema"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Système"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1883,6 +2255,12 @@
             "value" : "Qué funciones se usan y dónde algo falla, para mejorar la app. Nunca tus comidas, tu plan ni nada de lo que escribes."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les fonctionnalités utilisées et ce qui ne fonctionne pas, pour aider à améliorer l’app. Jamais vos repas, votre plan ni ce que vous saisissez."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1911,6 +2289,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compartir datos de uso anónimos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager des données d’utilisation anonymes"
           }
         },
         "tr" : {

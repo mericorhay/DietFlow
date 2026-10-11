@@ -23,6 +23,12 @@
             "value" : "Hecha"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omitir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorer"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Me acabo de despertar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je me réveille"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -113,6 +131,12 @@
             "value" : "%@: ahora"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ maintenant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -141,6 +165,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ en %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ dans %2$@"
           }
         },
         "tr" : {

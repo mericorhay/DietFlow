@@ -22,6 +22,12 @@
             "value" : "DietFlow"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DietFlow"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",

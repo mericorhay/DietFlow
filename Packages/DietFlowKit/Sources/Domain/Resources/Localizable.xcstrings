@@ -23,6 +23,12 @@
             "value" : "%1$@, %2$@, %3$@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@, %3$@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48,6 +54,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@, %3$@, %4$@"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@, %2$@, %3$@, %4$@"
@@ -83,6 +95,12 @@
             "value" : "Kilocalorías (kcal)"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilocalories (kcal)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kilojulios (kJ)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilojoules (kJ)"
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "ahora"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en cours"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "hecha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "terminé"
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "próxima comida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "prochain repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "pasada"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "plus tôt"
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "omitida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ignoré"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desayuno"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Petit-déjeuner"
           }
         },
         "tr" : {
@@ -323,6 +383,12 @@
             "value" : "Cena"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dîner"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,6 +417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Almuerzo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déjeuner"
           }
         },
         "tr" : {
@@ -383,6 +455,12 @@
             "value" : "Otro"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autre"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Merienda"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collation"
           }
         },
         "tr" : {
@@ -443,6 +527,12 @@
             "value" : "hace %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "il y a %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -471,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "en %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dans %@"
           }
         },
         "tr" : {
@@ -503,6 +599,12 @@
             "value" : "A la hora de la comida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À l’heure du repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -531,6 +633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin recordatorio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun rappel"
           }
         },
         "tr" : {
@@ -563,6 +671,12 @@
             "value" : "1 hora antes"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 heure avant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -593,6 +707,12 @@
             "value" : "10 min antes"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 min avant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -621,6 +741,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "30 min antes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 min avant"
           }
         },
         "tr" : {

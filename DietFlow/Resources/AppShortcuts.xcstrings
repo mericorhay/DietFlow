@@ -23,6 +23,12 @@
             "value" : "Añade una comida en ${applicationName}"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un repas dans ${applicationName}"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ya comí en ${applicationName}"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "J’ai mangé mon repas dans ${applicationName}"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Me acabo de despertar en ${applicationName}"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je viens de me réveiller dans ${applicationName}"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marca mi comida como hecha en ${applicationName}"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marquer mon repas comme terminé dans ${applicationName}"
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Muestra mi próxima comida en ${applicationName}"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher mon prochain repas dans ${applicationName}"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +203,12 @@
             "value" : "Empieza mi día en ${applicationName}"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencer ma journée dans ${applicationName}"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -201,6 +237,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuál es mi próxima comida en ${applicationName}"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quel est mon prochain repas dans ${applicationName}"
           }
         },
         "tr" : {

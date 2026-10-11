@@ -23,6 +23,12 @@
             "value" : "Marca como hecha la comida de ahora o la siguiente."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marque le repas en cours, ou le suivant, comme mangé."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comida hecha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangé"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Comida hecha"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas mangé"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Para mañanas que empiezan tarde: las comidas de hoy empiezan desde ahora."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour les matins tardifs : les repas du jour se décalent pour commencer dès maintenant."
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Ya me levanté"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debout"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ya me levanté"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debout"
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "Añade una comida a tu plan activo en el día elegido."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoute un repas à votre plan actif le jour choisi."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Primero crea un plan de comidas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créez d’abord un plan de repas."
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "Ese día está fuera de tu plan."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce jour est en dehors de votre plan."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se añadió %@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas ajouté : %@."
           }
         },
         "tr" : {
@@ -323,6 +383,12 @@
             "value" : "Añadir comida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,6 +417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas"
           }
         },
         "tr" : {
@@ -383,6 +455,12 @@
             "value" : "Tipo de comida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type de repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marca una comida como hecha. Si no eliges ninguna, marca la de ahora o la siguiente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marque un repas comme mangé. Sans choix, marque le repas en cours ou le prochain."
           }
         },
         "tr" : {
@@ -443,6 +527,12 @@
             "value" : "Ahora no hay ninguna comida que marcar."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun repas à marquer pour le moment."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -471,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ marcada como hecha."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas terminé : %@."
           }
         },
         "tr" : {
@@ -503,6 +599,12 @@
             "value" : "Marcar comida como hecha"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marquer le repas comme terminé"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -531,6 +633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desayuno"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Petit-déjeuner"
           }
         },
         "tr" : {
@@ -563,6 +671,12 @@
             "value" : "Cena"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dîner"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -591,6 +705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Almuerzo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déjeuner"
           }
         },
         "tr" : {
@@ -623,6 +743,12 @@
             "value" : "Otro"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autre"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Merienda"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collation"
           }
         },
         "tr" : {
@@ -683,6 +815,12 @@
             "value" : "Día"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -711,6 +849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas"
           }
         },
         "tr" : {
@@ -743,6 +887,12 @@
             "value" : "Nombre"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -771,6 +921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tipo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
           }
         },
         "tr" : {
@@ -803,6 +959,12 @@
             "value" : "Hora"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -831,6 +993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dice qué comer a continuación y a qué hora."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indique quoi manger ensuite et quand."
           }
         },
         "tr" : {
@@ -863,6 +1031,12 @@
             "value" : "%1$@ el %2$@ a las %3$@: %4$@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@ à %3$@ : %4$@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -891,6 +1065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ a las %2$@: %3$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ à %2$@ : %3$@"
           }
         },
         "tr" : {
@@ -923,6 +1103,12 @@
             "value" : "No hay comidas próximas en tu plan."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il n’y a plus de repas à venir dans votre plan."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -951,6 +1137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ ahora: %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ maintenant : %2$@"
           }
         },
         "tr" : {
@@ -983,6 +1175,12 @@
             "value" : "Mostrar próxima comida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher le prochain repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1011,6 +1209,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Empieza el día desde ahora: la primera comida en media hora y las demás detrás. Ideal como automatización que se ejecuta al apagar la alarma."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarre la journée dès maintenant : le premier repas dans une demi-heure et les autres repas du jour décalés après lui. Idéal en automatisation lancée quand votre réveil s’arrête."
           }
         },
         "tr" : {
@@ -1043,6 +1247,12 @@
             "value" : "Todavía no hay ningún plan de comidas que mover."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il n’y a pas encore de plan de repas à décaler."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1071,6 +1281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu plan no tiene comidas hoy."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre plan n’a aucun repas aujourd’hui."
           }
         },
         "tr" : {
@@ -1103,6 +1319,12 @@
             "value" : "Los horarios inteligentes están desactivados. Puedes activarlos en los Ajustes de DietFlow."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les horaires de repas intelligents sont désactivés. Vous pouvez les activer dans les Réglages de DietFlow."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1131,6 +1353,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Justo a tiempo: hoy sigue tu plan."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pile à l’heure : aujourd’hui suit votre plan."
           }
         },
         "tr" : {
@@ -1163,6 +1391,12 @@
             "value" : "¡Buenos días! Primera comida a las %1$@: %2$@. El resto del día se movió con ella."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bonjour ! Premier repas à %1$@ : %2$@. Le reste de la journée a été décalé en conséquence."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1191,6 +1425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Me acabo de despertar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je viens de me réveiller"
           }
         },
         "tr" : {
@@ -1223,6 +1463,12 @@
             "value" : "Quita la marca de una comida hecha u omitida para que vuelva a estar pendiente."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annule le marquage d’un repas mangé ou ignoré, qui redevient disponible."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1251,6 +1497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marcar comida como no hecha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marquer le repas comme non mangé"
           }
         },
         "tr" : {
@@ -1283,6 +1535,12 @@
             "value" : "Empieza el día desde ahora: la primera comida en media hora y el resto detrás."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarre la journée dès maintenant : le premier repas dans une demi-heure, le reste de la journée après."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1311,6 +1569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ya me levanté"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debout"
           }
         },
         "tr" : {
@@ -1343,6 +1607,12 @@
             "value" : "Tu próxima comida y su hora, siempre a la vista. Márcala como hecha desde la pantalla de inicio."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre prochain repas et son heure, toujours sous les yeux. Marquez-le comme mangé directement depuis votre écran d’accueil."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1371,6 +1641,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Próxima comida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prochain repas"
           }
         },
         "tr" : {
@@ -1403,6 +1679,12 @@
             "value" : "Un anillo que se llena con cada comida, con la siguiente justo debajo."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un anneau qui se remplit au fil de vos repas, avec le suivant juste en dessous."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1431,6 +1713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Progreso del día"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progression du jour"
           }
         },
         "tr" : {
@@ -1463,6 +1751,12 @@
             "value" : "Todo tu día de un vistazo: lo de ahora, lo siguiente y cómo va el día."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toute votre journée en un coup d’œil : ce qui est en cours, ce qui vient ensuite et comment se passe la journée."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1491,6 +1785,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comidas de hoy"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas d’aujourd’hui"
           }
         },
         "tr" : {

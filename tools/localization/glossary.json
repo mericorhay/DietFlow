@@ -5,67 +5,78 @@
       "note": "One sitting: breakfast, lunch, a snack. Not a dish and not a recipe.",
       "tr": "öğün",
       "es": "comida",
-      "de": "Mahlzeit"
+      "de": "Mahlzeit",
+      "fr": "repas"
     },
     "plan": {
       "note": "The person's repeating list of meals. In Turkish the everyday word for a dietitian's plan is 'diyet listesi'; use 'plan' inside the app and 'diyet listesi' where we describe importing one.",
       "tr": "plan",
       "es": "plan",
-      "de": "Plan"
+      "de": "Plan",
+      "fr": "plan"
     },
     "next meal": {
       "note": "The meal coming up, shown on the widget.",
       "tr": "sıradaki öğün",
       "es": "próxima comida",
-      "de": "Nächste Mahlzeit"
+      "de": "Nächste Mahlzeit",
+      "fr": "prochain repas"
     },
     "assistant": {
       "note": "The built-in AI the person chats with.",
       "tr": "asistan",
       "es": "asistente",
-      "de": "Assistent"
+      "de": "Assistent",
+      "fr": "assistant"
     },
     "widget": {
       "note": "Home Screen or Lock Screen widget. Apple leaves this word untranslated in Turkish and Spanish.",
       "tr": "widget",
       "es": "widget",
-      "de": "Widget"
+      "de": "Widget",
+      "fr": "widget"
     },
     "import": {
       "note": "Bringing an existing plan in from text, a file, a photo or a PDF.",
       "tr": "içe aktar",
       "es": "importar",
-      "de": "Import"
+      "de": "Import",
+      "fr": "importer"
     },
     "Home Screen": {
       "note": "The iPhone's Home Screen, as Apple names it.",
       "tr": "Ana Ekran",
       "es": "pantalla de inicio",
-      "de": "Home-Bildschirm"
+      "de": "Home-Bildschirm",
+      "fr": "écran d’accueil"
     },
     "Lock Screen": {
       "note": "The iPhone's Lock Screen, as Apple names it.",
       "tr": "Kilit Ekranı",
       "es": "pantalla de bloqueo",
-      "de": "Sperrbildschirm"
+      "de": "Sperrbildschirm",
+      "fr": "écran de verrouillage"
     },
     "done": {
       "note": "A meal marked as eaten. As a button: 'Mark Done'. The brief fixes Turkish to 'Tamamlandı'.",
       "tr": "tamamlandı",
       "es": "hecha",
-      "de": "Erledigt"
+      "de": "Erledigt",
+      "fr": "terminé"
     },
     "skip": {
       "note": "Recording that a meal was not eaten.",
       "tr": "atla",
       "es": "omitir",
-      "de": "Überspringen"
+      "de": "Überspringen",
+      "fr": "ignorer"
     },
     "reminder": {
       "note": "A notification before or at a meal's time.",
       "tr": "hatırlatma",
       "es": "recordatorio",
-      "de": "Erinnerung"
+      "de": "Erinnerung",
+      "fr": "rappel"
     }
   }
 }

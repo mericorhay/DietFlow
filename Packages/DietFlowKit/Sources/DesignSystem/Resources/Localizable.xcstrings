@@ -23,6 +23,12 @@
             "value" : "Permitir"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ahora no"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas maintenant"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Para ello, el nombre, la descripción y la ración de la comida, y los alimentos que dijiste evitar, se envían a través de nuestro servidor a %1$@, cuya IA los lee. %2$@ no los guarda. No se envía nada más sobre ti ni sobre tu plan."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour cela, le nom, la description et la portion du repas, ainsi que les aliments que vous évitez, sont envoyés via notre serveur à %1$@, dont l’IA les lit. %2$@ ne les conserve pas. Rien d’autre sur vous ou votre plan n’est envoyé."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Compartir las comidas con %@?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager des repas avec %@ ?"
           }
         },
         "tr" : {
@@ -185,6 +209,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld d’utilisations restantes ce mois-ci"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld utilisation restante ce mois-ci"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld utilisations restantes ce mois-ci"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -227,6 +275,12 @@
             "value" : "Plus"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -255,6 +309,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Incluido en Plus. Abre lo que añade Plus."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inclus avec Plus. Ouvre ce que Plus ajoute."
           }
         },
         "tr" : {
@@ -287,6 +347,12 @@
             "value" : "Estimado"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimé"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -315,6 +381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escrito por el asistente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rédigé par l’assistant"
           }
         },
         "tr" : {
@@ -347,6 +419,12 @@
             "value" : "El asistente está en ello"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant y travaille"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -375,6 +453,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoy"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aujourd’hui"
           }
         },
         "tr" : {
@@ -407,6 +491,12 @@
             "value" : "Crear plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -435,6 +525,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer un plan"
           }
         },
         "tr" : {
@@ -467,6 +563,12 @@
             "value" : "Crea tu horario una vez y deja que el widget se encargue del resto."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créez un programme une fois, puis laissez le widget s’occuper du reste."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -495,6 +597,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pega la lista que tienes. La IA la ordena."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collez la liste que vous avez. L’IA la met en ordre."
           }
         },
         "tr" : {
@@ -527,6 +635,12 @@
             "value" : "Ordenar una lista"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organiser n’importe quelle liste"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -555,6 +669,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aún no hay plan de comidas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun plan de repas pour l’instant"
           }
         },
         "tr" : {
@@ -587,6 +707,12 @@
             "value" : "Di cómo quieres comer. La IA escribe hasta 30 días."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dites comment vous voulez manger. L’IA rédige jusqu’à 30 jours."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -615,6 +741,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escríbeme un plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rédiger mon plan"
           }
         },
         "tr" : {

@@ -23,6 +23,12 @@
             "value" : "Editar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tres pasos, una sola vez. Después se mantiene al día solo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trois étapes, une seule fois. Ensuite, tout se met à jour tout seul."
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Mantén pulsado un espacio vacío"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenez le doigt sur un emplacement vide"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toca Editar y luego Añadir widget"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez Modifier, puis Ajouter un widget"
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Elige %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ponlo en tu pantalla de inicio."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Placez-le sur votre écran d’accueil."
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "Continuar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crear mi plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer mon plan"
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "Importar un plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer un plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Página %1$lld de %2$lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page %1$lld sur %2$lld"
           }
         },
         "tr" : {
@@ -323,6 +383,12 @@
             "value" : "Crea o importa tu horario de comidas."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créez ou importez votre programme de repas."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,6 +417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Planifica una vez."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planifiez une fois."
           }
         },
         "tr" : {
@@ -383,6 +455,12 @@
             "value" : "Hoy"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aujourd’hui"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Color"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couleur"
           }
         },
         "tr" : {
@@ -443,6 +527,12 @@
             "value" : "Elige un widget, su color y su tono. Puedes cambiarlos cuando quieras."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez un widget, sa couleur et son ton. Vous pourrez les changer à tout moment."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -471,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hazlo tuyo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personnalisez-le."
           }
         },
         "tr" : {
@@ -503,6 +599,12 @@
             "value" : "Fondo"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrière-plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -528,6 +630,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widget"
@@ -563,6 +671,12 @@
             "value" : "Tu pantalla de inicio se actualiza con tu día."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre écran d’accueil se met à jour avec votre journée."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -593,6 +707,12 @@
             "value" : "Mira qué toca."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voyez la suite."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -621,6 +741,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Que la IA escriba mi plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laisser l’IA écrire mon plan"
           }
         },
         "tr" : {

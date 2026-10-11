@@ -23,6 +23,12 @@
             "value" : "Añadir comida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añadir comida: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un repas à %@"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Sin comidas"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld · %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour %1$lld · %2$@"
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Hoy · %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aujourd’hui · %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le plan"
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "Se eliminan sus comidas y todo lo que marcaste."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses repas et tout ce que vous avez marqué comme terminé sont supprimés."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Eliminar este plan?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer ce plan ?"
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "Eliminar comida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le repas"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,6 +347,12 @@
             "value" : "Se quitará de todas las repeticiones del plan."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il est retiré de chaque répétition du plan."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -321,6 +381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Eliminar esta comida?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer ce repas ?"
           }
         },
         "tr" : {
@@ -395,6 +461,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 utilisation d’IA pour tout le plan · %lld restantes ce mois-ci"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 utilisation d’IA pour tout le plan · %lld restante ce mois-ci"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 utilisation d’IA pour tout le plan · %lld restantes ce mois-ci"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -437,6 +527,12 @@
             "value" : "1 uso del asistente para todo el plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 utilisation d’IA pour tout le plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -465,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usos gratis agotados · Más con Plus"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quota gratuit épuisé · Plus avec Plus"
           }
         },
         "tr" : {
@@ -497,6 +599,12 @@
             "value" : "Cerrar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -525,6 +633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El asistente está ocupado ahora mismo. No se ha descontado nada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant est très sollicité. Rien n’a été décompté."
           }
         },
         "tr" : {
@@ -557,6 +671,12 @@
             "value" : "El asistente no puede hacer más desde este iPhone por hoy. No se ha descontado nada."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C’est tout ce que l’assistant peut faire depuis cet iPhone aujourd’hui. Rien n’a été décompté."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -587,6 +707,12 @@
             "value" : "Parece que no tienes conexión. No se ha descontado nada."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous semblez hors connexion. Rien n’a été décompté."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -615,6 +741,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El asistente no pudo estimar este plan. No se ha descontado nada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant n’a pas pu estimer ce plan. Rien n’a été décompté."
           }
         },
         "tr" : {
@@ -689,6 +821,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nutrition ajoutée à %lld de repas."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nutrition ajoutée à %lld repas."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nutrition ajoutée à %lld repas."
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -731,6 +887,12 @@
             "value" : "Las estimaciones llevan ≈. Toca una comida para verlas."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les estimations sont marquées ≈. Touchez un repas pour les voir."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -759,6 +921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reintentar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessayer"
           }
         },
         "tr" : {
@@ -833,6 +1001,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "L’assistant lit %lld de plats…"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "L’assistant lit %lld plat…"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "L’assistant lit %lld plats…"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -875,6 +1067,12 @@
             "value" : "Cada comida se completa cuando está lista, marcada con ≈."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque repas se complète dès qu’il est prêt, marqué ≈."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -903,6 +1101,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El asistente calcula las calorías y los macros a partir de la descripción de cada comida. Los números de tu plan no cambian."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant calcule les calories et les macros d’après la description de chaque repas. Les chiffres de votre plan restent inchangés."
           }
         },
         "tr" : {
@@ -977,6 +1181,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ajouter la nutrition à %lld de repas"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ajouter la nutrition à %lld repas"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ajouter la nutrition à %lld repas"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -1019,6 +1247,12 @@
             "value" : "Eliminar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1049,6 +1283,12 @@
             "value" : "Hecha"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1074,6 +1314,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · %2$@"
@@ -1109,6 +1355,12 @@
             "value" : "Movida · en el plan a las %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Décalé, prévu à %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1137,6 +1389,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Omitida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignoré"
           }
         },
         "tr" : {
@@ -1169,6 +1427,12 @@
             "value" : "Añadir"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1197,6 +1461,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añadir comida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un repas"
           }
         },
         "tr" : {
@@ -1229,6 +1499,12 @@
             "value" : "Eliminar plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1257,6 +1533,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Editar plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le plan"
           }
         },
         "tr" : {
@@ -1289,6 +1571,12 @@
             "value" : "Exportar plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporter le plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1317,6 +1605,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importar plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer un plan"
           }
         },
         "tr" : {
@@ -1349,6 +1643,12 @@
             "value" : "Más"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1377,6 +1677,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuevo plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau plan"
           }
         },
         "tr" : {
@@ -1409,6 +1715,12 @@
             "value" : "Ordenar una lista"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organiser n’importe quelle liste"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1437,6 +1749,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages"
           }
         },
         "tr" : {
@@ -1469,6 +1787,12 @@
             "value" : "Cambiar de plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changer de plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1497,6 +1821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escríbeme un plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rédiger mon plan"
           }
         },
         "tr" : {
@@ -1529,6 +1859,12 @@
             "value" : "Igual todos los días"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identique chaque jour"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1559,6 +1895,12 @@
             "value" : "Terminó el %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé le %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1584,6 +1926,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ – %2$@"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ – %2$@"
@@ -1619,6 +1967,12 @@
             "value" : "Día %1$lld de %2$lld"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour %1$lld sur %2$lld"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1647,6 +2001,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld de %2$lld · Se repite"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour %1$lld sur %2$lld · Se répète"
           }
         },
         "tr" : {
@@ -1679,6 +2039,12 @@
             "value" : "Empieza el %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commence le %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1704,6 +2070,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan"
@@ -1739,6 +2111,12 @@
             "value" : "Cancelar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1767,6 +2145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mi plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mon plan"
           }
         },
         "tr" : {
@@ -1799,6 +2183,12 @@
             "value" : "Editar plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1827,6 +2217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cada día del plan es una fecha del calendario, empezando por la fecha de inicio."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque jour du plan correspond à une date du calendrier, à partir de la date de début."
           }
         },
         "tr" : {
@@ -1859,6 +2255,12 @@
             "value" : "El plan termina después del día %lld."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le plan se termine après le jour %lld."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1887,6 +2289,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Después del día %lld, el plan vuelve a empezar desde el día 1."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Après le jour %lld, le plan recommence au jour 1."
           }
         },
         "tr" : {
@@ -1919,6 +2327,12 @@
             "value" : "Tipo de plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type de plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1947,6 +2361,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ciclo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cycle"
           }
         },
         "tr" : {
@@ -1979,6 +2399,12 @@
             "value" : "Fechas fijas"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dates fixes"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2007,6 +2433,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duración"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée"
           }
         },
         "tr" : {
@@ -2081,6 +2513,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld de jours"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jours"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -2123,6 +2579,12 @@
             "value" : "Nombre del plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2151,6 +2613,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuevo plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau plan"
           }
         },
         "tr" : {
@@ -2183,6 +2651,12 @@
             "value" : "Repetir"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répéter"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2211,6 +2685,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
           }
         },
         "tr" : {
@@ -2243,6 +2723,12 @@
             "value" : "Acortar plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raccourcir le plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2271,6 +2757,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se eliminarán las comidas después del día %lld."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les repas après le jour %lld seront supprimés."
           }
         },
         "tr" : {
@@ -2303,6 +2795,12 @@
             "value" : "¿Acortar el plan?"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raccourcir le plan ?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2331,6 +2829,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Empieza"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Début"
           }
         },
         "tr" : {

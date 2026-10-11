@@ -179,6 +179,7 @@
 				es,
 				tr,
 				de,
+				fr,
 				Base,
 			);
 			mainGroup = 10000000000000000000A401;

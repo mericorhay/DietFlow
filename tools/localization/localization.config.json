@@ -4,10 +4,10 @@
     "en",
     "tr",
     "es",
-    "de"
+    "de",
+    "fr"
   ],
   "plannedLocales": [
-    "fr",
     "it",
     "pt-BR",
     "nl",
@@ -41,7 +41,8 @@
     "en": "English",
     "tr": "Turkish",
     "es": "Spanish",
-    "de": "German"
+    "de": "German",
+    "fr": "French"
   },
   "protectedTerms": [
     "DietFlow",

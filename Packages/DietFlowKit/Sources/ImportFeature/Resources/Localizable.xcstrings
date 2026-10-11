@@ -23,6 +23,12 @@
             "value" : "Copiado"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copié"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Copiar instrucciones para IA"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copier les instructions IA"
           }
         },
         "tr" : {
@@ -83,6 +95,12 @@
             "value" : "Pega las instrucciones en el chat junto con tu plan y luego pega aquí la respuesta con Pegar plan."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collez les instructions dans la discussion avec votre plan, puis collez la réponse ici avec Coller le plan."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Usas ChatGPT o Claude?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous utilisez ChatGPT ou Claude ?"
           }
         },
         "tr" : {
@@ -143,6 +167,12 @@
             "value" : "Quedan %1$lld de %2$lld. Vuelven el %3$@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restantes : %1$lld sur %2$lld. Elles reviennent le %3$@."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser"
           }
         },
         "tr" : {
@@ -203,6 +239,12 @@
             "value" : "Ahora no"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas maintenant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Para escribir tu plan, el texto que has introducido se envía a través de nuestro servidor a %1$@, cuya IA lo lee. %2$@ no lo guarda. No incluyas nada que no quieras compartir."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour rédiger votre plan, le texte saisi est envoyé via notre serveur à %1$@, dont l’IA le lit. %2$@ ne le conserve pas. Évitez d’y mettre ce que vous ne voudriez pas partager."
           }
         },
         "tr" : {
@@ -263,6 +311,12 @@
             "value" : "¿Enviar esto a %@?"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer ceci à %@ ?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,6 +347,12 @@
             "value" : "Escribir"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rédiger"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -321,6 +381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Días"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jours"
           }
         },
         "tr" : {
@@ -395,6 +461,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld de jours"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jours"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -437,6 +527,12 @@
             "value" : "El asistente escribe planes de comidas cotidianos, no da consejo médico. Si tienes un problema de salud, consulta a tu médico o dietista antes de cambiar tu alimentación."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant rédige des plans de repas du quotidien, pas des conseils médicaux. Si vous avez un problème de santé, consultez votre médecin ou votre diététicien(ne) avant de changer votre alimentation."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -465,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comidas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repas"
           }
         },
         "tr" : {
@@ -497,6 +599,12 @@
             "value" : "%lld al día"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld par jour"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -525,6 +633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hasta 30 días, según cómo quieras comer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu’à 30 jours, selon votre façon de manger"
           }
         },
         "tr" : {
@@ -557,6 +671,12 @@
             "value" : "Escríbeme un plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rédiger mon plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -585,6 +705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Cómo quieres comer?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment voulez-vous manger ?"
           }
         },
         "tr" : {
@@ -617,6 +743,12 @@
             "value" : "Keto, unas 1800 kcal, sin pescado, desayunos rápidos…"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cétogène, environ 1 800 kcal, sans poisson, petits-déjeuners rapides…"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -645,6 +777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Son %1$lld caracteres; se leen hasta %2$lld."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce texte compte %1$lld caractères ; %2$lld au maximum sont lus."
           }
         },
         "tr" : {
@@ -677,6 +815,12 @@
             "value" : "El asistente está ocupado ahora. Inténtalo de nuevo en un minuto."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant est très sollicité en ce moment. Réessayez dans une minute."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -705,6 +849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Has alcanzado el máximo de solicitudes por día. Inténtalo mañana."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez atteint le nombre de demandes autorisé pour une journée. Réessayez demain."
           }
         },
         "tr" : {
@@ -737,6 +887,12 @@
             "value" : "El asistente no encontró comidas en ese texto."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant n’a trouvé aucun repas dans ce texte."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -765,6 +921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se pudo contactar con el asistente. Revisa tu conexión e inténtalo de nuevo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de joindre l’assistant. Vérifiez votre connexion et réessayez."
           }
         },
         "tr" : {
@@ -797,6 +959,12 @@
             "value" : "Es más texto del que el asistente lee de una vez. Prueba en dos partes."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce texte est trop long pour être lu en une fois par l’assistant. Essayez en deux parties."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -825,6 +993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El asistente no está disponible ahora. No se descontó nada de tu cupo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant n’est pas disponible pour le moment. Rien n’a été décompté de votre quota."
           }
         },
         "tr" : {
@@ -857,6 +1031,12 @@
             "value" : "Asistente"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -885,6 +1065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pega aquí la lista tal como la tienes: un mensaje, notas, una tabla copiada de un PDF…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collez la liste ici, telle quelle : un message, des notes, un tableau copié d’un PDF…"
           }
         },
         "tr" : {
@@ -917,6 +1103,12 @@
             "value" : "Pégala tal cual, por desordenada que esté"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collez-la telle quelle, même en désordre"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -945,6 +1137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ordenar una lista"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organiser n’importe quelle liste"
           }
         },
         "tr" : {
@@ -977,6 +1175,12 @@
             "value" : "El asistente funciona con la IA de %@. Lo que le das se envía allí a través de nuestro servidor para leerlo. Nosotros no lo guardamos."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant fonctionne avec %@. Ce que vous lui donnez y est envoyé via notre serveur pour être lu. Nous ne le conservons pas."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1005,6 +1209,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El asistente está trabajando. Un plan largo puede tardar un minuto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’assistant travaille. Un long plan peut prendre une minute."
           }
         },
         "tr" : {
@@ -1037,6 +1247,12 @@
             "value" : "Cancelar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1065,6 +1281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plan importado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan importé"
           }
         },
         "tr" : {
@@ -1097,6 +1319,12 @@
             "value" : "Todavía no hay nada que leer."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il n’y a encore rien à lire."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1125,6 +1353,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Algo salió mal al leer el plan."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur s’est produite pendant la lecture du plan."
           }
         },
         "tr" : {
@@ -1157,6 +1391,12 @@
             "value" : "No se encontraron comidas. Prueba con una comida por línea o pide a una IA que le dé formato con Copiar instrucciones para IA."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun repas trouvé. Essayez un repas par ligne, ou demandez à une IA de le mettre en forme avec Copier les instructions IA."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1185,6 +1425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se pudo leer texto. Prueba con una foto más nítida en la que se vea todo el plan."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun texte n’a pu être lu. Essayez une photo plus nette montrant tout le plan."
           }
         },
         "tr" : {
@@ -1217,6 +1463,12 @@
             "value" : "Aceptar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1245,6 +1497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se pudo importar el plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d’importer le plan"
           }
         },
         "tr" : {
@@ -1277,6 +1535,12 @@
             "value" : "Este archivo no es un plan de comidas que la app pueda leer."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce fichier n’est pas un plan de repas que l’app peut lire."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1305,6 +1569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Un archivo .json o .mealplan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un fichier .json ou .mealplan"
           }
         },
         "tr" : {
@@ -1337,6 +1607,12 @@
             "value" : "Importar archivo"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer un fichier"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1365,6 +1641,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trae un plan que ya tengas. Revisarás cada comida antes de guardarlo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importez un plan que vous avez déjà. Vous vérifierez chaque repas avant l’enregistrement."
           }
         },
         "tr" : {
@@ -1397,6 +1679,12 @@
             "value" : "El día %lld está fuera del plan y se omitió."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le jour %lld est en dehors du plan et a été écarté."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1425,6 +1713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Este archivo es de una versión más reciente de la app. Revísalo con atención."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce fichier provient d’une version plus récente de l’app. Vérifiez-le attentivement."
           }
         },
         "tr" : {
@@ -1457,6 +1751,12 @@
             "value" : "Día %1$lld: los números de “%2$@” parecían incorrectos y se omitieron."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour %1$lld : les valeurs de « %2$@ » semblaient incorrectes et ont été écartées."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1485,6 +1785,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“%@” no es una fecha, así que el plan empieza hoy."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %@ » n’est pas une date, le plan commence donc aujourd’hui."
           }
         },
         "tr" : {
@@ -1517,6 +1823,12 @@
             "value" : "Día %1$lld: “%2$@” no tenía hora, así que se puso a las %3$@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour %1$lld : « %2$@ » n’avait pas d’heure, elle est donc fixée à %3$@."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1545,6 +1857,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld: “%2$@” no es una hora, así que “%3$@” se puso a las %4$@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour %1$lld : « %2$@ » n’est pas une heure, « %3$@ » est donc fixé à %4$@."
           }
         },
         "tr" : {
@@ -1577,6 +1895,12 @@
             "value" : "Día %lld: se omitió una comida sin nombre."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour %lld : un repas sans nom a été écarté."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1605,6 +1929,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Borrar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer"
           }
         },
         "tr" : {
@@ -1637,6 +1967,12 @@
             "value" : "Continuar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1665,6 +2001,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No hay nada que pegar. Copia tu plan primero y vuelve aquí."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il n’y a rien à coller. Copiez d’abord votre plan, puis revenez."
           }
         },
         "tr" : {
@@ -1697,6 +2039,12 @@
             "value" : "Pegar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coller"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1725,6 +2073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pega tu plan aquí. Mejor una comida por línea: “10:00 Desayuno: Huevos y aguacate”."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collez votre plan ici. Un repas par ligne fonctionne le mieux : « 10:00 Petit-déjeuner : œufs et avocat »."
           }
         },
         "tr" : {
@@ -1757,6 +2111,12 @@
             "value" : "Texto de ChatGPT, Claude o tu dietista"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texte de ChatGPT, de Claude ou d’un(e) diététicien(ne)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1785,6 +2145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pegar plan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coller le plan"
           }
         },
         "tr" : {
@@ -1817,6 +2183,12 @@
             "value" : "Son %1$lld caracteres; se pueden leer hasta %2$lld."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce texte compte %1$lld caractères ; %2$lld au maximum peuvent être lus."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1845,6 +2217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leyendo…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lecture…"
           }
         },
         "tr" : {
@@ -1877,6 +2255,12 @@
             "value" : "Revisa antes de guardar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À vérifier avant d’enregistrer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1905,6 +2289,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Día %1$lld · %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour %1$lld · %2$@"
           }
         },
         "tr" : {
@@ -1974,6 +2364,30 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%lld días"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld de jours"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld jours"
                 }
               }
             }
@@ -2063,6 +2477,30 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld de repas"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld repas"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld repas"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "variations" : {
             "plural" : {
@@ -2105,6 +2543,12 @@
             "value" : "Nombre del plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2133,6 +2577,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Repetir después del día %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répéter après le jour %lld"
           }
         },
         "tr" : {
@@ -2165,6 +2615,12 @@
             "value" : "Guardar plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer le plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2195,6 +2651,12 @@
             "value" : "Empieza"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Début"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2220,6 +2682,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · %2$@"
@@ -2255,6 +2723,12 @@
             "value" : "Hora añadida"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure ajoutée"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2283,6 +2757,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Revisar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vérification"
           }
         },
         "tr" : {
@@ -2315,6 +2795,12 @@
             "value" : "Elegir PDF"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir un PDF"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2343,6 +2829,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elegir foto"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir une photo"
           }
         },
         "tr" : {
@@ -2375,6 +2867,12 @@
             "value" : "El texto se lee en este iPhone"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le texte est lu sur cet iPhone"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2403,6 +2901,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Foto o PDF"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo ou PDF"
           }
         },
         "tr" : {
@@ -2435,6 +2939,12 @@
             "value" : "Importar plan"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer un plan"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2463,6 +2973,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
           }
         },
         "tr" : {
