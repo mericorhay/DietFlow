@@ -67,6 +67,26 @@ NOW=(-DebugSeed now)
 appearance light
 textSize large
 
+# Real app captures for localized store creatives; no personal data or network calls.
+if [ "$SET" = "aso" ]; then
+  for locale in en tr es; do
+    case "$locale" in
+      en) LANG_ARGS=("${EN[@]}") ;;
+      tr) LANG_ARGS=("${TR[@]}") ;;
+      es) LANG_ARGS=("${ES[@]}") ;;
+    esac
+    shot "aso-$locale-today" "${LANG_ARGS[@]}" "${NOW[@]}"
+    shot "aso-$locale-meal" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugMeal next
+    shot "aso-$locale-widget" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large
+    shot "aso-$locale-cook" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 3
+    shot "aso-$locale-import" "${LANG_ARGS[@]}" "${SAMPLE[@]}" -DebugSheet import
+    shot "aso-$locale-write" "${LANG_ARGS[@]}" -DebugSeed empty -DebugSheet write
+    shot "aso-$locale-plus" "${LANG_ARGS[@]}" "${SAMPLE[@]}" -DebugSheet plus
+    shot "aso-$locale-consent" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugCook next -DebugCookConsent ask
+  done
+  exit 0
+fi
+
 # Focused visual checks for meal actions and every Home Screen widget size.
 if [ "$SET" = "widgets" ]; then
   shot today-now-tr "${TR[@]}" "${NOW[@]}"

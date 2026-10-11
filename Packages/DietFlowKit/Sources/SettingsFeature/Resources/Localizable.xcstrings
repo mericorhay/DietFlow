@@ -1064,19 +1064,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "When you use the assistant, the text you give it is sent through our server to %@, whose AI reads it and writes your plan. We do not store it. Nothing else you type leaves your iPhone."
+            "value" : "AI plans, recipes and nutrition estimates send only the text or meals you select, food exclusions and language through our Cloudflare server to %@ after permission. We do not retain that content on our server. OpenAI may retain it for abuse monitoring for up to 30 days, with legal or safety exceptions. Revoke permission below; see the Privacy Policy for details."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cuando usas el asistente, el texto que le das se envía a través de nuestro servidor a %@, cuya IA lo lee y escribe tu plan. Nosotros no lo guardamos. Nada más de lo que escribes sale de tu iPhone."
+            "value" : "Los planes, recetas y estimaciones nutricionales con IA envían solo el texto o las comidas que seleccionas, alimentos que evitas e idioma a %@ mediante nuestro servidor de Cloudflare, con tu permiso. No conservamos ese contenido en nuestro servidor. OpenAI puede conservarlo hasta 30 días para prevenir abusos, con excepciones legales o de seguridad. Revoca el permiso abajo; consulta la Política de privacidad."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Asistanı kullandığında ona verdiğin metin, sunucumuz üzerinden %@ şirketine gönderilir; onun yapay zekâsı metni okuyup planını yazar. Biz saklamayız. Yazdığın başka hiçbir şey iPhone'undan çıkmaz."
+            "value" : "Yapay zekâ planı, tarif ve besin tahmini için yalnızca gönderdiğin metin veya seçtiğin öğünler, kaçındığın yiyecekler ve dil tercihin izin verdikten sonra Cloudflare sunucumuz üzerinden %@ şirketine iletilir. Bu içerik sunucumuzda saklanmaz. OpenAI, kötüye kullanım denetimi için yasal veya güvenlik istisnaları dışında 30 güne kadar saklayabilir. İznini aşağıdan geri alabilirsin; ayrıntılar Gizlilik Politikası’nda."
           }
         }
       }
@@ -1208,19 +1208,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To help improve the app, it shares anonymous usage data: which features are used, where a limit is reached and whether a purchase was made. It is tied to a random number made on this iPhone, not to you or your Apple Account, and never includes your meals, your plan or anything you type. You can turn it off in Settings."
+            "value" : "Optional usage analytics go to PostHog: feature events, limits and purchase outcomes, linked to a random app identifier. These are pseudonymous, not fully anonymous. They never include meal or plan content. Location enrichment is disabled. Turn sharing off in Settings to stop future events."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Para mejorar la app, se comparten datos de uso anónimos: qué funciones se usan, dónde se alcanza un límite y si se hizo una compra. Están asociados a un número aleatorio creado en este iPhone, no a ti ni a tu cuenta de Apple, y nunca incluyen tus comidas, tu plan ni nada de lo que escribes. Puedes desactivarlo en Ajustes."
+            "value" : "Los datos de uso opcionales se envían a PostHog: funciones utilizadas, límites y resultados de compras, asociados a un identificador aleatorio de la app. Son datos seudónimos, no totalmente anónimos. Nunca incluyen el contenido de tus comidas o planes. La geolocalización está desactivada. Desactiva el envío en Ajustes para detener futuros eventos."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uygulamayı geliştirmek için anonim kullanım verileri paylaşılır: hangi özelliklerin kullanıldığı, hangi sınıra ulaşıldığı ve satın alma yapılıp yapılmadığı. Bu veriler sana ya da Apple Hesabına değil, bu iPhone'da üretilen rastgele bir numaraya bağlıdır; öğünlerini, planını ya da yazdığın hiçbir şeyi içermez. Ayarlar'dan kapatabilirsin."
+            "value" : "İsteğe bağlı kullanım analitiği PostHog’a gönderilir: özellik kullanımı, sınırlar ve satın alma sonuçları, rastgele bir uygulama kimliğiyle ilişkilendirilir. Veriler takma kimliklidir; tamamen anonim değildir. Öğün veya plan içeriğini içermez. Konum çıkarımı kapalıdır. Gelecekteki olayları durdurmak için Ayarlar’dan paylaşımı kapatabilirsin."
           }
         }
       }
@@ -1520,19 +1520,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share Anonymous Usage Data"
+            "value" : "Share Usage Data"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compartir datos de uso anónimos"
+            "value" : "Compartir datos de uso"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anonim Kullanım Verilerini Paylaş"
+            "value" : "Kullanım Verilerini Paylaş"
           }
         }
       }

@@ -24,6 +24,9 @@ public struct AppSettings: Codable, Hashable, Sendable {
     /// The person has agreed that what they give the assistant is sent to the AI company that
     /// reads it. Asked the first time, and again whenever this is switched back off.
     public var allowsAssistantSharing: Bool
+    /// Consent covers plan text, recipes, nutrition and food exclusions. Older disclosures
+    /// covered plans only, so their saved permission must be asked for again.
+    public private(set) var assistantSharingDisclosureVersion: Int = 2
     /// A day that starts late moves its meals with it (`DayStart`). On unless switched off.
     public var smartMealTimes: Bool
     /// The person closed Today's offer to work out the plan's missing nutrition.
@@ -104,7 +107,10 @@ public struct AppSettings: Codable, Hashable, Sendable {
         showDoneButtonOnWidget = (try? container.decode(Bool.self, forKey: .showDoneButtonOnWidget)) ?? defaults.showDoneButtonOnWidget
         widgetAccent = (try? container.decode(WidgetAccent.self, forKey: .widgetAccent)) ?? defaults.widgetAccent
         widgetBackground = (try? container.decode(WidgetBackgroundStyle.self, forKey: .widgetBackground)) ?? defaults.widgetBackground
-        allowsAssistantSharing = (try? container.decode(Bool.self, forKey: .allowsAssistantSharing)) ?? defaults.allowsAssistantSharing
+        assistantSharingDisclosureVersion = defaults.assistantSharingDisclosureVersion
+        let disclosureVersion = try? container.decode(Int.self, forKey: .assistantSharingDisclosureVersion)
+        allowsAssistantSharing = disclosureVersion == assistantSharingDisclosureVersion
+            && ((try? container.decode(Bool.self, forKey: .allowsAssistantSharing)) ?? false)
         smartMealTimes = (try? container.decode(Bool.self, forKey: .smartMealTimes)) ?? defaults.smartMealTimes
         hasDismissedEstimateCard = (try? container.decode(Bool.self, forKey: .hasDismissedEstimateCard)) ?? defaults.hasDismissedEstimateCard
         hasDismissedPlusCard = (try? container.decode(Bool.self, forKey: .hasDismissedPlusCard)) ?? defaults.hasDismissedPlusCard

@@ -298,7 +298,7 @@ struct PrivacyScreen: View {
                     Text("settings.privacy.usage", bundle: .module)
                 }
                 if showsAssistant {
-                    Text(String(localized: "settings.privacy.assistant", defaultValue: "When you use the assistant, the text you give it is sent through our server to \(AssistantProvider.name), whose AI reads it and writes your plan. We do not store it. Nothing else you type leaves your iPhone.", bundle: .module))
+                    Text(String(localized: "settings.privacy.assistant", defaultValue: "AI plans, recipes and nutrition estimates send only the text or meals you select, food exclusions and language through our Cloudflare server to \(AssistantProvider.name) after permission. We do not retain that content on our server. OpenAI may retain it for abuse monitoring for up to 30 days, with legal or safety exceptions. Revoke permission below; see the Privacy Policy for details.", bundle: .module))
                 } else {
                     Text("settings.privacy.local", bundle: .module)
                 }
