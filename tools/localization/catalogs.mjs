@@ -92,7 +92,8 @@ export function sourceLeafFor(sourceLeaves, targetPath) {
 async function walk(current) {
   const result = [];
   for (const entry of await fs.readdir(current, { withFileTypes: true })) {
-    if ([".git", ".build", "build", "DerivedData", ".wrangler", "node_modules"].includes(entry.name)) continue;
+    // .claude holds the local agent worktrees: copies of the catalogs that are not this checkout.
+    if ([".git", ".build", "build", "DerivedData", ".wrangler", "node_modules", ".claude"].includes(entry.name)) continue;
     const candidate = path.join(current, entry.name);
     if (entry.isDirectory()) result.push(...await walk(candidate));
     else if (entry.name.endsWith(".xcstrings")) result.push(candidate);
