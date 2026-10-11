@@ -41,6 +41,15 @@ review before it is saved. The assistant can put an untidy list in order first.
 OpenAI's GPT models. The text you give the assistant is sent to OpenAI through our server, after
 you agree in the app. See the [Privacy Policy](privacy).
 
+**A recipe could not be written.**
+Check the connection and AI sharing permission under Settings › Privacy. Try again after a short wait if the service is busy. Failed requests are returned to your allowance. If it continues, contact support with the app version and error, without sending private meal or medical details.
+
+**The large Next Meal widget is missing.**
+Update to build 13 or later and reopen DietFlow. In the widget gallery, choose Next Meal and swipe to the large size; Today’s Meals is a separate widget. If iOS still shows an older gallery, remove and re-add the widget after reopening the app.
+
+**How do I stop AI sharing or usage analytics?**
+Use Settings › Privacy to revoke AI permission. Future requests ask again. Share Usage Data in Settings is off by default starting in build 14; switching it off stops future analytics. See the [Privacy Policy](privacy) for processing and deletion details.
+
 **The assistant says I have no requests left.**
 The allowance comes back on the date shown under the assistant in *Import Plan*. DietFlow Plus
 has a larger one.
@@ -56,8 +65,7 @@ In the app: *Settings › DietFlow Plus › Restore Purchases*, signed in to the
 Refunds are handled by Apple: <https://reportaproblem.apple.com>.
 
 **How do I delete my data?**
-*Settings › Delete All Data* in the app. Everything is on your iPhone; there is no account to
-close.
+*Settings › Delete All Data* in the app. This removes plans, meal completion and cached recipes. Some preferences and the local AI allowance ledger remain. There is no account to close. For previously shared AI content or analytics, see the Privacy Policy and contact support.
 
 ## More
 
