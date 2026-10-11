@@ -650,6 +650,7 @@ public struct MealDetailScreen: View {
             .frame(maxWidth: .infinity)
         }
         .buttonStyle(.borderedProminent)
+        .labelStyle(.titleAndIcon)
         .tint(AppColors.brandAccent)
         .accessibilityLabel(Text("meal.action.markDoneLabel", bundle: .module))
     }

@@ -67,6 +67,22 @@ NOW=(-DebugSeed now)
 appearance light
 textSize large
 
+# Focused visual checks for meal actions and every Home Screen widget size.
+if [ "$SET" = "widgets" ]; then
+  shot today-now-tr "${TR[@]}" "${NOW[@]}"
+  shot meal-now-tr "${TR[@]}" "${NOW[@]}" -DebugMeal next
+  shot cook-done-tr "${TR[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 7
+  shot widgets-small-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.small
+  shot widgets-medium-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.medium
+  shot widgets-large-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large
+  shot widgets-today-large-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.large
+  appearance dark
+  shot widgets-large-dark-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large
+  textSize extra-extra-extra-large
+  shot widgets-large-text-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large
+  exit 0
+fi
+
 # The first-launch introduction on its own: every page, and four moments of the last page's animation.
 if [ "$SET" = "onboarding" ]; then
   ONBOARDING=(-DebugSeed onboarding)

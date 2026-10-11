@@ -257,6 +257,7 @@ struct NextMealSection: View {
                 }
             }
             .buttonStyle(.borderedProminent)
+            .labelStyle(.titleAndIcon)
             .tint(AppColors.brandAccent)
         }
         if let onSkip {

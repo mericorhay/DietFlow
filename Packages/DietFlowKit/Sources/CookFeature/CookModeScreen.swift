@@ -284,6 +284,7 @@ public struct CookModeScreen: View {
                 .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
+            .labelStyle(.titleAndIcon)
             .controlSize(.large)
             .tint(AppColors.brandAccent)
             .disabled(didEat)
