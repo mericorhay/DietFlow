@@ -43,12 +43,13 @@ capture() {
 # A first launch after a text-size change can take longer than usual, so a blank capture (the
 # white launch screen) is retaken for up to about 35 seconds before it is reported: a CI simulator
 # has been seen to take 28 seconds over one launch.
-# Store shots are taken at half past twelve, whenever CI runs: the app is launched in the time zone
-# where it is about then, and the status bar shows that zone's clock, so the clock and the meals
-# on screen agree. Empty elsewhere: the runner's own zone, and the 9:41 status bar.
+# Store shots are taken late in the morning, whenever CI runs: the app is launched in the time zone
+# where it is eleven-something, and the status bar shows that zone's clock, so the clock and the meals
+# on screen agree. Eleven, not one, as "13:05" shows as "1:05" in a 12-hour status bar beside a
+# 24-hour app. Empty elsewhere: the runner's own zone, and the 9:41 status bar.
 SHOT_TZ=""
 midday_zone() {
-  local offset=$(( 12 - 10#$(date -u +%H) ))
+  local offset=$(( 11 - 10#$(date -u +%H) ))
   [ "$offset" -lt -12 ] && offset=$((offset + 24))
   [ "$offset" -gt 14 ] && offset=$((offset - 24))
   # Etc/GMT names count the other way: Etc/GMT-3 is three hours ahead of UTC.
