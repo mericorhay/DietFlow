@@ -46,9 +46,13 @@ capture() {
 shot() {
   local name="$1"
   shift
+  # Cook mode writes its canned recipe and then moves to the step asked for; three seconds
+  # caught it half way through that move.
+  local wait=3
+  case " $* " in *" -DebugCook "*) wait=7 ;; esac
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1 || true
   xcrun simctl launch "$UDID" "$BUNDLE" "$@" >/dev/null
-  sleep 3
+  sleep "$wait"
   capture "$name"
   local tries=0
   while [ "$(stat -f%z "$OUT/$name.jpg")" -lt 7000 ] && [ "$tries" -lt 10 ]; do
@@ -94,7 +98,10 @@ if [ "$SET" = "aso" ]; then
     shot "aso-$locale-today" "${LANG_ARGS[@]}" "${NOW[@]}"
     shot "aso-$locale-meal" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugMeal next
     shot "aso-$locale-widget" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large "${GOLD[@]}"
-    shot "aso-$locale-cook" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 3
+    shot "aso-$locale-shifted" "${LANG_ARGS[@]}" -DebugSeed shifted
+    shot "aso-$locale-late" "${LANG_ARGS[@]}" -DebugSeed late
+    # The overview: the ingredients with their swaps.
+    shot "aso-$locale-cook" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugCook next
     shot "aso-$locale-import" "${LANG_ARGS[@]}" "${SAMPLE[@]}" -DebugSheet import
     shot "aso-$locale-write" "${LANG_ARGS[@]}" -DebugSeed empty -DebugSheet write
     shot "aso-$locale-plus" "${LANG_ARGS[@]}" "${SAMPLE[@]}" -DebugSheet plus
