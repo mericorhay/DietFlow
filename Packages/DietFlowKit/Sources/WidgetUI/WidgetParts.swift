@@ -396,6 +396,8 @@ public struct WidgetActionLabel: View {
     enum Style: Hashable {
         /// The round "Eaten" check beside the meal in front.
         case check
+        /// The full action in a large widget, with a persistent checkmark beside the title.
+        case labeledCheck
         /// The status mark at the start of a row of Today's Meals.
         case status(MealRole)
         /// "I'm up".
@@ -411,6 +413,21 @@ public struct WidgetActionLabel: View {
         switch style {
         case .check:
             check
+        case .labeledCheck:
+            HStack(spacing: 6) {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.body.weight(.semibold))
+                    .accessibilityHidden(true)
+                Text("widget.done", bundle: .module)
+                    .font(.subheadline.weight(.semibold))
+                    .lineLimit(1)
+            }
+            .foregroundStyle(theme.ink)
+            .padding(.horizontal, 12)
+            .frame(minHeight: 36)
+            .background(Capsule().fill(theme.wash))
+            .contentShape(Capsule())
+            .widgetAccentable()
         case .status(let role):
             status(role)
         case .capsule:
@@ -423,7 +440,7 @@ public struct WidgetActionLabel: View {
             .font(.system(size: 13, weight: .bold))
             .foregroundStyle(theme.ink)
             .contentTransition(.symbolEffect(.replace))
-            .frame(width: 30, height: 30)
+            .frame(width: 34, height: 34)
             .background(Circle().fill(renderingMode == .fullColor ? AnyShapeStyle(theme.wash) : AnyShapeStyle(Color.primary.opacity(0.16))))
             .overlay(Circle().strokeBorder(theme.ink.opacity(0.35), lineWidth: 1))
             .contentShape(Circle())

@@ -245,7 +245,7 @@ extension View {
         } message: {
             Text(String(
                 localized: "assistant.consent.message",
-                defaultValue: "To do this, the meal's name, description and portion, and any foods you said you avoid, are sent through our server to \(AssistantProvider.name), whose AI reads them. \(AppBrand.displayName) does not keep them. Nothing else about you or your plan is sent.",
+                defaultValue: "For AI plans, recipes and nutrition estimates, your submitted text or selected meal details (name, description, portion, type and servings), food exclusions and language are sent via our Cloudflare server to \(AssistantProvider.name), only when you request them. \(AppBrand.displayName) does not retain this content on its server. OpenAI may retain it for abuse monitoring for up to 30 days, with legal or safety exceptions. You can revoke permission in Settings. See the Privacy Policy for details.",
                 bundle: .module
             ))
         }

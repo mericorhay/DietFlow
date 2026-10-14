@@ -4,120 +4,121 @@ title: DietFlow Privacy Policy
 
 # DietFlow Privacy Policy
 
-*Last updated 6 October 2026.*
+*Last updated 11 October 2026. Describes version 1.0.0, build 14 and later.*
 
-DietFlow ("Meal Planner Widget: DietFlow") is a meal plan app for iPhone, published by its
-developer ("we"). This page says what happens to what you put into it, who else
-is involved, and what you can do about it.
+DietFlow is an iPhone meal planner published by Meric Orhay. Contact the developer at
+<mericorhayy@gmail.com> for privacy questions or requests. This policy covers the app, its
+widgets and its optional online AI assistant. There is no account, advertising or advertising
+tracking. We do not sell personal data.
 
-In short: your plan stays on your iPhone. Two things can leave it, and each has its own switch:
-text you give the assistant, which goes to OpenAI, and anonymous usage data, which goes to PostHog.
+## Plans and imports on your iPhone
 
-## What stays on your iPhone
+Meal plans, meal completion, reminders, food exclusions, settings and cached recipes are stored
+on your device. The widget reads a shared local copy. DietFlow has no cloud sync or backup
+service of its own. Device backups you enable with Apple may include app data under your Apple
+settings. Exporting a plan or contacting support shares the information you choose with the
+destination you select.
 
-Your meal plans, what you mark as done or skipped, your reminders and your settings are stored on
-your iPhone, in the app and its widgets. They are not sent to us. DietFlow has no account, no
-sign-in and no advertising.
+Text recognition in photos and PDFs runs on the device. When available, Apple's on-device
+language model can help read imported text. Original photos and PDFs are not uploaded to our
+AI service. If you choose the online assistant to organise extracted text, that text follows
+the AI process below. Ordinary manual planning and local imports do not require this sharing.
 
-Reading a plan from pasted text, a file, a photo or a PDF happens on your iPhone. Where your
-iPhone has Apple Intelligence, the text is read by Apple's on-device language model; text in
-photos and PDFs is recognised by iOS's on-device text recognition. Neither sends anything to us.
+## Optional AI: OpenAI, through Cloudflare
 
-## The assistant: which AI, and where your text goes
+The online AI provider is **OpenAI**, accessed through OpenAI's API. Our intermediary server is
+a **Cloudflare Worker**. Requests and responses travel over HTTPS. The permission prompt names
+OpenAI and explains the information involved before an AI request is made. Permission covers
+the AI features below; only information needed for a feature you request is sent. You may
+decline and continue using manual plans, local imports, widgets and reminders.
 
-The assistant puts an untidy list in order or writes a new plan. It is the only part of the app
-that sends what you type anywhere.
+| Requested feature | Content sent to OpenAI via Cloudflare |
+|---|---|
+| Organise a plan | Text you submit, including text extracted locally if you choose to submit it, and output language |
+| Create a plan | Number of days, meals per day, preferences you enter, and output language |
+| Estimate nutrition | Selected meals' names, descriptions, portions and meal types, plus output language; temporary meal identifiers match answers to meals |
+| Write a recipe | Selected meal's name, description and type, number of servings, foods you ask to avoid, and output language |
 
-- **The AI is OpenAI's.** The assistant uses OpenAI's GPT models through OpenAI's API.
-- **Nothing is sent until you agree.** The first time you use the assistant, the app tells you the
-  text will be sent to OpenAI and asks for your permission. You can withdraw it at any time in
-  *Settings › Privacy › Send Assistant Text to OpenAI*; the app then asks again before sending.
-- **The route.** The text goes from your iPhone to our server (a Cloudflare Worker), which passes
-  it to OpenAI and returns the plan. Our server exists so that no OpenAI key is inside the app.
-- **What is sent.** The text you entered, or for a new plan the number of days, meals per day and
-  what you wrote about how you eat. Nothing else from the app is included: not your other plans,
-  not your name, not your location.
-- **What we keep.** We do not store or log the text. Our server keeps only technical records:
-  status codes, sizes, counts and timing.
-- **A random identifier.** To limit misuse, each request carries a random identifier created when
-  the app was installed. It is not linked to your name, your Apple Account or your device's own
-  identifiers.
-- **What OpenAI does with it.** OpenAI processes the text to produce the answer, under its own
-  terms. OpenAI states that it does not use data sent through its API to train its models, and
-  that it may keep API data for a limited period (up to 30 days) to monitor for abuse. See
-  [OpenAI's privacy policy](https://openai.com/policies/privacy-policy/).
+The server receives your IP address and routine connection information. Each app request also
+carries a random installation identifier for abuse control; it is not your Apple Account or an
+advertising identifier. The installation identifier is not included in the model prompt. Other
+plans, unrelated notes, original photos and PDFs, payment credentials and Apple Account details
+are not sent to OpenAI by these features. Do not include private medical details or other
+people's personal information in free text.
 
-Do not put anything in a request that you would not want processed this way, such as other
-people's names or details of a medical condition. The assistant writes everyday meal plans; it
-does not give medical advice.
+We do not persist or log AI request or response content on our server. Technical diagnostics
+include request paths, status/error codes, model names and aggregate counts/sizes. Cloudflare
+processes network and security information to operate the service under its own policies.
 
-## Anonymous usage data
+OpenAI states that API content is not used to train its models by default unless the customer
+opts in. Its default abuse monitoring logs may retain content for up to 30 days, with legal or
+safety exceptions. We have not represented this service as Zero Data Retention. See
+[OpenAI's API data controls](https://developers.openai.com/api/docs/guides/your-data) and
+[privacy policy](https://openai.com/policies/privacy-policy/).
 
-To help improve the app, DietFlow shares anonymous usage data with PostHog, an analytics service.
-It is on by default; turn it off at any time in *Settings › Share Anonymous Usage Data*, and
-nothing more is sent.
+AI answers can be inaccurate. Nutrition values are estimates; recipes and food exclusions do
+not guarantee allergy safety or medical suitability. Review outputs before relying on them.
+The app can save accepted plans and nutrition locally and cache recipes locally for reuse.
 
-What is shared:
+## Optional usage analytics: PostHog
 
-- which features are used (a plan was imported, the assistant was used, a reminder setting
-  changed), with counts such as how many days and meals a plan has;
-- where a limit was reached, and whether a purchase was started, completed or cancelled;
-- that the app was opened, installed or updated, its version and its language.
+Starting with build 14, **Share Usage Data is off by default**, including on upgrades. If you
+enable it in Settings, PostHog receives feature events, request outcomes, allowance counts,
+purchase outcomes/tier, app language/version and routine device/app properties. It associates
+events with a random persistent app identifier. These records are pseudonymous, not completely
+anonymous. No meal names, plan content, food exclusions, photos, files or typed assistant text
+are included in analytics events.
 
-What is never shared: the names of your meals or plans, your notes, anything you paste or type,
-photos, or files.
+The app disables location enrichment and identified person profiles, automatic screen capture
+and session replay. It does not use IDFA, advertising tracking or cross-app advertising
+profiles. Network providers still receive IP addresses when connections are made. The configured
+PostHog endpoint is in the United States; see
+[PostHog's privacy policy](https://posthog.com/privacy).
 
-The data is tied to a random number created on your iPhone. It is not linked to your name, your
-Apple Account or your device's own identifiers, and it is not used for advertising or to follow
-you across other apps or websites.
+Turning the switch off stops future analytics capture and transmission by the app. It does not
+automatically delete events already received. Those events remain subject to the PostHog
+project's retention settings or deletion following an applicable request. Contact us if you
+want to request deletion; because the app has no account, we may need technical information
+to identify the relevant installation without collecting unrelated identity documents.
 
-## Purchases
+## Purchases and service providers
 
-DietFlow Plus is bought through the App Store. Apple handles the payment; we do not receive your
-name, your payment details or your Apple Account. The app asks the App Store on your iPhone
-whether a purchase is active.
+Apple processes DietFlow Plus payments and subscriptions. The app checks StoreKit entitlements
+to unlock Plus. We do not receive card details or Apple Account credentials. If analytics is
+enabled, purchase outcomes and tier can be recorded as described above. Subscription management
+and refunds are handled through Apple.
 
-## Who else is involved
+The processors involved are OpenAI for requested AI content, Cloudflare for the intermediary
+service and network/security processing, PostHog for opted-in analytics, and Apple for purchases
+and operating system services. These providers may process information outside your country,
+including in the United States, subject to their applicable contractual safeguards and policies.
+See [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/).
 
-| Company | What for | What it receives |
-|---|---|---|
-| OpenAI | The assistant's AI | The text you give the assistant, after you agree |
-| Cloudflare | Runs our server | The same text in transit, and your IP address, as any web request does |
-| PostHog | Anonymous usage data | The events listed above, tied to a random number |
-| Apple | Payments, and the on-device model | Purchases; nothing from the app's content |
+## Retention, deletion and your choices
 
-We do not sell your data, and we do not share it with anyone else.
+- Local plans remain until you delete them. **Delete All Data** removes plans, meal completion,
+  day-start records and the local recipe cache. Some preferences remain until reset or the app
+  is removed; device backups must be managed through Apple separately.
+- A small local AI allowance ledger remains in the iPhone Keychain across reinstallations to
+  prevent resetting allowances. It holds usage counts/period information, not meal content.
+- Disable **Settings › Privacy › Send Assistant Text to OpenAI** to withdraw permission for
+  future requests. The next AI request asks again; declining sends no request. This does not
+  retroactively erase data already processed by a provider.
+- Disable **Settings › Share Usage Data** to stop future analytics. No analytics sharing is
+  required to use the app or buy Plus.
+- For AI provider retention, the default and exceptions are stated above. Our service does not
+  retain AI content; technical and security records are retained as needed for operation,
+  troubleshooting, abuse prevention and applicable legal duties.
+- Depending on your location, including the EU and Türkiye, applicable law may provide rights
+  of access, correction, deletion, restriction, objection or complaint to a supervisory
+  authority. Send requests to <mericorhayy@gmail.com>. We will assess the request and explain
+  what we can identify, delete or help you request from a provider.
 
-## How long things are kept
+## Children and changes
 
-- On your iPhone: until you delete them or the app.
-- Assistant text: not kept by us. OpenAI may keep it for the period it states, above.
-- Anonymous usage data: held by PostHog for its standard retention period, then deleted.
+DietFlow is not directed at children under 13, and we do not knowingly collect their personal
+information. Contact us if you believe a child has provided information. Material changes to
+this policy update the date and are described in app release notes. If AI sharing expands,
+the app will request permission under the updated disclosure.
 
-## Your choices and rights
-
-- Deleting a plan removes it from your iPhone. *Settings › Delete All Data* removes everything.
-- Deleting the app removes its data, apart from a small counter of how much of the assistant's
-  allowance was used, which is kept in your iPhone's Keychain so that reinstalling does not reset
-  it. It holds numbers only.
-- Turn off the assistant's sharing or the usage data at any time, in Settings.
-- Depending on where you live (for example under the GDPR or Türkiye's KVKK), you may have the
-  right to ask what data about you is held, to have it corrected or deleted, and to object to its
-  use. Because nothing we hold is linked to your identity, we will usually need the random
-  identifier from your app to find anything. Write to us at the address below.
-
-## Children
-
-DietFlow is not directed at children under 13, and we do not knowingly collect data from them.
-
-## Changes
-
-If this policy changes in a way that matters, the date at the top changes and the app's update
-notes say so.
-
-## Contact
-
-Questions about this policy, or a request about your data: write to <mericorhayy@gmail.com>. See also the
-[support page](support).
-
-See also the [Terms of Use](terms).
+See also [Support](support) and [Terms of Use](terms).

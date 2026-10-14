@@ -16,15 +16,15 @@ name: TestFlight
 #   IOS_WIDGET_PROVISIONING_PROFILE  base64 of the com.orhay.dietflow.widget App Store profile
 # Optional, for the in-app assistant:
 #   DIETFLOW_ASSISTANT_URL, DIETFLOW_ASSISTANT_TOKEN
-# Optional, for anonymous usage data (PostHog):
+# Optional, for opt-in pseudonymous usage data (PostHog):
 #   POSTHOG_API_KEY, POSTHOG_HOST
 on:
   workflow_dispatch:
     inputs:
       groups:
-        description: "TestFlight group names, comma separated (optional)"
+        description: "Internal TestFlight group names, comma separated"
         required: false
-        default: ""
+        default: "all"
 
 concurrency:
   group: testflight

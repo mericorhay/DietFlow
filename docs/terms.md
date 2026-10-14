@@ -4,7 +4,7 @@ title: DietFlow Terms of Use
 
 # DietFlow Terms of Use
 
-*Last updated 6 October 2026.*
+*Last updated 11 October 2026.*
 
 These terms cover your use of DietFlow ("Meal Planner Widget: DietFlow"), an app for iPhone
 published by its developer ("we"). By using the app you agree to them. If you do not, please do
@@ -34,9 +34,9 @@ condition, or take medication. If you feel unwell, stop and get medical help.
 - **Your permission.** The assistant sends the text you give it to OpenAI, through our server,
   only after you have agreed in the app. The [Privacy Policy](privacy) says exactly what is sent
   and what happens to it.
-- **AI makes mistakes.** A plan written or organised by AI can be wrong, incomplete or unsuitable
+- **AI makes mistakes.** A plan, recipe or nutrition estimate produced by AI can be wrong, incomplete or unsuitable
   for you: a wrong time, a missing meal, a food you cannot eat, a calorie figure that is off.
-  Every plan is shown to you for review before it is saved. Check it. You decide what you eat.
+  Every plan is shown to you for review before it is saved. Nutrition values are estimates. Food exclusions do not guarantee allergy safety. Check all outputs. You decide what you eat.
 - **Allowance.** The assistant has a limit on how many requests you can make in a period, shown in
   the app. It is larger with DietFlow Plus. Requests that fail are not counted.
 - **Fair use.** Do not use the assistant for anything unlawful, to send other people's personal
@@ -48,10 +48,10 @@ condition, or take medication. If you feel unwell, stop and get medical help.
 
 ## 4. DietFlow Plus
 
-DietFlow is free to use with limits. DietFlow Plus removes them. It is offered in three ways; the
+DietFlow is free to use with limits. DietFlow Plus allows unlimited saved plans and larger AI allowances; AI requests remain limited. It is offered in three ways; the
 price in your currency is shown in the app before you buy.
 
-- **Monthly**, with a 7-day free trial for new subscribers. After the trial, the subscription
+- **Monthly**, with a 7-day free trial for eligible new subscribers where the offer is available. After the trial, the subscription
   starts and you are charged the monthly price.
 - **Yearly.**
 - **Lifetime**, a single purchase that does not renew.

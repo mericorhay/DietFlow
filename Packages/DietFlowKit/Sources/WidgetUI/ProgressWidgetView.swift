@@ -15,7 +15,7 @@ public enum MealWidgetKind: String, CaseIterable, Sendable {
 
     public var families: [WidgetFamily] {
         switch self {
-        case .nextMeal: [.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline, .accessoryCircular]
+        case .nextMeal: [.systemSmall, .systemMedium, .systemLarge, .accessoryRectangular, .accessoryInline, .accessoryCircular]
         case .today: [.systemMedium, .systemLarge]
         case .progress: [.systemSmall, .accessoryCircular]
         }

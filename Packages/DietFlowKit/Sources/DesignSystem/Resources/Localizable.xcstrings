@@ -80,31 +80,31 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dafür werden Name, Beschreibung und Portion der Mahlzeit sowie Lebensmittel, die du meidest, über unseren Server an %1$@ gesendet, dessen KI sie liest. %2$@ speichert sie nicht. Sonst wird nichts über dich oder deinen Plan gesendet."
+            "value" : "Für KI-Pläne, Rezepte und Nährwertschätzungen werden dein eingegebener Text oder die Angaben zu ausgewählten Mahlzeiten (Name, Beschreibung, Portion, Art und Personenzahl), Lebensmittel, die du meidest, und deine Sprache über unseren Cloudflare-Server an %1$@ gesendet – nur wenn du sie anforderst. %2$@ speichert diese Inhalte nicht auf seinem Server. OpenAI kann sie zur Missbrauchserkennung bis zu 30 Tage aufbewahren, mit rechtlichen oder sicherheitsbezogenen Ausnahmen. Du kannst deine Erlaubnis in den Einstellungen widerrufen. Details findest du in der Datenschutzerklärung."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To do this, the meal's name, description and portion, and any foods you said you avoid, are sent through our server to %1$@, whose AI reads them. %2$@ does not keep them. Nothing else about you or your plan is sent."
+            "value" : "For AI plans, recipes and nutrition estimates, your submitted text or selected meal details (name, description, portion, type and servings), food exclusions and language are sent via our Cloudflare server to %1$@, only when you request them. %2$@ does not retain this content on its server. OpenAI may retain it for abuse monitoring for up to 30 days, with legal or safety exceptions. You can revoke permission in Settings. See the Privacy Policy for details."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Para ello, el nombre, la descripción y la ración de la comida, y los alimentos que dijiste evitar, se envían a través de nuestro servidor a %1$@, cuya IA los lee. %2$@ no los guarda. No se envía nada más sobre ti ni sobre tu plan."
+            "value" : "Al solicitar planes, recetas o estimaciones nutricionales con IA, tu texto o los datos de las comidas seleccionadas (nombre, descripción, ración, tipo y comensales), alimentos que evitas e idioma se envían a %1$@ a través de nuestro servidor de Cloudflare. %2$@ no conserva este contenido en su servidor. OpenAI puede conservarlo hasta 30 días para prevenir abusos, con excepciones legales o de seguridad. Puedes revocar el permiso en Ajustes. Consulta la Política de privacidad."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pour cela, le nom, la description et la portion du repas, ainsi que les aliments que vous évitez, sont envoyés via notre serveur à %1$@, dont l’IA les lit. %2$@ ne les conserve pas. Rien d’autre sur vous ou votre plan n’est envoyé."
+            "value" : "Pour les plans, recettes et estimations nutritionnelles par IA, le texte que vous envoyez ou les informations des repas sélectionnés (nom, description, portion, type et nombre de personnes), les aliments que vous évitez et votre langue sont envoyés via notre serveur Cloudflare à %1$@, uniquement lorsque vous en faites la demande. %2$@ ne conserve pas ce contenu sur son serveur. OpenAI peut le conserver jusqu’à 30 jours pour la détection des abus, sauf exceptions légales ou de sécurité. Vous pouvez retirer votre autorisation dans Réglages. Consultez la Politique de confidentialité pour en savoir plus."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bunun için öğünün adı, açıklaması ve porsiyonu ile yemediğini söylediğin yiyecekler sunucumuz üzerinden %1$@ yapay zekâsına gönderilir. %2$@ bunları saklamaz. Seninle ya da planınla ilgili başka hiçbir şey gönderilmez."
+            "value" : "Yapay zekâ planı, tarif ve besin tahmini istediğinde, gönderdiğin metin veya seçili öğün bilgileri (ad, açıklama, porsiyon, tür ve kişi sayısı), kaçındığın yiyecekler ve dil tercihin Cloudflare sunucumuz üzerinden %1$@ şirketine iletilir. %2$@ bu içeriği sunucusunda saklamaz. OpenAI, kötüye kullanım denetimi için yasal veya güvenlik istisnaları dışında 30 güne kadar saklayabilir. İznini Ayarlar’dan geri alabilirsin. Ayrıntılar Gizlilik Politikası’nda."
           }
         }
       }

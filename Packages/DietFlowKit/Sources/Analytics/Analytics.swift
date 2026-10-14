@@ -9,7 +9,7 @@ import Synchronization
 /// note, a pasted list or a photo. There is no session replay and no automatic screen or tap
 /// capture. The id is a random one PostHog makes on the phone, never tied to an Apple Account.
 ///
-/// Sharing is on unless the person turns it off in Settings; turned off, nothing is sent and
+/// Sharing starts off and is enabled only in Settings; turned off, nothing is sent and
 /// nothing is queued. The key comes from `Analytics.json` in the app bundle, which CI writes from
 /// repository secrets. Without it nothing is ever sent, and every call here does nothing.
 public enum Analytics {
@@ -18,8 +18,8 @@ public enum Analytics {
         var host: String?
     }
 
-    /// Stored as the opt-out, so a phone that has never seen the switch shares.
-    private static let optOutKey = "analytics.optOut"
+    /// A new consent key leaves earlier installations off until they opt in explicitly.
+    private static let optInKey = "analytics.optIn"
     private static let started = Mutex(false)
 
     /// Starts PostHog once, when the build has a key and the person has not turned sharing off.
@@ -40,6 +40,9 @@ public enum Analytics {
         // App opened, backgrounded, installed, updated: what retention is read from.
         settings.captureApplicationLifecycleEvents = true
         settings.captureScreenViews = false
+        // Product events need neither location enrichment nor identified person profiles.
+        settings.disableGeoIp = true
+        settings.personProfiles = .never
         PostHogSDK.shared.setup(settings)
     }
 
@@ -49,11 +52,11 @@ public enum Analytics {
         Bundle.main.url(forResource: "Analytics", withExtension: "json") != nil
     }
 
-    /// The Settings switch. On until the person turns it off.
+    /// The Settings switch. Off until the person turns it on.
     public static var isOn: Bool {
-        get { !UserDefaults.standard.bool(forKey: optOutKey) }
+        get { UserDefaults.standard.bool(forKey: optInKey) }
         set {
-            UserDefaults.standard.set(!newValue, forKey: optOutKey)
+            UserDefaults.standard.set(newValue, forKey: optInKey)
             if newValue {
                 start()
                 if started.withLock({ $0 }) { PostHogSDK.shared.optIn() }

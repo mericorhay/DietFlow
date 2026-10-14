@@ -318,6 +318,7 @@ struct WidgetPreview: Identifiable, Hashable {
         WidgetPreview(kind: .progress, family: .small),
         WidgetPreview(kind: .nextMeal, family: .medium),
         WidgetPreview(kind: .today, family: .medium),
+        WidgetPreview(kind: .nextMeal, family: .large),
         WidgetPreview(kind: .today, family: .large),
         WidgetPreview(kind: .nextMeal, family: .lockScreen),
         WidgetPreview(kind: .nextMeal, family: .lockCircle),

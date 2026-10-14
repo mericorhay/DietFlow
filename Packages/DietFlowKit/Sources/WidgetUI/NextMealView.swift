@@ -42,9 +42,8 @@ public struct MealWidgetView<Action: View>: View {
             switch family {
             case .systemMedium:
                 MediumMealWidgetView(entry: entry, actions: actions)
-            // Next Meal was once offered large too; one still on a Home Screen keeps working.
             case .systemLarge, .systemExtraLarge:
-                TodayLargeWidgetView(entry: entry, actions: actions)
+                LargeMealWidgetView(entry: entry, actions: actions)
             case .accessoryRectangular:
                 RectangularMealWidgetView(entry: entry)
             case .accessoryInline:
@@ -146,7 +145,7 @@ struct SmallMealWidgetView<Action: View>: View {
                 Spacer(minLength: 0)
             }
             Text(primary.title)
-                .font(.title3.weight(.bold))
+                .font(.system(.title3, design: .rounded).weight(.bold))
                 .lineLimit(3)
                 .minimumScaleFactor(0.75)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -181,9 +180,7 @@ struct SmallMealWidgetView<Action: View>: View {
         } else {
             HStack(alignment: .bottom, spacing: 6) {
                 VStack(alignment: .leading, spacing: 3) {
-                    if lead != .now {
-                        WidgetMealTimeRow(item: primary, font: .headline.weight(.bold))
-                    }
+                    WidgetMealTimeRow(item: primary, font: .headline.weight(.bold))
                     WidgetLiveLine(day: day, primary: primary, entry: entry)
                 }
                 Spacer(minLength: 0)
@@ -324,16 +321,12 @@ struct MediumMealWidgetView<Action: View>: View {
             Spacer(minLength: 0)
             HStack(alignment: .bottom, spacing: 6) {
                 VStack(alignment: .leading, spacing: 3) {
-                    if lead != .now {
-                        WidgetMealTimeRow(item: primary, font: .headline.weight(.bold), energy: entry.energyText(primary))
-                    }
+                    WidgetMealTimeRow(item: primary, font: .headline.weight(.bold), energy: entry.energyText(primary))
                     WidgetLiveLine(day: day, primary: primary, entry: entry)
                 }
                 Spacer(minLength: 0)
                 if day.offersStartDay {
                     actions(.startDay, .capsule)
-                } else if lead == .now || lead == .next {
-                    WidgetCookChip(item: primary)
                 }
             }
             .layoutPriority(1)
@@ -364,6 +357,81 @@ struct MediumMealWidgetView<Action: View>: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(verbatim: item.accessibilityLabel))
+    }
+}
+
+// MARK: - Large next meal
+
+/// A full-size meal card, distinct from the day's agenda. The time and meal stay together;
+/// actions have their own row so they cannot squeeze the title or countdown.
+struct LargeMealWidgetView<Action: View>: View {
+    let entry: MealWidgetEntry
+    let actions: WidgetActions<Action>
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    var body: some View {
+        if let message = WidgetMessageView.view(for: entry.content, linksSteps: true) {
+            message
+        } else if case .active(let day) = entry.content, let primary = day.primary, let lead = day.lead {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 10) {
+                    WidgetMealTile(type: primary.type, size: 40)
+                    VStack(alignment: .leading, spacing: 3) {
+                        WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
+                        Text(primary.date, format: .dateTime.weekday(.wide).day().month(.abbreviated))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    Spacer(minLength: 0)
+                }
+                WidgetLink(url: AppLink.meal(primary.key).url) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        WidgetMealTimeRow(item: primary, font: .system(.largeTitle, design: .rounded).weight(.bold), energy: entry.energyText(primary))
+                        Text(primary.title)
+                            .font(.system(.title2, design: .rounded).weight(.bold))
+                            .lineLimit(3)
+                            .minimumScaleFactor(0.85)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+                WidgetLiveLine(day: day, primary: primary, entry: entry)
+                HStack(spacing: 8) {
+                    if entry.canMarkEaten(lead) {
+                        actions(.markEaten(primary), .labeledCheck)
+                    }
+                    if day.offersStartDay {
+                        actions(.startDay, .capsule)
+                    } else if lead == .now || lead == .next {
+                        WidgetCookChip(item: primary)
+                    }
+                    Spacer(minLength: 0)
+                }
+                Spacer(minLength: 0)
+                if !dynamicTypeSize.isAccessibilitySize, entry.preferences.showFollowingMeal, let following = day.following {
+                    Divider()
+                    WidgetLink(url: AppLink.meal(following.key).url) {
+                        HStack(spacing: 10) {
+                            WidgetMealTile(type: following.type, size: 30)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(WidgetText.following(following, on: day.followingDay, today: day.today))
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(.secondary)
+                                    .lineLimit(1)
+                                Text(following.title)
+                                    .font(.subheadline.weight(.medium))
+                                    .lineLimit(2)
+                            }
+                            Spacer(minLength: 0)
+                            WidgetTimeText(date: following.date, font: .subheadline.weight(.bold))
+                                .fixedSize()
+                        }
+                    }
+                }
+                WidgetDayFooter(day: day, entry: entry)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .invalidatableContent()
+        }
     }
 }
 

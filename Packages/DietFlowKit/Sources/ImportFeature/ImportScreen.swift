@@ -246,7 +246,7 @@ public struct ImportPlanScreen: View {
             }
             Button(role: .cancel) {} label: { Text("import.assistant.consent.decline", bundle: .module) }
         } message: { _ in
-            Text(String(localized: "import.assistant.consent.message", defaultValue: "To write your plan, the text you entered is sent through our server to \(AssistantProvider.name), whose AI reads it. \(AppBrand.displayName) does not store it. Leave out anything you would not want shared.", bundle: .module))
+            Text(String(localized: "import.assistant.consent.message", defaultValue: "For AI plans, recipes and nutrition estimates, your submitted text or selected meal details (name, description, portion, type and servings), food exclusions and language are sent via our Cloudflare server to \(AssistantProvider.name), only when you request them. \(AppBrand.displayName) does not retain this content on its server. OpenAI may retain it for abuse monitoring for up to 30 days, with legal or safety exceptions. You can revoke permission in Settings. See the Privacy Policy for details.", bundle: .module))
         }
         .onAppear {
             // Once: coming back from a picker must not read what was handed over a second time.
