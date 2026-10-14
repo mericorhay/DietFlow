@@ -67,9 +67,24 @@ extension MealWidgetView where Action == WidgetActionPreview {
 }
 
 extension WidgetDayContent {
-    /// The day's ring goes beside the meal in front while it is today's and the day has meals.
+    /// The day's ring goes round the meal in front while it is today's and the day has meals.
     var showsRing: Bool {
         (lead == .now || lead == .next) && !schedule.isEmpty
+    }
+}
+
+/// The meal in front's symbol: in the day's ring while the meal is today's, otherwise on its tile.
+struct WidgetLeadMark: View {
+    let day: WidgetDayContent
+    let type: MealType
+    let size: CGFloat
+
+    var body: some View {
+        if day.showsRing {
+            WidgetDayRing(day: day, type: type, size: size)
+        } else {
+            WidgetMealTile(type: type, size: size)
+        }
     }
 }
 
@@ -148,10 +163,10 @@ struct SmallMealWidgetView<Action: View>: View {
 
     private func meal(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            // The day's ring where it fits beside the chip: a meal ticked off fills its segment.
-            ViewThatFits(in: .horizontal) {
-                topRow(day, primary: primary, lead: lead, showsRing: day.showsRing)
-                topRow(day, primary: primary, lead: lead, showsRing: false)
+            HStack(spacing: 6) {
+                WidgetLeadMark(day: day, type: primary.type, size: 24)
+                WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
+                Spacer(minLength: 0)
             }
             Text(primary.title)
                 .font(theme.display(.title3, design: .rounded))
@@ -167,17 +182,6 @@ struct SmallMealWidgetView<Action: View>: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .invalidatableContent()
-    }
-
-    private func topRow(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead, showsRing: Bool) -> some View {
-        HStack(spacing: 6) {
-            WidgetMealTile(type: primary.type, size: 24)
-            WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
-            Spacer(minLength: 0)
-            if showsRing {
-                WidgetDayRing(day: day, size: 20)
-            }
-        }
     }
 
     @ViewBuilder
@@ -320,16 +324,11 @@ struct MediumMealWidgetView<Action: View>: View {
         // round check stays up top instead.
         let checkOnTop = canMark && day.offersStartDay
         return VStack(alignment: .leading, spacing: 6) {
-            if checkOnTop {
-                HStack(alignment: .top, spacing: 6) {
-                    leadLink(day, primary: primary, lead: lead)
-                    Spacer(minLength: 0)
+            HStack(alignment: .top, spacing: 6) {
+                leadLink(day, primary: primary, lead: lead)
+                Spacer(minLength: 0)
+                if checkOnTop {
                     actions(.markEaten(primary), .check)
-                }
-            } else {
-                ViewThatFits(in: .horizontal) {
-                    topRow(day, primary: primary, lead: lead, showsRing: day.showsRing)
-                    topRow(day, primary: primary, lead: lead, showsRing: false)
                 }
             }
             WidgetLink(url: AppLink.meal(primary.key).url) {
@@ -364,18 +363,8 @@ struct MediumMealWidgetView<Action: View>: View {
     private func leadLink(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead) -> some View {
         WidgetLink(url: AppLink.meal(primary.key).url) {
             HStack(spacing: 6) {
-                WidgetMealTile(type: primary.type, size: 26)
+                WidgetLeadMark(day: day, type: primary.type, size: 26)
                 WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
-            }
-        }
-    }
-
-    private func topRow(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead, showsRing: Bool) -> some View {
-        HStack(alignment: .top, spacing: 6) {
-            leadLink(day, primary: primary, lead: lead)
-            Spacer(minLength: 0)
-            if showsRing {
-                WidgetDayRing(day: day)
             }
         }
     }

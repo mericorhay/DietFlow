@@ -525,15 +525,21 @@ struct WidgetActions<Action: View> {
     }
 }
 
-/// The day's meals as a small ring beside the meal in front: each meal ticked off fills its
-/// segment, so a tap on "Eaten" shows on the widget even as it moves on to the next meal.
+/// The meal's symbol inside a ring of the day's meals, in place of the meal's tile: each meal
+/// ticked off fills its segment, so a tap on "Eaten" shows on the widget even as it moves on to
+/// the next meal.
 struct WidgetDayRing: View {
     let day: WidgetDayContent
-    var size: CGFloat = 22
+    let type: MealType
+    var size: CGFloat = 26
+    @Environment(\.widgetTheme) private var theme
 
     var body: some View {
-        WidgetSegmentedRing(schedule: day.schedule, lineWidth: 3.5) {
-            EmptyView()
+        WidgetSegmentedRing(schedule: day.schedule, lineWidth: 3) {
+            Image(systemName: type.symbolName)
+                .font(.system(size: size * 0.4, weight: .semibold))
+                .foregroundStyle(theme.ink)
+                .widgetAccentable()
         }
         .frame(width: size, height: size)
         .accessibilityElement(children: .ignore)
