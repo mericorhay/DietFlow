@@ -21,10 +21,13 @@ name: TestFlight
 on:
   workflow_dispatch:
     inputs:
+      # Empty by default: an internal group set to receive every build gets it without being
+      # named, and naming one Apple distributes automatically fails the run after the upload
+      # ("Builds cannot be assigned to this internal group").
       groups:
-        description: "Internal TestFlight group names, comma separated"
+        description: "Internal TestFlight group names, comma separated (leave empty for groups that get every build)"
         required: false
-        default: "all"
+        default: ""
 
 concurrency:
   group: testflight
