@@ -756,6 +756,330 @@
           }
         }
       }
+    },
+    "sample.breakfast.details" : {
+      "comment" : "Example plan, first day: what is in the breakfast, as short items separated by ' · '. Keep the separators.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halloumi · Kalamata-Oliven · Avocado"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halloumi · kalamata olives · avocado"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halloumi · aceitunas kalamata · aguacate"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halloumi · olives kalamata · avocat"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hellim · kalamata zeytini · avokado"
+          }
+        }
+      }
+    },
+    "sample.breakfast.title" : {
+      "comment" : "Example plan, first day: breakfast dish name. A salad of halloumi cheese, olives and avocado. Natural dish name as a menu would write it.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halloumi-Salat mit Oliven und Avocado"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halloumi, olives and avocado salad"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ensalada de halloumi, aceitunas y aguacate"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salade halloumi, olives et avocat"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hellim, zeytin ve avokado salatası"
+          }
+        }
+      }
+    },
+    "sample.dinner.details" : {
+      "comment" : "Example plan, first day: what is in the dinner, as short items separated by ' · '. Keep the separators.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rumpsteak · Tomate · Gurke · Olivenöl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sirloin · tomato · cucumber · olive oil"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solomillo · tomate · pepino · aceite de oliva"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faux-filet · tomate · concombre · huile d’olive"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bonfile · domates · salatalık · zeytinyağı"
+          }
+        }
+      }
+    },
+    "sample.dinner.title" : {
+      "comment" : "Example plan, first day: dinner dish name. A steak with a Mediterranean salad.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steak mit mediterranem Salat"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steak and Mediterranean salad"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filete con ensalada mediterránea"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steak et salade méditerranéenne"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biftek ve Akdeniz salatası"
+          }
+        }
+      }
+    },
+    "sample.lunch.details" : {
+      "comment" : "Example plan, first day: what is in the lunch, as short items separated by ' · '. Keep the separators.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hähnchenbrust · Romanasalat · Parmesan"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chicken breast · romaine · parmesan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pechuga de pollo · lechuga romana · parmesano"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blanc de poulet · romaine · parmesan"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tavuk göğsü · marul · parmesan"
+          }
+        }
+      }
+    },
+    "sample.lunch.title" : {
+      "comment" : "Example plan, first day: lunch dish name. A Caesar salad with grilled chicken. Natural dish name as a menu would write it.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caesar Salad mit gegrilltem Hähnchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grilled Chicken Caesar Salad"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ensalada César con pollo a la plancha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salade César au poulet grillé"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Izgara Tavuklu Sezar Salata"
+          }
+        }
+      }
+    },
+    "sample.plan.name" : {
+      "comment" : "Name of the example plan shown in the widget gallery, the first-launch introduction and screenshots before the person has a plan of their own. A 14-day low-carb (keto) plan.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14-Tage-Keto-Plan"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14-Day Keto Plan"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan keto de 14 días"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan céto sur 14 jours"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 Günlük Keto Planı"
+          }
+        }
+      }
+    },
+    "sample.snack.details" : {
+      "comment" : "Example plan, first day: the snack's portion. Two tablespoons of almond butter.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 EL Mandelmus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 tbsp almond butter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 cucharadas de crema de almendras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 c. à soupe de beurre d’amande"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 yemek kaşığı badem ezmesi"
+          }
+        }
+      }
+    },
+    "sample.snack.title" : {
+      "comment" : "Example plan, first day: snack name. Celery sticks with almond butter.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Staudensellerie mit Mandelmus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celery with almond butter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apio con crema de almendras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Céleri au beurre d’amande"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badem ezmeli kereviz sapı"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

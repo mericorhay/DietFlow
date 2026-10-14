@@ -18,7 +18,7 @@ public enum SamplePlan {
             }
         }
         return MealPlan(
-            name: "14-Day Keto Plan",
+            name: String(localized: "sample.plan.name", bundle: .module),
             schedule: PlanSchedule(kind: .cycle, startDay: startDay, length: days.count, repeats: repeats),
             meals: meals
         )
@@ -51,12 +51,14 @@ public enum SamplePlan {
         Entry(type: .dinner, time: TimeOfDay(hour: hour, minute: minute), title: title, details: details, calories: calories)
     }
 
+    // The first day is in the person's language: it is the day the widget gallery, the first-launch
+    // introduction and the store screenshots show. The days after it are development data.
     private static let days: [[Entry]] = [
         [
-            breakfast("Halloumi, olives and avocado salad", "Halloumi · kalamata olives · avocado", 430),
-            Entry(type: .lunch, time: TimeOfDay(hour: 14, minute: 0), title: "Grilled Chicken Caesar Salad", details: "Chicken breast · romaine · parmesan", calories: 510, protein: 42, carbs: 9, fat: 34),
-            snack("Celery with almond butter", "2 tbsp almond butter", 190),
-            dinner("Steak and Mediterranean salad", "Sirloin · tomato · cucumber · olive oil", 640),
+            breakfast(String(localized: "sample.breakfast.title", bundle: .module), String(localized: "sample.breakfast.details", bundle: .module), 430),
+            Entry(type: .lunch, time: TimeOfDay(hour: 14, minute: 0), title: String(localized: "sample.lunch.title", bundle: .module), details: String(localized: "sample.lunch.details", bundle: .module), calories: 510, protein: 42, carbs: 9, fat: 34),
+            snack(String(localized: "sample.snack.title", bundle: .module), String(localized: "sample.snack.details", bundle: .module), 190),
+            dinner(String(localized: "sample.dinner.title", bundle: .module), String(localized: "sample.dinner.details", bundle: .module), 640),
         ],
         [
             breakfast("Feta, cucumber and walnut salad", "Feta · cucumber · walnuts · dill", 410),
