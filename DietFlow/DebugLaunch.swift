@@ -135,11 +135,22 @@ enum DebugLaunch {
         let minutes = Calendar.current.dateComponents([.hour, .minute], from: now)
         let current = (minutes.hour ?? 12) * 60 + (minutes.minute ?? 0)
         func at(_ offset: Int) -> TimeOfDay { TimeOfDay(minutesSinceMidnight: current + offset) }
+        // In the evening the later meals would run past midnight and come round as the day's
+        // first, and in the small hours the earlier ones would; squeeze them into the day instead.
+        let latest = 23 * 60 + 30
+        let earliest = 30
+        let ahead = offsets.filter { $0 > 0 }.max() ?? 0
+        let behind = offsets.filter { $0 < 0 }.min() ?? 0
+        let fitted = offsets.map { offset -> Int in
+            if offset > 0, current + ahead > latest { return offset * max(latest - current, 0) / ahead }
+            if offset < 0, current + behind < earliest { return offset * max(current - earliest, 0) / -behind }
+            return offset
+        }
         let sample = SamplePlan.keto(startingOn: .today())
         let firstDay = sample.meals.filter { $0.dayIndex == 0 }.sorted { $0.time < $1.time }
         var plan = sample
         plan.meals = sample.meals.filter { $0.dayIndex != 0 }
-        for (meal, offset) in zip(firstDay, offsets) {
+        for (meal, offset) in zip(firstDay, fitted) {
             var moved = meal
             moved.time = at(offset)
             plan.meals.append(moved)
@@ -149,7 +160,7 @@ enum DebugLaunch {
             store.attempt { try store.markMealCompleted(OccurrenceKey(mealID: first.id, day: .today())) }
             // Marked three hours after its time, breakfast would move the day as a late start; this
             // seed is a day on time, so it follows the plan.
-            store.attempt { try store.startDay(DayStart(firstMeal: at(offsets[0]), source: .morning)) }
+            store.attempt { try store.startDay(DayStart(firstMeal: at(fitted[0]), source: .morning)) }
         }
         return store
     }

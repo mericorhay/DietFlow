@@ -43,9 +43,25 @@ capture() {
 # A first launch after a text-size change can take longer than usual, so a blank capture (the
 # white launch screen) is retaken for up to about 35 seconds before it is reported: a CI simulator
 # has been seen to take 28 seconds over one launch.
+# Store shots are taken at half past twelve, whenever CI runs: the app is launched in the time zone
+# where it is about then, and the status bar shows that zone's clock, so the clock and the meals
+# on screen agree. Empty elsewhere: the runner's own zone, and the 9:41 status bar.
+SHOT_TZ=""
+midday_zone() {
+  local offset=$(( 12 - 10#$(date -u +%H) ))
+  [ "$offset" -lt -12 ] && offset=$((offset + 24))
+  [ "$offset" -gt 14 ] && offset=$((offset - 24))
+  # Etc/GMT names count the other way: Etc/GMT-3 is three hours ahead of UTC.
+  if [ "$offset" -ge 0 ]; then echo "Etc/GMT-$offset"; else echo "Etc/GMT+$(( -offset ))"; fi
+}
+
 shot() {
   local name="$1"
   shift
+  if [ -n "$SHOT_TZ" ]; then
+    xcrun simctl status_bar "$UDID" override --time "$(TZ="$SHOT_TZ" date +%H:%M)" >/dev/null 2>&1 || true
+    export SIMCTL_CHILD_TZ="$SHOT_TZ"
+  fi
   # Cook mode writes its canned recipe and then moves to the step asked for; three seconds
   # caught it half way through that move.
   local wait=3
@@ -87,6 +103,8 @@ textSize large
 # ASO_LOCALES="es de fr" runs the others.
 if [ "$SET" = "aso" ]; then
   FULL_SIZE=1
+  SHOT_TZ="$(midday_zone)"
+  echo "Store shots in $SHOT_TZ, where it is $(TZ="$SHOT_TZ" date +%H:%M)"
   for locale in ${ASO_LOCALES:-en tr}; do
     case "$locale" in
       en) LANG_ARGS=("${EN[@]}") ;;
