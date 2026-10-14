@@ -47,14 +47,16 @@ extension WidgetAccent {
 public struct WidgetTheme: Hashable, Sendable {
     public let accent: WidgetAccent
     public let background: WidgetBackgroundStyle
+    public let typeface: WidgetTypeface
 
-    public init(accent: WidgetAccent, background: WidgetBackgroundStyle) {
+    public init(accent: WidgetAccent, background: WidgetBackgroundStyle, typeface: WidgetTypeface = .standard) {
         self.accent = accent
         self.background = background
+        self.typeface = typeface
     }
 
     public init(_ preferences: WidgetPreferences) {
-        self.init(accent: preferences.accent, background: preferences.background)
+        self.init(accent: preferences.accent, background: preferences.background, typeface: preferences.typeface)
     }
 
     /// The app's own look, and what Lock Screen widgets always use.
@@ -79,6 +81,24 @@ public struct WidgetTheme: Hashable, Sendable {
     /// The "day complete" checkmark.
     public var success: Color {
         background == .bold ? .white : AppColors.success
+    }
+
+    /// A meal's name or time in the person's typeface. `design` is what the standard type uses at
+    /// that place, so the standard look is unchanged; the serif is set a step lighter, since a bold
+    /// serif reads heavy at widget sizes.
+    public func display(_ style: Font.TextStyle, weight: Font.Weight = .bold, design: Font.Design = .default) -> Font {
+        switch typeface {
+        case .standard:
+            .system(style, design: design, weight: weight)
+        case .serif:
+            .system(style, design: .serif, weight: weight == .bold ? .semibold : weight)
+        }
+    }
+
+    /// The standard colours with the person's typeface: what a widget is drawn in where iOS
+    /// chooses the colours, on the Lock Screen and with tinted or clear icons.
+    func withStandardColors() -> WidgetTheme {
+        WidgetTheme(accent: Self.standard.accent, background: Self.standard.background, typeface: typeface)
     }
 
     /// Bold and Dark are dark surfaces whatever the phone is set to, so everything on them is
@@ -149,7 +169,7 @@ struct WidgetThemed: ViewModifier {
         // With tinted or clear icons iOS takes the background away and draws the widget in its own
         // colours; white text chosen for a Bold background would be left on nothing.
         if !isHomeScreen || renderingMode != .fullColor {
-            content.environment(\.widgetTheme, .standard)
+            content.environment(\.widgetTheme, theme.withStandardColors())
         } else if theme.background == .bold {
             content
                 .environment(\.widgetTheme, theme)

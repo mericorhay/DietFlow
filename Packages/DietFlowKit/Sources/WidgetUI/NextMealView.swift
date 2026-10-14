@@ -66,6 +66,13 @@ extension MealWidgetView where Action == WidgetActionPreview {
     }
 }
 
+extension WidgetDayContent {
+    /// The day's ring goes beside the meal in front while it is today's and the day has meals.
+    var showsRing: Bool {
+        (lead == .now || lead == .next) && !schedule.isEmpty
+    }
+}
+
 extension MealWidgetEntry {
     /// The meal in front can be ticked off from the widget: the person wants the button, and the
     /// meal is today's.
@@ -83,8 +90,10 @@ extension MealWidgetEntry {
 /// The meal's time, with the "+45 min" of a late start beside it and, when asked for, its energy.
 struct WidgetMealTimeRow: View {
     let item: WidgetMealItem
-    var font: Font = .headline.weight(.bold)
+    /// Nil: the headline in the person's typeface.
+    var font: Font?
     var energy: String?
+    @Environment(\.widgetTheme) private var theme
 
     var body: some View {
         // The time is never cut short: where the row is narrow, the energy goes first, then the chip.
@@ -97,7 +106,7 @@ struct WidgetMealTimeRow: View {
 
     private func row(showsShift: Bool, showsEnergy: Bool) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 6) {
-            WidgetTimeText(date: item.date, font: font)
+            WidgetTimeText(date: item.date, font: font ?? theme.display(.headline))
                 .fixedSize()
             if showsShift, item.isMoved {
                 WidgetShiftChip(minutes: item.shiftMinutes)
@@ -139,13 +148,13 @@ struct SmallMealWidgetView<Action: View>: View {
 
     private func meal(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            HStack(spacing: 6) {
-                WidgetMealTile(type: primary.type, size: 24)
-                WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
-                Spacer(minLength: 0)
+            // The day's ring where it fits beside the chip: a meal ticked off fills its segment.
+            ViewThatFits(in: .horizontal) {
+                topRow(day, primary: primary, lead: lead, showsRing: day.showsRing)
+                topRow(day, primary: primary, lead: lead, showsRing: false)
             }
             Text(primary.title)
-                .font(.system(.title3, design: .rounded).weight(.bold))
+                .font(theme.display(.title3, design: .rounded))
                 .lineLimit(3)
                 .minimumScaleFactor(0.75)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -160,12 +169,23 @@ struct SmallMealWidgetView<Action: View>: View {
         .invalidatableContent()
     }
 
+    private func topRow(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead, showsRing: Bool) -> some View {
+        HStack(spacing: 6) {
+            WidgetMealTile(type: primary.type, size: 24)
+            WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
+            Spacer(minLength: 0)
+            if showsRing {
+                WidgetDayRing(day: day, size: 20)
+            }
+        }
+    }
+
     @ViewBuilder
     private func bottom(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead) -> some View {
         let canMark = entry.canMarkEaten(lead)
         if day.offersStartDay {
             VStack(alignment: .leading, spacing: 6) {
-                WidgetMealTimeRow(item: primary, font: .subheadline.weight(.bold))
+                WidgetMealTimeRow(item: primary, font: theme.display(.subheadline))
                 ViewThatFits(in: .horizontal) {
                     HStack(spacing: 6) {
                         actions(.startDay, .capsule)
@@ -180,7 +200,7 @@ struct SmallMealWidgetView<Action: View>: View {
         } else {
             HStack(alignment: .bottom, spacing: 6) {
                 VStack(alignment: .leading, spacing: 3) {
-                    WidgetMealTimeRow(item: primary, font: .headline.weight(.bold))
+                    WidgetMealTimeRow(item: primary)
                     WidgetLiveLine(day: day, primary: primary, entry: entry)
                 }
                 Spacer(minLength: 0)
@@ -202,9 +222,9 @@ struct SmallMealWidgetView<Action: View>: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
                 .widgetAccentable()
-            WidgetTimeText(date: primary.date, font: .system(.largeTitle, design: .rounded).weight(.bold))
+            WidgetTimeText(date: primary.date, font: theme.display(.largeTitle, design: .rounded))
             Text(primary.title)
-                .font(.subheadline.weight(.semibold))
+                .font(theme.display(.subheadline, weight: .semibold))
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .minimumScaleFactor(0.85)
@@ -233,7 +253,7 @@ struct WidgetDayCompleteView: View {
             }
             .frame(width: 40, height: 40)
             Text("widget.dayComplete", bundle: .module)
-                .font(.headline)
+                .font(theme.display(.headline, weight: .semibold))
                 .lineLimit(2)
                 .minimumScaleFactor(0.85)
             Spacer(minLength: 0)
@@ -295,22 +315,26 @@ struct MediumMealWidgetView<Action: View>: View {
     }
 
     private func primaryColumn(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack(alignment: .top, spacing: 6) {
-                WidgetLink(url: AppLink.meal(primary.key).url) {
-                    HStack(spacing: 6) {
-                        WidgetMealTile(type: primary.type, size: 26)
-                        WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
-                    }
-                }
-                Spacer(minLength: 0)
-                if entry.canMarkEaten(lead) {
+        let canMark = entry.canMarkEaten(lead)
+        // "Eaten" goes in words at the foot, beside the time; when "I'm up" has that place, the
+        // round check stays up top instead.
+        let checkOnTop = canMark && day.offersStartDay
+        return VStack(alignment: .leading, spacing: 6) {
+            if checkOnTop {
+                HStack(alignment: .top, spacing: 6) {
+                    leadLink(day, primary: primary, lead: lead)
+                    Spacer(minLength: 0)
                     actions(.markEaten(primary), .check)
+                }
+            } else {
+                ViewThatFits(in: .horizontal) {
+                    topRow(day, primary: primary, lead: lead, showsRing: day.showsRing)
+                    topRow(day, primary: primary, lead: lead, showsRing: false)
                 }
             }
             WidgetLink(url: AppLink.meal(primary.key).url) {
                 Text(primary.title)
-                    .font(.title3.weight(.bold))
+                    .font(theme.display(.title3))
                     .lineLimit(3)
                     .minimumScaleFactor(0.8)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -321,12 +345,14 @@ struct MediumMealWidgetView<Action: View>: View {
             Spacer(minLength: 0)
             HStack(alignment: .bottom, spacing: 6) {
                 VStack(alignment: .leading, spacing: 3) {
-                    WidgetMealTimeRow(item: primary, font: .headline.weight(.bold), energy: entry.energyText(primary))
+                    WidgetMealTimeRow(item: primary, energy: entry.energyText(primary))
                     WidgetLiveLine(day: day, primary: primary, entry: entry)
                 }
                 Spacer(minLength: 0)
                 if day.offersStartDay {
                     actions(.startDay, .capsule)
+                } else if canMark {
+                    actions(.markEaten(primary), .pill)
                 }
             }
             .layoutPriority(1)
@@ -335,14 +361,33 @@ struct MediumMealWidgetView<Action: View>: View {
         .invalidatableContent()
     }
 
+    private func leadLink(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead) -> some View {
+        WidgetLink(url: AppLink.meal(primary.key).url) {
+            HStack(spacing: 6) {
+                WidgetMealTile(type: primary.type, size: 26)
+                WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
+            }
+        }
+    }
+
+    private func topRow(_ day: WidgetDayContent, primary: WidgetMealItem, lead: WidgetDayContent.Lead, showsRing: Bool) -> some View {
+        HStack(alignment: .top, spacing: 6) {
+            leadLink(day, primary: primary, lead: lead)
+            Spacer(minLength: 0)
+            if showsRing {
+                WidgetDayRing(day: day)
+            }
+        }
+    }
+
     /// "Then · Snack" in secondary: what comes after, quieter than the meal in front.
     private func sideColumn(_ item: WidgetMealItem, label: String) -> some View {
         WidgetLink(url: AppLink.meal(item.key).url) {
             VStack(alignment: .leading, spacing: 3) {
                 WidgetLeadChip(text: label, isEmphasized: false)
-                WidgetMealTimeRow(item: item, font: .subheadline.weight(.bold))
+                WidgetMealTimeRow(item: item, font: theme.display(.subheadline))
                 Text(item.title)
-                    .font(.subheadline)
+                    .font(theme.display(.subheadline, weight: .regular))
                     .lineLimit(3)
                     .minimumScaleFactor(0.85)
                 Spacer(minLength: 0)
@@ -368,6 +413,7 @@ struct LargeMealWidgetView<Action: View>: View {
     let entry: MealWidgetEntry
     let actions: WidgetActions<Action>
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.widgetTheme) private var theme
 
     var body: some View {
         if let message = WidgetMessageView.view(for: entry.content, linksSteps: true) {
@@ -386,9 +432,9 @@ struct LargeMealWidgetView<Action: View>: View {
                 }
                 WidgetLink(url: AppLink.meal(primary.key).url) {
                     VStack(alignment: .leading, spacing: 6) {
-                        WidgetMealTimeRow(item: primary, font: .system(.largeTitle, design: .rounded).weight(.bold), energy: entry.energyText(primary))
+                        WidgetMealTimeRow(item: primary, font: theme.display(.largeTitle, design: .rounded), energy: entry.energyText(primary))
                         Text(primary.title)
-                            .font(.system(.title2, design: .rounded).weight(.bold))
+                            .font(theme.display(.title2, design: .rounded))
                             .lineLimit(3)
                             .minimumScaleFactor(0.85)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -418,11 +464,11 @@ struct LargeMealWidgetView<Action: View>: View {
                                     .foregroundStyle(.secondary)
                                     .lineLimit(1)
                                 Text(following.title)
-                                    .font(.subheadline.weight(.medium))
+                                    .font(theme.display(.subheadline, weight: .medium))
                                     .lineLimit(2)
                             }
                             Spacer(minLength: 0)
-                            WidgetTimeText(date: following.date, font: .subheadline.weight(.bold))
+                            WidgetTimeText(date: following.date, font: theme.display(.subheadline))
                                 .fixedSize()
                         }
                     }
@@ -559,7 +605,7 @@ struct TodayLargeWidgetView<Action: View>: View {
             .frame(width: 44, height: 44)
             VStack(alignment: .leading, spacing: 2) {
                 Text("widget.dayComplete", bundle: .module)
-                    .font(.headline)
+                    .font(theme.display(.headline, weight: .semibold))
                     .lineLimit(2)
                 Text(day.progressAccessibilityLabel)
                     .font(.caption)
@@ -581,7 +627,7 @@ struct TodayLargeWidgetView<Action: View>: View {
                     WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
                 }
                 Text(primary.title)
-                    .font(.title3.weight(.bold))
+                    .font(theme.display(.title3))
                     .lineLimit(3)
                 WidgetMealTimeRow(item: primary, energy: entry.energyText(primary))
                 WidgetLiveLine(day: day, primary: primary, entry: entry)
@@ -604,7 +650,7 @@ struct WidgetDayHeader: View {
         HStack(alignment: .firstTextBaseline) {
             if isCompact {
                 Text(day.today.middayDate(), format: .dateTime.weekday(.wide).month(.wide).day())
-                    .font(.subheadline.weight(.semibold))
+                    .font(theme.display(.subheadline, weight: .semibold))
                     .lineLimit(1)
             } else {
                 VStack(alignment: .leading, spacing: 0) {
@@ -613,7 +659,7 @@ struct WidgetDayHeader: View {
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                     Text(verbatim: WidgetText.planDay(day))
-                        .font(.subheadline.weight(.bold))
+                        .font(theme.display(.subheadline))
                         .lineLimit(1)
                         .minimumScaleFactor(0.85)
                 }
@@ -644,6 +690,7 @@ struct WidgetFocusCard<Action: View>: View {
     let lead: WidgetDayContent.Lead
     let entry: MealWidgetEntry
     let actions: WidgetActions<Action>
+    @Environment(\.widgetTheme) private var theme
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -661,13 +708,13 @@ struct WidgetFocusCard<Action: View>: View {
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel(Text(verbatim: item.spokenLabel(energyUnit: entry.preferences.showCalories ? entry.preferences.energyUnit : nil)))
                 if entry.canMarkEaten(lead) {
-                    actions(.markEaten(item), .check)
+                    actions(.markEaten(item), .pill)
                 }
             }
             HStack(alignment: .bottom, spacing: 6) {
                 VStack(alignment: .leading, spacing: 3) {
                     if lead != .now {
-                        WidgetMealTimeRow(item: item, font: .subheadline.weight(.bold), energy: entry.energyText(item))
+                        WidgetMealTimeRow(item: item, font: theme.display(.subheadline), energy: entry.energyText(item))
                     }
                     WidgetLiveLine(day: day, primary: item, entry: entry)
                 }
@@ -692,7 +739,7 @@ struct WidgetFocusCard<Action: View>: View {
         let plate = item.plateItems
         if plate.isEmpty {
             Text(item.title)
-                .font(.title3.weight(.bold))
+                .font(theme.display(.title3))
                 .lineLimit(2)
                 .minimumScaleFactor(0.8)
         } else {
@@ -726,6 +773,7 @@ struct WidgetMealRow<Action: View>: View {
     let actions: WidgetActions<Action>
     var isCompact = false
     var isHighlighted = false
+    @Environment(\.widgetTheme) private var theme
 
     private var isMarked: Bool { item.role == .done || item.role == .skipped }
 
@@ -748,7 +796,7 @@ struct WidgetMealRow<Action: View>: View {
                             .accessibilityHidden(true)
                     }
                     Text(item.title)
-                        .font(.subheadline.weight(isHighlighted ? .semibold : .regular))
+                        .font(theme.display(.subheadline, weight: isHighlighted ? .semibold : .regular))
                         .foregroundStyle(isMarked ? AnyShapeStyle(.secondary) : AnyShapeStyle(.primary))
                         .lineLimit(1)
                     if item.isMoved, !isMarked {
@@ -831,6 +879,7 @@ struct TodayMediumWidgetView<Action: View>: View {
     let entry: MealWidgetEntry
     let actions: WidgetActions<Action>
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.widgetTheme) private var theme
 
     private var rowLimit: Int {
         dynamicTypeSize >= .xxLarge ? 2 : 3
@@ -848,9 +897,9 @@ struct TodayMediumWidgetView<Action: View>: View {
                         VStack(alignment: .leading, spacing: 4) {
                             WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
                             Text(primary.title)
-                                .font(.headline)
+                                .font(theme.display(.headline, weight: .semibold))
                                 .lineLimit(2)
-                            WidgetMealTimeRow(item: primary, font: .subheadline.weight(.bold))
+                            WidgetMealTimeRow(item: primary, font: theme.display(.subheadline))
                         }
                         .padding(.horizontal, 6)
                         .frame(maxWidth: .infinity, alignment: .leading)

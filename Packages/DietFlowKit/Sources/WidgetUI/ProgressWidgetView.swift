@@ -127,7 +127,7 @@ struct ProgressWidgetView<Action: View>: View {
                         .widgetAccentable()
                 } else {
                     Text(verbatim: "\(day.mealsBehind.formatted())/\(day.schedule.count.formatted())")
-                        .font(.system(.title3, design: .rounded).weight(.bold))
+                        .font(theme.display(.title3, design: .rounded))
                         .monospacedDigit()
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
@@ -143,7 +143,7 @@ struct ProgressWidgetView<Action: View>: View {
             if let primary = day.primary, let lead = day.lead {
                 WidgetLeadChip(text: WidgetText.lead(lead, typeLabel: primary.typeLabel, today: day.today))
                 Text(primary.title)
-                    .font(.footnote.weight(.semibold))
+                    .font(theme.display(.footnote, weight: .semibold))
                     .lineLimit(1)
             }
         }

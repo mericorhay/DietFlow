@@ -18,6 +18,7 @@ extension WidgetAccent {
     public var name: String {
         switch self {
         case .terracotta: String(localized: "widget.color.terracotta", bundle: .module)
+        case .gold: String(localized: "widget.color.gold", bundle: .module)
         case .orange: String(localized: "widget.color.orange", bundle: .module)
         case .red: String(localized: "widget.color.red", bundle: .module)
         case .pink: String(localized: "widget.color.pink", bundle: .module)
@@ -38,6 +39,15 @@ extension WidgetBackgroundStyle {
         case .soft: String(localized: "widget.background.soft", bundle: .module)
         case .bold: String(localized: "widget.background.bold", bundle: .module)
         case .dark: String(localized: "widget.background.dark", bundle: .module)
+        }
+    }
+}
+
+extension WidgetTypeface {
+    public var name: String {
+        switch self {
+        case .standard: String(localized: "widget.typeface.standard", bundle: .module)
+        case .serif: String(localized: "widget.typeface.serif", bundle: .module)
         }
     }
 }

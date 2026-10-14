@@ -394,8 +394,10 @@ public enum WidgetAction: Hashable, Sendable {
 /// plain style, so every look is drawn here, the same in the widget and in the app.
 public struct WidgetActionLabel: View {
     enum Style: Hashable {
-        /// The round "Eaten" check beside the meal in front.
+        /// The round "Eaten" check beside the meal in front, where there is no room for words.
         case check
+        /// "✓ Eaten" in a small capsule: the check with the word, so the button says what it does.
+        case pill
         /// The full action in a large widget, with a persistent checkmark beside the title.
         case labeledCheck
         /// The status mark at the start of a row of Today's Meals.
@@ -413,6 +415,8 @@ public struct WidgetActionLabel: View {
         switch style {
         case .check:
             check
+        case .pill:
+            pill
         case .labeledCheck:
             HStack(spacing: 6) {
                 Image(systemName: "checkmark.circle.fill")
@@ -447,6 +451,28 @@ public struct WidgetActionLabel: View {
             .widgetAccentable()
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(Text("widget.done", bundle: .module))
+    }
+
+    private var pill: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "checkmark")
+                .font(.caption.weight(.bold))
+                .accessibilityHidden(true)
+            Text("widget.done", bundle: .module)
+                .font(.caption.weight(.bold))
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+        }
+        .foregroundStyle(theme.ink)
+        .padding(.horizontal, 10)
+        .frame(minHeight: 30)
+        .background(Capsule().fill(renderingMode == .fullColor ? AnyShapeStyle(theme.wash) : AnyShapeStyle(Color.primary.opacity(0.16))))
+        .overlay(Capsule().strokeBorder(theme.ink.opacity(0.35), lineWidth: 1))
+        .fixedSize()
+        .contentShape(Capsule())
+        .widgetAccentable()
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text("widget.done", bundle: .module))
     }
 
     private func status(_ role: MealRole) -> some View {
@@ -496,6 +522,22 @@ struct WidgetActions<Action: View> {
 
     func callAsFunction(_ action: WidgetAction, _ style: WidgetActionLabel.Style) -> Action {
         make(action, WidgetActionLabel(action: action, style: style))
+    }
+}
+
+/// The day's meals as a small ring beside the meal in front: each meal ticked off fills its
+/// segment, so a tap on "Eaten" shows on the widget even as it moves on to the next meal.
+struct WidgetDayRing: View {
+    let day: WidgetDayContent
+    var size: CGFloat = 22
+
+    var body: some View {
+        WidgetSegmentedRing(schedule: day.schedule, lineWidth: 3.5) {
+            EmptyView()
+        }
+        .frame(width: size, height: size)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(day.progressAccessibilityLabel))
     }
 }
 

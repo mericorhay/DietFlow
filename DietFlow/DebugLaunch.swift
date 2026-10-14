@@ -115,10 +115,14 @@ enum DebugLaunch {
             }
             store.updateSettings { $0.foodsToAvoid = avoided }
         }
-        if let look = value("DebugWidgetLook")?.split(separator: ".").map(String.init), look.count == 2 {
+        // "gold.dark", or "gold.dark.serif" with the typeface.
+        if let look = value("DebugWidgetLook")?.split(separator: ".").map(String.init), look.count >= 2 {
             store.updateSettings { settings in
                 settings.widgetAccent = WidgetAccent(rawValue: look[0]) ?? settings.widgetAccent
                 settings.widgetBackground = WidgetBackgroundStyle(rawValue: look[1]) ?? settings.widgetBackground
+                if look.count >= 3 {
+                    settings.widgetTypeface = WidgetTypeface(rawValue: look[2]) ?? settings.widgetTypeface
+                }
             }
         }
         return store

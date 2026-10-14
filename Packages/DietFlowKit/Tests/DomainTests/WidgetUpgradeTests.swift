@@ -238,6 +238,41 @@ struct WidgetPreferencesUpgradeTests {
 
     @Test func theAppsDefaultsAndTheWidgetsAgree() {
         #expect(AppSettings().widgetPreferences.showDoneButton == WidgetPreferences().showDoneButton)
+        #expect(AppSettings().widgetPreferences.typeface == WidgetPreferences().typeface)
+    }
+
+    @Test func anOlderFileKeepsTheStandardType() throws {
+        let json = #"{"version":1,"generatedAt":0,"states":{},"preferences":{"accent":"blue"}}"#
+        let preferences = try WidgetSnapshot.decode(Data(json.utf8)).preferences
+        #expect(preferences.typeface == .standard)
+        #expect(preferences.accent == .blue)
+    }
+
+    @Test func aTypefaceThisVersionDoesNotKnowFallsBack() throws {
+        let json = #"{"version":1,"generatedAt":0,"states":{},"preferences":{"typeface":"script","accent":"gold"}}"#
+        let preferences = try WidgetSnapshot.decode(Data(json.utf8)).preferences
+        #expect(preferences.typeface == .standard)
+        #expect(preferences.accent == .gold)
+    }
+
+    @Test func theBlackAndGoldLookReachesTheWidget() throws {
+        var settings = AppSettings()
+        settings.widgetAccent = .gold
+        settings.widgetBackground = .dark
+        settings.widgetTypeface = .serif
+        let reread = try JSONDecoder().decode(AppSettings.self, from: JSONEncoder().encode(settings))
+        #expect(reread.widgetTypeface == .serif)
+        let preferences = reread.widgetPreferences
+        #expect(preferences.accent == .gold)
+        #expect(preferences.background == .dark)
+        #expect(preferences.typeface == .serif)
+    }
+
+    @Test func settingsSavedBeforeTheFontPickerKeepTheStandardType() throws {
+        let json = #"{"widgetAccent":"green","widgetBackground":"soft"}"#
+        let settings = try JSONDecoder().decode(AppSettings.self, from: Data(json.utf8))
+        #expect(settings.widgetTypeface == .standard)
+        #expect(settings.widgetAccent == .green)
     }
 }
 

@@ -181,6 +181,42 @@
         }
       }
     },
+    "widget.color.gold" : {
+      "comment" : "Name of a widget colour, read by VoiceOver: a warm gold. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gold"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gold"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dorado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Or"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altın"
+          }
+        }
+      }
+    },
     "widget.color.graphite" : {
       "comment" : "Name of a widget colour, read by VoiceOver: a dark neutral grey.",
       "extractionState" : "manual",
@@ -614,7 +650,7 @@
       }
     },
     "widget.done" : {
-      "comment" : "Widget: label of the round check button that marks the meal in front as eaten, read by VoiceOver; also the action on a row's status mark. The action, not the state.",
+      "comment" : "Widget: the action that marks the meal in front as eaten. Shown beside a check in a small button, so it must stay short (one or two words), and read by VoiceOver on the round check and on a row's status mark. The action, not the state.",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -2229,6 +2265,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yarın %1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "widget.typeface.serif" : {
+      "comment" : "Widgets tab, Font picker: the option that sets the widget's meal names and times in a serif, for a classic look. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klassisch"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classic"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clásica"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classique"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasik"
+          }
+        }
+      }
+    },
+    "widget.typeface.standard" : {
+      "comment" : "Widgets tab, Font picker: the option that keeps the system's own type on the widget. One word.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estándar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standart"
           }
         }
       }

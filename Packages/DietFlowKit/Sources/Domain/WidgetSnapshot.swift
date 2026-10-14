@@ -5,6 +5,8 @@ import Foundation
 public enum WidgetAccent: String, Codable, CaseIterable, Sendable {
     /// The app's own colour.
     case terracotta
+    /// A warm gold: with the Dark background and the Classic typeface, a black-and-gold look.
+    case gold
     case orange
     case red
     case pink
@@ -26,6 +28,14 @@ public enum WidgetBackgroundStyle: String, Codable, CaseIterable, Sendable {
     case bold
     /// Dark at any time of day.
     case dark
+}
+
+/// The type a Home Screen widget sets a meal's name and time in.
+public enum WidgetTypeface: String, Codable, CaseIterable, Sendable {
+    /// The system's own type, as the widgets have always been drawn.
+    case standard
+    /// A serif (New York), for a quieter, more classic widget.
+    case serif
 }
 
 /// An sRGB colour as plain numbers, so the widget's colours can be checked for contrast in tests
@@ -121,6 +131,10 @@ extension WidgetAccent {
         switch self {
         case .terracotta:
             WidgetPalette(light: 0xB94634, dark: 0xE06A55, inkLight: 0x983726, inkDark: 0xF59A86, boldTop: 0xB94634, boldBottom: 0x8E3426)
+        case .gold:
+            // Gold that is bright enough to read as gold is too light for words on white, so the
+            // ink in Light Mode is a deep bronze, and Bold is bronze too.
+            WidgetPalette(light: 0xC59B3E, dark: 0xD4AF63, inkLight: 0x7A5A12, inkDark: 0xE0BC72, boldTop: 0x80601A, boldBottom: 0x5A420E)
         case .orange:
             WidgetPalette(light: 0xFF9500, dark: 0xFF9F0A, inkLight: 0x9F3E09, inkDark: 0xFFA94D, boldTop: 0xAE480A, boldBottom: 0x7F3305)
         case .red:
@@ -166,6 +180,7 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
     public var smartMealTimes: Bool
     /// Lock Screen widgets keep meal names out of sight until the iPhone is unlocked.
     public var hidesMealNamesWhenLocked: Bool
+    public var typeface: WidgetTypeface
 
     public init(
         showCalories: Bool = false,
@@ -177,7 +192,8 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
         accent: WidgetAccent = .terracotta,
         background: WidgetBackgroundStyle = .system,
         smartMealTimes: Bool = true,
-        hidesMealNamesWhenLocked: Bool = false
+        hidesMealNamesWhenLocked: Bool = false,
+        typeface: WidgetTypeface = .standard
     ) {
         self.showCalories = showCalories
         self.showFollowingMeal = showFollowingMeal
@@ -189,6 +205,7 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
         self.background = background
         self.smartMealTimes = smartMealTimes
         self.hidesMealNamesWhenLocked = hidesMealNamesWhenLocked
+        self.typeface = typeface
     }
 
     /// Between a quarter of an hour and four hours, whatever was stored.
@@ -215,6 +232,7 @@ public struct WidgetPreferences: Codable, Hashable, Sendable {
         background = (try? container.decodeIfPresent(WidgetBackgroundStyle.self, forKey: .background)) ?? defaults.background
         smartMealTimes = (try? container.decodeIfPresent(Bool.self, forKey: .smartMealTimes)) ?? defaults.smartMealTimes
         hidesMealNamesWhenLocked = (try? container.decodeIfPresent(Bool.self, forKey: .hidesMealNamesWhenLocked)) ?? defaults.hidesMealNamesWhenLocked
+        typeface = (try? container.decodeIfPresent(WidgetTypeface.self, forKey: .typeface)) ?? defaults.typeface
     }
 }
 

@@ -40,6 +40,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
     public var foodsToAvoid: String
     /// The Lock Screen widgets show that a meal is due but not what it is, while the phone is locked.
     public var hidesMealNamesOnLockScreen: Bool
+    /// The type the Home Screen widgets set a meal's name and time in.
+    public var widgetTypeface: WidgetTypeface
 
     public init(
         remindersEnabled: Bool = false,
@@ -62,7 +64,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
         hasDismissedPlusCard: Bool = false,
         hasAskedForReview: Bool = false,
         foodsToAvoid: String = "",
-        hidesMealNamesOnLockScreen: Bool = false
+        hidesMealNamesOnLockScreen: Bool = false,
+        widgetTypeface: WidgetTypeface = .standard
     ) {
         self.remindersEnabled = remindersEnabled
         self.defaultReminder = defaultReminder
@@ -85,6 +88,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         self.hasAskedForReview = hasAskedForReview
         self.foodsToAvoid = String(foodsToAvoid.prefix(Self.foodsToAvoidLimit))
         self.hidesMealNamesOnLockScreen = hidesMealNamesOnLockScreen
+        self.widgetTypeface = widgetTypeface
     }
 
     /// Characters kept of `foodsToAvoid`: what the assistant's server reads of it.
@@ -117,6 +121,7 @@ public struct AppSettings: Codable, Hashable, Sendable {
         hasAskedForReview = (try? container.decode(Bool.self, forKey: .hasAskedForReview)) ?? defaults.hasAskedForReview
         foodsToAvoid = String(((try? container.decode(String.self, forKey: .foodsToAvoid)) ?? defaults.foodsToAvoid).prefix(Self.foodsToAvoidLimit))
         hidesMealNamesOnLockScreen = (try? container.decode(Bool.self, forKey: .hidesMealNamesOnLockScreen)) ?? defaults.hidesMealNamesOnLockScreen
+        widgetTypeface = (try? container.decode(WidgetTypeface.self, forKey: .widgetTypeface)) ?? defaults.widgetTypeface
     }
 
     public var widgetPreferences: WidgetPreferences {
@@ -130,7 +135,8 @@ public struct AppSettings: Codable, Hashable, Sendable {
             accent: widgetAccent,
             background: widgetBackground,
             smartMealTimes: smartMealTimes,
-            hidesMealNamesWhenLocked: hidesMealNamesOnLockScreen
+            hidesMealNamesWhenLocked: hidesMealNamesOnLockScreen,
+            typeface: widgetTypeface
         )
     }
 }

@@ -433,6 +433,42 @@
         }
       }
     },
+    "widgets.look.typeface" : {
+      "comment" : "Widgets tab, Look section: label of the picker for the type the widget's meal names and times are set in. One or two words.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schrift"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Police"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yazı Tipi"
+          }
+        }
+      }
+    },
     "widgets.preview.caption" : {
       "comment" : "Caption under a widget preview on the Widgets tab. %1$@ is the widget's name, %2$@ its size, such as Medium or Lock Screen.",
       "extractionState" : "manual",

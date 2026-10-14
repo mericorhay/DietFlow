@@ -26,10 +26,17 @@ xcrun simctl install "$UDID" "$APP"
 appearance() { xcrun simctl ui "$UDID" appearance "$1" >/dev/null 2>&1 || true; }
 textSize() { xcrun simctl ui "$UDID" content_size "$1" >/dev/null 2>&1 || true; }
 
+# Small JPEGs keep the log short; the store set is printed at full size, since the artifact with
+# the PNGs cannot always be fetched where the shots are turned into store images.
+FULL_SIZE=0
 capture() {
   local name="$1"
   xcrun simctl io "$UDID" screenshot --type=png "$OUT/$name.png" >/dev/null 2>&1
-  sips -Z 560 -s format jpeg -s formatOptions 50 "$OUT/$name.png" --out "$OUT/$name.jpg" >/dev/null
+  if [ "$FULL_SIZE" = 1 ]; then
+    sips -s format jpeg -s formatOptions 80 "$OUT/$name.png" --out "$OUT/$name.jpg" >/dev/null
+  else
+    sips -Z 560 -s format jpeg -s formatOptions 50 "$OUT/$name.png" --out "$OUT/$name.jpg" >/dev/null
+  fi
 }
 
 # shot <name> <launch arguments…>
@@ -61,6 +68,10 @@ shot() {
 EN=(-AppleLanguages "(en)" -AppleLocale en_US)
 TR=(-AppleLanguages "(tr)" -AppleLocale tr_TR)
 ES=(-AppleLanguages "(es)" -AppleLocale es_ES)
+DE=(-AppleLanguages "(de)" -AppleLocale de_DE)
+FR=(-AppleLanguages "(fr)" -AppleLocale fr_FR)
+# The widget in black and gold with the Classic font.
+GOLD=(-DebugWidgetLook gold.dark.serif)
 SAMPLE=(-DebugSeed sample)
 NOW=(-DebugSeed now)
 
@@ -68,16 +79,21 @@ appearance light
 textSize large
 
 # Real app captures for localized store creatives; no personal data or network calls.
+# Full size, and by default English and Turkish only, to keep the log in bounds:
+# ASO_LOCALES="es de fr" runs the others.
 if [ "$SET" = "aso" ]; then
-  for locale in en tr es; do
+  FULL_SIZE=1
+  for locale in ${ASO_LOCALES:-en tr}; do
     case "$locale" in
       en) LANG_ARGS=("${EN[@]}") ;;
       tr) LANG_ARGS=("${TR[@]}") ;;
       es) LANG_ARGS=("${ES[@]}") ;;
+      de) LANG_ARGS=("${DE[@]}") ;;
+      fr) LANG_ARGS=("${FR[@]}") ;;
     esac
     shot "aso-$locale-today" "${LANG_ARGS[@]}" "${NOW[@]}"
     shot "aso-$locale-meal" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugMeal next
-    shot "aso-$locale-widget" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large
+    shot "aso-$locale-widget" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large "${GOLD[@]}"
     shot "aso-$locale-cook" "${LANG_ARGS[@]}" "${NOW[@]}" -DebugCook next -DebugCookStep 3
     shot "aso-$locale-import" "${LANG_ARGS[@]}" "${SAMPLE[@]}" -DebugSheet import
     shot "aso-$locale-write" "${LANG_ARGS[@]}" -DebugSeed empty -DebugSheet write
@@ -96,6 +112,11 @@ if [ "$SET" = "widgets" ]; then
   shot widgets-medium-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.medium
   shot widgets-large-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large
   shot widgets-today-large-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.large
+  shot widgets-gold-small-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.small "${GOLD[@]}"
+  shot widgets-gold-medium-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.medium "${GOLD[@]}"
+  shot widgets-gold-large-tr "${TR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large "${GOLD[@]}"
+  shot widgets-gold-today-de "${DE[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget today.large "${GOLD[@]}"
+  shot widgets-gold-light-fr "${FR[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.medium -DebugWidgetLook gold.system.serif
   appearance dark
   shot widgets-large-dark-en "${EN[@]}" "${NOW[@]}" -DebugTab widgets -DebugWidget nextMeal.large
   textSize extra-extra-extra-large

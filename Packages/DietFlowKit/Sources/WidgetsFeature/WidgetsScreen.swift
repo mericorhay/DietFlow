@@ -128,6 +128,13 @@ public struct WidgetsScreen: View {
                 } label: {
                     Text("widgets.look.background", bundle: .module)
                 }
+                Picker(selection: setting(\.widgetTypeface)) {
+                    ForEach(WidgetTypeface.allCases, id: \.self) { typeface in
+                        Text(typeface.name).tag(typeface)
+                    }
+                } label: {
+                    Text("widgets.look.typeface", bundle: .module)
+                }
             } header: {
                 Text("widgets.look.header", bundle: .module)
             } footer: {
